@@ -1,0 +1,52 @@
+version: 2
+jobs:
+  deploy:
+    docker:
+      - image: circleci/node:10
+    working_directory: ~/git
+
+    steps:
+      - run:
+          name: Install Python & Pip
+          command: sudo apt-get update && sudo apt-get install python-pip python-dev
+
+      - run:
+          name: Install AWSCli
+          command: sudo pip install awscli
+
+      - checkout
+
+      - run:
+          name: Install dependencies
+          command: yarn install
+
+      - run:
+          name: Build Docs
+          command: yarn docs:build
+
+      - run:
+          name: Deploy Docs to S3
+          command: aws s3 sync docs/.vuepress/dist/ $DOCS_S3_URI --delete --acl public-read
+
+      - run:
+          name: Invalidate Cloudfront cache
+          command: aws cloudfront create-invalidation --distribution-id $PIPEDREAM_CLOUDFRONT_DISTRIBUTION_ID --paths "/*"
+
+workflows:
+  version: 2
+  prod:
+    jobs:
+      - deploy:
+          context: pipedream-docs
+          filters:
+            branches:
+              only:
+                - master
+  stage:
+    jobs:
+      - deploy:
+          context: pipedream-docs-dev
+          filters:
+            branches:
+              ignore:
+                - master

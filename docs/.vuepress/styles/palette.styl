@@ -1,0 +1,80 @@
+// Override default styles
+$sidebarWidth = 10rem
+$borderColor = #fff
+$bgColor = #fff
+$headerColor = #343c56
+$hoverColor = #34d28b
+$textColor = rgba(0,0,0,.84)
+
+html,
+body,
+.navbar,
+.sidebar,
+.navbar .links,
+.theme-container .navbar,
+.theme-container .sidebar
+	background-color $bgColor
+
+body .content .default
+	color $textColor
+
+.theme-container .navbar,
+.navbar .links
+	background-color $headerColor
+
+.nav-item
+	color: $bgColor
+
+	@media (max-width: 719px)
+		color $headerColor
+
+.nav-item a:hover
+	color: $hoverColor
+
+	@media (max-width: 719px)
+		color $hoverColor
+
+.theme-container .navbar img
+	height 22px
+	width 144px
+	padding-top: 0.5em
+
+div .page
+	padding-left: 3rem
+
+	@media (max-width: 959px)
+		padding-left: 8.2rem
+
+	@media (max-width: 419px)
+		padding-left: 1.5rem
+
+div .sidebar-button svg
+	color: $bgColor
+
+.cta
+	display inline-block
+	font-size 1.2rem
+	color #fff
+	background-color $accentColor
+	padding 0.8rem 1.6rem
+	border-radius 4px
+	transition background-color .1s ease
+	box-sizing border-box
+	border-bottom 1px solid darken($accentColor, 10%)
+
+.cta:hover
+	background-color lighten($accentColor, 10%)
+
+.endpoint
+	background-color $headerColor
+
+.endpoint:hover
+	background-color lighten($headerColor, 10%)
+
+.endpoint-url
+	color $accentColor
+
+.navbar .site-name
+	color $bgColor
+	margin-left: -25px
+	margin-top: 1px
