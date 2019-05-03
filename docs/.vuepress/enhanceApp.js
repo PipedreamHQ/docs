@@ -6,10 +6,10 @@ export default ({
   router, // the router instance for the app
   siteData // site metadata
 }) => {
-  Vue.use(VueGtm, {
+  /* Vue.use(VueGtm, {
     id: "GTM-KBDH3DB",
     enabled: true,
     debug: false,
     vueRouter: router
-  });
+  }); */
 };
