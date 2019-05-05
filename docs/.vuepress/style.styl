@@ -1,10 +1,4 @@
-// Override default styles
-$sidebarWidth = 10rem
-$borderColor = #fff
-$bgColor = #fff
-$headerColor = #343c56
 $hoverColor = #34d28b
-$textColor = rgba(0,0,0,.84)
 
 html,
 body,
@@ -50,29 +44,6 @@ div .page
 
 div .sidebar-button svg
 	color: $bgColor
-
-.cta
-	display inline-block
-	font-size 1.2rem
-	color #fff
-	background-color $accentColor
-	padding 0.8rem 1.6rem
-	border-radius 4px
-	transition background-color .1s ease
-	box-sizing border-box
-	border-bottom 1px solid darken($accentColor, 10%)
-
-.cta:hover
-	background-color lighten($accentColor, 10%)
-
-.endpoint
-	background-color $headerColor
-
-.endpoint:hover
-	background-color lighten($headerColor, 10%)
-
-.endpoint-url
-	color $accentColor
 
 .navbar .site-name
 	color $bgColor
