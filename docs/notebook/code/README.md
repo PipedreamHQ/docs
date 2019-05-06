@@ -4,6 +4,8 @@ Code cells are optional, but common. If the data received by your source needs n
 
 But often, you'll want to modify the data you receive in some way. You may need to look up additional metadata about the event, parse raw data into more meaningful fields, or end the execution of a pipeline early under some conditions. Code cells let you do this and more.
 
+[[toc]]
+
 ## Language Support
 
 Today, Pipedream supports JavaScript, specifically [Node.js v8.10](https://nodejs.org/docs/v0.8.10/).

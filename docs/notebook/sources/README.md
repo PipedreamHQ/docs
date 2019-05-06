@@ -4,6 +4,8 @@ Every pipeline needs data to operate on. Sources are the interface we give you t
 
 Today, we support Webhook sources, and plan to support others — SQL, scheduled code cells, and more — in the future. If there's a source you'd like to see, [let us know](/support/).
 
+[[toc]]
+
 ## Webhook Sources
 
 When you create a new **Webhook** source, we create a URL endpoint specific to your pipeline.
