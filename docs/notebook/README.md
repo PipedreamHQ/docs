@@ -16,7 +16,7 @@ Text cells are just text, and not included in the execution of published pipelin
 Read more about each of the components of a Pipedream notebook below:
 
 - [Sources](/notebook/sources/)
-- [Inspector](/notebook/inspector/)
+- [The Inspector](/notebook/inspector/)
 - [`$event`](/notebook/dollar-event/)
 - [Code](/notebook/code/)
 - [Destinations](/notebook/destinations/)
