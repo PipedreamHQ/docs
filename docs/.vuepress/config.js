@@ -10,10 +10,26 @@ module.exports = {
     logo: "/pipedream.svg",
     nav: [{ text: "Support", link: "/support/" }],
     sidebar: [
-      ["/", "Docs Home"],
-      "/what-is-pipedream/",
-      "/sign-up/",
-      "/your-first-pipeline/"
+      "/support/",
+      {
+        title: "Intro to Pipedream",
+        collapsable: false,
+        children: ["/what-is-pipedream/", "/sign-up/", "/your-first-pipeline/"]
+      },
+      {
+        title: "Notebooks",
+        collapsable: false,
+        children: [
+          "/notebook/",
+          "/notebook/sources/",
+          "/notebook/inspector/",
+          "/notebook/dollar-event/",
+          "/notebook/code/",
+          "/notebook/destinations/",
+          "/notebook/text/",
+          "/notebook/sql/"
+        ]
+      }
     ],
     PIPEDREAM_BASE_URL: "https://tidewater.pipedream.com",
     PAYLOAD_SIZE_LIMIT: "100kb",
