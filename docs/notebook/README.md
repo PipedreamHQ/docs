@@ -1,8 +1,8 @@
-# Pipedream Notebooks
+# How Notebooks Work
 
 You author Pipedream pipelines as **notebooks**. Notebooks include cells, which you can add, edit and remove interactively, sending new data to your pipeline with each change and viewing the associated observability for simple debugging.
 
-We use the term notebook and pipeline interchangeably in different contexts, but there's a small difference in how we define **notebook** and **pipeline**:
+We use the term notebook and pipeline interchangeably, depending on the context, but there's a small difference in how we define **notebook** and **pipeline**:
 
 - **Notebook** : A notebook is a collection of static cells. It's an app-like interface optimized for editing code and reviewing the observability associated with events.
 - **Pipeline** : A pipeline is a running notebook. Once you save a notebook, new events run through the associated pipeline, step by step.

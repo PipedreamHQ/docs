@@ -150,7 +150,7 @@ For now, add a new **Code** cell. You should see that cell appear, blank, below 
 <img alt="New code cell" src="./images/new-code-cell.png">
 </div>
 
-Today, Pipedream supports JavaScript code, specifically [Node.js v8.10](https://nodejs.org/docs/v0.8.10/). Add this bit of code to your code cell:
+Today, Pipedream supports JavaScript, specifically [Node.js v8.10](https://nodejs.org/docs/v0.8.10/). Add this bit of code to your code cell:
 
 ```javascript
 console.log($event.body);
@@ -355,3 +355,7 @@ You should start building your own pipelines to see what you can accomplish. As 
 - [Destinations](/notebook/destinations/)
 - [Text](/notebook/text/)
 - [SQL](/notebook/sql/)
+
+## Still have questions?
+
+Please [reach out](/support/) if this doc didn't answer your question. We're happy to help!
