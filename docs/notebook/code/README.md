@@ -71,6 +71,8 @@ The core limitation of packages is one we described above: some packages require
 
 ## `$end`
 
+## Exceptions
+
 ## New to JavaScript?
 
 We understand many of you might be new to JavaScript, and provide resources for you to learn the language below.

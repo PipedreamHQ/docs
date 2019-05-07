@@ -62,15 +62,45 @@ For **Webhook** sources, the [path](https://requestbin.com/blog/working-with-web
 
 ### Dest. (Destinations)
 
-If you've configured any [destinations](/notebook/destinations/) in your notebook, this shows the number of destinations we successfully delivered the event to over the number of destinations you've configured for this pipeline.
+If you've configured any [destinations](/notebook/destinations/), the **Dest** field shows the number of destinations we successfully delivered the event to, over the number of destinations you've configured for this pipeline.
 
-If you've added one destination and your event was successfully delivered to this destination, you'll see `1/1` in this field.
+For example, if you've added one destination and your event was successfully delivered, you'll see `1/1` in this field:
 
-If you added _two_ destinations and the pipeline failed to deliver an event to one (e.g. it was an HTTP destination that responded with a 500 status code), we'll show `1/2` here. We'll show the response from both the destination that succeeeded and failed in the observability associated with the destinations below — see the [destinations](/notebook/destinations/) docs for details on that.
+<div>
+<img alt="Dest column" width="76" src="./images/dest-field.png">
+</div>
 
-We batch the events sent to some destinations, like S3 and [SQL](/notebook/sql/), sending all events received within a particular minute as a group, once a minute. You may see situations where we've delivered your event to `0/2` destinations, but if you wait a minute, we should update this state once the events have been delivered.
+If you added _two_ destinations and the pipeline failed to deliver an event to one (e.g. it was an HTTP destination that responded with a 500 status code), we'll show `1/2` here. You can see either destination response in the observability associated with the destinations below — see the [destinations](/notebook/destinations/) docs for more details.
 
-Note that all of the data in these columns are also accessible in `$event`, so that you can program your pipeline based on the values of these fields.
+We batch the events sent to some destinations, like S3 and [SQL](/notebook/sql/), sending the events received within a particular minute as a group, once a minute. You may see situations where we've delivered your event to `0/2` destinations, but if you wait a minute, we should update this state once the events have been delivered.
+
+All of the data in these columns are also accessible in `$event`, so that you can program your pipeline based on the values of these fields.
+
+## Duration
+
+The **Duration** field shows the time it took to run your code, in addition to the time it took Pipedream to handle the execution of that code and manage its output.
+
+<div>
+<img alt="Event pipeline duration" width="78" src="./images/duration.png">
+</div>
+
+Specifically,
+
+**Duration = Time Your Code Ran + Pipedream Execution Time**
+
+Destination delivery is handled asynchonously, after your code is run. The **Duration** here is tied to the runtime of your code. Separately, you can see the [destination runtime](/notebook/destinations/#destination-delivery) in the destination cells themselves.
+
+## Messages
+
+Any `console.log()` statements or other code output is attached to the associated code cells. But events like [`$end()` messages](/notebook/code/#end) or [exceptions](/notebook/code/#exceptions) end a pipeline's execution, and so are worth displaying prominently:
+
+<div>
+<img alt="End message" src="./images/dollar-end.png">
+</div>
+
+<div>
+<img alt="Exception message" src="./images/exception.png">
+</div>
 
 ## `$event`
 
