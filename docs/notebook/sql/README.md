@@ -266,13 +266,19 @@ Table names have just a few limitations:
 - Additionally, the only allowed special character is the underscore (`_`), but
 - You cannot _begin_ a table name with an underscore.
 
+Some examples:
+
+- **`my_table`** is OK, but **`my-table`** is not (_hyphen not allowed_)
+- **`my_table_123`** is OK, but **`my_table@#`** is not (_no other special characters besides underscore_).
+- **`table`** is OK, but **`_table`** is not (_no leading underscore_).
+
 If you've chosen a table name that doesn't match these rules, we'll show an error message in the UI:
 
 <div>
 <img alt="Invalid table name" src="./images/invalid-table-name.png">
 </div>
 
-If you like thinking about these rules as [regular expressions](https://en.wikipedia.org/wiki/Regular_expression), this pattern captures the same logic as above:
+If you want to test potential table names against a [regular expression](https://en.wikipedia.org/wiki/Regular_expression), this pattern captures the same logic as above:
 
 ```
 /^(?!_)[a-z0-9_]+$/gi
