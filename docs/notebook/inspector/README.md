@@ -104,9 +104,15 @@ Any `console.log()` statements or other code output is attached to the associate
 
 ## `$event`
 
-When you send an event to the pipeline, we take the source data — for example, the HTTP payload, headers, etc. — and add our own Pipedream metadata to it. The resulting data is exposed as a JavaScript object named `$event`.
+When you send an event to the pipeline, we take the source data — for example, the HTTP payload, headers, etc. — and add our own Pipedream metadata to it. That collection of data is exposed as a JavaScript object named [`$event`](/notebook/dollar-event/) you can use in the rest of your pipeline.
 
-When you click on a given event in the inspector, we show you the contents of `$event`.
+When you click on a given event in the inspector, we show you the contents of `$event`:
+
+<div>
+<img alt="Dollar event in inspector" src="./images/dollar-event.png">
+</div>
+
+You can read and modify `$event` in any [code](/notebook/code/) cell, or reference it in [destinations](/notebook/destinations/). See those docs for more information.
 
 ## Events from older versions your pipeline
 
