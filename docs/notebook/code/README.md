@@ -22,10 +22,10 @@ If you've never used JavaScript, see the [resources below](#new-to-javascript).
 
 ## Adding a code cell
 
-Click the **+** button below any cell after your source and click **Code**:
+Click the **+** button below any cell after your source and click the **<>** button to add a new code cell:
 
 <div>
-<img alt="New step" width="169" src="./images/new-step.png">
+<img alt="New step" src="./images/new-button.png">
 </div>
 
 Add your code in the box that appears. For example, try:
