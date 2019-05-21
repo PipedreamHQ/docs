@@ -1,5 +1,7 @@
 # Destinations
 
+[[toc]]
+
 ## Adding a new Destination
 
 You can add a new **Destination** cell in one of two ways.
@@ -7,7 +9,7 @@ You can add a new **Destination** cell in one of two ways.
 First, you can click on the **+** button under any existing cell, and choose the **Destination** cell type:
 
 <div>
-<img alt="Add a new cell" width="171" src="./images/new-cell.png">
+<img alt="Add a new cell" width="275" src="./images/new-cell.png">
 </div>
 
 Or, on new notebooks, we provide buttons to add new cells quickly without having to dig into the **+** menu:
