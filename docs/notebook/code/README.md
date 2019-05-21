@@ -8,7 +8,7 @@ But often, you'll want to modify the data you receive in some way. You may need 
 
 ## Language Support
 
-Today, Pipedream supports JavaScript, specifically [Node.js v8.10](https://nodejs.org/docs/v0.8.10/).
+Today, Pipedream supports JavaScript, specifically [Node.js v10](https://nodejs.org/en/blog/release/v10.0.0/).
 
 There's an important difference to understand between Node.js and the JavaScript that runs in your web browser: **Node doesn't have access to the items a browser expects, like the HTML on the page, or the URL of the page**. If you haven't used Node before, be aware of this limitation as you search for JavaScript examples on the web.
 

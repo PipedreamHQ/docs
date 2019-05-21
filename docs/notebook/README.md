@@ -21,7 +21,7 @@ When you create a notebook, you can edit the **Title** and **Description** near 
 
 ## Notebooks are public, your data is private
 
-**Right now, all notebook code is public. All the data you send to a pipeline, or logs you generate, is private**.
+**All notebook code is public. The data you send to a pipeline, or logs you generate, are private**.
 
 This means that when you create and save a pipeline, that code is publicly viewable on the internet. **But when you run your pipeline and send real data to it, no one else can view that data**.
 
