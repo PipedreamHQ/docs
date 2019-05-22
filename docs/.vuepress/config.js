@@ -14,7 +14,7 @@ module.exports = {
         link: "/support/"
       },
       {
-        text: "Create a Pipeline",
+        text: "pipedream.com",
         link: "https://tidewater.pipedream.com/"
       }
     ],
