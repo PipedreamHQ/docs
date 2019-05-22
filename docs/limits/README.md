@@ -1,0 +1,50 @@
+---
+prev: false
+next: false
+---
+
+# Limits
+
+[[toc]]
+
+## Number of Pipelines
+
+**Currently, you can create an unlimited number of pipelines**, as long as each pipeline operates under the limits below.
+
+## Webhook Sources
+
+The following limits apply to [Webhook sources](/notebook/sources/#webhook-sources).
+
+### HTTP Request Body Size
+
+**The body of HTTP requests sent to a source is limited to `{{$site.themeConfig.PAYLOAD_SIZE_LIMIT}}`**.
+
+Your endpoint will issue a `413 Payload Too Large` status code when the body of your request exceeds `{{$site.themeConfig.PAYLOAD_SIZE_LIMIT}}`.
+
+### QPS (Queries Per Second)
+
+Generally the rate of HTTP requests sent to an endpoint is quantified by QPS, or _queries per second_. A "query" in this context refers to an HTTP request.
+
+**You can send an average of 1 request per second to your webhook source**. Any requests that exceed that threshold may trigger rate limiting. If you're rate limited, we'll return a `429 Too Many Requests` response. If you control the application sending requests, you should retry the request with [exponential backoff](https://cloud.google.com/storage/docs/exponential-backoff) or a similar technique.
+
+Generally, we'll also accept short burts of traffic, as long as you remain around an average of 1 QPS (e.g. sending 5 requests every 30 seconds should not trigger rate limiting).
+
+## Pipelines
+
+### Time
+
+Every event you send to a pipeline triggers the execution of that pipeline. **Pipeline code is limited to 5 seconds per execution**.
+
+## Memory
+
+**You should expect to have access to `64 MB` of memory for your code and libraries** during pipeline execution.
+
+## Disk
+
+Your code, or a third party library, may need access to disk during the execution of your pipeline. **Your pipeline has access to `512 MB` of disk in the `/tmp` directory**.
+
+## Acceptable Use
+
+We believe anyone should be able to run simple, low-volume pipelines at no cost, sharing their pipeline with the public so everyone benefits from the work of others. We also want to foster a positive community where people feel safe to share their work and where everyone can learn from one another.
+
+To help us achieve these goals, we ask that you abide by our [Acceptable Use](https://pipedream.com/terms/#b-acceptable-use) policy. In short this means: don't use Pipedream to break the law; don't abuse the platform; and don't use the platform to harm others.

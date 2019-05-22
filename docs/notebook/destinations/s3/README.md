@@ -4,9 +4,7 @@
 
 ## S3 Bucket Policy
 
-In order for us to deliver objects to your S3 bucket, you need to modify the [bucket policy](https://docs.aws.amazon.com/AmazonS3/latest/user-guide/add-bucket-policy.html) for your target bucket, allowing Pipedream to upload objects.
-
-The bucket policy below provides the minimum set of permissions necessary for Pipedream to deliver objects to your S3 bucket. We use the [Multipart Upload API](https://docs.aws.amazon.com/AmazonS3/latest/dev/uploadobjusingmpu.html) to upload objects to S3, and need the [necessary permissions](https://docs.aws.amazon.com/AmazonS3/latest/dev/mpuAndPermissions.html).
+In order for us to deliver objects to your S3 bucket, you need to modify the [bucket policy](https://docs.aws.amazon.com/AmazonS3/latest/user-guide/add-bucket-policy.html) for your target bucket to allow Pipedream to upload objects.
 
 **Replace `[your bucket name]` with the name of your bucket** near the bottom of the policy.
 
@@ -35,3 +33,5 @@ The bucket policy below provides the minimum set of permissions necessary for Pi
   ]
 }
 ```
+
+This bucket policy provides the minimum set of permissions necessary for Pipedream to deliver objects to your S3 bucket. We use the [Multipart Upload API](https://docs.aws.amazon.com/AmazonS3/latest/dev/uploadobjusingmpu.html) to upload objects to S3, and need the [necessary permissions](https://docs.aws.amazon.com/AmazonS3/latest/dev/mpuAndPermissions.html).

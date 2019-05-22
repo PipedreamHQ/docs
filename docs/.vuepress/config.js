@@ -8,7 +8,16 @@ module.exports = {
   base: "/",
   themeConfig: {
     logo: "/pipedream.svg",
-    nav: [{ text: "Support", link: "/support/" }],
+    nav: [
+      {
+        text: "Support",
+        link: "/support/"
+      },
+      {
+        text: "Create a Pipeline",
+        link: "https://tidewater.pipedream.com/"
+      }
+    ],
     sidebar: [
       "/support/",
       {
@@ -29,7 +38,9 @@ module.exports = {
           "/notebook/text/",
           "/notebook/sql/"
         ]
-      }
+      },
+      "/pricing/",
+      "/limits/"
     ],
     PIPEDREAM_BASE_URL: "https://tidewater.pipedream.com",
     PAYLOAD_SIZE_LIMIT: "100kb",
