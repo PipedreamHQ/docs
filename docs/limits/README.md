@@ -35,6 +35,8 @@ Generally, we'll also accept short burts of traffic, as long as you remain aroun
 
 Every event you send to a pipeline triggers the execution of that pipeline. **Pipeline code is limited to 5 seconds per execution**.
 
+If your code exceeds this limit, we'll throw a `TIMEOUT` error and stop your pipeline. Any partial logs and observability associated with code cells that ran successfully before the timeout will be attached to the event in the UI, so you can examine the state of your pipeline and troubleshoot where it may have failed.
+
 ## Memory
 
 **You should expect to have access to `64 MB` of memory for your code and libraries** during pipeline execution.

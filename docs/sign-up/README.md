@@ -21,3 +21,5 @@ Once you've done that, you'll be asked to choose a username to use on Pipedream:
 </div>
 
 This username will appear on your public Pipedream profile, along with any public pipelines you've created.
+
+Now, get started by [creating your first pipeline](/your-first-pipeline/).

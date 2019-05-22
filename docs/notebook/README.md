@@ -55,9 +55,15 @@ For example, you might want to add a longer description at the top of your pipel
 <img alt="Text description" src="./images/text-description.png">
 </div>
 
+### Code, Destinations
+
 [**Code** cells](/notebook/code/) and [**destinations**](/notebook/destinations/) cannot precede sources, since they'll have no data to operate on.
 
 Once you save a notebook, we take the code in that notebook and publish it as a pipeline. Each event you send to your source triggers the pipeline code, whether you have the notebook open in your browser, or not.
+
+If you've added a destination cell, we'll process delivery of your payload asynchronously. [Read the destination docs](/notebook/destinations/) to find out more.
+
+## Saving your Notebook and Running your Pipeline
 
 Again, the notebook is just a UI for viewing and editing the code. Saving the notebook publishes that same code as a pipeline that runs independently. When you edit the code in the notebook and save those changes, we publish a new version of that pipeline:
 
