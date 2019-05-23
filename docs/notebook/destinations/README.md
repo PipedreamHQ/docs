@@ -37,3 +37,7 @@ Note that your list of destinations may look different than the screenshot above
 ## Destination Delivery
 
 ## Payload Expressions
+
+## Still have questions?
+
+Please [reach out](/support/) if this doc didn't answer your question. We're happy to help!
