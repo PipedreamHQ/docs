@@ -53,14 +53,14 @@ Variable names are case-sensitive. Use the name you defined in your Environment 
 Referencing an environment variable that doesn't exist returns the value `undefined` in Node.js. For example, if you try to reference `process.env.API_KEY` without first defining the `API_KEY` variable in your environment settings, it will return the value `undefined`.
 
 ::: warning
-Logging the value of any environment variables using `console.log` will include that value in the logs associated with the cell. Please keep this in mind and take care not to print the values of sensitive secrets.
+Logging the value of any environment variables — for example, using `console.log` — will include that value in the logs associated with the cell. Please keep this in mind and take care not to print the values of sensitive secrets.
 :::
 
 ## Forking pipelines that use environment variables
 
 Your environment variables are made available to any running pipeline. **If you fork a public pipeline that uses an environment variable, make sure you review the code to see what environment variables it's using**.
 
-Reviewing the code ensures you have the necessary variables defined for the pipeline to run correctly, and makes sure the original pipeline author isn't reading variables that they don't need for the pipeline to function. You can always modify the code for the pipeline after forking, if needed.
+Reviewing the code ensures you have the necessary variables defined for the pipeline to run correctly, and makes sure the original pipeline author isn't reading variables that you don't need for the pipeline to function. You can always modify the code for the pipeline after forking to remove these variables, or change their names.
 
 ## Referencing environment variables in text, destination cells
 
