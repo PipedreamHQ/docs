@@ -10,11 +10,11 @@ This should load a modal asking you to sign in with your **Google** or **Github*
 <img alt="Pipedream identity providers" width="358" src="./images/idps.png">
 </div>
 
-Using an account from one of these two providers is required for you to sign up for Pipedream, so if you don't have an account with either one, please sign up — it's free.
+Using an account from one of these two providers is required for you to sign up for Pipedream, so if you don't have an account with either one, please sign up — both are free.
 
 Clicking on either button will direct you to authorize Pipedream to access basic profile information from that provider: your email address, the link to your profile image, etc.
 
-Once you've done that, you'll be asked to choose a username to use on Pipedream:
+Once you've done that, you'll be asked to choose a username and accept our [Terms of Service](https://pipedream.com/terms/) before continuing:
 
 <div>
 <img alt="Pipedream username" width="436" src="./images/choose-username.png">

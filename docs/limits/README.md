@@ -5,6 +5,8 @@ next: false
 
 # Limits
 
+Currently, [Pipedream is free](/pricing/) for all users, subject to the technical limits noted below.
+
 [[toc]]
 
 ## Number of Pipelines
@@ -23,7 +25,7 @@ Your endpoint will issue a `413 Payload Too Large` status code when the body of 
 
 ### QPS (Queries Per Second)
 
-Generally the rate of HTTP requests sent to an endpoint is quantified by QPS, or _queries per second_. A "query" in this context refers to an HTTP request.
+Generally the rate of HTTP requests sent to an endpoint is quantified by QPS, or _queries per second_. A query in this context refers to an HTTP request.
 
 **You can send an average of 1 request per second to your webhook source**. Any requests that exceed that threshold may trigger rate limiting. If you're rate limited, we'll return a `429 Too Many Requests` response. If you control the application sending requests, you should retry the request with [exponential backoff](https://cloud.google.com/storage/docs/exponential-backoff) or a similar technique.
 
@@ -36,6 +38,18 @@ Generally, we'll also accept short burts of traffic, as long as you remain aroun
 Every event you send to a pipeline triggers the execution of that pipeline. **Pipeline code is limited to 5 seconds per execution**.
 
 If your code exceeds this limit, we'll throw a `TIMEOUT` error and stop your pipeline. Any partial logs and observability associated with code cells that ran successfully before the timeout will be attached to the event in the UI, so you can examine the state of your pipeline and troubleshoot where it may have failed.
+
+Events that trigger a `TIMEOUT` error will appear in red in the [Inspector](/notebook/inspector/):
+
+<div>
+<img alt="timeout error in inspector" width="436" src="./images/timeout-err-inspector.png">
+</div>
+
+You'll see the timeout error, also in red, in the cell at which the code timed out:
+
+<div>
+<img alt="timeout error in cell" width="436" src="./images/timeout-err-cell.png">
+</div>
 
 ## Memory
 
