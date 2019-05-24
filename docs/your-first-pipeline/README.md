@@ -40,7 +40,7 @@ We require you save any changes to your pipeline for them to take effect, and di
 
 Note that as soon as you save this title change, the URL of the pipeline changes to reflect that. In this example, my new URL looks like:
 
-https://tidewater.pipedream.com/@my-awesome-username/**my-first-pipeline**-p_EZJC7q
+https://pipedream.com/@my-awesome-username/**my-first-pipeline**-p_EZJC7q
 
 You'll also see that:
 

@@ -15,7 +15,7 @@ module.exports = {
       },
       {
         text: "pipedream.com",
-        link: "https://tidewater.pipedream.com/"
+        link: "https://pipedream.com/"
       }
     ],
     sidebar: [
@@ -35,14 +35,17 @@ module.exports = {
           "/notebook/dollar-event/",
           "/notebook/code/",
           "/notebook/destinations/",
+          "/notebook/destinations/http/",
+          "/notebook/destinations/s3/",
           "/notebook/text/",
           "/notebook/sql/"
         ]
       },
+      "/environment-variables/",
       "/pricing/",
       "/limits/"
     ],
-    PIPEDREAM_BASE_URL: "https://tidewater.pipedream.com",
+    PIPEDREAM_BASE_URL: "https://pipedream.com",
     PAYLOAD_SIZE_LIMIT: "100kb",
     INSPECTOR_EVENT_LIMIT: "100"
   },

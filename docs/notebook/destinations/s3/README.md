@@ -1,4 +1,4 @@
-# Amazon S3 Destination
+# Amazon S3 Destinations
 
 [[toc]]
 
