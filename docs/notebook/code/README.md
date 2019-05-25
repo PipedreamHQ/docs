@@ -73,6 +73,14 @@ The core limitation of packages is one we described above: some packages require
 
 ## Exceptions
 
+## Using secrets in code
+
+While the data you send through Pipedream pipelines is private, all Pipedream notebooks are public. It's critical you don't include secrets — API keys, tokens, or other sensitive values — directly in code cells.
+
+Pipedream supports [environment variables](/environment-variables/) for keeping secrets separate from code. Once you create an environment variable in Pipedream, you can reference it in any notebook using `process.env.VARIABLE_NAME`. The values of environment variables are private.
+
+See the [Environment Variables](/environment-variables/) docs for more information.
+
 ## New to JavaScript?
 
 We understand many of you might be new to JavaScript, and provide resources for you to learn the language below.
