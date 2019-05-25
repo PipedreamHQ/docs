@@ -8,9 +8,9 @@ Pipedream enables every engineer to be a data engineer, letting you build [pipel
 
 You can build these pipelines in minutes, without worrying about managing any of the infrastructure required to operate them. We take care of that for you, and let you focus on the pipeline logic.
 
-Still, we give you a lot of control over how your pipeline works. You can add [JavaScript code](/notebook/code/) at any step of a pipeline, using virtually any `npm` package you want to perform any complex logic. Anything you can do with JavaScript, you can do on Pipedream.
+Still, we give you a lot of control over how your pipeline works. You can add [JavaScript code](/notebook/code/) — specifically Node.js — at any step of a pipeline, using virtually any `npm` package you want to perform any programming logic.
 
-We've tried hard to simplify the stuff you shouldn't have to care about — the infrastructure — while giving you full control over your pipeline logic. We want to give you data superpowers — we hope it'll help you solve data problems quickly and effortlessly.
+We've tried hard to simplify the stuff you shouldn't have to care about — the infrastructure — while giving you full control over your pipeline. We want to give you data superpowers — we hope it'll help you solve data problems quickly and effortlessly.
 
 ## What are pipelines?
 
