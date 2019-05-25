@@ -51,11 +51,11 @@ You'll see the timeout error, also in red, in the cell at which the code timed o
 <img alt="timeout error in cell" width="436" src="./images/timeout-err-cell.png">
 </div>
 
-## Memory
+### Memory
 
 **You should expect to have access to `64 MB` of memory for your code and libraries** during pipeline execution.
 
-## Disk
+### Disk
 
 Your code, or a third party library, may need access to disk during the execution of your pipeline. **Your pipeline has access to `512 MB` of disk in the `/tmp` directory**.
 

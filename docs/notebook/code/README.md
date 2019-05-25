@@ -81,6 +81,12 @@ Pipedream supports [environment variables](/environment-variables/) for keeping 
 
 See the [Environment Variables](/environment-variables/) docs for more information.
 
+## Limitations of code cells
+
+Code cells operate within the [general constraints on pipelines](/limits/#pipelines). As long as you stay within those limits and abide by our [acceptable use policy](/limits/#acceptable-use), you can add any number of code cells in a notebook to do virtually anything you'd be able to do in Node.js.
+
+If you're trying to run code that doesn't work or you have questions about any limits on code cells, [please reach out](/support/).
+
 ## New to JavaScript?
 
 We understand many of you might be new to JavaScript, and provide resources for you to learn the language below.
