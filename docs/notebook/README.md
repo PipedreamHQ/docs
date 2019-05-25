@@ -31,7 +31,7 @@ We hope that the notebooks you write are helpful for many other people. If you'v
 
 If you've used [Github](https://github.com/), you can think of the notebook as similar to a unique, public repository. It's code that anyone can view and fork for their own use.
 
-On Pipedream, anyone can find a public notebook, fork it, and run it, modifying any of the cells within the notebook to make it work for their use case.
+On Pipedream, anyone can find a public notebook, [fork it](/notebook/fork/), and run it, modifying any of the cells within the notebook to make it work for their use case.
 
 ## Notebook Cells
 

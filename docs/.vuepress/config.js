@@ -34,6 +34,7 @@ module.exports = {
         collapsable: false,
         children: [
           "/notebook/",
+          "/notebook/fork/",
           "/notebook/sources/",
           "/notebook/inspector/",
           "/notebook/dollar-event/",
