@@ -43,7 +43,8 @@ module.exports = {
       },
       "/environment-variables/",
       "/pricing/",
-      "/limits/"
+      "/limits/",
+      "/security/"
     ],
     PIPEDREAM_BASE_URL: "https://pipedream.com",
     PAYLOAD_SIZE_LIMIT: "100kb",
