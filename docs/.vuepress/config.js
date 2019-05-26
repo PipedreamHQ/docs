@@ -46,6 +46,7 @@ module.exports = {
           "/notebook/sql/"
         ]
       },
+      "/public-pipelines/",
       "/environment-variables/",
       "/pricing/",
       "/limits/",

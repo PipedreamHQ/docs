@@ -5,7 +5,7 @@ next: false
 
 # Documentation
 
-Welcome to Pipedream! We want to make it easy for you to ingest, transform and route data.
+Welcome to Pipedream! We want to make it easy for you to ingest, transform and route data for free.
 
 **Like our product, these docs are a work in progress. If you can't find the answer you're looking for, please [reach out to our team](/support/) — we're more than happy to help**.
 

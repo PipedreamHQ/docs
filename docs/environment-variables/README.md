@@ -1,3 +1,8 @@
+---
+prev: false
+next: false
+---
+
 # Environment Variables
 
 **Environment variables** give you a way to separate secrets and other data from your code.

@@ -36,6 +36,8 @@ Note that your list of destinations may look different than the screenshot above
 
 ## Destination Delivery
 
+## Destination Parameters
+
 ## Payload Expressions
 
 ## Still have questions?

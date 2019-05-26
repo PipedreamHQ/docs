@@ -23,9 +23,9 @@ When you create a notebook, you can edit the **Title** and **Description** near 
 
 **All notebook code is public. The data you send to a pipeline, or logs you generate, are private**.
 
-This means that when you create and save a pipeline, that code is publicly viewable on the internet. **But when you run your pipeline and send real data to it, no one else can view that data**.
+Please see our [docs on public pipelines](/public-pipelines/) for more information.
 
-## Using other notebooks
+## Forking public notebooks
 
 We hope that the notebooks you write are helpful for many other people. If you've written a notebook to send all Stripe transaction data to a Redshift data warehouse, someone else will probably want to use your notebook to solve that same use case.
 
