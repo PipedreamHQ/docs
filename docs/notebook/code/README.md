@@ -1,8 +1,10 @@
 # Code
 
-Code cells are optional, but common. If the data received by your source needs no modification, and can be sent directly to a destination, you don't need code cells in a notebook.
+Often, you'll want to modify the data received by your pipeline. You may need to look up additional metadata about the event, parse raw data into more meaningful fields, or end the execution of a pipeline early under some conditions. Code cells let you do this and more.
 
-But often, you'll want to modify the data you receive in some way. You may need to look up additional metadata about the event, parse raw data into more meaningful fields, or end the execution of a pipeline early under some conditions. Code cells let you do this and more.
+Code cells currently let you execute [Node.js](https://nodejs.org/en/blog/release/v10.0.0/) (JavaScript) code, using JavaScript's extensive [NPM](https://www.npmjs.com/) package ecosystem within your code. Virtually anything you can do in Node.js, you can do in a code cell.
+
+Code cells are optional, but common. If the data received by your source needs no modification, and can be sent directly to a destination, you don't need code cells in a notebook.
 
 [[toc]]
 
@@ -10,13 +12,13 @@ But often, you'll want to modify the data you receive in some way. You may need 
 
 Today, Pipedream supports JavaScript, specifically [Node.js v10](https://nodejs.org/en/blog/release/v10.0.0/).
 
-There's an important difference to understand between Node.js and the JavaScript that runs in your web browser: **Node doesn't have access to the items a browser expects, like the HTML on the page, or the URL of the page**. If you haven't used Node before, be aware of this limitation as you search for JavaScript examples on the web.
+It's important to understand the core difference between Node.js and the JavaScript that runs in your web browser: **Node doesn't have access to some of the things a browser expects, like the HTML on the page, or the URL of the page**. If you haven't used Node before, be aware of this limitation as you search for JavaScript examples on the web.
 
 **Anything you can do with Node.js, you can do in a pipeline**. This includes using most of [npm's 400,000 packages](#using-npm-packages).
 
-We understand the choice of JavaScript as the first supported language for a data pipeline tool may seem odd. But we're enabling any engineer to be a data engineer, and so want to start with one of the [most used](https://insights.stackoverflow.com/survey/2019#technology-_-programming-scripting-and-markup-languages) [languages](https://github.blog/2018-11-15-state-of-the-octoverse-top-programming-languages/). If you work on websites and know JavaScript well, Pipedream makes you a full stack engineer.
+We understand the choice of JavaScript as the first supported language for a data pipeline tool may seem odd. But we're trying to give non-data engineers data superpowers, and so want to start with one of the [most used](https://insights.stackoverflow.com/survey/2019#technology-_-programming-scripting-and-markup-languages) [languages](https://github.blog/2018-11-15-state-of-the-octoverse-top-programming-languages/). If you work on websites and know JavaScript well, Pipedream makes you a full stack engineer.
 
-In 2019, the JavaScript ecosystem continues to grow, and we believe our users will benefit from that.
+If you'd like to see another, specific language supported, please [let us know on our Spectrum community](https://spectrum.chat/pipedream/feature-requests?tab=posts).
 
 If you've never used JavaScript, see the [resources below](#new-to-javascript).
 
@@ -55,7 +57,7 @@ While you can save a notebook with syntax errors, it is unlikely to run correctl
 
 ## Using `npm` packages
 
-[npm](https://www.npmjs.com/) hosts JavaScript packages: bits of code someone else has written and packaged for others to use. npm has over 400,000 packages and counting. You can use most of those on Pipedream.
+[NPM](https://www.npmjs.com/) hosts JavaScript packages: bits of code someone else has written and packaged for others to use. npm has over 400,000 packages and counting. You can use most of those on Pipedream.
 
 To use an npm package in a code cell, simply `require()` it:
 
@@ -69,6 +71,14 @@ If you've used Node before, you'll notice there's no `package.json` file to uplo
 
 The core limitation of packages is one we described above: some packages require access to a web browser to run, and don't work with Node. Often this limitation is documented on the package `README`, but often it's not. If you're not sure and need to use it, we recommend just trying to `require()` it.
 
+## Variable scope
+
+Any variables you create within a cell are scoped to that cell. That is, they cannot be referenced in any other cell.
+
+Within a cell, the [normal rules of JavaScript variable scope](https://developer.mozilla.org/en-US/docs/Glossary/Scope) apply.
+
+**Any data you need to use across cells, or send to destinations, we recommend you keep in `$event`.** [`$event`](/notebook/dollar-event/) is a global variable accessible across all cells in a notebook. `$event` is a JavaScript object; you can add, delete or update properties of `$event` in any code cell. See the [docs on `$event`](/notebook/dollar-event/) for more information.
+
 ## `$end`
 
 ## Exceptions
@@ -80,6 +90,29 @@ While the data you send through Pipedream pipelines is private, all Pipedream no
 Pipedream supports [environment variables](/environment-variables/) for keeping secrets separate from code. Once you create an environment variable in Pipedream, you can reference it in any notebook using `process.env.VARIABLE_NAME`. The values of environment variables are private.
 
 See the [Environment Variables](/environment-variables/) docs for more information.
+
+## Running asynchronous code
+
+If you're not familiar with asynchronous programming, or how to run asynchronous (async) code in JavaScript, see [this overview](https://eloquentjavascript.net/11_async.html) before reading on.
+
+On Pipedream, each code cell is implicitly wrapped in its own [`async` function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/async_function) declaration. **You should use the [`await` operator](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/await) to run any asynchronous operation synchronously — step-by-step — in a code cell**, even if you don't need to process the results.
+
+We **do not** recommend starting an asynchronous operation that you do not `await`. Moreover, you should not expect [callback functions](https://developer.mozilla.org/en-US/docs/Glossary/Callback_function) to run after the result of an asynchronous operation.
+
+In short, do this:
+
+```javascript
+const res = await runAsyncCode();
+```
+
+Not this:
+
+```javascript
+// This code may not finish by the time the pipeline finishes
+runAsyncCode();
+```
+
+If don't `await` async code, or you use callbacks, we'll move on to the next code cell or finish the pipeline completely before you're able to process the results, and your code will likely fail.
 
 ## Limitations of code cells
 
