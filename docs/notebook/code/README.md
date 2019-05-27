@@ -48,19 +48,19 @@ Code cells support syntax highlighting and automatic indentation. We love readab
 You can call `console.log()` or `console.error()` to add logs to the execution of a code cell. These logs will appear just below the associated cell. `console.log()` messages appear in black, `console.error()` in red:
 
 <div>
-<img alt="console.log and error messages" src="./images/console-log-error.png">
+<img alt="console.log and error messages" width="500" src="./images/console-log-error.png">
 </div>
 
 ## Syntax errors
 
-We try to catch any syntax errors you might encounter when writing code, highlighting the lines where the error occurred in red. You can hover over those red vertical lines to see more information about the error:
+We try to catch any syntax errors when you're writing code, highlighting the lines where the error occurred in red. You can hover over those red vertical lines to see more information about the error:
 
 <div>
-<img alt="Syntax error in code" src="./images/syntax-error.png">
+<img alt="Syntax error in code" width="350" src="./images/syntax-error.png">
 </div>
 
 ::: warning
-While you can save a notebook with syntax errors, it is unlikely to run correctly on new events. Make sure to fix syntax errors before running your pipeline.
+While you can save a notebook with syntax errors, it's unlikely to run correctly on new events. Make sure to fix syntax errors before running your pipeline.
 :::
 
 ## Using `npm` packages
@@ -124,7 +124,21 @@ if (Math.random() > 0.5) {
 console.log("This code will only run 50% of the time");
 ```
 
-## Exceptions
+## Errors
+
+[Errors](https://nodejs.org/dist/latest-v10.x/docs/api/errors.html#errors_errors) raised in a code cell will stop the execution of code or destinations that follow.
+
+You'll see the message associated with the error in the Inspector:
+
+<div>
+<img alt="Exception message" src="./images/exception.png">
+</div>
+
+and the code cell where the error was raised:
+
+<div>
+<img alt="Exception in code cell" width="450" src="./images/exception-in-code-cell.png">
+</div>
 
 ## Using secrets in code
 
