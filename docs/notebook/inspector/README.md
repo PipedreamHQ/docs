@@ -109,7 +109,7 @@ When you send an event to the pipeline, we take the source data — for example,
 When you click on a given event in the inspector, we show you the contents of `$event`:
 
 <div>
-<img alt="Dollar event in inspector" src="./images/dollar-event.png">
+<img alt="Dollar event in inspector" width="450" src="./images/dollar-event.png">
 </div>
 
 You can read and modify `$event` in any [code](/notebook/code/) cell, or reference it in [destinations](/notebook/destinations/). See those docs for more information.
