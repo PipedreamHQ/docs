@@ -43,6 +43,14 @@ $event.test = "Some test data";
 
 Code cells support syntax highlighting and automatic indentation. We love readable code!
 
+## Logs
+
+You can call `console.log()` or `console.error()` to add logs to the execution of a code cell. These logs will appear just below the associated cell. `console.log()` messages appear in black, `console.error()` in red:
+
+<div>
+<img alt="console.log and error messages" src="./images/console-log-error.png">
+</div>
+
 ## Syntax errors
 
 We try to catch any syntax errors you might encounter when writing code, highlighting the lines where the error occurred in red. You can hover over those red vertical lines to see more information about the error:
@@ -80,6 +88,41 @@ Within a cell, the [normal rules of JavaScript variable scope](https://developer
 **Any data you need to use across cells, or send to destinations, we recommend you keep in `$event`.** [`$event`](/notebook/dollar-event/) is a global variable accessible across all cells in a notebook. `$event` is a JavaScript object; you can add, delete or update properties of `$event` in any code cell. See the [docs on `$event`](/notebook/dollar-event/) for more information.
 
 ## `$end`
+
+Sometimes you want to end your pipeline early. For example:
+
+- You only want to run your pipeline for 5% of all events sent to your source.
+- You only want to run your pipeline for users in the United States. If you receive a request from outside the U.S., you don't want the rest of the code in your pipeline to run.
+- You may use the `user_id` contained in the event to look up information in an external API. If you can't find data in the API tied to that user, you don't want to proceed.
+
+**In any code cell, calling the `$end()` function will end the execution of the pipeline immediately.** No remaining code in that cell, and no code or destination cells below, will run for the current event.
+
+```javascript
+$end();
+console.log("This code will not run, since $end() was called above it");
+```
+
+You can pass any string as an argument to `$end()`:
+
+```javascript
+$end("Event doesn't have the correct schema");
+```
+
+This message will appear in the Inspector in the **Messages** column for the event where `$end()` was called:
+
+<div>
+<img alt="Dollar end message in inspector" src="./images/dollar-end.png">
+</div>
+
+Like any other code, `$end()` can be called conditionally:
+
+```javascript
+// Flip a coin, running $end() for 50% of events
+if (Math.random() > 0.5) {
+  $end();
+}
+console.log("This code will only run 50% of the time");
+```
 
 ## Exceptions
 
