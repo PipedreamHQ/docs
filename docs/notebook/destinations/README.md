@@ -1,12 +1,12 @@
 # Destinations
 
-Destination cells allow you to quickly send the data from your pipeline to destinations outside of Pipedream — for example, [HTTP](/notebook/destinations/http/) and [S3](/notebook/destinations/s3/) — as well as the [Pipedream SQL service](/notebook/sql/), a Pipedream-managed data warehouse.
+Destination cells allow you to quickly send the data from your pipeline to destinations outside of Pipedream — for example, [Webhook](/notebook/destinations/http/) and [S3](/notebook/destinations/s3/) — as well as the [Pipedream SQL service](/notebook/sql/), a Pipedream-managed data warehouse.
 
 Typically, sending data to these destinations requires a lot of code to manage error conditions and retries. With destination cells, Pipedream handles that for you. You only need to specify what data gets sent, and where to send it.
 
 You can add multiple Destination cells within a single notebook, for example to send data to multiple S3 buckets. Destinations can be added at any step of your notebook.
 
-**The docs below discuss the features common to all destinations. See the docs on [HTTP](/notebook/destinations/http/), [S3](/notebook/destinations/s3/), and [SQL](/notebook/sql/) for information specific to those destinations.**
+**The docs below discuss the features common to all destinations. See the docs on [Webhook](/notebook/destinations/http/), [S3](/notebook/destinations/s3/), and [SQL](/notebook/sql/) for information specific to those destinations.**
 
 [[toc]]
 
