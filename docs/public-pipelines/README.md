@@ -12,3 +12,9 @@ As soon as you create and save a pipeline, that code is publicly viewable on the
 Because your code is public, **it's critical you do not save sensitive data — for example, API keys — in notebook cells**. You should save those values in [environment variables](/environment-variables/), and reference the value of that variable in your notebook, instead.
 
 When making notebooks public, the fact that you're using a given source or destination cell is also public, **but the specific properties or [parameters](/notebook/destinations/#destination-parameters) of those cells are kept private**. For example, if you're using a Webhook source and sending data to S3 and SQL destinations, those cells will be public. But we won't reveal the specific HTTP URL associated with your Webhook source. And we won't reveal the name of the S3 bucket to which you're sending data.
+
+You can always see the visibility status of a pipeline and the associated data at the top of your notebook:
+
+<div>
+<img alt="Pipeline visibility state" src="./images/pipeline-visibility.png">
+</div>
