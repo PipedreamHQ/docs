@@ -36,9 +36,62 @@ Note that your list of destinations may look different than the screenshot above
 
 ## Destination Delivery
 
+For every event sent to a pipeline, for each destination cell in your notebook, we send the value of the **Payload** expression to the desired destination.
+
+Events are delivered to destinations _asynchronously_ — that is, separate from the execution of your pipeline.
+
+Some destination payloads are delivered within seconds, for every event sent to your pipeline. This is the case for HTTP destinations. For other destinations, like S3 and SQL, we collect individual events into a batch and send the batch to the destination. See the docs for your specific destination for the specific batch delivery frequency.
+
 ## Destination Parameters
 
+Every destination requires you specify details about where to deliver data, and what data to deliver. Collectively, we refer to these details as **destination parameters**.
+
+Destination parameters are specific to each destination. For example, HTTP destinations require you specify the HTTP endpoint URL to send data to; S3 destinations require an S3 bucket name. Please consult the docs for your specific destination to see the parameters required for that destination.
+
 ## Payload Expressions
+
+The **Payload** field lets you specify what data gets sent to the corresponding destination.
+
+Generally, you'll want to send some portion of the data in [`$event`](/notebook/dollar-event/). For example, if you wanted to send the full `$event` — all the data included in the original payload, HTTP headers, and more — you'd enter `$event` in the **Payload** field:
+
+<div>
+<img alt="Full $event payload" width="400" src="./images/dollar-event-payload.png">
+</div>
+
+If you wanted to send only the body of the request, you'd enter `$event.body`
+
+<div>
+<img alt="$event body payload" width="440" src="./images/dollar-event-body-payload.png">
+</div>
+
+If you added a new property to `$event` in a code cell and want to send just that to your destination — for example, `emailEnrichmentData` — you'd enter that:
+
+<div>
+<img alt="Email payload" width="600" src="./images/email-payload.png">
+</div>
+
+**You can also enter any valid [JavaScript expression](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Expressions_and_Operators#Expressions) in the Payload field** — that is, anything that returns a value.
+
+**Moreover, any expression that returns `undefined` tells Pipedream that no data should be sent to the destination for this event**.
+
+When used in combination, **these two features allow you to conditionally send data to destinations**. For example, let's say you'd like to save only a sample of events in an S3 bucket. First, you should add a code cell that marks a given event as in the sample, or not, based on your sample logic. For example:
+
+```javascript
+$event.sampleRate = 0.5;
+$event.inSample = Math.random() > $event.sampleRate;
+```
+
+The code above will assign 50% of events to the sample (`inSample` is `true`); the other 50% will _not_ be assigned to the sample.
+
+Then, in an S3 destination, specify `$event.inSample === true ? $event : undefined` as the payload expression:
+
+<div>
+<img alt="Conditional payload expression" width="600" src="./images/conditional-payload-expression.png">
+</div>
+
+This code uses JavaScript's [ternary operator](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Conditional_Operator), and tells Pipedream: when the `inSample` flag is set to `true`, send the full `$event` to the destination. Otherwise, send `undefined`, which tells us not to send anything at all.
+
+Altogether, this has the effect of sending a random sample of 50% of events to the S3 bucket you specify.
 
 ## Still have questions?
 
