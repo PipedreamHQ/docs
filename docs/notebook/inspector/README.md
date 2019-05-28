@@ -116,6 +116,20 @@ You can read and modify `$event` in any [code](/notebook/code/) cell, or referen
 
 ## Events from older versions your pipeline
 
+When you modify and save your notebook, we increment the notebook's version, which you can see near the top of your pipeline:
+
+<div>
+<img alt="Pipeline version" src="./images/version.png">
+</div>
+
+Events sent to the newest version of your pipeline appear in black in the Inspector. Events from older versions of your pipeline appear in grey:
+
+<div>
+<img alt="Newer events in black, older events in grey" src="./images/new-old-events.png">
+</div>
+
+When you select events from older versions of your pipeline, note that we display the notebook and all associated observability at that point in time. So if an older version of your pipeline had a code cell, or a destination, that you've subsequently removed from your pipeline, it will still appear with older events sent on that version of the pipeline.
+
 ## Still have questions?
 
 Please [reach out](/support/) if this doc didn't answer your question. We're happy to help!
