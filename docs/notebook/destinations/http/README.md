@@ -4,7 +4,7 @@ Webhook destinations allow you to send data to another HTTP endpoint URL outside
 
 [[toc]]
 
-## Using Webhook Destinations
+## Adding a Webhook Destination
 
 First, [add a new Destination cell](/notebook/destinations/#adding-a-new-destination), then choose the **Webhook** destination:
 
