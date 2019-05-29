@@ -86,3 +86,5 @@ Read more about each of the components of a Pipedream notebook below:
 - [Destinations](/notebook/destinations/)
 - [Text](/notebook/text/)
 - [SQL](/notebook/sql/)
+
+<Footer />

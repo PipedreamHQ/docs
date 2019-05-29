@@ -62,3 +62,5 @@ Your code, or a third party library, may need access to disk during the executio
 ## Acceptable Use
 
 We ask that you abide by our [Acceptable Use](https://pipedream.com/terms/#b-acceptable-use) policy. In short this means: don't use Pipedream to break the law; don't abuse the platform; and don't use the platform to harm others.
+
+<Footer />

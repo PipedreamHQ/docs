@@ -47,3 +47,5 @@ Currently, Pipedream will not retry any failed request. If your HTTP destination
 ## Acceptable Use
 
 Do not use Pipedream to send HTTP requests to a service you do not own or operate. We take abuse of the service seriously and will terminate pipelines or accounts found to be in violation of our [Acceptable Use policy](https://pipedream.com/terms#b-acceptable-use). If you have any questions about this policy or anything else, please [reach out](/support/).
+
+<Footer />

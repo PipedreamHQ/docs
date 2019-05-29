@@ -86,6 +86,4 @@ test/2019/05/25/16/2019-05-25-16-14-58-8f25b54462bf6eeac3ee8bde512b6c59654c45435
 
 As noted above, a given object contains all payloads delivered to an S3 destination within a specific minute. Multiple events within a given object are newline-delimited.
 
-## Still have questions?
-
-Please [reach out](/support/) if this doc didn't answer your question. We're happy to help!
+<Footer />

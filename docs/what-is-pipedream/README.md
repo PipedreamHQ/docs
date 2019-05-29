@@ -29,3 +29,5 @@ Why so long? Once you've written the code to process your data, you'll probably 
 **Pipedream lets you focus on _what_ you want done, and we take care of _how_ to do it for you.**
 
 It only takes 5 minutes to make your first pipeline. [Sign up](/sign-up/) to get started.
+
+<Footer />

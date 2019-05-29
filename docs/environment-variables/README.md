@@ -81,6 +81,4 @@ Pipedream reserves environment variables that start with `PIPEDREAM_` for intern
 
 The total size of both the names and values of your environment variables cannot exceed `4KB` in length (that is, roughly 4096 characters).
 
-## Still have questions?
-
-Please [reach out](/support/) if this doc didn't answer your question. We're happy to help!
+<Footer />

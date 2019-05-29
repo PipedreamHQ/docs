@@ -11,3 +11,5 @@ When you find the notebook that you'd like to fork, click the big green **Fork**
 If you're not signed into your Pipedream account, or haven't yet signed up, you'll be prompted to.
 
 After forking, you'll now have a copy of the same notebook in your account, ready to activate and send data to.
+
+<Footer />

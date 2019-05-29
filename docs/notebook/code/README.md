@@ -199,6 +199,4 @@ Many of the most basic JavaScript tutorials are geared towards writing code for 
 - [Node School](https://nodeschool.io/)
 - [You Don't Know JS](https://github.com/getify/You-Dont-Know-JS)
 
-## Still have questions?
-
-Please [reach out](/support/) if this doc didn't answer your question. We're happy to help!
+<Footer />

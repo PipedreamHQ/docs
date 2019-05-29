@@ -130,6 +130,4 @@ Events sent to the newest version of your pipeline appear in black in the Inspec
 
 When you select events from older versions of your pipeline, note that we display the notebook and all associated observability at that point in time. So if an older version of your pipeline had a code cell, or a destination, that you've subsequently removed from your pipeline, it will still appear with older events sent on that version of the pipeline.
 
-## Still have questions?
-
-Please [reach out](/support/) if this doc didn't answer your question. We're happy to help!
+<Footer />

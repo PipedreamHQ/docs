@@ -18,3 +18,5 @@ You can always see the visibility status of a pipeline and the associated data a
 <div>
 <img alt="Pipeline visibility state" src="./images/pipeline-visibility.png">
 </div>
+
+<Footer />
