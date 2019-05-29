@@ -12,6 +12,30 @@ When you create a new **Webhook** source, we create a URL endpoint specific to y
 
 While we call the source "Webhook", it's technically a general HTTP source. You can send any HTTP requests to this endpoint, from anywhere on the web. You can configure the endpoint as the destination URL for a webhook or send HTTP traffic from your application - we'll accept any [valid HTTP request](#valid-requests).
 
+## Stripe, Sendgrid, and other SaaS sources
+
+You'll notice a range of other sources available to choose from on new pipelines:
+
+<div>
+<img alt="List of SaaS sources" src="./images/list-of-sources.png">
+</div>
+
+These sources all utilize webhooks for delivering new events to pipelines, and operate in like a Webhook source in every way. Additionally, each of these sources display information specific to the SaaS app in the Inspector, which can help you better distinguish events sent to a pipeline.
+
+For example, the Github source displays the **Action** and **Repository** contained in the event:
+
+Today we support the following SaaS sources:
+
+- Stripe
+- Sendgrid
+- Zapier
+- Twilio
+- Github
+- Segment
+- Iterable
+
+We're planning to add many more sources in the future. If you'd like to see a specific one, please [let us know on Spectrum](https://spectrum.chat/pipedream/feature-requests?tab=posts).
+
 ### Valid Requests
 
 You can send a request to your endpoint using any valid HTTP method: `GET`, `POST`, `HEAD`, and more.
