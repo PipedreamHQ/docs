@@ -5,9 +5,7 @@ next: false
 
 # Documentation
 
-Welcome to Pipedream! We want to make it easy for you to ingest, transform and route data for free.
-
-**Like our product, these docs are a work in progress. If you can't find the answer you're looking for, please [reach out to our team](/support/) — we're more than happy to help**.
+Welcome to Pipedream! We want to make it easy for you to ingest, transform and route data [for free](/pricing/).
 
 When you develop pipelines on Pipedream, you focus on how your pipeline should work. We take care of the infrastructure to make that happen.
 
