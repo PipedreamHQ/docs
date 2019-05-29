@@ -22,7 +22,11 @@ You'll notice a range of other sources available to choose from on new pipelines
 
 These sources all utilize webhooks for delivering new events to pipelines, and operate in like a Webhook source in every way. Additionally, each of these sources display information specific to the SaaS app in the Inspector, which can help you better distinguish events sent to a pipeline.
 
-For example, the Github source displays the **Action** and **Repository** contained in the event:
+For example, the Github source displays the **Action** — push, issue comments, etc. — and the **Repository** contained in the event:
+
+<div>
+<img alt="Github source" src="./images/github-source.png">
+</div>
 
 Today we support the following SaaS sources:
 
