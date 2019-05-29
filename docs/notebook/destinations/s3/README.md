@@ -76,11 +76,15 @@ We upload objects to S3 using the following format:
 [PREFIX]/YYYY/MM/DD/HH/YYYY-MM-DD-HH-MM-SS-IDENTIFIER.gz
 ```
 
+That is — we write objects first to your prefix, then within folders specific to the current date and hour, then upload the object with the same date information in the object, so that it's easy to tell when it was uploaded by object name alone.
+
 For example, if I were writing data to a prefix of `test/`, I might see an object in S3 at this path:
 
 ```
 test/2019/05/25/16/2019-05-25-16-14-58-8f25b54462bf6eeac3ee8bde512b6c59654c454356e808167a01c43ebe4ee919.gz
 ```
+
+As noted above, a given object contains all payloads delivered to an S3 destination within a specific minute. Multiple events within a given object are newline-delimited.
 
 ## Still have questions?
 
