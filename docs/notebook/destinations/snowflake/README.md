@@ -45,7 +45,7 @@ Before you send data to Snowflake, you'll need to configure a Snowflake user wit
 
 ### Step 1 — Generate public / private key pair
 
-Snowflake supports key pair authentication as an alternative to password-based auth. We use key pair auth to stream data into Snowflake, so before proceeding, you'll need to generate a key pair [using the instructions Snowflake provides](https://docs.snowflake.net/manuals/user-guide/snowsql-start.html#using-key-pair-authentication).
+Snowflake supports key pair authentication as an alternative to password-based auth. We use key pair auth to stream data into Snowflake, so before proceeding, you'll need to generate a key pair<sup>1</sup>.
 
 First, you'll need access to a terminal, and must have the `openssl` command installed. This should be included by default on macOS and Linux systems.
 
@@ -70,6 +70,8 @@ cat rsa_key.pub
 ```
 
 to print the contents of this file so you can copy and paste it below.
+
+<sup>1</sup> [Preparing to load data using the snowpipe rest api](https://docs.snowflake.net/manuals/user-guide/data-load-snowpipe-rest-gs.html#using-key-pair-authentication)
 
 ### Step 2 — Create required Snowflake resources
 
@@ -112,7 +114,7 @@ ALTER PIPE PIPEDREAM_JSON SET PIPE_EXECUTION_PAUSED=true;
 GRANT OWNERSHIP ON PIPE PIPEDREAM_JSON TO ROLE PIPEDREAM;
 SELECT SYSTEM$PIPE_FORCE_RESUME('PIPEDREAM_JSON');
 
-CREATE USER PIPEDREAM DEFAULT_ROLE = PIPEDREAM
+CREATE USER PIPEDREAM DEFAULT_ROLE = PIPEDREAM;
 GRANT ROLE PIPEDREAM to user PIPEDREAM;
 -- Replace this value with the value of your RSA public key
 ALTER USER PIPEDREAM SET RSA_PUBLIC_KEY='<your public key here>'
