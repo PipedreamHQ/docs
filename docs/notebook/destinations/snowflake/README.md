@@ -1,8 +1,6 @@
 # Snowflake
 
-[Snowflake](https://www.snowflake.com/) is a cloud data warehouse built for performance and usability. Pipedream supports streaming JSON to Snowflake using the `$send.snowflake()` method from any [code cell](/notebook/code/), or using the **Send to Snowflake** destination. We've made streaming JSON to Snowflake as easy as possible so that you can focus on your application logic and analysis in Snowflake.
-
-Pipedream is [free](/pricing/) to use for delivering data to Snowflake, but you'll incur costs in Snowflake for the data you store there, and for the [Snowpipe streaming service](https://docs.snowflake.net/manuals/user-guide/data-load-snowpipe-billing.html) we use to send data to your Snowflake account.
+[Snowflake](https://www.snowflake.com/) is a cloud data warehouse built for performance and ease-of-use. Pipedream makes it easy to stream JSON to Snowflake for free, and you can get started in just a few minutes.
 
 [[toc]]
 
@@ -184,5 +182,9 @@ FROM table(information_schema.copy_history(table_name=>'PIPEDREAM_JSON', start_t
 ```
 
 If there were no errors ingesting the files, the `ERROR_COUNT` will be 0 and each of the the `FIRST_ERROR*` columns should hold a value of `NULL`. Otherwise, you'll see some values here, and may be able to tell what errors Snowpipe encountered on ingestion.
+
+## Pricing
+
+Pipedream is [free](/pricing/) to use for delivering data to Snowflake, but you'll incur costs in Snowflake for the data you store there, and for the [Snowpipe streaming service](https://docs.snowflake.net/manuals/user-guide/data-load-snowpipe-billing.html) we use to send data to your Snowflake account.
 
 <Footer />
