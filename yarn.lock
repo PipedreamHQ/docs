@@ -4439,6 +4439,11 @@ lodash._reinterpolate@~3.0.0:
   resolved "https://registry.yarnpkg.com/lodash._reinterpolate/-/lodash._reinterpolate-3.0.0.tgz#0ccf2d89166af03b3663c796538b75ac6e114d9d"
   integrity sha1-DM8tiRZq8Ds2Y8eWU4t1rG4RTZ0=
 
+lodash.assign@~4.2.0:
+  version "4.2.0"
+  resolved "https://registry.yarnpkg.com/lodash.assign/-/lodash.assign-4.2.0.tgz#0d99f3ccd7a6d261d19bdaeb9245005d285808e7"
+  integrity sha1-DZnzzNem0mHRm9rrkkUAXShYCOc=
+
 lodash.camelcase@^4.3.0:
   version "4.3.0"
   resolved "https://registry.yarnpkg.com/lodash.camelcase/-/lodash.camelcase-4.3.0.tgz#b28aa6288a2b9fc651035c7711f65ab6190331a6"
@@ -4595,6 +4600,13 @@ map-visit@^1.0.0:
   dependencies:
     object-visit "^1.0.0"
 
+markdown-it-anchor@^4.0.0:
+  version "4.0.0"
+  resolved "https://registry.yarnpkg.com/markdown-it-anchor/-/markdown-it-anchor-4.0.0.tgz#e87fb5543e01965adf71506c6bf7b0491841b7e3"
+  integrity sha1-6H+1VD4BllrfcVBsa/ewSRhBt+M=
+  dependencies:
+    string "^3.3.3"
+
 markdown-it-anchor@^5.0.2:
   version "5.0.2"
   resolved "https://registry.yarnpkg.com/markdown-it-anchor/-/markdown-it-anchor-5.0.2.tgz#cdd917a05b7bf92fb736a6dae3385c6d0d0fa552"
@@ -4609,6 +4621,14 @@ markdown-it-emoji@^1.4.0:
   version "1.4.0"
   resolved "https://registry.yarnpkg.com/markdown-it-emoji/-/markdown-it-emoji-1.4.0.tgz#9bee0e9a990a963ba96df6980c4fddb05dfb4dcc"
   integrity sha1-m+4OmpkKljupbfaYDE/dsF37Tcw=
+
+markdown-it-table-of-contents@^0.3.3:
+  version "0.3.6"
+  resolved "https://registry.yarnpkg.com/markdown-it-table-of-contents/-/markdown-it-table-of-contents-0.3.6.tgz#2a733c52485cd47769365402681987ed7d9e64a9"
+  integrity sha512-zeG6PxwQ4iPx3ujpZck3lVwzqvm1+b45RQW4gawHXR6T9kTUF3zT16IoBvMAdpiReZpg5tbNkhMxU841ocbfgg==
+  dependencies:
+    lodash.assign "~4.2.0"
+    string "~3.3.3"
 
 markdown-it-table-of-contents@^0.4.0:
   version "0.4.4"
@@ -4795,6 +4815,15 @@ mini-css-extract-plugin@0.4.1:
   dependencies:
     "@webpack-contrib/schema-utils" "^1.0.0-beta.0"
     loader-utils "^1.1.0"
+    webpack-sources "^1.1.0"
+
+mini-css-extract-plugin@^0.4.0:
+  version "0.4.5"
+  resolved "https://registry.yarnpkg.com/mini-css-extract-plugin/-/mini-css-extract-plugin-0.4.5.tgz#c99e9e78d54f3fa775633aee5933aeaa4e80719a"
+  integrity sha512-dqBanNfktnp2hwL2YguV9Jh91PFX7gu7nRLs4TGsbAfAG6WOtlynFRYzwDwmmeSb5uIwHo9nx1ta0f7vAZVp2w==
+  dependencies:
+    loader-utils "^1.1.0"
+    schema-utils "^1.0.0"
     webpack-sources "^1.1.0"
 
 minimalistic-assert@^1.0.0, minimalistic-assert@^1.0.1:
@@ -6290,7 +6319,7 @@ regexpu-core@^4.1.3, regexpu-core@^4.1.4:
     unicode-match-property-ecmascript "^1.0.4"
     unicode-match-property-value-ecmascript "^1.1.0"
 
-register-service-worker@^1.5.1:
+register-service-worker@^1.2.0, register-service-worker@^1.5.1:
   version "1.6.2"
   resolved "https://registry.yarnpkg.com/register-service-worker/-/register-service-worker-1.6.2.tgz#9297e54c205c371c6e49bfa88f6997e8dd315f4c"
   integrity sha512-I8L87fX2TK29LDx+wgyOUh2BJ3rDIRC1FtRZEHeP3rivzDv6p1DDZLGGtPucqjEkm45+2crtFIFssEWv56+9Wg==
@@ -6932,6 +6961,11 @@ string-width@^1.0.1, string-width@^1.0.2:
   dependencies:
     is-fullwidth-code-point "^2.0.0"
     strip-ansi "^4.0.0"
+
+string@^3.3.3, string@~3.3.3:
+  version "3.3.3"
+  resolved "https://registry.yarnpkg.com/string/-/string-3.3.3.tgz#5ea211cd92d228e184294990a6cc97b366a77cb0"
+  integrity sha1-XqIRzZLSKOGEKUmQpsyXs2anfLA=
 
 string_decoder@^1.0.0, string_decoder@^1.1.1:
   version "1.2.0"
@@ -7640,6 +7674,68 @@ vue@^2.5.16:
   version "2.6.10"
   resolved "https://registry.yarnpkg.com/vue/-/vue-2.6.10.tgz#a72b1a42a4d82a721ea438d1b6bf55e66195c637"
   integrity sha512-ImThpeNU9HbdZL3utgMCq0oiMzAkt1mcgy3/E6zWC/G6AaQoeuFdsl9nDhTDU3X1R6FK7nsIUuRACVcjI+A2GQ==
+
+vuepress-algolia@^1.0.4:
+  version "1.0.4"
+  resolved "https://registry.yarnpkg.com/vuepress-algolia/-/vuepress-algolia-1.0.4.tgz#2da6f4ecd48da8c830d814cf7d9af804fe0ae13d"
+  integrity sha512-0M8C9to6FTeEtSvMqenRM8fIvUAxWVHT+gQZisYzZCLWPsdR01SWVu0ANzkHQwBAeqCZvsa7P0X39uskhTEXKg==
+  dependencies:
+    "@babel/core" "7.0.0-beta.47"
+    "@vue/babel-preset-app" "3.0.0-beta.11"
+    autoprefixer "^8.2.0"
+    babel-loader "8.0.0-beta.3"
+    cache-loader "^1.2.2"
+    chalk "^2.3.2"
+    chokidar "^2.0.3"
+    commander "^2.15.1"
+    connect-history-api-fallback "^1.5.0"
+    copy-webpack-plugin "^4.5.1"
+    cross-spawn "^6.0.5"
+    css-loader "^0.28.11"
+    diacritics "^1.3.0"
+    docsearch.js "^2.5.2"
+    escape-html "^1.0.3"
+    file-loader "^1.1.11"
+    fs-extra "^5.0.0"
+    globby "^8.0.1"
+    gray-matter "^4.0.1"
+    js-yaml "^3.11.0"
+    koa-connect "^2.0.1"
+    koa-mount "^3.0.0"
+    koa-range "^0.3.0"
+    koa-static "^4.0.2"
+    loader-utils "^1.1.0"
+    lodash.throttle "^4.1.1"
+    lru-cache "^4.1.2"
+    markdown-it "^8.4.1"
+    markdown-it-anchor "^4.0.0"
+    markdown-it-container "^2.0.0"
+    markdown-it-emoji "^1.4.0"
+    markdown-it-table-of-contents "^0.3.3"
+    mini-css-extract-plugin "^0.4.0"
+    nprogress "^0.2.0"
+    optimize-css-assets-webpack-plugin "^4.0.0"
+    portfinder "^1.0.13"
+    postcss-loader "^2.1.5"
+    prismjs "^1.13.0"
+    register-service-worker "^1.2.0"
+    semver "^5.5.0"
+    stylus "^0.54.5"
+    stylus-loader "^3.0.2"
+    toml "^2.3.3"
+    url-loader "^1.0.1"
+    vue "^2.5.16"
+    vue-loader "^15.2.4"
+    vue-router "^3.0.1"
+    vue-server-renderer "^2.5.16"
+    vue-template-compiler "^2.5.16"
+    vuepress-html-webpack-plugin "^3.2.0"
+    webpack "^4.8.1"
+    webpack-chain "^4.6.0"
+    webpack-merge "^4.1.2"
+    webpack-serve "^1.0.2"
+    webpackbar "^2.6.1"
+    workbox-build "^3.1.0"
 
 vuepress-html-webpack-plugin@^3.2.0:
   version "3.2.0"

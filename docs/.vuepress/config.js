@@ -7,6 +7,10 @@ module.exports = {
   description: "Pipedream Documentation - Making any engineer a data engineer",
   base: "/",
   themeConfig: {
+    algolia: {
+      apiKey: "1e23962724b59d018bdedc0f5a214ce5",
+      indexName: "pipedream"
+    },
     logo: "/pipedream.svg",
     nav: [
       {

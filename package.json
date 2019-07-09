@@ -12,6 +12,7 @@
   "dependencies": {
     "vue-gtm": "^2.0.0",
     "vue-tabs-component": "^1.5.0",
+    "vuepress-algolia": "^1.0.4",
     "vuepress-plugin-tabs": "^0.2.2"
   }
 }
