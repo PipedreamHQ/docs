@@ -6,7 +6,7 @@ The Inspector gives you visibility to the events sent to a [source](/notebook/so
 <img alt="Inspector" src="./images/inspector.png">
 </div>
 
-Clicking on an event from the list shows the event data ([`$event`](/notebook/dollar-event/)) in the inspector, as well as the entire execution details of the pipeline for that event.
+Clicking on an event from the list shows the event data ([`$event`](/notebook/dollar-event/)) in the inspector, as well as the entire execution details of the workflow for that event.
 
 Let's review each of the Inspector's components and fields below.
 
@@ -16,7 +16,7 @@ Let's review each of the Inspector's components and fields below.
 
 The **Live** and **Pause** labels near the top of the inspector are clickable. Toggling your inspector to **Live** lists events in the inspector as they are sent to your source. Events should appear in real-time; you shouldn't have to refresh the page to see them. This is the default mode.
 
-Clicking **Pause** pauses the stream of events in the UI. **Events sent to a source are still sent through the pipeline, but they do not show up in the inspector** while you're in a paused state.
+Clicking **Pause** pauses the stream of events in the UI. **Events sent to a source are still sent through the workflow, but they do not show up in the inspector** while you're in a paused state.
 
 While paused, we show the number of events received by your source:
 
@@ -38,7 +38,7 @@ Here are a few things to note about searches:
 
 - Search is case-insensitive. Both "post" and "POST" should match queries sent using the HTTP `POST` method, for example.
 - We perform partial string matches on the text you're searching for. "test" will match events with "test" and "testing" in the body.
-- We searche through all field names and values in the event. For example, you can search for text in the HTTP method, path, body and more.
+- We search through all field names and values in the event. For example, you can search for text in the HTTP method, path, body and more.
 
 ## Columns in the event list
 
@@ -62,7 +62,7 @@ For **Webhook** sources, the [path](https://requestbin.com/blog/working-with-web
 
 ### Dest. (Destinations)
 
-If you've configured any [destinations](/notebook/destinations/), the **Dest** field shows the number of destinations we successfully delivered the event to, over the number of destinations you've configured for this pipeline.
+If you've configured any [destinations](/notebook/destinations/), the **Dest** field shows the number of destinations we successfully delivered the event to, over the number of destinations you've configured for this workflow.
 
 For example, if you've added one destination and your event was successfully delivered, you'll see `1/1` in this field:
 
@@ -70,18 +70,18 @@ For example, if you've added one destination and your event was successfully del
 <img alt="Dest column" width="76" src="./images/dest-field.png">
 </div>
 
-If you added _two_ destinations and the pipeline failed to deliver an event to one (e.g. it was an HTTP destination that responded with a 500 status code), we'll show `1/2` here. You can see either destination response in the observability associated with the destinations below — see the [destinations](/notebook/destinations/) docs for more details.
+If you added _two_ destinations and the workflow failed to deliver an event to one (e.g. it was an HTTP destination that responded with a 500 status code), we'll show `1/2` here. You can see either destination response in the observability associated with the destinations below — see the [destinations](/notebook/destinations/) docs for more details.
 
 We batch the events sent to some destinations, like S3 and [SQL](/notebook/sql/), sending the events received within a particular minute as a group, once a minute. You may see situations where we've delivered your event to `0/2` destinations, but if you wait a minute, we should update this state once the events have been delivered.
 
-All of the data in these columns are also accessible in `$event`, so that you can program your pipeline based on the values of these fields.
+All of the data in these columns are also accessible in `$event`, so that you can program your workflow based on the values of these fields.
 
 ## Duration
 
 The **Duration** field shows the time it took to run your code, in addition to the time it took Pipedream to handle the execution of that code and manage its output.
 
 <div>
-<img alt="Event pipeline duration" width="78" src="./images/duration.png">
+<img alt="Event workflow duration" width="78" src="./images/duration.png">
 </div>
 
 Specifically,
@@ -92,7 +92,7 @@ Destination delivery is handled asynchonously, after your code is run. The **Dur
 
 ## Messages
 
-Any `console.log()` statements or other code output is attached to the associated code cells. But events like [`$end()` messages](/notebook/code/#end) or [exceptions](/notebook/code/#exceptions) end a pipeline's execution, and so are worth displaying prominently:
+Any `console.log()` statements or other code output is attached to the associated code cells. But events like [`$end()` messages](/notebook/code/#end) or [exceptions](/notebook/code/#exceptions) end a workflow's execution, and so are worth displaying prominently:
 
 <div>
 <img alt="End message" src="./images/dollar-end.png">
@@ -104,7 +104,7 @@ Any `console.log()` statements or other code output is attached to the associate
 
 ## `$event`
 
-When you send an event to the pipeline, we take the source data — for example, the HTTP payload, headers, etc. — and add our own Pipedream metadata to it. That collection of data is exposed as a JavaScript object named [`$event`](/notebook/dollar-event/) you can use in the rest of your pipeline.
+When you send an event to the workflow, we take the source data — for example, the HTTP payload, headers, etc. — and add our own Pipedream metadata to it. That collection of data is exposed as a JavaScript object named [`$event`](/notebook/dollar-event/) you can use in the rest of your workflow.
 
 When you click on a given event in the inspector, we show you the contents of `$event`:
 
@@ -114,20 +114,20 @@ When you click on a given event in the inspector, we show you the contents of `$
 
 You can read and modify `$event` in any [code](/notebook/code/) cell, or reference it in [destinations](/notebook/destinations/). See those docs for more information.
 
-## Events from older versions your pipeline
+## Events from older versions your workflow
 
-When you modify and save your notebook, we increment the notebook's version, which you can see near the top of your pipeline:
+When you modify and save your workflow, we increment its version:
 
 <div>
-<img alt="Pipeline version" src="./images/version.png">
+<img alt="workflow version" src="./images/version.png">
 </div>
 
-Events sent to the newest version of your pipeline appear in black in the Inspector. Events from older versions of your pipeline appear in grey:
+Events sent to the newest version of your workflow appear in black in the Inspector. Events from older versions appear in grey:
 
 <div>
 <img alt="Newer events in black, older events in grey" src="./images/new-old-events.png">
 </div>
 
-When you select events from older versions of your pipeline, note that we display the notebook and all associated observability at that point in time. So if an older version of your pipeline had a code cell, or a destination, that you've subsequently removed from your pipeline, it will still appear with older events sent on that version of the pipeline.
+When you select events from older versions of your workflow, note that we display the workflow and all associated observability at that point in time. So if an older version of your workflow had a code step, or a destination, that you've subsequently removed, it will still appear with older events sent to that version.
 
 <Footer />

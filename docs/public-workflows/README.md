@@ -16,7 +16,7 @@ When making workflows public, the source or action steps are also public, **but 
 You can always see the visibility status of a workflow and the associated data at the top of your workflow:
 
 <div>
-<img alt="Pipeline visibility state" src="./images/pipeline-visibility.png">
+<img alt="Workflow visibility state" src="./images/pipeline-visibility.png">
 </div>
 
 <Footer />

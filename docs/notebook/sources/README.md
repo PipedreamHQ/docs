@@ -1,6 +1,6 @@
 # Sources
 
-Every pipeline needs data to operate on. Sources are the interface we give you to send data to a pipeline. Sources pass the associated event on to the remaining steps of the pipeline.
+Every workflow needs data to operate on. Sources are the interface we give you to send events to a workflow. Sources pass the associated event on to the remaining steps of the workflow.
 
 Today, we support Webhook sources, and plan to support others — SQL, scheduled code cells, and more — in the future. If there's a source you'd like to see, [let us know](/support/).
 
@@ -8,7 +8,7 @@ Today, we support Webhook sources, and plan to support others — SQL, scheduled
 
 ## Webhook Sources
 
-When you create a new **Webhook** source, we create a URL endpoint specific to your pipeline.
+When you create a new **Webhook** source, we create a URL endpoint specific to your workflow.
 
 While we call the source "Webhook", it's technically a general HTTP source. You can send any HTTP requests to this endpoint, from anywhere on the web. You can configure the endpoint as the destination URL for a webhook or send HTTP traffic from your application - we'll accept any [valid HTTP request](#valid-requests).
 
@@ -75,13 +75,13 @@ If you control the application sending requests, you should implement [a backoff
 
 ## Stripe, Sendgrid, and other SaaS sources
 
-You'll notice a range of other sources available to choose from on new pipelines:
+You'll notice a range of other sources available to choose from on new workflows:
 
 <div>
 <img alt="List of SaaS sources" src="./images/list-of-sources.png">
 </div>
 
-These sources all utilize webhooks for delivering new events to pipelines, and operate in like a Webhook source in every way. Additionally, each of these sources display information specific to the SaaS app in the Inspector, which can help you better distinguish events sent to a pipeline.
+These sources all utilize webhooks for delivering new events to workflows, and operate in like a Webhook source in every way. Additionally, each of these sources display information specific to the SaaS app in the Inspector, which can help you better distinguish events sent to a workflow.
 
 For example, the Github source displays the **Action** — push, issue comments, etc. — and the **Repository** contained in the event:
 

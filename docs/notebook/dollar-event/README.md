@@ -1,14 +1,14 @@
 # `$event`
 
-`$event` — "dollar event" — is a variable that contains the data sent to your source, as well as Pipedream-provided metadata about the event. Its contents change for every event sent to your pipeline.
+`$event` — "dollar event" — is a variable that contains the data sent to your source, as well as Pipedream-provided metadata about the event. Its contents change for every event sent to your workflow.
 
-In code and destination cells, you can access or modify the contents of `$event`
+In code and destination steps, you can access or modify the contents of `$event`
 
 [[toc]]
 
-## Referencing `$event` in code cells
+## Referencing `$event` in code steps
 
-In Node.js code cells, **`$event` is a [JavaScript object](https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Objects/Basics#Object_basics)**. This is just a collection of key-value pairs surrounded by curly braces — {} — like so:
+In Node.js code steps, **`$event` is a [JavaScript object](https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Objects/Basics#Object_basics)**. This is just a collection of key-value pairs surrounded by curly braces — {} — like so:
 
 ```
 {
