@@ -47,7 +47,6 @@ module.exports = {
           "/notebook/destinations/http/",
           "/notebook/destinations/s3/",
           "/notebook/destinations/snowflake/",
-          "/notebook/text/",
           "/notebook/sql/"
         ]
       },
