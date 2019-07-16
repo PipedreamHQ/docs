@@ -31,7 +31,7 @@ module.exports = {
       {
         title: "Intro to Pipedream",
         collapsable: false,
-        children: ["/what-is-pipedream/", "/sign-up/", "/your-first-pipeline/"]
+        children: ["/what-is-pipedream/", "/sign-up/", "/your-first-workflow/"]
       },
       {
         title: "Notebooks",
@@ -51,7 +51,7 @@ module.exports = {
           "/notebook/sql/"
         ]
       },
-      "/public-pipelines/",
+      "/public-workflows/",
       "/environment-variables/",
       "/pricing/",
       "/limits/",
