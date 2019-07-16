@@ -1,52 +1,101 @@
 # Destinations
 
-Destination cells allow you to quickly send the data from your pipeline to destinations outside of Pipedream — for example, [Webhook](/notebook/destinations/http/) and [S3](/notebook/destinations/s3/) — as well as the [Pipedream SQL service](/notebook/sql/), a Pipedream-managed data warehouse.
+**Destinations**, like [Actions](/notebook/actions/), abstract the delivery and connection logic required to send events to services like Amazon S3, or targets like HTTP and email.
 
-Typically, sending data to these destinations requires a lot of code to manage error conditions and retries. With destination cells, Pipedream handles that for you. You only need to specify what data gets sent, and where to send it.
+However, Destinations are different than Actions in two ways:
 
-You can add multiple Destination cells within a single notebook, for example to send data to multiple S3 buckets. Destinations can be added at any step of your notebook.
+- **Events are delivered to the Destinations asynchronously**, after your workflow completes. This means you don't wait for network I/O (e.g. for HTTP requests or connection overhead for data warehouses) within your workflow code, so you can process more events faster.
+- In the case of data stores like S3 and warehouses like Snowflake, you typically don't want to send every event on its own. This can be costly and confers little benefit. **Instead, you typically want to batch a collection of events together, sending the batch at some frequency. Destinations handle that batching for relevant services**.
 
-**The docs below discuss the features common to all destinations. See the docs on [Webhook](/notebook/destinations/http/), [S3](/notebook/destinations/s3/), and [SQL](/notebook/sql/) for information specific to those destinations.**
+The docs below discuss features common to all Destinations. See the [docs for a given destination](#available-destinations) for information specific to those destinations.
 
 [[toc]]
 
-## Adding a new Destination
+## Available Destinations
 
-You can add a new **Destination** cell in one of two ways.
+- [Webhook](/notebook/destinations/http/)
+- [Email](/notebook/destinations/email/)
+- [S3](/notebook/destinations/s3/)
+- [Pipedream Data Warehouse](/notebook/sql/)
+- [Snowflake](/notebook/destinations/snowflake/)
+- [SSE](/notebook/destinations/sse/)
 
-First, you can click on the **+** button under any existing cell, and choose the **Destination** cell type:
+## Adding a Destination
+
+### Adding a Destination using Actions
+
+The simplest way to send data to a Destination is using one of our pre-built [Actions](/notebook/actions/). Just add the relevant Action, enter the required values, and send data to your workflow!
+
+For example, you can use the [Webhook Action](/notebook/destinations/http/) to send an HTTP request from a workflow. First, add a new Action to your workflow:
 
 <div>
-<img alt="Add a new cell" width="275" src="./images/new-cell.png">
+<img alt="Add new action" width="500" src="./images/new-action.png">
 </div>
 
-On a new notebook, you'll also see a larger button to quickly add a destination:
+Choose the **Webhook** action:
 
 <div>
-<img alt="New destination button" width="262" src="./images/new-destination.png">
+<img alt="Webhook action" width="300" src="./images/webhook-action.png">
 </div>
 
-After selecting the **Destination** cell type, you'll be asked to choose your destination type:
+and add the **URL** and **Payload**. Here, we add a [RequestBin](https://requestbin.com) URL send the original source payload — `$event.body` — to this URL:
 
 <div>
-<img alt="New destination type" src="./images/new-destination-type.png">
+<img alt="Webhook action URL and Payload" src="./images/webhook-action-params.png">
 </div>
 
-Note that your list of destinations may look different than the screenshot above. We're constantly adding new destinations to help you route data to wherever you'd like. If we don't support your target destination, please [reach out](/support/) so we can discuss it more!
+This action defaults to sending an HTTP `POST` request with the desired payload to the specified URL. If you'd like to change the HTTP method, add Basic auth, query string parameters or headers, you can click the sections below the Payload field.
 
-## Destination Delivery
+### Using `$send`
 
-For every event sent to a pipeline, for each destination cell in your notebook, we send the value of the **Payload** expression to the desired destination.
+You can send data to Destinations in [Node.js code steps](/notebook/code/), too, using `$send` functions.
 
-Events are delivered to destinations _asynchronously_ — that is, separate from the execution of your pipeline.
+`$send` is an object provided by Pipedream that exposes destination-specific functions like `$send.http()`, `$send.s3()`, and more. **This allows you to send data to destinations programmatically, if you need more control than Actions afford**.
 
-Some destination payloads are delivered within seconds, for every event sent to your pipeline. This is the case for HTTP destinations. For other destinations, like S3 and SQL, we collect individual events into a batch and send the batch to the destination. See the docs for your specific destination for the specific batch delivery frequency.
+Let's use `$send.http()` to send an HTTP POST request like we did in the Action example above. First, add a Code step to your workflow:
 
-## Destination Parameters
+<div>
+<img alt="New code step" width="500" src="./images/new-code.png">
+</div>
 
-Every destination requires you specify details about where to deliver data, and what data to deliver. Collectively, we refer to these details as **destination parameters**.
+[Create an endpoint URL on RequestBin](https://requestbin.com), adding the code below to your code step, with the URL you created:
 
-Destination parameters are specific to each destination. For example, HTTP destinations require you specify the HTTP endpoint URL to send data to; S3 destinations require an S3 bucket name. Please consult the docs for your specific destination to see the parameters required for that destination.
+```javascript
+$send.http({
+  method: "POST",
+  url: "[YOUR URL HERE]",
+  data: {
+    name: "Luke Skywalker"
+  }
+});
+```
+
+See the docs for the [Webhook destination](/notebook/destinations/http/) to learn more about all the options you can pass to the `$send.http()` function.
+
+Again, it's important to remember that **Destination delivery is asynchronous**. If you iterate over an array of values and send an HTTP request for each:
+
+```javascript
+const names = ["Luke", "Han", "Leia", "Obi Wan"];
+names.forEach(name => {
+  $send.http({
+    method: "POST",
+    url: "[YOUR URL HERE]",
+    data: {
+      name
+    }
+  });
+});
+```
+
+you won't have to `await` the execution of the HTTP requests in your workflow. We'll collect every `$send.http()` call and defer those HTTP requests, sending them after your workflow finishes.
+
+## Asynchronous Delivery
+
+For every event sent to a workflow, for each Destination you've added, we send the specified payload to the desired Destination.
+
+Events are delivered to Destinations _asynchronously_ — that is, separate from the execution of your workflow. **This means you're not waiting for network or connection I/O in the middle of your function, which can be costly**.
+
+Some Destination payloads, like HTTP, are delivered within seconds. For other Destinations, like S3 and SQL, we collect individual events into a batch and send the batch to the Destination. See the [docs for a given Destination](#available-destinations) for the relevant batch delivery frequency.
 
 ## Payload Expressions
 
@@ -89,8 +138,8 @@ Then, in an S3 destination, specify `$event.inSample === true ? $event : undefin
 <img alt="Conditional payload expression" width="600" src="./images/conditional-payload-expression.png">
 </div>
 
-This code uses JavaScript's [ternary operator](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Conditional_Operator), and tells Pipedream: when the `inSample` flag is set to `true`, send the full `$event` to the destination. Otherwise, send `undefined`, which tells us not to send anything at all.
+This code uses JavaScript's [ternary operator](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Conditional_Operator), and tells Pipedream: when the `inSample` flag is set to `true`, send the full `$event` to the destination. Otherwise, send `undefined`, which tells Pipedream not to send anything at all.
 
 Altogether, this has the effect of sending a random sample of 50% of events to the S3 bucket you specify.
 
-<Footer />
+</Footer>
