@@ -1,10 +1,10 @@
 # Code
 
-Often, you'll want to modify the data received by your pipeline. You may need to look up additional metadata about the event, parse raw data into more meaningful fields, or end the execution of a pipeline early under some conditions. Code cells let you do this and more.
+Often, you'll want to modify events received by your workflow in a custom way. You may need to look up additional metadata about the event, parse raw data into more meaningful fields, or end the execution of a workflow early under some conditions. Code steps let you do this and more.
 
-Code cells currently let you execute [Node.js](https://nodejs.org/en/blog/release/v10.0.0/) (JavaScript) code, using JavaScript's extensive [NPM](https://www.npmjs.com/) package ecosystem within your code. Virtually anything you can do in Node.js, you can do in a code cell.
+Code steps currently let you execute [Node.js](https://nodejs.org/en/blog/release/v10.0.0/) (JavaScript) code, using JavaScript's extensive [NPM](https://www.npmjs.com/) package ecosystem within your code. Virtually anything you can do in Node.js, you can do in a code step.
 
-Code cells are optional, but common. If the data received by your source needs no modification, and can be sent directly to a destination, you don't need code cells in a notebook.
+Code steps are optional, but common. If the data received by your source needs no modification, and can be sent directly to a destination, you don't need code steps in a workflow.
 
 [[toc]]
 
@@ -14,17 +14,17 @@ Today, Pipedream supports JavaScript, specifically [Node.js v10](https://nodejs.
 
 It's important to understand the core difference between Node.js and the JavaScript that runs in your web browser: **Node doesn't have access to some of the things a browser expects, like the HTML on the page, or the URL of the page**. If you haven't used Node before, be aware of this limitation as you search for JavaScript examples on the web.
 
-**Anything you can do with Node.js, you can do in a pipeline**. This includes using most of [npm's 400,000 packages](#using-npm-packages).
+**Anything you can do with Node.js, you can do in a workflow**. This includes using most of [npm's 400,000 packages](#using-npm-packages).
 
-We understand the choice of JavaScript as the first supported language for a data pipeline tool may seem odd. But we're trying to give non-data engineers data superpowers, and so want to start with one of the [most used](https://insights.stackoverflow.com/survey/2019#technology-_-programming-scripting-and-markup-languages) [languages](https://github.blog/2018-11-15-state-of-the-octoverse-top-programming-languages/). If you work on websites and know JavaScript well, Pipedream makes you a full stack engineer.
+We understand the choice of JavaScript as the first supported language for a data workflow tool may seem odd. But we're trying to give non-data engineers data superpowers, and so want to start with one of the [most used](https://insights.stackoverflow.com/survey/2019#technology-_-programming-scripting-and-markup-languages) [languages](https://github.blog/2018-11-15-state-of-the-octoverse-top-programming-languages/). If you work on websites and know JavaScript well, Pipedream makes you a full stack engineer.
 
 If you'd like to see another, specific language supported, please [let us know on our Spectrum community](https://spectrum.chat/pipedream/feature-requests?tab=posts).
 
 If you've never used JavaScript, see the [resources below](#new-to-javascript).
 
-## Adding a code cell
+## Adding a code step
 
-Click the **+** button below any cell after your source and click the **<>** button to add a new code cell:
+Click the **+** button below any step after your source and click the **<>** button to add a new code step:
 
 <div>
 <img alt="New step" src="./images/new-button.png">
@@ -33,7 +33,7 @@ Click the **+** button below any cell after your source and click the **<>** but
 Add your code in the box that appears. For example, try:
 
 ```javascript
-console.log("This is a new code cell");
+console.log("This is Node.js code");
 console.log(
   `Here are all the keys I sent in my event body: ${Object.keys($event.body)}`
 );
@@ -41,11 +41,11 @@ console.log(
 $event.test = "Some test data";
 ```
 
-Code cells support syntax highlighting and automatic indentation. We love readable code!
+Code steps support syntax highlighting and automatic indentation. We love readable code!
 
 ## Logs
 
-You can call `console.log()` or `console.error()` to add logs to the execution of a code cell. These logs will appear just below the associated cell. `console.log()` messages appear in black, `console.error()` in red:
+You can call `console.log()` or `console.error()` to add logs to the execution of a code step. These logs will appear just below the associated step. `console.log()` messages appear in black, `console.error()` in red:
 
 <div>
 <img alt="console.log and error messages" width="500" src="./images/console-log-error.png">
@@ -60,20 +60,20 @@ We try to catch any syntax errors when you're writing code, highlighting the lin
 </div>
 
 ::: warning
-While you can save a notebook with syntax errors, it's unlikely to run correctly on new events. Make sure to fix syntax errors before running your pipeline.
+While you can save a workflow with syntax errors, it's unlikely to run correctly on new events. Make sure to fix syntax errors before running your workflow.
 :::
 
 ## Using `npm` packages
 
 [NPM](https://www.npmjs.com/) hosts JavaScript packages: bits of code someone else has written and packaged for others to use. npm has over 400,000 packages and counting. You can use most of those on Pipedream.
 
-To use an npm package in a code cell, simply `require()` it:
+To use an NPM package in a code step, simply `require()` it:
 
 ```javascript
 const _ = require("lodash");
 ```
 
-When we run your pipeline code, we download the associated npm package for you before running your code cells.
+When we run your workflow code, we download the associated npm package for you before running your code steps.
 
 If you've used Node before, you'll notice there's no `package.json` file to upload or edit. We want to keep working with packages simple, so just `require()` the module like you would in your code, after package installation, and get to work!
 
@@ -81,21 +81,21 @@ The core limitation of packages is one we described above: some packages require
 
 ## Variable scope
 
-Any variables you create within a cell are scoped to that cell. That is, they cannot be referenced in any other cell.
+Any variables you create within a step are scoped to that step. That is, they cannot be referenced in any other step.
 
-Within a cell, the [normal rules of JavaScript variable scope](https://developer.mozilla.org/en-US/docs/Glossary/Scope) apply.
+Within a step, the [normal rules of JavaScript variable scope](https://developer.mozilla.org/en-US/docs/Glossary/Scope) apply.
 
-**Any data you need to use across cells, or send to destinations, we recommend you keep in `$event`.** [`$event`](/notebook/dollar-event/) is a global variable accessible across all cells in a notebook. `$event` is a JavaScript object; you can add, delete or update properties of `$event` in any code cell. See the [docs on `$event`](/notebook/dollar-event/) for more information.
+**Any data you need to use across steps, or send to destinations, we recommend you keep in `$event`.** [`$event`](/notebook/dollar-event/) is a global variable accessible across all steps in a workflow. `$event` is a JavaScript object; you can add, delete or update properties of `$event` in any code step. See the [docs on `$event`](/notebook/dollar-event/) for more information.
 
 ## `$end`
 
-Sometimes you want to end your pipeline early. For example:
+Sometimes you want to end your workflow early. For example:
 
-- You only want to run your pipeline for 5% of all events sent to your source.
-- You only want to run your pipeline for users in the United States. If you receive a request from outside the U.S., you don't want the rest of the code in your pipeline to run.
+- You only want to run your workflow for 5% of all events sent to your source.
+- You only want to run your workflow for users in the United States. If you receive a request from outside the U.S., you don't want the rest of the code in your workflow to run.
 - You may use the `user_id` contained in the event to look up information in an external API. If you can't find data in the API tied to that user, you don't want to proceed.
 
-**In any code cell, calling the `$end()` function will end the execution of the pipeline immediately.** No remaining code in that cell, and no code or destination cells below, will run for the current event.
+**In any code step, calling the `$end()` function will end the execution of the workflow immediately.** No remaining code in that step, and no code or destination steps below, will run for the current event.
 
 ```javascript
 $end();
@@ -126,7 +126,7 @@ console.log("This code will only run 50% of the time");
 
 ## Errors
 
-[Errors](https://nodejs.org/dist/latest-v10.x/docs/api/errors.html#errors_errors) raised in a code cell will stop the execution of code or destinations that follow.
+[Errors](https://nodejs.org/dist/latest-v10.x/docs/api/errors.html#errors_errors) raised in a code step will stop the execution of code or destinations that follow.
 
 You'll see the message associated with the error in the Inspector:
 
@@ -134,17 +134,17 @@ You'll see the message associated with the error in the Inspector:
 <img alt="Exception message" src="./images/exception.png">
 </div>
 
-and the code cell where the error was raised:
+and the code step where the error was raised:
 
 <div>
-<img alt="Exception in code cell" width="450" src="./images/exception-in-code-cell.png">
+<img alt="Exception in code step" width="450" src="./images/exception-in-code-cell.png">
 </div>
 
 ## Using secrets in code
 
-While the data you send through Pipedream pipelines is private, all Pipedream notebooks are public. It's critical you don't include secrets — API keys, tokens, or other sensitive values — directly in code cells.
+While the data you send through Pipedream workflows is private, all Pipedream workflows are public. It's critical you don't include secrets — API keys, tokens, or other sensitive values — directly in code steps.
 
-Pipedream supports [environment variables](/environment-variables/) for keeping secrets separate from code. Once you create an environment variable in Pipedream, you can reference it in any notebook using `process.env.VARIABLE_NAME`. The values of environment variables are private.
+Pipedream supports [environment variables](/environment-variables/) for keeping secrets separate from code. Once you create an environment variable in Pipedream, you can reference it in any workflow using `process.env.VARIABLE_NAME`. The values of environment variables are private.
 
 See the [Environment Variables](/environment-variables/) docs for more information.
 
@@ -152,7 +152,7 @@ See the [Environment Variables](/environment-variables/) docs for more informati
 
 If you're not familiar with asynchronous programming, or how to run asynchronous (async) code in JavaScript, see [this overview](https://eloquentjavascript.net/11_async.html) before reading on.
 
-On Pipedream, each code cell is implicitly wrapped in its own [`async` function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/async_function) declaration. **You should use the [`await` operator](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/await) to run any asynchronous operation synchronously — step-by-step — in a code cell**, even if you don't need to process the results.
+On Pipedream, each code step is implicitly wrapped in its own [`async` function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/async_function) declaration. **You should use the [`await` operator](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/await) to run any asynchronous operation synchronously — step-by-step — in a code step**, even if you don't need to process the results.
 
 We **do not** recommend starting an asynchronous operation that you do not `await`. Moreover, you should not expect [callback functions](https://developer.mozilla.org/en-US/docs/Glossary/Callback_function) to run after the result of an asynchronous operation.
 
@@ -165,17 +165,17 @@ const res = await runAsyncCode();
 Not this:
 
 ```javascript
-// This code may not finish by the time the pipeline finishes
+// This code may not finish by the time the workflow finishes
 runAsyncCode();
 ```
 
-If don't `await` async code, or you use callbacks, we'll move on to the next code cell or finish the pipeline completely before you're able to process the results, and your code will likely fail.
+If don't `await` async code, or you use callbacks, we'll move on to the next code step or finish the workflow completely before you're able to process the results, and your code will likely fail.
 
-## Limitations of code cells
+## Limitations of code steps
 
-Code cells operate within the [general constraints on pipelines](/limits/#pipelines). As long as you stay within those limits and abide by our [acceptable use policy](/limits/#acceptable-use), you can add any number of code cells in a notebook to do virtually anything you'd be able to do in Node.js.
+Code steps operate within the [general constraints on workflows](/limits/#workflows). As long as you stay within those limits and abide by our [acceptable use policy](/limits/#acceptable-use), you can add any number of code steps in a workflow to do virtually anything you'd be able to do in Node.js.
 
-If you're trying to run code that doesn't work or you have questions about any limits on code cells, [please reach out](/support/).
+If you're trying to run code that doesn't work or you have questions about any limits on code steps, [please reach out](/support/).
 
 ## New to JavaScript?
 

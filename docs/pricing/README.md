@@ -5,12 +5,12 @@ next: false
 
 # Pricing
 
-We believe anyone should be able to run simple, low-volume pipelines at no cost, sharing their pipeline with the public so everyone benefits from the work of others. We also want to foster a positive community where people feel good about sharing their work and where everyone can learn from one another.
+We believe anyone should be able to run simple, low-volume workflows at no cost, sharing their workflows with the public so everyone benefits from the work of others. We also want to foster a positive community where people feel good about sharing their work and where everyone can learn from one another.
 
 For now, **Pipedream is free**, subject to the following constraints:
 
-- Your data is private, always, but notebooks you author are made public as soon as you save them.
-- Your pipelines run within our [limits](/limits/).
+- Your data is private, always, but workflows you author are made public as soon as you save them.
+- Your workflows run within our [limits](/limits/).
 - You follow our [Acceptable Use](https://pipedream.com/terms/#b-acceptable-use) policy. In short this means: don't use Pipedream to break the law; don't abuse the platform; and don't use the platform to harm others.
 
 In the future, we may offer features available on paid tiers.

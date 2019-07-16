@@ -33,7 +33,7 @@ console.log($event.name.last);
 
 ## Shape / Contents
 
-The initial contents of `$event` differ depending on the source you've chosen for your pipeline.
+The initial contents of `$event` differ depending on the source you've chosen for your workflow.
 
 Clicking on an event in the Inspector reveals the contents of the associated `$event` below it:
 
@@ -43,7 +43,7 @@ Clicking on an event in the Inspector reveals the contents of the associated `$e
 
 ## Copying the dot-notation path to a specific value
 
-When you send an event with a complex shape to a pipeline, it can be difficult to construct the correct dot-notation to access a specific value from `$event`. For example, in this example below:
+When you send an event with a complex shape to a workflow, it can be difficult to construct the correct dot-notation to access a specific value from `$event`. For example, in this example below:
 
 <div>
 <img alt="Complex dollar event" src="./images/complex-dollar-event.png">
@@ -59,7 +59,7 @@ if I want to get the name of the homeworld of the person, I've got to scan down 
 
 ## Modifying `$event`
 
-Any changes you make to `$event` persist across code cells. Typically, we scope variables to the cell they were created in, so you wouldn't have access to a variable outside of that cell. **Any data you need to use across cells should be stored in `$event`**.
+Any changes you make to `$event` persist across code steps. Typically, we scope variables to the step they were created in, so you wouldn't have access to a variable outside of that step. **Any data you need to use across steps should be stored in properties of `$event`**.
 
 You can add, delete, or update the value of any key in `$event`:
 
@@ -72,7 +72,7 @@ delete $event.url;
 $event.body.person.job = "Retired Jedi";
 ```
 
-If you modify `$event`, we'll also display the changes you made clearly below the cell, under the **Diff** header:
+If you modify `$event`, we'll also display the changes you made clearly below the step, under the **Diff** header:
 
 <div>
 <img alt="Dollar event diff" width="450" src="./images/diff.png">
@@ -89,7 +89,5 @@ You cannot completely re-assign the value of the `$event` variable. That is, you
 ```javascript
 $event = { prop: "value" };
 ```
-
-You cannot reference `$event` in text cells.
 
 <Footer />
