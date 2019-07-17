@@ -38,6 +38,21 @@ Finally, you'll need to add the **Payload** you want to send to the SQL Destinat
 
 By default, if you include nothing in the **Payload** field, we send the full value of [`$event`](/notebook/dollar-event/).
 
+### Using `$send.sql()`
+
+You can send data to a SQL Destination in [Node.js code steps](/notebook/code/), too, using the `$send.sql()` function. **This allows you to send data to the SQL Destination programmatically, if you need more control than Actions afford**.
+
+`$send.sql()` takes the same parameters as the corresponding Action:
+
+```javascript
+$send.sql({
+  table: "your-table-name",
+  payload: $event.body
+});
+```
+
+Like with any `$send` function, you can use `$send.sql()` conditionally, within a loop, or anywhere you'd use a function normally in Node.js.
+
 ## What happens when you send data to a SQL Destination
 
 Our goal is to make it easy for you to query event data via SQL, without any of the operational headache of maintaining a full data warehouse, or setting up table schemas manually. We take care of that for you.
