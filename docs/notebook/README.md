@@ -30,7 +30,7 @@ On Pipedream, anyone can find a public workflow, [fork it](/notebook/fork/), and
 
 ### Source
 
-Every workflow begin with a single [**source**](/notebook/sources/). Sources are the interface we give you to send data to a pipeline. For example, you can create a [webhook source](/notebook/sources/#webhook-sources) to accept data from a Stripe webhooks. We give you a URL that you add to your Stripe settings:
+Every workflow begin with a single [**source**](/notebook/sources/). Sources are the interface we give you to send data to a workflow. For example, you can create a [webhook source](/notebook/sources/#webhook-sources) to accept data from a Stripe webhooks. We give you a URL that you add to your Stripe settings:
 
 <div>
 <img alt="New source URL" src="./images/new-pipeline-url.png">
