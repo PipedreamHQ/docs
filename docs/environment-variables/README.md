@@ -7,19 +7,15 @@ next: false
 
 **Environment variables** give you a way to separate secrets and other data from your code.
 
-For example, you wouldn't want to include an API key in a code cell of a notebook. On the free tier, all notebook code is public, so anyone would be able to see your API key in plain sight. By referencing the value of an environment variable, instead, your public pipeline includes a reference to that variable — `process.env.API_KEY` — instead of the API key itself.
+For example, you wouldn't want to include an API key in a code cell of a workflow. On the free tier, all workflow code is public, so anyone would be able to see your API key in plain sight. By referencing the value of an environment variable, instead, your public workflow includes a reference to that variable — `process.env.API_KEY` — instead of the API key itself.
 
-Environment variables are defined at the account-level, and can be referenced in code cells in any pipeline.
+Environment variables are defined at the account-level, and can be referenced in code cells in any workflow.
 
 [[toc]]
 
 ## Creating, updating environment variables
 
-Environment variables are managed at the account-level. You can access your environment variables by clicking on the menu at the top-right of the app and choosing **Edit environment** from the drop-down:
-
-<div>
-<img alt="Edit environment menu" width="250" src="./images/edit-environment.png">
-</div>
+Environment variables are managed at the account-level. You can access your environment variables by clicking on the **Environment** link in the header of the app or by visiting <a href="https://pipedream.com/environment">{{$site.themeConfig.PIPEDREAM_BASE_URL}}/environment</a>
 
 If this is your first time adding an environment variable, you'll see a menu prompting you to add a new **Key** and associated **Value**:
 
@@ -35,7 +31,7 @@ You can add another environment variable by clicking on the **+** button to the 
 
 Any changes you make to environment variables — adding, removing, or updating one — must be saved for them to take effect. You'll see the green **Save** button appear in the footer of the page when you've made changes that need to be saved.
 
-Updates to environment variables will be made available to your pipelines as soon as the save operation is complete — typically a few seconds after you click **Save**. So if you update the value of an environment variable in the UI, your pipeline should automatically use that new value where it's referenced.
+Updates to environment variables will be made available to your workflows as soon as the save operation is complete — typically a few seconds after you click **Save**. So if you update the value of an environment variable in the UI, your workflow should automatically use that new value where it's referenced.
 
 There are some restrictions on the names and values of environment variables — see the [limits](#limits) section below. If you encounter these constraints, you'll typically see a helpful error message noting what the issue is:
 
@@ -61,15 +57,11 @@ Referencing an environment variable that doesn't exist returns the value `undefi
 Logging the value of any environment variables — for example, using `console.log` — will include that value in the logs associated with the cell. Please keep this in mind and take care not to print the values of sensitive secrets.
 :::
 
-## Forking pipelines that use environment variables
+## Forking workflows that use environment variables
 
-Your environment variables are made available to any running pipeline. **If you fork a public pipeline that uses an environment variable, make sure you review the code to see what environment variables it's using**.
+Your environment variables are made available to any running workflow. **If you fork a public workflow that uses an environment variable, make sure you review the code to see what environment variables it's using**.
 
-Reviewing the code ensures you have the necessary variables defined for the pipeline to run correctly, and makes sure the original pipeline author isn't reading variables that you don't need for the pipeline to function. You can always modify the code for the pipeline after forking to remove these variables, or change their names.
-
-## Referencing environment variables in text, destination cells
-
-Currently, environment variables can only be referenced in code cells, and cannot be used in text cells or destination parameters.
+Reviewing the code ensures you have the necessary variables defined for the workflow to run correctly, and makes sure the original workflow author isn't reading variables that you don't need for the workflow to function. You can always modify the code for the workflow after forking to remove these variables, or change their names.
 
 ## Limits
 

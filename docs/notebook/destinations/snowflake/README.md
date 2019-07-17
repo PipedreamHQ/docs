@@ -35,7 +35,7 @@ $send.snowflake({
 });
 ```
 
-Take a look at [this example pipeline](https://pipedream.com/@dylburger/stream-json-to-snowflake-p_D1C3pP?e=1NIL1deyiswWRBPL3BWWgtQ98sx) for an end-to-end example.
+Take a look at [this example workflow](https://pipedream.com/@dylburger/stream-json-to-snowflake-p_D1C3pP?e=1NIL1deyiswWRBPL3BWWgtQ98sx) for an end-to-end example.
 
 All the data sent to Snowflake using this method will be batched by Pipedream and delivered to Snowflake once a minute.
 
@@ -135,11 +135,11 @@ You'll need to add the following environment variables:
 - `SNOWFLAKE_PIPE` — the pipe you created above ("PIPEDREAM_JSON")
 - `SNOWFLAKE_PRIVATE_KEY` — the contents of the private key file you generated in step 1, **removing the `-----BEGIN RSA PRIVATE KEY-----` header and `-----END RSA PRIVATE KEY-----` trailer above and below the key**.
 
-You can technically name these variables whatever you'd like, as long as you reference the correct names in your pipeline. Our [example pipeline](https://pipedream.com/@dylburger/stream-json-to-snowflake-p_D1C3pP) uses the variable names above.
+You can technically name these variables whatever you'd like, as long as you reference the correct names in your workflow. Our [example workflow](https://pipedream.com/@dylburger/stream-json-to-snowflake-p_D1C3pP) uses the variable names above.
 
-### Step 4 — Fork our example pipeline, send test data
+### Step 4 — Fork our example workflow, send test data
 
-[Fork this pipeline](https://pipedream.com/@dylburger/stream-json-to-snowflake-p_D1C3pP) and press the button to **Generate Test Event**.
+[Fork this workflow](https://pipedream.com/@dylburger/stream-json-to-snowflake-p_D1C3pP) and press the button to **Generate Test Event**.
 
 This will send some sample data to the Snowflake pipe you defined, which should end up in your target table:
 
