@@ -34,7 +34,7 @@ module.exports = {
         children: ["/what-is-pipedream/", "/sign-up/", "/your-first-workflow/"]
       },
       {
-        title: "Notebooks",
+        title: "Workflows",
         collapsable: false,
         children: [
           "/notebook/",

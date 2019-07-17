@@ -1,26 +1,44 @@
 # Amazon S3 Destinations
 
-[Amazon S3](https://aws.amazon.com/s3/) — the Simple Storage Service — is a common place to dump data for long-term storage on AWS. Pipedream supports delivery to S3 as a first-class destination in a notebook.
+[Amazon S3](https://aws.amazon.com/s3/) — the Simple Storage Service — is a common place to dump data for long-term storage on AWS. Pipedream supports delivery to S3 as a first-class Destination.
 
 [[toc]]
 
 ## Adding an S3 Destination
 
-First, [add a new Destination cell](/notebook/destinations/#adding-a-new-destination), then choose the **S3** destination:
+### Adding an S3 Action
+
+First, [add a new Action](/notebook/actions/#adding-a-new-action), then select the **Amazon S3** Action:
 
 <div>
-<img alt="S3 destination" width="300" src="./images/s3-destination.png">
+<img alt="S3 action" width="300" src="./images/s3-action.png">
 </div>
 
-S3 destinations require you to specify the **Bucket** where you want to send data, the **Payload** you want to send, and an optional [**Prefix**](https://docs.aws.amazon.com/AmazonS3/latest/user-guide/using-folders.html):
+S3 Actions require you to specify the **Bucket** where you want to send data, the **Payload** you want to send, and an optional [**Prefix**](https://docs.aws.amazon.com/AmazonS3/latest/user-guide/using-folders.html):
 
 <div>
 <img alt="S3 destination parameters" width="400" src="./images/s3-dest-params.png">
 </div>
 
-**You must allow Pipedream to upload objects to your bucket** — see the [S3 Bucket Policy](#s3-bucket-policy) below.
+Before sending data, **you must allow Pipedream to upload objects to your bucket** — see the [S3 Bucket Policy](#s3-bucket-policy) below.
 
 See the [docs on payload expressions](/notebook/destinations/#payload-expressions) to learn more about what you can specify in the **Payload** field.
+
+### Using `$send.s3()`
+
+You can send data to an S3 Destination in [Node.js code steps](/notebook/code/), too, using the `$send.s3()` function. **This allows you to send data to S3 programmatically, if you need more control than Actions afford**.
+
+`$send.s3()` takes the same parameters as the corresponding Action:
+
+```javascript
+$send.s3({
+  bucket: "your-bucket-here",
+  prefix: "your-prefix/",
+  payload: $event.body
+});
+```
+
+Like with any `$send` function, you can use `$send.s3()` conditionally, within a loop, or anywhere you'd use a function normally in Node.js.
 
 ## S3 Bucket Policy
 
@@ -54,19 +72,13 @@ In order for us to deliver objects to your S3 bucket, you need to modify the [bu
 }
 ```
 
-This bucket policy provides the minimum set of permissions necessary for Pipedream to deliver objects to your S3 bucket. We use the [Multipart Upload API](https://docs.aws.amazon.com/AmazonS3/latest/dev/uploadobjusingmpu.html) to upload objects to S3, and need the [necessary permissions](https://docs.aws.amazon.com/AmazonS3/latest/dev/mpuAndPermissions.html).
+This bucket policy provides the minimum set of permissions necessary for Pipedream to deliver objects to your S3 bucket. We use the [Multipart Upload API](https://docs.aws.amazon.com/AmazonS3/latest/dev/uploadobjusingmpu.html) to upload objects to S3, and need the [relevant permissions](https://docs.aws.amazon.com/AmazonS3/latest/dev/mpuAndPermissions.html).
 
-## S3 destination delivery
+## S3 Destination delivery
 
-S3 destination delivery is handled asynchronously, separate from the execution of a pipeline. **Moreover, events sent to an S3 bucket are batched and delivered once a minute**. For example, if you sent 30 events to an S3 destination within a particular minute, we would collect all 30 events, delimit them with newlines, and write them to a single S3 object.
+S3 Destination delivery is handled asynchronously, separate from the execution of a workflow. **Moreover, events sent to an S3 bucket are batched and delivered once a minute**. For example, if you sent 30 events to an S3 Destination within a particular minute, we would collect all 30 events, delimit them with newlines, and write them to a single S3 object.
 
-In some cases, delivery will take longer than a minute. You can always review how many destinations we've delivered a given event to by examining the [**Dest** column in the Inspector](/notebook/inspector/#dest-destinations).
-
-We'll show you the specific payload we delivered for that event under the **Sent** column of the destination:
-
-<div>
-<img alt="Payload sent" width="300" src="./images/payload-sent.png">
-</div>
+In some cases, delivery will take longer than a minute. You can always review how many Destinations we've delivered a given event to by examining the [**Dest** column in the Inspector](/notebook/inspector/#dest-destinations).
 
 ## S3 object format
 
@@ -84,6 +96,6 @@ For example, if I were writing data to a prefix of `test/`, I might see an objec
 test/2019/05/25/16/2019-05-25-16-14-58-8f25b54462bf6eeac3ee8bde512b6c59654c454356e808167a01c43ebe4ee919.gz
 ```
 
-As noted above, a given object contains all payloads delivered to an S3 destination within a specific minute. Multiple events within a given object are newline-delimited.
+As noted above, a given object contains all payloads delivered to an S3 Destination within a specific minute. Multiple events within a given object are newline-delimited.
 
 <Footer />
