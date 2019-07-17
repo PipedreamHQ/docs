@@ -1,52 +1,50 @@
 # SQL
 
-Pipedream operates a hosted data warehouse as a destination you can send events to from a pipeline. You can run SQL on the data you send here.
+Pipedream operates a hosted data warehouse as a [Destination](/notebook/destinations/) you can send events to from a workflow. You can run SQL on the data you send here.
 
-We call this destination **Pipedream SQL**.
+We call this the **Pipedream SQL** Destination.
 
 <div>
 <img alt="Pipedream SQL destination" width="277" src="./images/sql-destination.png">
 </div>
 
-At the top of every notebook, you'll see a **SQL** tab. Clicking this tab displays a UI for writing and executing SQL queries, and viewing the associated results in a data table:
+At the left of every workflow, you'll see a **SQL** label. Clicking this displays a UI for writing and executing SQL queries, and viewing the associated results in a data table:
 
 <div>
-<img alt="Pipedream SQL UI" src="./images/sql-ui.png">
+<img alt="Pipedream SQL UI" width="200" src="./images/sql-tab.png">
 </div>
 
 You can query the data sent to a SQL destination immediately, without any extra work to define a table schema or worry about the data types of fields. **Send data, write SQL — that's it**.
 
-We hope this helps you quickly analyze the data flowing through your pipeline without worrying about creating and maintaining a complex data warehouse. The Pipedream SQL service isn't a replacement for a data warehouse, but it's a simple way to start asking complex questions on your data.
+We hope this helps you quickly analyze the data flowing through your workflow without worrying about creating and maintaining a complex data warehouse. The Pipedream SQL service isn't a replacement for a data warehouse, but it's a simple way to start asking complex questions on your data.
 
 Below we'll discuss how the **Pipedream SQL** destination works in detail, as well as the current limitations of the service.
 
 [[toc]]
 
-## Creating a new Pipedream SQL destination
+## Adding a SQL Destination
 
-Adding a new **SQL** destination to your notebook is easy. First, [create a new destination cell](/notebook/destinations/#adding-a-new-destination) and choose the **Pipedream SQL** destination.
+### Adding a Pipedream SQL Action
 
-Then, add the **Table** name and **Payload** you want to send to the SQL destination. You can name the table whatever you want, within the [restrictions we impose on table names](#limitations-on-pipedream-sql-table-names):
+Adding a new **SQL** Destination to your workflow is easy. First, [add a new Action](/notebook/actions/#adding-a-new-action) to your workflow and choose the **Pipedream SQL** Action.
 
-<div>
-<img alt="SQL destination details" width="382" src="./images/sql-destination-details.png">
-</div>
+Then, add the **Table** name and **Payload** you want to send to the SQL Destination. You can name the table whatever you want, within the [restrictions we impose on table names](#limitations-on-pipedream-sql-table-names).
 
-**Typically, you'll want this table name to be unique across all other SQL destinations you've previously added**. For example, if you've added a SQL destination to a Twitter pipeline where the table name is `tweets`, you'll want to add a different, descriptive table name to your new destination so that the data flows to separate tables.
+**Typically, you'll want this table name to be unique across all other SQL Destinations you've previously added**. For example, if you've added a SQL Destination to a Twitter workflow where the table name is `tweets`, you'll want to add a different, descriptive table name to your new Destination so that the data flows to separate tables.
 
-That said, you can also send data to the _same_ SQL table from across multiple pipelines if you'd like. If you've configured three different pipelines to process data from different sources, but the schema of those data are all the same and you want to consolidate the data for analysis, **you can send data from all three pipelines (or more) to the same SQL table**. Just add the same **Table** name in all three SQL destinations, and the data will all end up in that table for querying.
+That said, you can also send data to the _same_ SQL table from across multiple workflows if you'd like. If you've configured three different workflows to process data from different sources, but the schema of those data are all the same and you want to consolidate the data for analysis, **you can send data from all three workflows (or more) to the same SQL table**. Just add the same **Table** name in all three SQL Destinations, and the data will all end up in that table for querying.
 
-Finally, you'll need to add the **Payload** you want to send to the SQL destination. The value you enter here can be any valid [JavaScript expression](/notebook/destinations/#payload-expressions), but typically you'll just want to add something like `$event` or `$event.body` to send all or a single property of [`$event`](/notebook/dollar-event/) to the SQL service for querying.
+Finally, you'll need to add the **Payload** you want to send to the SQL Destination. The value you enter here can be any valid [JavaScript expression](/notebook/destinations/#payload-expressions), but typically you'll just want to add something like `$event` or `$event.body` to send all or a single property of [`$event`](/notebook/dollar-event/) to the SQL service for querying.
 
 By default, if you include nothing in the **Payload** field, we send the full value of [`$event`](/notebook/dollar-event/).
 
-## What happens when you send data to a SQL destination
+## What happens when you send data to a SQL Destination
 
 Our goal is to make it easy for you to query event data via SQL, without any of the operational headache of maintaining a full data warehouse, or setting up table schemas manually. We take care of that for you.
 
-Because we're handling this setup behind the scenes, we'd like to discuss how the data sent to SQL destinations is processed and how we generate table schemas.
+Because we're handling this setup behind the scenes, we'd like to discuss how the data sent to SQL Destinations is processed and how we generate table schemas.
 
-First, **payloads sent to SQL destinations are batched and sent to the SQL service once a minute as a group. Therefore, the first event you send to a SQL destination will take roughly one minute to be available for querying**. You can check on the delivery of any given event to the associated destinations using the [**Dest** field of the inspector](/notebook/inspector/#dest-destinations).
+First, **payloads sent to SQL Destinations are batched and sent to the SQL service once a minute as a group. Therefore, the first event you send to a SQL Destination will take roughly one minute to be available for querying**.
 
 Another important note — the SQL service expects JSON payloads. You can read about this specific limitation [below](#how-we-handle-non-json-data-sent-to-sql-destinations).
 
@@ -54,7 +52,7 @@ Once delivered, we create tables and process the schema according to the followi
 
 ### New table
 
-If this is the first time you've sent data for the **Table** name you added in the SQL destination, we:
+If this is the first time you've sent data for the **Table** name you added in the SQL Destination, we:
 
 - Create this table, and
 - Process all payloads included in the first batch of events, creating the schema for this table based on the structure of their fields and the data types of their values.
@@ -162,32 +160,32 @@ One point worth re-iterating: **all numbers are recorded as Presto `DOUBLE`s**. 
 
 **If a field contains more than one type of data — for example, a number and a string — we always fall back to a field type of `STRING`**.
 
-If you're seeing fields with values of variable types in your events — e.g. a field that contains numbers and strings for different events — coming into your pipeline, and that's not expected, you have a couple of options.
+If you're seeing fields with values of variable types in your events — e.g. a field that contains numbers and strings for different events — coming into your workflow, and that's not expected, you have a couple of options.
 
 1. [`CAST` the data](https://prestodb.github.io/docs/0.172/functions/conversion.html) to the desired type when making SQL queries, or
-2. If you always expect events to contain fields with a single value, you can include a code cell in your notebook to check the type of the values of field, using the [`$end()` Pipedream function](/notebook/code/#end) to end the pipeline if a value doesn't match the expected type. Calling `$end()` in a code cell before a given destination cell will not send the data to that destination.
+2. If you always expect events to contain fields with a single value, you can include a code cell in your workflow to check the type of the values of field, using the [`$end()` Pipedream function](/notebook/code/#end) to end the workflow if a value doesn't match the expected type. Calling `$end()` in a code step before a given step cell will not send the data to that Destination.
 
 ## Data Retention
 
-Today, **events sent to a SQL destination are stored for 7 days. After 7 days, the data is completely deleted**.
+Today, **events sent to a SQL Destination are stored for 7 days. After 7 days, the data is completely deleted**.
 
 For example, an event sent around 12:00pm on a given day will be completely deleted 7 days after we received the event, also around 12:00pm.
 
-Therefore, if your pipeline is constantly sending events to a SQL destination, you'll always have a rolling 7-day period of data to analyze.
+Therefore, if your workflow is constantly sending events to a SQL Destination, you'll always have a rolling 7-day period of data to analyze.
 
 ## Running SQL queries
 
 ### The SQL tab
 
-Each notebook has its own **SQL** tab, but **you can use that SQL editor to query data from across any pipeline where you're using SQL destinations**.
+Each workflow has its own **SQL** tab, but **you can use that SQL editor to query data from across any workflow where you're using SQL Destinations**.
 
-Let's say you have one pipeline that records new billing events from [Stripe](https://stripe.com/), and you're saving that to a table called `stripe_billing_events`. In another pipeline, you're fetching customer data — the date they signed up, whether or not they have a subscription on your service, etc. — and saving that to a table called `stripe_customer_info`.
+Let's say you have one workflow that records new billing events from [Stripe](https://stripe.com/), and you're saving that to a table called `stripe_billing_events`. In another workflow, you're fetching customer data — the date they signed up, whether or not they have a subscription on your service, etc. — and saving that to a table called `stripe_customer_info`.
 
-**Using either SQL tab on either pipeline, you can query and join data from across both tables**.
+**Using either SQL tab on either workflow, you can query and join data from across both tables**.
 
 You can execute any SQL included in the Presto [SQL dialect](#sql-dialect).
 
-You can query `STRUCT` fields — nested objects from the original JSON payload — using "dot notation". If you send an event like this to a SQL destination:
+You can query `STRUCT` fields — nested objects from the original JSON payload — using "dot notation". If you send an event like this to a SQL Destination:
 
 ```json
 {
@@ -284,9 +282,9 @@ If you want to test potential table names against a [regular expression](https:/
 /^(?!_)[a-z0-9_]+$/gi
 ```
 
-## How we handle non-JSON data sent to SQL destinations
+## How we handle non-JSON data sent to SQL Destinations
 
-As we noted above, today SQL destinations expect JSON payloads. If you send a string, a CSV row, or another type of data, you may see unexpected issues when querying your data via SQL. If you do, please [reach out to our Support team](/support/) and we can help you troubleshoot.
+As we noted above, today SQL Destinations expect JSON payloads. If you send a string, a CSV row, or another type of data, you may see unexpected issues when querying your data via SQL. If you do, please [reach out to our Support team](/support/) and we can help you troubleshoot.
 
 Often, though, we'll just ignore the record when you issue queries. If you see **empty rows** in your result set, that's often an indication of a record we couldn't query using the schema defined for this table.
 
