@@ -1,4 +1,4 @@
-## Signing Up for Pipedream
+# Signing Up for Pipedream
 
 You can sign up for Pipedream at <a :href="$site.themeConfig.PIPEDREAM_BASE_URL">{{$site.themeConfig.PIPEDREAM_BASE_URL}}</a>.
 

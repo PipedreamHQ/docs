@@ -2,7 +2,7 @@
 prev: false
 ---
 
-## What is Pipedream?
+# What is Pipedream?
 
 Pipedream is the fastest way to build a workflow to process event data. [Workflows](#what-are-workflows) are authored using basic building blocks — [sources](/notebook/sources/), [code](/notebook/code/), [actions](/notebook/destinations/), and more.
 
