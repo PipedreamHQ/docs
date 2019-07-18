@@ -142,4 +142,4 @@ This code uses JavaScript's [ternary operator](https://developer.mozilla.org/en-
 
 Altogether, this has the effect of sending a random sample of 50% of events to the S3 bucket you specify.
 
-</Footer>
+<Footer />

@@ -1,4 +1,4 @@
-# Webhook (HTTP) Destinations
+# Webhook (HTTP) Destination
 
 Webhook Destinations allow you to send data to another HTTP endpoint URL outside of Pipedream. This can be an endpoint you own and operate, or a URL tied to a service you use (for example, a [Slack Incoming Webhook](https://api.slack.com/incoming-webhooks)).
 
