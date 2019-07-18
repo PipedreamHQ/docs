@@ -4,30 +4,36 @@ prev: false
 
 # What is Pipedream?
 
-Pipedream is the fastest way to build a workflow to process event data. [Workflows](#what-are-workflows) are authored using basic building blocks — [sources](/notebook/sources/), [code](/notebook/code/), [actions](/notebook/destinations/), and more.
+Pipedream is the fastest way to process event data for free.
 
-You can build these workflows in minutes, without worrying about managing any of the infrastructure required to operate them. We take care of that for you, and let you focus on the workflow logic.
+On Pipedream, you build [workflows](#what-are-workflows) to process events. Workflows are authored using basic building blocks — [sources](/notebook/sources/), [code](/notebook/code/), and pre-built [actions](/notebook/actions/).
 
-You have full control over how workflows operate. You can add [JavaScript code](/notebook/code/) — Node.js — at any step, using virtually any `npm` package you want to perform any programming logic.
+You can build, test, and deploy workflows in minutes, and you don't have to manage any of the infrastructure required to run them. We manage that for you. You just focus on how your workflow works.
+
+You have full control over your workflow. In addition to pre-built [actions](/notebook/actions/), you can add [Node.js code](/notebook/code/) — JavaScript — at any step, using virtually any `npm` package you want to perform any programming logic.
 
 We've tried hard to simplify the stuff you shouldn't have to care about — the infrastructure — while giving you full control over your workflow. We hope Pipedream will help you solve problems quickly and effortlessly.
 
 ## What are workflows?
 
-A workflow is just a recipe — you start with some data, modify it using a sequence of steps, and send it somewhere.
+A workflow is just a script that operates on an event.
 
-Let's take Amazon.com as an example. When you search for an item, that triggers an **event** — the data Amazon records about that search. Typically this event contains a lot of _raw_ information: the time you searched, the page you came from, whether or not you're logged into your Amazon account, and more.
+Every workflow has a source, or trigger. You can send an event via HTTP / webhook, or trigger a workflow using a [cron job](/cron/).
 
-Then, they transform it, adding, modifying and removing attributes. For example, they might use your account ID to look up if you're an Amazon Prime member, and add another attribute accordingly. Once processed, they store the data somewhere to understand what customers are searching for.
+Then, you can combine pre-built [actions](/notebook/actions/) or [Node.js code](/notebook/code/) to build anything you'd like.
 
-_Record_, _Transform_, _Store_. Sounds simple!
+What can you do with Pipedream? Here are some templates to get you started:
 
-If you've ever worked with event data, you know it's not. You can write down how your workflow should work in minutes, but spend days or weeks actually building it.
+- [Run a cron job to kick off Node.js code or send an HTTP request](https://pipedream.com/@tod/cron-scheduler-workflow-free-p_mkC5B1/readme)
+- [Search Twitter for a keyword, post new tweets to Slack](https://pipedream.com/@pravin/search-twitter-and-post-new-tweets-to-slack-p_dDCq9m/readme)
+- [Send an HTTP request to trigger an email](https://pipedream.com/@pravin/send-yourself-an-email-on-http-request-p_ZJCqj9/readme)
+- [Process an HTTP request, return a response to the client](https://pipedream.com/@pravin/return-a-response-from-your-workflow-p_zACJqp/readme)
+- [Fan out requests to multiple webhooks](https://pipedream.com/@pravin/fan-out-requests-to-multiple-webhooks-p_4wOCrW/edit?collapse=collapse)
 
-Once you've written the code to process your data, you'll probably spend the most time figuring out how and where to run that code, how to record new events, and how to send them to their final destination. This is required, but it's not unique to _your_ workflow. You often just need a way to record, transform, and store data quickly and reliably.
+In other tools, you typically have to setup infrastructure to process events — typically you setup an HTTP endpoint, then run a script on a container, or have to manage a serverless function. This takes time to write and maintain.
 
-**Pipedream lets you focus on _what_ you want done, and we take care of _how_ to do it for you.**
+Pipedream is purpose-built for running workflows on event data, so we take care of the infrastructure and boilerplate configuration for you. **Pipedream lets you focus on _what_ you want done, and we take care of _how_ to do it for you.**
 
-It takes less than 5 minutes to make your first workflow. [Sign up](/sign-up/) to get started.
+It takes less than 5 minutes to write your first workflow. [Sign up](/sign-up/) to get started.
 
 <Footer />
