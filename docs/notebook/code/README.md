@@ -1,6 +1,6 @@
 # Code
 
-Often, you'll want to modify events received by your workflow in a custom way. You may need to look up additional metadata about the event, parse raw data into more meaningful fields, or end the execution of a workflow early under some conditions. Code steps let you do this and more.
+Often, you'll want to modify events in a highly custom way. You may need to look up additional metadata about the event, parse raw data into more meaningful fields, or end the execution of a workflow early under some conditions. Code steps let you do this and more.
 
 Code steps currently let you execute [Node.js](https://nodejs.org/en/blog/release/v10.0.0/) (JavaScript) code, using JavaScript's extensive [NPM](https://www.npmjs.com/) package ecosystem within your code. Virtually anything you can do in Node.js, you can do in a code step.
 
@@ -24,20 +24,21 @@ If you've never used JavaScript, see the [resources below](#new-to-javascript).
 
 ## Adding a code step
 
-Click the **+** button below any step after your source and click the **<>** button to add a new code step:
+[Add a new Action](/notebook/actions/#adding-a-new-action), then search for "**Code**":
 
 <div>
-<img alt="New step" src="./images/new-button.png">
+<img alt="Code action" width="300" src="./images/new-code-step.png">
 </div>
 
-Add your code in the box that appears. For example, try:
+Select the **Code** Action and add your code in the text editor that appears. For example, try:
 
 ```javascript
 console.log("This is Node.js code");
+// $event contains the event data that triggered a workflow
 console.log(
   `Here are all the keys I sent in my event body: ${Object.keys($event.body)}`
 );
-// Now, let's add another property to the $event object
+// You can modify $event, adding, updating or deleting any of its properties
 $event.test = "Some test data";
 ```
 
