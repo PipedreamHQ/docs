@@ -42,6 +42,7 @@ module.exports = {
           "/notebook/sources/",
           "/notebook/inspector/",
           "/notebook/dollar-event/",
+          "/notebook/dollar-context/",
           "/notebook/code/",
           "/notebook/actions/",
           "/notebook/destinations/",
