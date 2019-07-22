@@ -52,6 +52,7 @@ module.exports = {
           "/notebook/sql/"
         ]
       },
+      "/cron/",
       "/public-workflows/",
       "/environment-variables/",
       "/pricing/",

@@ -4,7 +4,7 @@ prev: false
 
 # What is Pipedream?
 
-Pipedream is the fastest way to process event data for free.
+Pipedream is the fastest way to process event data [for free](/pricing/).
 
 On Pipedream, you build [workflows](#what-are-workflows) to process events. Workflows are authored using basic building blocks — [sources](/notebook/sources/), [code](/notebook/code/), and pre-built [actions](/notebook/actions/).
 
@@ -12,13 +12,13 @@ You can build, test, and deploy workflows in minutes, and you don't have to mana
 
 You have full control over your workflow. In addition to pre-built [actions](/notebook/actions/), you can add [Node.js code](/notebook/code/) — JavaScript — at any step, using virtually any `npm` package you want to perform any programming logic.
 
-We've tried hard to simplify the stuff you shouldn't have to care about — the infrastructure — while giving you full control over your workflow. We hope Pipedream will help you solve problems quickly and effortlessly.
+We've tried to simplify the stuff you shouldn't have to care about — the infrastructure — while giving you full control over your workflow.
 
 ## What are workflows?
 
 A workflow is just a script that operates on an event.
 
-Every workflow has a source, or trigger. You can send an event via HTTP / webhook, or trigger a workflow using a [cron job](/cron/).
+Every workflow has a source, or trigger. You can send an event via [HTTP / webhook](/notebook/sources/#webhook-sources), or trigger a workflow using a [cron job](/cron/).
 
 Then, you can combine pre-built [actions](/notebook/actions/) or [Node.js code](/notebook/code/) to build anything you'd like.
 
