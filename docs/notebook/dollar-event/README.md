@@ -2,7 +2,7 @@
 
 `$event` — "dollar event" — is a variable that contains the data sent to your source, as well as Pipedream-provided metadata about the event. Its contents change for every event sent to your workflow.
 
-In code and destination steps, you can access or modify the contents of `$event`
+You can access or mutate `$event` in any code or action steps of your workflow.
 
 [[toc]]
 
@@ -77,10 +77,6 @@ If you modify `$event`, we'll also display the changes you made clearly below th
 <div>
 <img alt="Dollar event diff" width="450" src="./images/diff.png">
 </div>
-
-## Referencing `$event` in destinations
-
-You can reference `$event` in the **Payload** field of destination cells, when choosing what data to send to destinations. See the [Payload Expressions](/notebook/destinations/#payload-expressions) docs for more info.
 
 ## Restrictions
 
