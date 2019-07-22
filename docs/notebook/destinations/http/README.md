@@ -106,6 +106,12 @@ If the Action or Code step you're using issues multiple HTTP requests, we'll sho
 
 Currently, Pipedream will not retry any failed request. If your HTTP destination endpoint is down, or returns an error response, we'll display that response in the observability associated with the Destination in the relevant Code or Action cell.
 
+## IP ranges for HTTP requests
+
+Pipedream utilizes Amazon Web Services (AWS) infrastructure for the HTTP Destination. HTTP requests sent using the HTTP Destination will come from the `us-east-1` region of AWS. Amazon publishes the [IPv4 and IPv6 ranges](https://docs.aws.amazon.com/general/latest/gr/aws-ip-ranges.html) for all of their services.
+
+If you need to restrict your destination endpoint to a smaller range of IP addresses, please [reach out](/support/) to our team.
+
 ## Acceptable Use
 
 Do not use Pipedream to send HTTP requests to a service you do not own or operate. We take abuse of the service seriously and will terminate workflows or accounts found to be in violation of our [Acceptable Use policy](https://pipedream.com/terms#b-acceptable-use). If you have any questions about this policy or anything else, please [reach out](/support/).
