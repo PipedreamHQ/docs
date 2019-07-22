@@ -45,13 +45,34 @@ Thus, your endpoint will accept [cross-origin HTTP requests](https://developer.m
 
 ### HTTP Responses
 
-When you send a [valid HTTP request](#valid-requests) to your source endpoint URL, you should expect to receive a `200 OK` status code with the following JSON payload:
+By default, when you send a [valid HTTP request](#valid-requests) to your source endpoint URL, you should expect to receive a `200 OK` status code with the following JSON payload:
 
 ```json
 { "success": true }
 ```
 
-See the [Errors](#errors) section for more information on interpreting errors you might receive when sending requests.
+This is a convenient default for workflows. When you're processing HTTP requests, you often don't need to issue any special response to the client. We issue this default response so you don't have to write any code to do it yourself.
+
+If you do need to issue a custom HTTP response from a workflow, **you can use the `$respond()` function in a Code or Action step**.
+
+`$respond()` takes a single argument: an object with properties that specify the body, headers, and HTTP status code you'd like to respond with:
+
+```javascript
+$respond({
+  status: 200,
+  headers: { "my-custom-header": "value" },
+  body: "custom response" // This can be any string, object, or Buffer
+});
+```
+
+**Additionally, for Pipedream to issue this response, one of the following must be sent in the HTTP request**:
+
+- A `pipedream_response=1` query string parameter, e.g. a request must be made to `https://myendpoint.m.pipedream.net/?pipedream_response=1`, _or_
+- An `x-pipedream-response` HTTP header with any value
+
+**If the HTTP request does not contain at least one of these signals, the `$respond()` code in your workflow will not run**.
+
+[This workflow](https://pipedream.com/@pravin/return-a-response-from-your-workflow-p_zACJqp/readme) contains example code and a `README` articulating how to use `$respond()`, as well.
 
 ### Errors
 
@@ -81,24 +102,8 @@ You'll notice a range of other sources available to choose from on new workflows
 <img alt="List of SaaS sources" src="./images/list-of-sources.png">
 </div>
 
-These sources all utilize webhooks for delivering new events to workflows, and operate in like a Webhook source in every way. Additionally, each of these sources display information specific to the SaaS app in the Inspector, which can help you better distinguish events sent to a workflow.
+These sources all utilize webhooks for delivering new events to workflows, and operate in like a Webhook source in every way. But they help you better identify the true source of the events sent to a workflow.
 
-For example, the Github source displays the **Action** — push, issue comments, etc. — and the **Repository** contained in the event:
-
-<div>
-<img alt="Github source" src="./images/github-source.png">
-</div>
-
-Today we support the following SaaS sources:
-
-- Stripe
-- Sendgrid
-- Zapier
-- Twilio
-- Github
-- Segment
-- Iterable
-
-We're planning to add many more sources in the future. If you'd like to see a specific one, please [let us know on Spectrum](https://spectrum.chat/pipedream/feature-requests?tab=posts).
+If you don't see a source you'd like us to create, please [let us know](https://spectrum.chat/pipedream/feature-requests?tab=posts).
 
 <Footer />
