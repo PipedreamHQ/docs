@@ -10,11 +10,7 @@ You can add multiple Actions within a single workflow, for example to send data 
 
 ## Adding a new Action
 
-Let's use the [Webhook Action](/notebook/destinations/http/) to send an HTTP request from a workflow. First, add a new Action to your workflow:
-
-<div>
-<img alt="Add new action" width="500" src="./images/new-action.png">
-</div>
+Let's use the [Webhook Action](/notebook/destinations/http/) to send an HTTP request from a workflow. First, **add a new Action to your workflow by clicking on the + button between any two steps**.
 
 Choose the **Webhook** action:
 

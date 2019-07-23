@@ -26,13 +26,9 @@ The docs below discuss features common to all Destinations. See the [docs for a 
 
 The simplest way to send data to a Destination is using one of our pre-built [Actions](/notebook/actions/). Just add the relevant Action, enter the required values, and send data to your workflow!
 
-For example, you can use the [Webhook Action](/notebook/destinations/http/) to send an HTTP request from a workflow. First, add a new Action to your workflow:
+For example, you can use the [Webhook Action](/notebook/destinations/http/) to send an HTTP request from a workflow. First, add a new Action to your workflow by clicking on the + button between any two steps.
 
-<div>
-<img alt="Add new action" width="500" src="./images/new-action.png">
-</div>
-
-Choose the **Webhook** action:
+Then, choose the **Webhook** action:
 
 <div>
 <img alt="Webhook action" width="300" src="./images/webhook-action.png">
@@ -52,10 +48,10 @@ You can send data to Destinations in [Node.js code steps](/notebook/code/), too,
 
 `$send` is an object provided by Pipedream that exposes destination-specific functions like `$send.http()`, `$send.s3()`, and more. **This allows you to send data to destinations programmatically, if you need more control than Actions afford**.
 
-Let's use `$send.http()` to send an HTTP POST request like we did in the Action example above. First, add a Code step to your workflow:
+Let's use `$send.http()` to send an HTTP POST request like we did in the Action example above. [Add a new Action](/notebook/actions/#adding-a-new-action), then search for "**Code**":
 
 <div>
-<img alt="New code step" width="500" src="./images/new-code.png">
+<img alt="Code action" width="300" src="./images/new-code-step.png">
 </div>
 
 [Create an endpoint URL on RequestBin](https://requestbin.com), adding the code below to your code step, with the URL you created:

@@ -8,13 +8,9 @@ Webhook Destinations allow you to send data to another HTTP endpoint URL outside
 
 ### Adding a Webhook Action
 
-First, add a new Action to your workflow:
+First, add a new Action to your workflow by clicking on the + button between any two steps.
 
-<div>
-<img alt="Add new action" width="500" src="./images/new-action.png">
-</div>
-
-Choose the **Webhook** action:
+Then, choose the **Webhook** action:
 
 <div>
 <img alt="Webhook action" width="300" src="./images/webhook-action.png">
@@ -34,10 +30,10 @@ See the [docs on payload expressions](/notebook/destinations/#payload-expression
 
 You can send data to a Webhook Destination in [Node.js code steps](/notebook/code/), too, using the `$send.http()` function. **This allows you to send data to destinations programmatically, if you need more control than Actions afford**.
 
-Let's use `$send.http()` to send an HTTP POST request like we did in the Action example above. First, add a Code step to your workflow:
+Let's use `$send.http()` to send an HTTP POST request like we did in the Action example above. [Add a new Action](/notebook/actions/#adding-a-new-action), then search for "**Code**":
 
 <div>
-<img alt="New code step" width="500" src="./images/new-code.png">
+<img alt="Code action" width="300" src="./images/new-code-step.png">
 </div>
 
 [Create an endpoint URL on RequestBin](https://requestbin.com), adding the code below to your code step, with the URL you created:
