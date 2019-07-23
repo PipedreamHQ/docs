@@ -99,10 +99,10 @@ If you control the application sending requests, you should implement [a backoff
 You'll notice a range of other sources available to choose from on new workflows:
 
 <div>
-<img alt="List of SaaS sources" src="./images/list-of-sources.png">
+<img alt="List of SaaS sources" width="300" src="./images/list-of-sources.png">
 </div>
 
-These sources all utilize webhooks for delivering new events to workflows, and operate in like a Webhook source in every way. But they help you better identify the true source of the events sent to a workflow.
+These sources all utilize webhooks for delivering new events to workflows, and operate in like a Webhook source in every way. But they help you better identify the true source of the events sent to a workflow. For example, the icon tied to the source is displayed on your list of workflows on the homepage.
 
 If you don't see a source you'd like us to create, please [let us know](https://spectrum.chat/pipedream/feature-requests?tab=posts).
 
