@@ -1,12 +1,12 @@
 # Inspector
 
-The Inspector gives you visibility to the events sent to a [source](/notebook/sources). Each source has an inspector attached to it, listing these events for inspection:
+The Inspector lists the events you send to a [source](/notebook/sources/). Once you choose a source and send events to it, you'll see those events in the Inspector, to the left of your workflow:
 
 <div>
 <img alt="Inspector" src="./images/inspector.png">
 </div>
 
-Clicking on an event from the list shows the event data ([`$event`](/notebook/dollar-event/)) in the inspector, as well as the entire execution details of the workflow for that event.
+Clicking on an event from the list shows the event data ([`$event`](/notebook/dollar-event/)) in the Inspector, as well as the logs and observability associated with the execution for that event.
 
 Let's review each of the Inspector's components and fields below.
 
@@ -14,9 +14,9 @@ Let's review each of the Inspector's components and fields below.
 
 ## Live / Pause
 
-The **Live** and **Pause** labels near the top of the inspector are clickable. Toggling your inspector to **Live** lists events in the inspector as they are sent to your source. Events should appear in real-time; you shouldn't have to refresh the page to see them. This is the default mode.
+The **Live** and **Pause** labels near the top of the Inspector are clickable. Toggling your inspector to **Live** lists events as they are sent to your source. Events should appear in real-time; you shouldn't have to refresh the page to see them. This is the default mode.
 
-Clicking **Pause** pauses the stream of events in the UI. **Events sent to a source are still sent through the workflow, but they do not show up in the inspector** while you're in a paused state.
+Clicking **Pause** pauses the stream of events in the UI. **Events sent to a source still invoke your workflow, but they do not show up in the Inspector** while you're in a paused state.
 
 While paused, we show the number of events received by your source:
 
@@ -24,11 +24,11 @@ While paused, we show the number of events received by your source:
 <img alt="Paused event count" src="./images/paused-event-count.png">
 </div>
 
-Clicking **Live** should immediately list the events that came in while the inspector was paused.
+Clicking **Live** should immediately list the events that arrived while the Inspector was paused.
 
 ## Search
 
-To the right of **Live / Pause**, we've provided a search box you can use to filter the list of events:
+To the right of the **Live / Pause** toggle, we've provided a search box you can use to filter the list of events:
 
 <div>
 <img alt="Inspector search box" src="./images/search-box.png">
@@ -52,30 +52,6 @@ We show the date and time the event was received by the source in the left-most 
 <img alt="Relative date grouping for events" width="117" src="./images/event-date-grouping.png">
 </div>
 
-### Method
-
-For **Webhook** sources, the [HTTP method](https://requestbin.com/blog/working-with-webhooks/#http-methods-get-and-post) tied to the original HTTP request, like `GET` and `POST`.
-
-### Path
-
-For **Webhook** sources, the [path](https://requestbin.com/blog/working-with-webhooks/#url-path) tied to the URL of the HTTP request, for example the `/wiki/Webhook` part of the URL `https://en.wikipedia.org/wiki/Webhook`.
-
-### Dest. (Destinations)
-
-If you've configured any [destinations](/notebook/destinations/), the **Dest** field shows the number of destinations we successfully delivered the event to, over the number of destinations you've configured for this workflow.
-
-For example, if you've added one destination and your event was successfully delivered, you'll see `1/1` in this field:
-
-<div>
-<img alt="Dest column" width="76" src="./images/dest-field.png">
-</div>
-
-If you added _two_ destinations and the workflow failed to deliver an event to one (e.g. it was an HTTP destination that responded with a 500 status code), we'll show `1/2` here. You can see either destination response in the observability associated with the destinations below — see the [destinations](/notebook/destinations/) docs for more details.
-
-We batch the events sent to some destinations, like S3 and [SQL](/notebook/sql/), sending the events received within a particular minute as a group, once a minute. You may see situations where we've delivered your event to `0/2` destinations, but if you wait a minute, we should update this state once the events have been delivered.
-
-All of the data in these columns are also accessible in `$event`, so that you can program your workflow based on the values of these fields.
-
 ## Duration
 
 The **Duration** field shows the time it took to run your code, in addition to the time it took Pipedream to handle the execution of that code and manage its output.
@@ -88,11 +64,11 @@ Specifically,
 
 **Duration = Time Your Code Ran + Pipedream Execution Time**
 
-Destination delivery is handled asynchonously, after your code is run. The **Duration** here is tied to the runtime of your code. Separately, you can see the [destination runtime](/notebook/destinations/#destination-delivery) in the destination cells themselves.
+Destination delivery is handled asynchonously, after your code is run. The **Duration** here is tied to the runtime of your code. Separately, you can see the [destination runtime](/notebook/destinations/#asynchronous-delivery) in the destination cells themselves.
 
 ## Messages
 
-Any `console.log()` statements or other code output is attached to the associated code cells. But events like [`$end()` messages](/notebook/code/#end) or [exceptions](/notebook/code/#exceptions) end a workflow's execution, and so are worth displaying prominently:
+Any `console.log()` statements or other output of code steps is attached to the associated code cells. But [`$end()`](/notebook/code/#end) or [exceptions](/notebook/code/#exceptions) end a workflow's execution, so their details are worth displaying prominently:
 
 <div>
 <img alt="End message" src="./images/dollar-end.png">
@@ -104,15 +80,15 @@ Any `console.log()` statements or other code output is attached to the associate
 
 ## `$event`
 
-When you send an event to the workflow, we take the source data — for example, the HTTP payload, headers, etc. — and add our own Pipedream metadata to it. That collection of data is exposed as a JavaScript object named [`$event`](/notebook/dollar-event/) you can use in the rest of your workflow.
+When you send an event to your workflow, we take the source data — for example, the HTTP payload, headers, etc. — and add our own Pipedream metadata to it. That collection of data is exposed as a JavaScript object named [`$event`](/notebook/dollar-event/) you can use in the rest of your workflow.
 
-When you click on a given event in the inspector, we show you the contents of `$event`:
+When you click on a given event in the Inspector, we show you the contents the associated `$event` variable:
 
 <div>
-<img alt="Dollar event in inspector" width="450" src="./images/dollar-event.png">
+<img alt="Dollar event in inspector" src="./images/inspector.png">
 </div>
 
-You can read and modify `$event` in any [code](/notebook/code/) cell, or reference it in [destinations](/notebook/destinations/). See those docs for more information.
+You can read and modify `$event` in any [code](/notebook/code/) step, or reference it in [actions](/notebook/actions/). See those docs or the general [docs on `$event`](/notebook/dollar-event/) for more information.
 
 ## Events from older versions your workflow
 
@@ -125,9 +101,9 @@ When you modify and save your workflow, we increment its version:
 Events sent to the newest version of your workflow appear in black in the Inspector. Events from older versions appear in grey:
 
 <div>
-<img alt="Newer events in black, older events in grey" src="./images/new-old-events.png">
+<img alt="Newer events in black, older events in grey" width="300" src="./images/new-old-events.png">
 </div>
 
-When you select events from older versions of your workflow, note that we display the workflow and all associated observability at that point in time. So if an older version of your workflow had a code step, or a destination, that you've subsequently removed, it will still appear with older events sent to that version.
+When you select events from older versions of your workflow, note that we display the workflow and all associated observability at that point in time. So if an older version of your workflow had a code step, or an action, that you've subsequently removed, it will still appear with older events sent to that version.
 
 <Footer />
