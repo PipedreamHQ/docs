@@ -32,6 +32,16 @@ You can send data of any [Media Type](https://www.iana.org/assignments/media-typ
 
 The primary limit we impose is on the size of the request body: we'll issue a `413 Payload Too Large` status when the body [exceeds our specified limit](#request-entity-too-large).
 
+### How Pipedream handles JSON payloads
+
+JSON is the main data exchange format on the web today. Pipedream optimizes for the case where you've sent JSON as the source event to a workflow.
+
+When you send JSON in the HTTP payload, or when JSON data is sent in the payload from a webhook provider, **Pipedream converts that JSON to its equivalent JavaScript object** and includes it as a property of [`$event`](/notebook/dollar-event/): `$event.body`.
+
+You can confirm this JSON -> JavaScript object conversion occurred by examining the `$event.inferred_body_type` property. If this is JSON, we correctly recognized the payload as such, and converted `$event.body` to an object accordingly.
+
+In the [Inspector](/notebook/inspector/), we present `$event.body` cleanly, indenting nested properties, to make the payload easy to read. Since `$event.body` is a JavaScript object, it's easy to reference and manipulate properties of the payload using dot-notation.
+
 ### Cross-Origin HTTP Requests
 
 We return the following headers on HTTP `OPTIONS` requests:
@@ -87,6 +97,8 @@ In this case, the request will still appear in the inspector, with information o
 #### API key does not exist
 
 Your API key is the host part of the endpoint, e.g. the `eniqtww30717` in `eniqtww30717.m.pipedream.net`. If you attempt to send a request to an endpoint that does not exist, we'll return a `404 Not Found` error.
+
+We'll also issue a 404 response on workflows with a webhook source that have been [deactivated](/notebook/#deactivating-workflows).
 
 #### Too Many Requests
 

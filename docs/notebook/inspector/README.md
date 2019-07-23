@@ -38,6 +38,18 @@ This will open a text editor next to the Inspector that lets you edit the test e
 
 Clicking the **Default** button in the **Edit Test Event** editor will revert your test event back to the original default. You'll have to **Save** this change, as well.
 
+## Replay Event
+
+Any events you've previously sent to a workflow, you can replay through your workflow, sending the same event again. Once you select an event in the Inspector, you'll see an icon at the far right of the row:
+
+<div>
+<img alt="Edit test event" width="350" src="./images/replay.png">
+</div>
+
+Clicking on that icon replays the event.
+
+The contents of [`$event`](/notebook/dollar-event/) will be the same for the replayed event. The contents of [`$context`](/notebook/dollar-context/), however, will contain a different event `id` and `ts`, to represent the fact that this is a different execution of the same event.
+
 ## Live / Pause
 
 The **Live** and **Pause** labels near the top of the Inspector are clickable. Toggling your inspector to **Live** lists events as they are sent to your source. Events should appear in real-time; you shouldn't have to refresh the page to see them. This is the default mode.

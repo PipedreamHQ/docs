@@ -1,6 +1,6 @@
 # SQL
 
-Pipedream operates a hosted data warehouse as a [Destination](/notebook/destinations/) you can send events to from a workflow. You can run SQL on the data you send here.
+Pipedream operates a hosted data warehouse as a [Destination](/notebook/destinations/) you can send events to from a workflow. You can run SQL on any JSON data you send here.
 
 We call this the **Pipedream SQL** Destination.
 
@@ -34,7 +34,7 @@ Then, add the **Table** name and **Payload** you want to send to the SQL Destina
 
 That said, you can also send data to the _same_ SQL table from across multiple workflows if you'd like. If you've configured three different workflows to process data from different sources, but the schema of those data are all the same and you want to consolidate the data for analysis, **you can send data from all three workflows (or more) to the same SQL table**. Just add the same **Table** name in all three SQL Destinations, and the data will all end up in that table for querying.
 
-Finally, you'll need to add the **Payload** you want to send to the SQL Destination. The value you enter here can be any valid [JavaScript expression](/notebook/destinations/#payload-expressions), but typically you'll just want to add something like `$event` or `$event.body` to send all or a single property of [`$event`](/notebook/dollar-event/) to the SQL service for querying.
+Finally, you'll need to add the **Payload** you want to send to the SQL Destination. The value you enter here can be any valid [JavaScript expression](/notebook/destinations/#payload-expressions) that evaluates to a JavaScript object, but typically you'll just want to add something like `$event` or `$event.body` to send all or a single property of [`$event`](/notebook/dollar-event/) to the SQL service for querying.
 
 By default, if you include nothing in the **Payload** field, we send the full value of [`$event`](/notebook/dollar-event/).
 
@@ -61,7 +61,7 @@ Because we're handling this setup behind the scenes, we'd like to discuss how th
 
 First, **payloads sent to SQL Destinations are batched and sent to the SQL service once a minute as a group. Therefore, the first event you send to a SQL Destination will take roughly one minute to be available for querying**.
 
-Another important note — the SQL service expects JSON payloads. You can read about this specific limitation [below](#how-we-handle-non-json-data-sent-to-sql-destinations).
+Another important note — **the SQL service expects a JavaScript object as payloads**. If you send JSON as the event to your workflow, Pipedream will convert that JSON to the equivalent JavaScript object you can send directly to a SQL Destination. In other cases — for example, when you fetch data from an API that returns a JSON string — you may need to convert JSON strings into JavaScript objects using [`JSON.parse()`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/JSON/parse) before sending that object to a SQL destination. You can read about this specific limitation [below](#how-we-handle-non-json-data-sent-to-sql-destinations).
 
 Once delivered, we create tables and process the schema according to the following rules.
 
