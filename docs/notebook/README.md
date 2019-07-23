@@ -56,6 +56,52 @@ All events sent to the source will run against the most recent version of the wo
 
 Code and action steps of Pipedream workflows are executed in the order they appear. These steps can be interleaved — we impose no order besides the "source must come first" rule noted above.
 
+## Deactivating Workflows
+
+Workflows can be deactivated by switching the toggle in the top-left corner of any workflow. By defaut, this toggle is green, which means your workflow is active:
+
+<div>
+<img alt="Active workflow" width="200" src="./images/active.png">
+</div>
+
+Clicking the toggle deactivates your workflow:
+
+<div>
+<img alt="Inactive workflow" width="220" src="./images/inactive.png">
+</div>
+
+**Deactivating a workflow has a different impact for different [sources](/notebook/sources/)**. For instance, deactivating a workflow with a [Webhook source](/notebook/sources/#webhook-sources) disables the associated endpoint from receiving HTTP requests (those endpoints will respond with a 404 HTTP status code). Disabling a workflow with a Cron Scheduler source will disable the cron job.
+
+By default, inactive workflows are displayed on the list of workflows on the homepage. Active workflows appear with a green vertical bar to their left, inactive workflows with a grey bar:
+
+<div>
+<img alt="List of active and inactive workflows" width="300" src="./images/list-of-active-inactive-workflows.png">
+</div>
+
+You can remove inactive workflows from the homepage by toggling the **Show inactive** checkbox at the top of that page:
+
+<div>
+<img alt="List of workflows" width="350" src="./images/my-pipelines.png">
+</div>
+
+## Archiving Workflows
+
+Since running workflows is [free](/pricing/), we encourage you to create as many as you want to test new ideas and understand how the product works. After you create a workflow, you may no longer need it. **We support archiving workflows to remove them from your list of workflows on your homepage**.
+
+You can archive any workflow by clicking on the ellipsis in the top-right corner of your workflow and selecting **Archive this workflow**:
+
+<div>
+<img alt="Archive workflow" width="300" src="./images/archive-workflow.png">
+</div>
+
+Archived workflows do not appear in the list of workflows on your homepage by default, unless you tick the box to show them:
+
+<div>
+<img alt="List of workflows" width="350" src="./images/my-pipelines.png">
+</div>
+
+## More resources
+
 Read more about each of the components of a Pipedream workflow below:
 
 - [Sources](/notebook/sources/)
