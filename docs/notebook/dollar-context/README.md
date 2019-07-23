@@ -12,7 +12,7 @@ Unlike `$event`, `$context` is read-only. Attempting to mutate `$context` will n
 
 - `id`: a unique identifier tied to the current execution.
 - `ts`: the timestamp the execution began, represented in [ISO 8601 format](https://en.wikipedia.org/wiki/ISO_8601)
-- `workflow_id`: formerly `pipeline_id`, a unique identifier tied to the execution.
+- `pipeline_id`: the unique identifier of the current workflow.
 - `deployment_id` : every workflow version creates a new "deployment" of your workflow. The `deployment_id` is a unique identifier that represents the version of the workflow tied to the current execution.
 - `platform_version`: an integer tied to the current structure of `$context`. If the structure of `$context` changes in the future, this integer will increment and changes to the structure will be communicated in our docs. The current `platform_version` is **2**.
 - `source_type`: a string that represents the source of the event that triggered this execution.
