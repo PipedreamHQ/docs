@@ -35,7 +35,7 @@ Generally, we'll also accept short burts of traffic, as long as you remain aroun
 
 ### Time
 
-Every event you send to a workflow triggers the execution of that workflow. **Workflow code is limited to 5 seconds per execution for HTTP triggers, and 30 seconds for cron triggers**.
+Every event you send to a workflow triggers the execution of that workflow. **Workflow code is limited to 10 seconds per execution for HTTP triggers, and 30 seconds for cron triggers**.
 
 If your code exceeds this limit, we'll throw a `TIMEOUT` error and stop your workflow. Any partial logs and observability associated with code cells that ran successfully before the timeout will be attached to the event in the UI, so you can examine the state of your workflow and troubleshoot where it may have failed.
 
