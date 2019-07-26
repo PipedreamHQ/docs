@@ -2,7 +2,7 @@
 
 `$context` — "dollar context" — is a variable that contains details about the current execution of a workflow, for instance the time the workflow was executed, its `workflow_id`, and more.
 
-Like `$event`, `$context` is a JavaScript object, so you can access it's properties via dot-notation (e.g. `$context.ts`). It can also be accessed globally in any Action or Code step within a workflow.
+Like `$event`, `$context` is a global variable, accessible in any [code](/notebook/code/) or [action](/notebook/actions/) step. Moreover, `$context` is a JavaScript object, so you can access it's properties via dot-notation (e.g. `$context.ts`).
 
 Unlike `$event`, `$context` is read-only. Attempting to mutate `$context` will not throw an error, but it will have no effect.
 

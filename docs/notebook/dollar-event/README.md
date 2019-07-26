@@ -2,7 +2,7 @@
 
 `$event` — "dollar event" — is a variable that contains the data sent to your source, as well as Pipedream-provided metadata about the event. Its contents change for every event sent to your workflow.
 
-You can access or mutate `$event` in any code or action steps of your workflow.
+`$event` is a global variable. You can access or mutate it in any [code](/notebook/code/) or [action](/notebook/actions/) steps of your workflow.
 
 [[toc]]
 
