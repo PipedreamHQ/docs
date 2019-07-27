@@ -8,6 +8,22 @@
 
 **Before you send data to Snowflake, you'll need to complete the [prerequisite steps below](#prerequisites)**.
 
+### Using the Send to Snowflake action
+
+First, [add a new Action](/notebook/actions/#adding-a-new-action), then select the **Send to Snowflake** Action:
+
+<div>
+<img alt="Snowflake action" width="300" src="./images/snowflake-action.png">
+</div>
+
+By default, this action requires three parameters: your Snowflake Account Name, your Snowflake Private Key, and the [JSON payload](/notebook/destinations/#payload-expressions) you'd like to send. **We recommend you store the values of your account name and private key as [Pipedream environment variables](/environment-variables)**, then reference the values of those environment variables in the action using `process.env`:
+
+<div>
+<img alt="Snowflake action params" width="500" src="./images/snowflake-action-params.png">
+</div>
+
+### Using `$send.snowflake()`
+
 You can use the `$send.snowflake()` method within any Node.js code cell to send JSON to Snowflake. For example, we save the necessary Snowflake values in [Pipedream environment variables](/environment-variables) and send test JSON like so:
 
 ```javascript
@@ -35,7 +51,7 @@ $send.snowflake({
 });
 ```
 
-Take a look at [this example workflow](https://pipedream.com/@dylburger/stream-json-to-snowflake-p_D1C3pP?e=1NIL1deyiswWRBPL3BWWgtQ98sx) for an end-to-end example.
+Take a look at [this example workflow](https://pipedream.com/@dylburger/stream-json-to-snowflake-p_D1C3pP) for an end-to-end example.
 
 All the data sent to Snowflake using this method will be batched by Pipedream and delivered to Snowflake once a minute.
 
@@ -55,7 +71,7 @@ Run:
 openssl genrsa -out rsa_key.pem 2048
 ```
 
-This will generate a **private key** — save this file somewhere secure. You'll need it later.
+This will generate a **private key** in a file called `rsa_key.pem`. Save this file somewhere secure. You'll need it later.
 
 Then, run
 
@@ -63,7 +79,7 @@ Then, run
 openssl rsa -in rsa_key.pem -pubout -out rsa_key.pub
 ```
 
-This will generate a **public key** that you'll use below. You can run
+This will generate a **public key** in a file called `rsa_key.pub` that you'll also use below. You can run
 
 ```bash
 cat rsa_key.pub
@@ -116,36 +132,47 @@ SELECT SYSTEM$PIPE_FORCE_RESUME('PIPEDREAM_JSON');
 
 CREATE USER PIPEDREAM DEFAULT_ROLE = PIPEDREAM;
 GRANT ROLE PIPEDREAM to user PIPEDREAM;
--- Replace this value with the value of your RSA public key
+-- Replace this value with the value of your RSA public key,
+-- i.e. the rsa_key.pub file from above
 ALTER USER PIPEDREAM SET RSA_PUBLIC_KEY='<your public key here>'
 ```
 
 ### Step 3 — Create environment variables for Snowflake resources, auth
 
-Now that we've created the resources necessary to stream data to Snowflake, we'll need to reference these values when streaming data from Pipedream. **We recommend you add these values as [environment variables](/environment-variables/)**.
+Now that we've created the resources necessary to stream data to Snowflake, we'll need to reference some of these values from Pipedream. **We recommend you add these values as [environment variables](/environment-variables/)**.
 
-You'll need to add the following environment variables:
+Our [example Snowflake workflow](https://pipedream.com/@dylburger/stream-json-to-snowflake-p_wOCyPM/readme) uses the names of the username, database, stage, etc. from above, e.g. the `PIPEDREAM` username. **If you used these default values when creating Snowflake resources, you only need to create the following environment variables**:
 
-- `SNOWFLAKE_USERNAME` — the user you created above ("PIPEDREAM")
 - `SNOWFLAKE_ACCOUNT_NAME` — your [Snowflake account name](https://docs.snowflake.net/manuals/user-guide/connecting.html#your-snowflake-account-name)
-- `SNOWFLAKE_DATABASE` — the database you created above ("PIPEDREAM")
-- `SNOWFLAKE_SCHEMA` — the database schema ("PUBLIC")
-- `SNOWFLAKE_ROLE` — the role you created above ("PIPEDREAM")
-- `SNOWFLAKE_STAGE` — the internal stage you created above ("PIPEDREAM")
-- `SNOWFLAKE_PIPE` — the pipe you created above ("PIPEDREAM_JSON")
 - `SNOWFLAKE_PRIVATE_KEY` — the contents of the private key file you generated in step 1, **removing the `-----BEGIN RSA PRIVATE KEY-----` header and `-----END RSA PRIVATE KEY-----` trailer above and below the key**.
 
-You can technically name these variables whatever you'd like, as long as you reference the correct names in your workflow. Our [example workflow](https://pipedream.com/@dylburger/stream-json-to-snowflake-p_D1C3pP) uses the variable names above.
+If you used existing Snowflake resources (e.g. you already had a target database), or otherwise modified the names from the SQL statements above, you'll need to reference those in the **Send to Snowflake** action from the workflow. See the [**Getting Started** section of the workflow's README](https://pipedream.com/@dylburger/stream-json-to-snowflake-p_wOCyPM/readme) for specific instructions.
 
 ### Step 4 — Fork our example workflow, send test data
 
-[Fork this workflow](https://pipedream.com/@dylburger/stream-json-to-snowflake-p_D1C3pP) and press the button to **Generate Test Event**.
+[Fork the Snowflake workflow](https://pipedream.com/@dylburger/stream-json-to-snowflake-p_wOCyPM/edit?action=fork), enter the appropriate values for your Snowflake account name and private key:
+
+<div>
+<img alt="Snowflake action params" width="500" src="./images/snowflake-action-params.png">
+</div>
+
+then press the **Send Test Event** button.
 
 This will send some sample data to the Snowflake pipe you defined, which should end up in your target table:
 
 <div>
 <img alt="JSON in Snowflake" src="./images/json-in-snowflake.png">
 </div>
+
+## How our Snowflake integration works
+
+Events sent to the Snowflake destination, using either the **Send to Snowflake** action or using `$send.snowflake()`, are not sent to Snowflake immediately. Instead, we batch all events sent within a 60-second period and issue a [`PUT` request](https://docs.snowflake.net/manuals/sql-reference/sql/put.html) to load the batch of events into the internal stage you defined during the [Prerequisites](#prerequisites) steps above.
+
+The [Snowflake pipe](https://docs.snowflake.net/manuals/user-guide/data-load-snowpipe-intro.html#how-does-snowpipe-work) you also created above connects this internal stage with your destination table. Snowflake's Snowpipe service processes events delivered to the internal stage automatically.
+
+Once Snowflake has successfully ingested the data delivered to the stage, we delete the relevant files in the stage. Since you pay Snowflake for [data storage costs](https://docs.snowflake.net/manuals/user-guide/credits.html#data-storage-usage) — data in internal stages contributes to that cost — we want to make sure we keep the filesin the stage only as long as is necessary to deliver them to the destination table.
+
+If this doesn't answer a specific question you have about our Snowflake integration, please [reach out](/support/)!
 
 ## Troubleshooting
 
