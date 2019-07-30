@@ -24,13 +24,13 @@ If you've never used JavaScript, see the [resources below](#new-to-javascript).
 
 ## Adding a code step
 
-[Add a new Action](/notebook/actions/#adding-a-new-action), then search for "**Code**":
+[Add a new Action](/notebook/actions/#adding-a-new-action), search for "**code**", and select the **Run Node.js Code** action:
 
 <div>
 <img alt="Code action" width="300" src="./images/new-code-step.png">
 </div>
 
-Select the **Code** Action and add your code in the text editor that appears. For example, try:
+You can add any Node.js code in the text editor that appears. For example, try:
 
 ```javascript
 console.log("This is Node.js code");

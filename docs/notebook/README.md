@@ -56,6 +56,14 @@ All events sent to the source will run against the most recent version of the wo
 
 Code and action steps of Pipedream workflows are executed in the order they appear. These steps can be interleaved — we impose no order besides the "source must come first" rule noted above.
 
+## Sharing Workflows
+
+Since [workflows are public](/public-workflows/), you can simply copy the pipedream.com URL to your pipeline and share it with anyone:
+
+<div>
+<img alt="Workflow URL" src="./images/workflow-url.png">
+</div>
+
 ## Deactivating Workflows
 
 Workflows can be deactivated by switching the toggle in the top-left corner of any workflow. By defaut, this toggle is green, which means your workflow is active:

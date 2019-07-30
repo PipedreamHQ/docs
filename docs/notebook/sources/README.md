@@ -106,6 +106,10 @@ If you send too many requests to your Webhook source within a small period of ti
 
 If you control the application sending requests, you should implement [a backoff strategy](https://medium.com/clover-platform-blog/conquering-api-rate-limiting-dcac5552714d) to temporarily slow the rate of events.
 
+## Cron Scheduler Source
+
+See [the cron docs](/cron/) for more information on how to use the **Cron Scheduler** source.
+
 ## Stripe, Sendgrid, and other SaaS sources
 
 You'll notice a range of other sources available to choose from on new workflows:
