@@ -2,7 +2,7 @@
 
 Often, you'll want to modify events in a highly custom way. You may need to look up additional metadata about the event, parse raw data into more meaningful fields, or end the execution of a workflow early under some conditions. Code steps let you do this and more.
 
-Code steps currently let you execute [Node.js](https://nodejs.org/en/blog/release/v10.0.0/) (JavaScript) code, using JavaScript's extensive [NPM](https://www.npmjs.com/) package ecosystem within your code. Virtually anything you can do in Node.js, you can do in a code step.
+Code steps currently let you execute [Node.js](https://nodejs.org/en/blog/release/v10.0.0/) (JavaScript) code, using JavaScript's extensive [npm](https://www.npmjs.com/) package ecosystem within your code. Virtually anything you can do in Node.js, you can do in a code step.
 
 Code steps are optional, but common. If the data received by your source needs no modification, and can be sent directly to a destination, you don't need code steps in a workflow.
 
@@ -66,9 +66,9 @@ While you can save a workflow with syntax errors, it's unlikely to run correctly
 
 ## Using `npm` packages
 
-[NPM](https://www.npmjs.com/) hosts JavaScript packages: bits of code someone else has written and packaged for others to use. npm has over 400,000 packages and counting. You can use most of those on Pipedream.
+[npm](https://www.npmjs.com/) hosts JavaScript packages: bits of code someone else has written and packaged for others to use. npm has over 400,000 packages and counting. You can use most of those on Pipedream.
 
-To use an NPM package in a code step, simply `require()` it:
+To use an npm package in a code step, simply `require()` it:
 
 ```javascript
 const _ = require("lodash");
