@@ -39,7 +39,7 @@ If you're running a cron job once a day, you probably don't want to wait until t
 
 ## Future executions of your cron job
 
-You'll see the time your job is next scheduled to run under the **Next Job** section of the [Inspector](/notebook/inspector).
+You'll see the time your job is scheduled to run next under the **Next Job** section of the [Inspector](/notebook/inspector).
 
 ## Job History
 
