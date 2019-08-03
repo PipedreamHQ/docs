@@ -37,13 +37,27 @@ By default, your cron job will be turned **Off**. **To enable it, select either 
 
 If you're running a cron job once a day, you probably don't want to wait until the next day's run to test your new code. You can manually run the workflow associated with a cron job at any time by pressing the **Send Test Event** button.
 
-## Trigger a notification outside of Pipedream
+## Future executions of your cron job
+
+You'll see the time your job is next scheduled to run under the **Next Job** section of the [Inspector](/notebook/inspector).
+
+## Job History
+
+You'll see the history of job executions under the **Job History** section of the [Inspector](/notebook/inspector).
+
+Clicking on a specific job shows the execution details for that job — all the logs and observability associated with that run of the workflow.
+
+## Trigger a notification to an external service (email, Slack, etc.)
 
 You can send yourself a notification — for example, an email or a Slack message — at any point in a workflow by using the relevant [Action](/notebook/actions/) or [Destination](/notebook/destinations/).
 
 If you'd like to email yourself when a job finishes successfully, you can use the [Email Destination](/notebook/destinations/email/). You can send yourself a Slack message using the Slack Action, or trigger an [HTTP request](/notebook/destinations/http/) to an external service.
 
 You can also [write code](/notebook/code/) to trigger any complex notification logic you'd like.
+
+## Rate Limit
+
+When you're testing cron jobs, you may encounter **Rate Limit Exceeded** errors. Cron jobs can be tested no more than twice a minute. If you encounter this error, wait one minute and try again.
 
 ## Troubleshooting your cron jobs
 
@@ -83,6 +97,8 @@ We display the full `$event` object for each execution of your cron job just bel
 Cron jobs can be run at most once a minute. Any cron expression that specifies a higher frequency will be rejected.
 
 Cron jobs can run for at most 30 seconds. If your workflow takes longer than 30 seconds to execute, you'll see a `TIMEOUT` error for that run, and will be able to review all logs up until the timeout occurred.
+
+When you're testing
 
 There are other limits that apply to all workflows on Pipedream — see our [Limits docs](/limits/#workflows) for more information.
 
