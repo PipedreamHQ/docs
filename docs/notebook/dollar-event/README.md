@@ -1,6 +1,14 @@
 # `$event`
 
-`$event` — "dollar event" — is a variable that contains the data sent to your source, as well as Pipedream-provided metadata about the event. Its contents change for every event sent to your workflow.
+When you select an event from the [Inspector](/notebook/inspector/), you can see its contents in the **`$event`** tab attached to your source.
+
+`$event` ("dollar event") is a JavaScript object that contains the event that triggered your workflow, formatted here for easy inspection.
+
+For [Webhook sources](/notebook/sources/#webhook-sources), `$event` contains data from the HTTP request and Pipedream-provided metadata. For example, `$event.body` contains the HTTP payload; `$event.headers` contains the HTTP request headers.
+
+For [Cron triggers](/cron/), `$event` contains the schedule of your cron job and the time the current job was triggered.
+
+**You can save any data in the `$event` object in a code or an action. This allows you to share data across the steps of your workflow.** [Just save the data as a new property of `$event`](https://docs.pipedream.com/notebook/dollar-event/#modifying-event), or change the value of an existing property, referencing it in a later step.
 
 `$event` is a global variable. You can access or mutate it in any [code](/notebook/code/) or [action](/notebook/actions/) steps of your workflow.
 
