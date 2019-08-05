@@ -1,12 +1,8 @@
-# SQL
+# Pipedream SQL Service
 
 Pipedream operates a hosted data warehouse as a [Destination](/notebook/destinations/) you can send events to from a workflow. You can run SQL on any JSON data you send here.
 
-We call this the **Pipedream SQL** Destination.
-
-<div>
-<img alt="Pipedream SQL destination" width="277" src="./images/sql-destination.png">
-</div>
+We call this the **SQL** Destination for short.
 
 At the left of every workflow, you'll see a **SQL** label. Clicking this displays a UI for writing and executing SQL queries, and viewing the associated results in a data table:
 
@@ -14,11 +10,11 @@ At the left of every workflow, you'll see a **SQL** label. Clicking this display
 <img alt="Pipedream SQL UI" width="200" src="./images/sql-tab.png">
 </div>
 
-You can query the data sent to a SQL destination immediately, without any extra work to define a table schema or worry about the data types of fields. **Send data, write SQL — that's it**.
+You can query the data sent to a SQL Destination immediately, without any extra work to define a table schema or worry about the data types of fields. **Send data, write SQL — that's it**.
 
-We hope this helps you quickly analyze the data flowing through your workflow without worrying about creating and maintaining a complex data warehouse. The Pipedream SQL service isn't a replacement for a data warehouse, but it's a simple way to start asking complex questions on your data.
+We hope this helps you quickly analyze the data flowing through your workflow without worrying about creating and maintaining a complex data warehouse. The Pipedream SQL Service isn't a replacement for a data warehouse, but it's a simple way to start asking complex questions on your data.
 
-Below we'll discuss how the **Pipedream SQL** destination works in detail, as well as the current limitations of the service.
+Below we'll discuss how the **SQL** Destination works in detail, as well as the current limitations of the service.
 
 [[toc]]
 
@@ -26,7 +22,7 @@ Below we'll discuss how the **Pipedream SQL** destination works in detail, as we
 
 ### Adding a Pipedream SQL Action
 
-Adding a new **SQL** Destination to your workflow is easy. First, [add a new Action](/notebook/actions/#adding-a-new-action) to your workflow and choose the **Pipedream SQL** Action.
+Adding a new SQL Destination to your workflow is easy. First, [add a new Action](/notebook/actions/#adding-a-new-action) to your workflow and choose the **Send Data To Pipedream SQL Service** Action.
 
 Then, add the **Table** name and **Payload** you want to send to the SQL Destination. You can name the table whatever you want, within the [restrictions we impose on table names](#limitations-on-pipedream-sql-table-names).
 

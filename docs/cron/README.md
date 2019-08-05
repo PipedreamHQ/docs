@@ -7,7 +7,7 @@ next: false
 
 Pipedream allows you to run hosted cron jobs — any code run on a schedule — for free.
 
-We call these cron jobs "[workflows](/what-is-pipedream/#what-are-workflows)". Here, workflows are just scripts that run on a schedule.
+We call these cron jobs "[workflows](/what-is-pipedream/#what-are-workflows)". Workflows are just scripts that run on a schedule.
 
 You can write a cron job to:
 

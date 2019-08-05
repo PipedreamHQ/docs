@@ -71,7 +71,7 @@ If you do need to issue a custom HTTP response from a workflow, **you can use th
 $respond({
   status: 200,
   headers: { "my-custom-header": "value" },
-  body: "custom response" // This can be any string, object, or Buffer
+  body: { message: "My custom response" } // This can be any string, object, or Buffer
 });
 ```
 

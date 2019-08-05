@@ -7,7 +7,7 @@ next: false
 
 We believe anyone should be able to run simple, low-volume workflows at no cost, sharing their workflows with the public so everyone benefits from the work of others. We also want to foster a positive community where people feel good about sharing their work and where everyone can learn from one another.
 
-For now, **Pipedream is free**, subject to the following constraints:
+**Pipedream is free**, subject to the following constraints:
 
 - Your data is private, always, but workflows you author are made public as soon as you save them.
 - Your workflows run within our [limits](/limits/).
