@@ -43,10 +43,10 @@ console.log($event.name.last);
 
 The initial contents of `$event` differ depending on the source you've chosen for your workflow.
 
-Clicking on an event in the Inspector reveals the contents of the associated `$event` below it:
+Clicking on an event in the Inspector reveals the contents of `$event` for that workflow execution under the [source](/notebook/sources/) to the right:
 
 <div>
-<img alt="Dollar event in inspector" width="450" src="./images/dollar-event.png">
+<img alt="Dollar event under source" src="./images/complex-dollar-event.png">
 </div>
 
 ## Copying the dot-notation path to a specific value
