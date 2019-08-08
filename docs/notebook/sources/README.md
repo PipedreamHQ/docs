@@ -1,14 +1,16 @@
 # Sources
 
-Every workflow needs data to operate on. Sources are the interface we give you to send events to a workflow. Sources pass the associated event on to the remaining steps of the workflow.
+Every workflow is triggered by an event. **Sources** define the type of event that triggers your workflow.
 
-Today, we support Webhook sources, and plan to support others — SQL, scheduled code cells, and more — in the future. If there's a source you'd like to see, [let us know](/support/).
+For example, a Webhook source exposes a URL where you can send any HTTP request. We'll run your workflow on each request. Cron sources trigger your workflow on a schedule.
+
+Today, we support Webhook and [Cron Scheduler](/cron/) sources, and plan to support others — SQL, scheduled code cells, and more — in the future. If there's a source you'd like to see, [let us know](/support/).
 
 [[toc]]
 
 ## Webhook Sources
 
-When you create a new **Webhook** source, we create a URL endpoint specific to your workflow.
+When you select the **Webhook** source, we create a URL endpoint specific to your workflow.
 
 While we call the source "Webhook", it's technically a general HTTP source. You can send any HTTP requests to this endpoint, from anywhere on the web. You can configure the endpoint as the destination URL for a webhook or send HTTP traffic from your application - we'll accept any [valid HTTP request](#valid-requests).
 

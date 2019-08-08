@@ -2,7 +2,7 @@
 
 Often, you'll want to modify events in a highly custom way. You may need to look up additional metadata about the event, parse raw data into more meaningful fields, or end the execution of a workflow early under some conditions. Code steps let you do this and more.
 
-Code steps currently let you execute [Node.js](https://nodejs.org/en/blog/release/v10.0.0/) (JavaScript) code, using JavaScript's extensive [npm](https://www.npmjs.com/) package ecosystem within your code. Virtually anything you can do in Node.js, you can do in a code step.
+Code steps currently let you execute [Node.js v12](https://nodejs.org/dist/latest-v12.x/docs/api/errors.html#errors_errors) (JavaScript) code, using JavaScript's extensive [npm](https://www.npmjs.com/) package ecosystem within your code. Virtually anything you can do in Node.js, you can do in a code step.
 
 Code steps are optional, but common. If the data received by your source needs no modification, and can be sent directly to a destination, you don't need code steps in a workflow.
 
@@ -10,7 +10,7 @@ Code steps are optional, but common. If the data received by your source needs n
 
 ## Language Support
 
-Today, Pipedream supports JavaScript, specifically [Node.js v10](https://nodejs.org/en/blog/release/v10.0.0/).
+Today, Pipedream supports [Node.js v12](https://nodejs.org/dist/latest-v12.x/docs/api/).
 
 It's important to understand the core difference between Node.js and the JavaScript that runs in your web browser: **Node doesn't have access to some of the things a browser expects, like the HTML on the page, or the URL of the page**. If you haven't used Node before, be aware of this limitation as you search for JavaScript examples on the web.
 
@@ -127,7 +127,7 @@ console.log("This code will only run 50% of the time");
 
 ## Errors
 
-[Errors](https://nodejs.org/dist/latest-v10.x/docs/api/errors.html#errors_errors) raised in a code step will stop the execution of code or destinations that follow.
+[Errors](https://nodejs.org/dist/latest-v12.x/docs/api/errors.html#errors_errors) raised in a code step will stop the execution of code or destinations that follow.
 
 You'll see the message associated with the error in the Inspector:
 
@@ -155,7 +155,7 @@ If you're not familiar with asynchronous programming, or how to run asynchronous
 
 On Pipedream, each code step is implicitly wrapped in its own [`async` function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/async_function) declaration. **You should use the [`await` operator](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/await) to run any asynchronous operation synchronously — step-by-step — in a code step**, even if you don't need to process the results.
 
-We **do not** recommend starting an asynchronous operation that you do not `await`. Moreover, you should not expect [callback functions](https://developer.mozilla.org/en-US/docs/Glossary/Callback_function) to run after the result of an asynchronous operation.
+You **should not** start an asynchronous operation that you do not `await`. Moreover, you should not expect [callback functions](https://developer.mozilla.org/en-US/docs/Glossary/Callback_function) to run after the result of an asynchronous operation.
 
 In short, do this:
 
@@ -171,6 +171,8 @@ runAsyncCode();
 ```
 
 If don't `await` async code, or you use callbacks, we'll move on to the next code step or finish the workflow completely before you're able to process the results, and your code will likely fail.
+
+We do our best to track open asynchronous operations, and will try to let you know when you forgot to add an `await` in the logs associated with your code step.
 
 ## Limitations of code steps
 
