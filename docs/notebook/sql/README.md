@@ -178,11 +178,11 @@ If you're seeing fields with values of variable types in your events — e.g. a 
 
 ## Data Retention
 
-Today, **events sent to a SQL Destination are stored for 7 days. After 7 days, the data is completely deleted**.
+Today, **events sent to a SQL Destination are stored for 30 days. After 30 days, the data is completely deleted**.
 
-For example, an event sent around 12:00pm on a given day will be completely deleted 7 days after we received the event, also around 12:00pm.
+For example, an event sent around 12:00pm on a given day will be completely deleted 30 days after we received the event, also around 12:00pm.
 
-Therefore, if your workflow is constantly sending events to a SQL Destination, you'll always have a rolling 7-day period of data to analyze.
+Therefore, if your workflow is constantly sending events to a SQL Destination, you'll always have a rolling 30-day period of data to analyze.
 
 ## Running SQL queries
 
