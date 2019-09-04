@@ -2,7 +2,7 @@
 
 Often, you'll want to modify events in a highly custom way. You may need to look up additional metadata about the event, parse raw data into more meaningful fields, or end the execution of a workflow early under some conditions. Code steps let you do this and more.
 
-Code steps currently let you execute [Node.js v12](https://nodejs.org/dist/latest-v12.x/docs/api/errors.html#errors_errors) (JavaScript) code, using JavaScript's extensive [npm](https://www.npmjs.com/) package ecosystem within your code. Virtually anything you can do in Node.js, you can do in a code step.
+Code steps currently let you execute [Node.js v{{$site.themeConfig.NODE_VERSION}}](https://nodejs.org/dist/latest-v10.x/docs/api/errors.html#errors_errors) (JavaScript) code, using JavaScript's extensive [npm](https://www.npmjs.com/) package ecosystem within your code. Virtually anything you can do in Node.js, you can do in a code step.
 
 Code steps are optional, but common. If the data received by your source needs no modification, and can be sent directly to a destination, you don't need code steps in a workflow.
 
@@ -10,7 +10,7 @@ Code steps are optional, but common. If the data received by your source needs n
 
 ## Language Support
 
-Today, Pipedream supports [Node.js v12](https://nodejs.org/dist/latest-v12.x/docs/api/).
+Today, Pipedream supports [Node.js v{{$site.themeConfig.NODE_VERSION}}](https://nodejs.org/dist/latest-v10.x/docs/api/).
 
 It's important to understand the core difference between Node.js and the JavaScript that runs in your web browser: **Node doesn't have access to some of the things a browser expects, like the HTML on the page, or the URL of the page**. If you haven't used Node before, be aware of this limitation as you search for JavaScript examples on the web.
 
@@ -127,7 +127,7 @@ console.log("This code will only run 50% of the time");
 
 ## Errors
 
-[Errors](https://nodejs.org/dist/latest-v12.x/docs/api/errors.html#errors_errors) raised in a code step will stop the execution of code or destinations that follow.
+[Errors](https://nodejs.org/dist/latest-v10.x/docs/api/errors.html#errors_errors) raised in a code step will stop the execution of code or destinations that follow.
 
 You'll see the message associated with the error in the Inspector:
 

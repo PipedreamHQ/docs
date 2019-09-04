@@ -63,7 +63,8 @@ module.exports = {
     ],
     PIPEDREAM_BASE_URL: "https://pipedream.com",
     PAYLOAD_SIZE_LIMIT: "100kb",
-    INSPECTOR_EVENT_LIMIT: "100"
+    INSPECTOR_EVENT_LIMIT: "100",
+    NODE_VERSION: "10"
   },
   plugins: ["tabs"]
 };
