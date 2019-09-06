@@ -180,6 +180,12 @@ Code steps operate within the [general constraints on workflows](/limits/#workfl
 
 If you're trying to run code that doesn't work or you have questions about any limits on code steps, [please reach out](/support/).
 
+## Editor settings
+
+We use the [Monaco Editor](https://microsoft.github.io/monaco-editor/), which powers VS Code and other web-based editors.
+
+We also let you customize the editor. For example, you can enable Vim mode, and change the default tab size for indented code. Visit your [**Settings**](https://pipedream.com/settings) to modify these settings.
+
 ## New to JavaScript?
 
 We understand many of you might be new to JavaScript, and provide resources for you to learn the language below.
