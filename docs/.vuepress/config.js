@@ -14,8 +14,8 @@ module.exports = {
     logo: "/pipedream.svg",
     nav: [
       {
-        text: "Community",
-        link: "https://spectrum.chat/pipedream/general?tab=posts"
+        text: "Slack",
+        link: "https://pipedream.com/community"
       },
       {
         text: "Support",

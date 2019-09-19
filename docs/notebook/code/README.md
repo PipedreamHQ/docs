@@ -18,7 +18,7 @@ It's important to understand the core difference between Node.js and the JavaScr
 
 We understand the choice of JavaScript as the first supported language for a data workflow tool may seem odd. But we're trying to give non-data engineers data superpowers, and so want to start with one of the [most used](https://insights.stackoverflow.com/survey/2019#technology-_-programming-scripting-and-markup-languages) [languages](https://github.blog/2018-11-15-state-of-the-octoverse-top-programming-languages/). If you work on websites and know JavaScript well, Pipedream makes you a full stack engineer.
 
-If you'd like to see another, specific language supported, please [let us know on our Spectrum community](https://spectrum.chat/pipedream/feature-requests?tab=posts).
+If you'd like to see another, specific language supported, please [let us know on Slack](https://pipedream.com/community).
 
 If you've never used JavaScript, see the [resources below](#new-to-javascript).
 
