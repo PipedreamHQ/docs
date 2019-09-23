@@ -80,8 +80,6 @@ First, it's important to note that all events sent to an SSE destination within 
 
 **Note that the `p_` prefix is part of the workflow ID**.
 
-You can also retrieve the workflow ID by logging the value of `$context.pipeline_id` in any code step — see the [docs on `$context`](/notebook/dollar-context/) for more information.
-
 Once you have the workflow ID, you can construct the event source URL for your SSE destination. That URL is of the following format:
 
 ```

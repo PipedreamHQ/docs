@@ -8,20 +8,6 @@
 
 **Before you send data to Snowflake, you'll need to complete the [prerequisite steps below](#prerequisites)**.
 
-### Using the Send to Snowflake action
-
-First, [add a new Action](/notebook/actions/#adding-a-new-action), then select the **Send to Snowflake** Action:
-
-<div>
-<img alt="Snowflake action" width="300" src="./images/snowflake-action.png">
-</div>
-
-By default, this action requires three parameters: your Snowflake Account Name, your Snowflake Private Key, and the [JSON payload](/notebook/destinations/#payload-expressions) you'd like to send. **We recommend you store the values of your account name and private key as [Pipedream environment variables](/environment-variables)**, then reference the values of those environment variables in the action using `process.env`:
-
-<div>
-<img alt="Snowflake action params" width="500" src="./images/snowflake-action-params.png">
-</div>
-
 ### Using `$send.snowflake()`
 
 You can use the `$send.snowflake()` method within any Node.js code cell to send JSON to Snowflake. For example, we save the necessary Snowflake values in [Pipedream environment variables](/environment-variables) and send test JSON like so:
@@ -147,22 +133,6 @@ Our [example Snowflake workflow](https://pipedream.com/@dylburger/stream-json-to
 - `SNOWFLAKE_PRIVATE_KEY` — the contents of the private key file you generated in step 1, **removing the `-----BEGIN RSA PRIVATE KEY-----` header and `-----END RSA PRIVATE KEY-----` trailer above and below the key**.
 
 If you used existing Snowflake resources (e.g. you already had a target database), or otherwise modified the names from the SQL statements above, you'll need to reference those in the **Send to Snowflake** action from the workflow. See the [**Getting Started** section of the workflow's README](https://pipedream.com/@dylburger/stream-json-to-snowflake-p_wOCyPM/readme) for specific instructions.
-
-### Step 4 — Fork our example workflow, send test data
-
-[Fork the Snowflake workflow](https://pipedream.com/@dylburger/stream-json-to-snowflake-p_wOCyPM/edit?action=fork), enter the appropriate values for your Snowflake account name and private key:
-
-<div>
-<img alt="Snowflake action params" width="500" src="./images/snowflake-action-params.png">
-</div>
-
-then press the **Send Test Event** button.
-
-This will send some sample data to the Snowflake pipe you defined, which should end up in your target table:
-
-<div>
-<img alt="JSON in Snowflake" src="./images/json-in-snowflake.png">
-</div>
 
 ## How our Snowflake integration works
 

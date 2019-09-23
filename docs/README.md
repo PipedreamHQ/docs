@@ -5,8 +5,18 @@ next: false
 
 # Documentation
 
-Welcome to Pipedream! Our goal is to build the best automation platform for developers. The service is [free](/pricing/) (with a few reasonable [limits](/limits/)).
+Pipedream is a [free](/pricing/) service for developers to build and run [workflows](/notebook/) that integrate your apps, data, and APIs — no servers or infrastructure to manage!
 
-These docs provide an overview of how the platform works, from the simplest workflow to the deepest technical details of the service. We hope they answer most of your questions. If not, or if you have any feedback or ideas about the product, please [reach out](/support/). We'd love to hear from you!
+- Pipedream executes your workflow on every event (e.g., [HTTP requests](/notebook/sources/#webhook-sources) or a [schedule](/cron/)).
 
-If you've got a specific question, use the search box at the top-right of the page to find answers. If you're new to Pipedream, [start here](/what-is-pipedream/).
+- Add steps to run Node.js [code](/notebook/code/) and [actions](/notebook/actions/).
+
+- Steps are executed in the order they appear in your workflow.
+
+- Select events to inspect export values, logs and errors for each step.
+
+Workflow code is [public](/public-workflows/) so the community can discover and fork it. Your workflow execution and event data is **private**.
+
+If you have any questions or feedback, [join us on Slack](https://pipedream.com/community/) or [reach out](/support/)!
+
+If you're new to Pipedream, [start here](/what-is-pipedream/).

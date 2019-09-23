@@ -22,7 +22,7 @@ Pipedream manages the servers where these cron jobs run, so you don't have to wo
 
 ## Choosing a cron trigger
 
-To create a cron job, create a new workflow and search for the **Cron Scheduler** source:
+To create a cron job, create a new workflow and search for the **Cron Scheduler** trigger:
 
 <div>
 <img alt="Cron Scheduler source" width="400" src="./images/cron-scheduler-source.png">
@@ -65,32 +65,9 @@ When you run a cron job, you may need to troubleshoot errors or other execution 
 
 Any time a cron job runs, you'll see a new execution appear in the [Inspector](/notebook/inspector/). This shows you when the cron job ran, how long it took to run, and any errors that might have occurred. **Click on any of these lines in the Inspector to view the details for a given run**.
 
-Code steps show [Logs](/notebook/code/#logs) below the step itself. Any time you run `console.log()` or other functions that print output, you should see the logs appear directly below the step where the code ran:
-
-<div>
-<img alt="console.log and error messages" width="500" src="../notebook/code/images/console-log-error.png">
-</div>
+Code steps show [Logs](/notebook/code/#logs) below the step itself. Any time you run `console.log()` or other functions that print output, you should see the logs appear directly below the step where the code ran.
 
 [Actions](/notebook/actions/) and [Destinations](/notebook/destinations/) also show execution details relevant to the specific Action or Destination. For example, when you use the [HTTP Destination](/notebook/destinations/http/) to make an HTTP request, you'll see the HTTP request and response details tied to that Destination step:
-
-<div>
-<img alt="HTTP request and response" src="../notebook/destinations/http/images/http-request-response.png">
-</div>
-
-## `$event`
-
-Pipedream exposes the event data tied to your workflow's trigger in a global variable called [`$event`](/notebook/dollar-event/). For cron jobs, the "event" is a time-based trigger, so `$event` contains the following:
-
-- The timer configuration (the simple schedule, or cron expression), stored in the `timer_config` property.
-- The time this cron job ran, in the `time` property.
-
-You can access these properties in any Action or Code step using `$event.timer_config` and `$event.time`, respectively.
-
-We display the full `$event` object for each execution of your cron job just below the Cron Scheduler source configuration. This will be displayed when you click on a specific execution in the Inspector:
-
-<div>
-<img alt="$event shape for cron jobs" width="400" src="./images/cron-dollar-event.png">
-</div>
 
 ## Limitations
 

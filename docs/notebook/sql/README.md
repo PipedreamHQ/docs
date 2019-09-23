@@ -4,12 +4,6 @@ Pipedream operates a hosted data warehouse as a [Destination](/notebook/destinat
 
 We call this the **SQL** Destination for short.
 
-At the left of every workflow, you'll see a **SQL** label. Clicking this displays a UI for writing and executing SQL queries, and viewing the associated results in a data table:
-
-<div>
-<img alt="Pipedream SQL UI" width="200" src="./images/sql-tab.png">
-</div>
-
 You can query the data sent to a SQL Destination immediately, without any extra work to define a table schema or worry about the data types of fields. **Send data, write SQL — that's it**.
 
 We hope this helps you quickly analyze the data flowing through your workflow without worrying about creating and maintaining a complex data warehouse. The Pipedream SQL Service isn't a replacement for a data warehouse, but it's a simple way to start asking complex questions on your data.
@@ -30,9 +24,7 @@ Then, add the **Table** name and **Payload** you want to send to the SQL Destina
 
 That said, you can also send data to the _same_ SQL table from across multiple workflows if you'd like. If you've configured three different workflows to process data from different sources, but the schema of those data are all the same and you want to consolidate the data for analysis, **you can send data from all three workflows (or more) to the same SQL table**. Just add the same **Table** name in all three SQL Destinations, and the data will all end up in that table for querying.
 
-Finally, you'll need to add the **Payload** you want to send to the SQL Destination. The value you enter here can be any valid [JavaScript expression](/notebook/destinations/#payload-expressions) that evaluates to a JavaScript object, but typically you'll just want to add something like `$event` or `$event.body` to send all or a single property of [`$event`](/notebook/dollar-event/) to the SQL service for querying.
-
-By default, if you include nothing in the **Payload** field, we send the full value of [`$event`](/notebook/dollar-event/).
+Finally, you'll need to add the **Payload** you want to send to the SQL Destination. The value you enter here can be any valid [JavaScript expression](/notebook/destinations/#payload-expressions) that evaluates to a JavaScript object, but typically you'll just want to add `event`, `event.body` or another step export using the `steps` object to the SQL service for querying.
 
 ### Using `$send.sql()`
 
@@ -43,7 +35,7 @@ You can send data to a SQL Destination in [Node.js code steps](/notebook/code/),
 ```javascript
 $send.sql({
   table: "your-table-name",
-  payload: $event.body
+  payload: event
 });
 ```
 

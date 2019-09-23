@@ -28,33 +28,27 @@ On Pipedream, anyone can find a public workflow, [fork it](/notebook/fork/), and
 
 ## Workflow steps
 
-### Source
+### Trigger
 
-Every workflow begin with a single [**source**](/notebook/sources/). Sources are the interface we give you to send data to a workflow. For example, you can create a [webhook source](/notebook/sources/#webhook-sources) to accept data from a Stripe webhooks. We give you a URL that you add to your Stripe settings:
-
-<div>
-<img alt="New source URL" src="./images/new-pipeline-url.png">
-</div>
-
-As soon as Stripe triggers a new event, you'll see it in the workflow.
+Every workflow begin with a single [**trigger**](/notebook/sources/). Triggers are the interface we give you to send data to a workflow. For example, you can create a [trigger](/notebook/sources/#webhook-sources) to accept data from webhooks. We give you a unique URL where you can send webhook request. Each event triggers the workflow to run.
 
 ### Code, Actions
 
-[**Code** steps](/notebook/code/) and [**actions**](/notebook/destinations/) cannot precede sources, since they'll have no data to operate on.
+[**Code**](/notebook/code/) and [**actions**](/notebook/destinations/) steps cannot precede triggers, since they'll have no data to operate on.
 
-Once you save a workflow, we publish it. Each event you send to your source triggers the workflow code, whether you have the workflow open in your browser, or not.
+Once you save a workflow, it gets deployed to our servers. Each event triggers the workflow code, whether you have the workflow open in your browser, or not.
 
 ## Saving and Running your Workflow
 
-When you edit the code in the workflow and save those changes, we publish a new version:
+When you edit the code in the workflow and save those changes, we deploy a new version:
 
 <div>
 <img alt="Workflow version" src="./images/pipeline-version.png">
 </div>
 
-All events sent to the source will run against the most recent version of the workflow.
+All events sent to the trigger will run against the most recent version of the workflow.
 
-Code and action steps of Pipedream workflows are executed in the order they appear. These steps can be interleaved — we impose no order besides the "source must come first" rule noted above.
+Code and action steps of Pipedream workflows are executed in the order they appear. These steps can be interleaved — we impose no order besides the "trigger must come first" rule noted above.
 
 ## Sharing Workflows
 
@@ -78,19 +72,7 @@ Clicking the toggle deactivates your workflow:
 <img alt="Inactive workflow" width="220" src="./images/inactive.png">
 </div>
 
-**Deactivating a workflow has a different impact for different [sources](/notebook/sources/)**. For instance, deactivating a workflow with a [Webhook source](/notebook/sources/#webhook-sources) disables the associated endpoint from receiving HTTP requests (those endpoints will respond with a 404 HTTP status code). Disabling a workflow with a Cron Scheduler source will disable the cron job.
-
-By default, inactive workflows are displayed on the list of workflows on the homepage. Active workflows appear with a green vertical bar to their left, inactive workflows with a grey bar:
-
-<div>
-<img alt="List of active and inactive workflows" width="300" src="./images/list-of-active-inactive-workflows.png">
-</div>
-
-You can remove inactive workflows from the homepage by toggling the **Show inactive** checkbox at the top of that page:
-
-<div>
-<img alt="List of workflows" width="350" src="./images/my-pipelines.png">
-</div>
+**Deactivating a workflow has a different impact for different [sources](/notebook/sources/)**. For instance, deactivating a workflow with a [Webhook trigger](/notebook/sources/#webhook-sources) disables the associated endpoint from receiving HTTP requests (those endpoints will respond with a 404 HTTP status code). Disabling a workflow with a Cron Scheduler trigger will disable the cron job.
 
 ## Archiving Workflows
 
@@ -102,11 +84,7 @@ You can archive any workflow by clicking on the ellipsis in the top-right corner
 <img alt="Archive workflow" width="300" src="./images/archive-workflow.png">
 </div>
 
-Archived workflows do not appear in the list of workflows on your homepage by default, unless you tick the box to show them:
-
-<div>
-<img alt="List of workflows" width="350" src="./images/my-pipelines.png">
-</div>
+Archived workflows do not appear in the list of workflows on your homepage by default.
 
 ## More resources
 

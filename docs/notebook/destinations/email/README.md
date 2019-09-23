@@ -10,14 +10,6 @@ You can use this to email yourself when you receive a specific event, for exampl
 
 ### Adding an Email Action
 
-First, [add a new Action](/notebook/actions/#adding-a-new-action), then select the **Send me an email** Action:
-
-<div>
-<img alt="Email me action" width="300" src="./images/email-destination.png">
-</div>
-
-You can modify the **Subject** and the message (either **Plain Text** or **HTML**) however you want.
-
 ### Using `$send.email()`
 
 You can send data to an Email Destination in [Node.js code steps](/notebook/code/), too, using the `$send.email()` function. **This allows you to send emails to yourself programmatically, if you need more control than Actions afford**.

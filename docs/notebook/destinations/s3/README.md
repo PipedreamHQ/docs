@@ -6,24 +6,6 @@
 
 ## Adding an S3 Destination
 
-### Adding an S3 Action
-
-First, [add a new Action](/notebook/actions/#adding-a-new-action), then select the **Amazon S3** Action:
-
-<div>
-<img alt="S3 action" width="300" src="./images/s3-action.png">
-</div>
-
-S3 Actions require you to specify the **Bucket** where you want to send data, the **Payload** you want to send, and an optional [**Prefix**](https://docs.aws.amazon.com/AmazonS3/latest/user-guide/using-folders.html):
-
-<div>
-<img alt="S3 destination parameters" width="400" src="./images/s3-dest-params.png">
-</div>
-
-Before sending data, **you must allow Pipedream to upload objects to your bucket** — see the [S3 Bucket Policy](#s3-bucket-policy) below.
-
-See the [docs on payload expressions](/notebook/destinations/#payload-expressions) to learn more about what you can specify in the **Payload** field.
-
 ### Using `$send.s3()`
 
 You can send data to an S3 Destination in [Node.js code steps](/notebook/code/), too, using the `$send.s3()` function. **This allows you to send data to S3 programmatically, if you need more control than Actions afford**.
@@ -34,7 +16,7 @@ You can send data to an S3 Destination in [Node.js code steps](/notebook/code/),
 $send.s3({
   bucket: "your-bucket-here",
   prefix: "your-prefix/",
-  payload: $event.body
+  payload: event.body
 });
 ```
 

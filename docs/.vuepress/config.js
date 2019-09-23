@@ -4,7 +4,7 @@ const webpack = require("webpack");
 module.exports = {
   title: "Docs",
   head: [["link", { rel: "icon", href: "/favicon.ico" }]],
-  description: "Pipedream Documentation - Making any engineer a data engineer",
+  description: "Pipedream Documentation - Integrate your apps, data and APIs",
   base: "/",
   themeConfig: {
     algolia: {
@@ -41,8 +41,7 @@ module.exports = {
           "/notebook/fork/",
           "/notebook/sources/",
           "/notebook/inspector/",
-          "/notebook/dollar-event/",
-          "/notebook/dollar-context/",
+          "/notebook/steps/",
           "/notebook/code/",
           "/notebook/actions/",
           "/notebook/destinations/",

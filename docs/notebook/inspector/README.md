@@ -1,12 +1,8 @@
 # Inspector
 
-The Inspector lists the events you send to a [source](/notebook/sources/). Once you choose a source and send events to it, you'll see those events in the Inspector, to the left of your workflow:
+The Inspector lists the events you send to a [trigger](/notebook/sources/). Once you choose a trigger and send events to it, you'll see those events in the Inspector, to the left of your workflow.
 
-<div>
-<img alt="Inspector" src="./images/inspector.png">
-</div>
-
-Clicking on an event from the list shows the event data ([`$event`](/notebook/dollar-event/)) in the Inspector, as well as the logs and observability associated with the execution for that event.
+Clicking on an event from the list shows the event data in the Inspector, as well as the logs and observability associated with the execution for that event.
 
 Let's review each of the Inspector's components and fields below.
 
@@ -48,7 +44,7 @@ Any events you've previously sent to a workflow, you can replay through your wor
 
 Clicking on that icon replays the event.
 
-The contents of [`$event`](/notebook/dollar-event/) will be the same for the replayed event. The contents of [`$context`](/notebook/dollar-context/), however, will contain a different event `id` and `ts`, to represent the fact that this is a different execution of the same event.
+The step exports will be the same for the replayed event (note: the contents of `steps.trigger.context`, will contain a different event `id` and `ts`, to represent the fact that this is a different execution of the same event).
 
 ## Live / Pause
 
@@ -115,18 +111,6 @@ Any `console.log()` statements or other output of code steps is attached to the 
 <div>
 <img alt="Exception message" src="./images/exception.png">
 </div>
-
-## `$event`
-
-When you send an event to your workflow, we take the source data — for example, the HTTP payload, headers, etc. — and add our own Pipedream metadata to it. That collection of data is exposed as a JavaScript object named [`$event`](/notebook/dollar-event/) you can use in the rest of your workflow.
-
-When you click on a given event in the Inspector, we show you the contents the associated `$event` variable:
-
-<div>
-<img alt="Dollar event in inspector" src="./images/inspector.png">
-</div>
-
-You can read and modify `$event` in any [code](/notebook/code/) step, or reference it in [actions](/notebook/actions/). See those docs or the general [docs on `$event`](/notebook/dollar-event/) for more information.
 
 ## Events from older versions your workflow
 

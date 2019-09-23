@@ -1,18 +1,14 @@
-# Sources
+# Triggers
 
-Every workflow is triggered by an event. **Sources** define the type of event that triggers your workflow.
-
-For example, a Webhook source exposes a URL where you can send any HTTP request. We'll run your workflow on each request. Cron sources trigger your workflow on a schedule.
-
-Today, we support Webhook and [Cron Scheduler](/cron/) sources, and plan to support others — SQL, scheduled code cells, and more — in the future. If there's a source you'd like to see, [let us know](/support/).
+Workflows execute on every trigger event (e.g., HTTP requests or a schedule).
 
 [[toc]]
 
-## Webhook Sources
+## Webhook
 
-When you select the **Webhook** source, we create a URL endpoint specific to your workflow.
+When you select the **Webhook** trigger, we create a URL endpoint specific to your workflow.
 
-While we call the source "Webhook", it's technically a general HTTP source. You can send any HTTP requests to this endpoint, from anywhere on the web. You can configure the endpoint as the destination URL for a webhook or send HTTP traffic from your application - we'll accept any [valid HTTP request](#valid-requests).
+While we call the trigger "Webhook", it's technically a general HTTP trigger. You can send any HTTP requests to this endpoint, from anywhere on the web. You can configure the endpoint as the destination URL for a webhook or send HTTP traffic from your application - we'll accept any [valid HTTP request](#valid-requests).
 
 ### Valid Requests
 
@@ -22,13 +18,7 @@ We default to generating HTTPS URLs in the UI for security, but will accept HTTP
 
 Moreover, you can send data to any path on this host, with any query string parameters. We'll display the path in the [Inspector](/notebook/inspector/), and you can access the full URL in [`$event`](/notebook/dollar-event/) if you'd like to write code that interprets requests with different URLs differently.
 
-You can find all of the HTTP request metadata associated with your event in `$event`. Some common properties, like method, headers, URL and body, are included as top-level keys. The rest are included under the `proto` object:
-
-<div>
-<img alt="Proto object of $event" width="361" src="./images/proto.png">
-</div>
-
-We describe the full format of `$event` in the [associated docs](/notebook/dollar-event/).
+You can find all of the HTTP request metadata associated with your event in the `event` object. Some common properties, like method, headers, URL and body, are included as top-level keys.
 
 You can send data of any [Media Type](https://www.iana.org/assignments/media-types/media-types.xhtml) in the body of your request.
 
@@ -36,13 +26,7 @@ The primary limit we impose is on the size of the request body: we'll issue a `4
 
 ### How Pipedream handles JSON payloads
 
-JSON is the main data exchange format on the web today. Pipedream optimizes for the case where you've sent JSON as the source event to a workflow.
-
-When you send JSON in the HTTP payload, or when JSON data is sent in the payload from a webhook provider, **Pipedream converts that JSON to its equivalent JavaScript object** and includes it as a property of [`$event`](/notebook/dollar-event/): `$event.body`.
-
-You can confirm this JSON -> JavaScript object conversion occurred by examining the `$event.inferred_body_type` property. If this is JSON, we correctly recognized the payload as such, and converted `$event.body` to an object accordingly.
-
-In the [Inspector](/notebook/inspector/), we present `$event.body` cleanly, indenting nested properties, to make the payload easy to read. Since `$event.body` is a JavaScript object, it's easy to reference and manipulate properties of the payload using dot-notation.
+When you send JSON in the HTTP payload, or when JSON data is sent in the payload from a webhook provider, **Pipedream converts that JSON to its equivalent JavaScript object**. The trigger data can be referenced using the `steps` object.
 
 ### Cross-Origin HTTP Requests
 
@@ -57,11 +41,7 @@ Thus, your endpoint will accept [cross-origin HTTP requests](https://developer.m
 
 ### HTTP Responses
 
-By default, when you send a [valid HTTP request](#valid-requests) to your source endpoint URL, you should expect to receive a `200 OK` status code with the following JSON payload:
-
-```json
-{ "success": true }
-```
+By default, when you send a [valid HTTP request](#valid-requests) to your endpoint URL, you should expect to receive a `200 OK` status code.
 
 This is a convenient default for workflows. When you're processing HTTP requests, you often don't need to issue any special response to the client. We issue this default response so you don't have to write any code to do it yourself.
 
@@ -110,18 +90,18 @@ If you control the application sending requests, you should implement [a backoff
 
 ## Cron Scheduler Source
 
-See [the cron docs](/cron/) for more information on how to use the **Cron Scheduler** source.
+See [the cron docs](/cron/) for more information on how to use the **Cron Scheduler** trigger.
 
-## Stripe, Sendgrid, and other SaaS sources
+## Stripe, Sendgrid, and other SaaS triggers
 
-You'll notice a range of other sources available to choose from on new workflows:
+You'll notice a range of other triggers available to choose from on new workflows:
 
 <div>
 <img alt="List of SaaS sources" width="300" src="./images/list-of-sources.png">
 </div>
 
-These sources all utilize webhooks for delivering new events to workflows, and operate in like a Webhook source in every way. But they help you better identify the true source of the events sent to a workflow. For example, the icon tied to the source is displayed on your list of workflows on the homepage.
+These triggers all utilize webhooks for delivering new events to workflows, and operate in like a Webhook trigger in every way. But they help you better identify the true source of the events sent to a workflow. For example, the icon tied to the source is displayed on your list of workflows on the homepage.
 
-If you don't see a source you'd like us to create, please [let us know](https://spectrum.chat/pipedream/feature-requests?tab=posts).
+If you don't see a source you'd like us to create, please [let us know](https://pipdream.com/community/).
 
 <Footer />

@@ -16,8 +16,6 @@ It's important to understand the core difference between Node.js and the JavaScr
 
 **Anything you can do with Node.js, you can do in a workflow**. This includes using most of [npm's 400,000 packages](#using-npm-packages).
 
-We understand the choice of JavaScript as the first supported language for a data workflow tool may seem odd. But we're trying to give non-data engineers data superpowers, and so want to start with one of the [most used](https://insights.stackoverflow.com/survey/2019#technology-_-programming-scripting-and-markup-languages) [languages](https://github.blog/2018-11-15-state-of-the-octoverse-top-programming-languages/). If you work on websites and know JavaScript well, Pipedream makes you a full stack engineer.
-
 If you'd like to see another, specific language supported, please [let us know on Slack](https://pipedream.com/community).
 
 If you've never used JavaScript, see the [resources below](#new-to-javascript).
@@ -48,17 +46,9 @@ Code steps support syntax highlighting and automatic indentation. We love readab
 
 You can call `console.log()` or `console.error()` to add logs to the execution of a code step. These logs will appear just below the associated step. `console.log()` messages appear in black, `console.error()` in red:
 
-<div>
-<img alt="console.log and error messages" width="500" src="./images/console-log-error.png">
-</div>
-
 ## Syntax errors
 
-We try to catch any syntax errors when you're writing code, highlighting the lines where the error occurred in red. You can hover over those red vertical lines to see more information about the error:
-
-<div>
-<img alt="Syntax error in code" width="350" src="./images/syntax-error.png">
-</div>
+We try to catch any syntax errors when you're writing code, highlighting the lines where the error occurred in red.
 
 ::: warning
 While you can save a workflow with syntax errors, it's unlikely to run correctly on new events. Make sure to fix syntax errors before running your workflow.
@@ -86,7 +76,7 @@ Any variables you create within a step are scoped to that step. That is, they ca
 
 Within a step, the [normal rules of JavaScript variable scope](https://developer.mozilla.org/en-US/docs/Glossary/Scope) apply.
 
-**Any data you need to use across steps, or send to destinations, we recommend you keep in `$event`.** [`$event`](/notebook/dollar-event/) is a global variable accessible across all steps in a workflow. `$event` is a JavaScript object; you can add, delete or update properties of `$event` in any code step. See the [docs on `$event`](/notebook/dollar-event/) for more information.
+**Any data you need to use across steps, or send to destinations, we recommend you use [step exports](/notebook/steps/).** 
 
 ## `$end`
 
