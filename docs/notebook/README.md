@@ -92,7 +92,6 @@ Read more about each of the components of a Pipedream workflow below:
 
 - [Sources](/notebook/sources/)
 - [The Inspector](/notebook/inspector/)
-- [`$event`](/notebook/dollar-event/)
 - [Code](/notebook/code/)
 - [Destinations](/notebook/destinations/)
 - [SQL](/notebook/sql/)

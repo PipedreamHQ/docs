@@ -10,7 +10,6 @@ As you build, review the rest of the docs to understand how you can use the plat
 
 - [Sources](/notebook/sources/)
 - [Inspector](/notebook/inspector/)
-- [`$event`](/notebook/dollar-event/)
 - [Code](/notebook/code/)
 - [Destinations](/notebook/destinations/)
 - [SQL](/notebook/sql/)

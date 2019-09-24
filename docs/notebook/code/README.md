@@ -32,12 +32,11 @@ You can add any Node.js code in the text editor that appears. For example, try:
 
 ```javascript
 console.log("This is Node.js code");
-// $event contains the event data that triggered a workflow
 console.log(
-  `Here are all the keys I sent in my event body: ${Object.keys($event.body)}`
+  `Here are all the keys I sent in my event body: ${Object.keys(event.body)}`
 );
-// You can modify $event, adding, updating or deleting any of its properties
-$event.test = "Some test data";
+this.test = "Some test data";
+return "Test data";
 ```
 
 Code steps support syntax highlighting and automatic indentation. We love readable code!
@@ -76,7 +75,7 @@ Any variables you create within a step are scoped to that step. That is, they ca
 
 Within a step, the [normal rules of JavaScript variable scope](https://developer.mozilla.org/en-US/docs/Glossary/Scope) apply.
 
-**Any data you need to use across steps, or send to destinations, we recommend you use [step exports](/notebook/steps/).** 
+**Any data you need to use across steps, or send to destinations, we recommend you use [step exports](/notebook/steps/).**
 
 ## `$end`
 
@@ -119,17 +118,12 @@ console.log("This code will only run 50% of the time");
 
 [Errors](https://nodejs.org/dist/latest-v10.x/docs/api/errors.html#errors_errors) raised in a code step will stop the execution of code or destinations that follow.
 
-You'll see the message associated with the error in the Inspector:
+You'll see the message associated with the error in the Inspector and the code step where the error was raised.
 
 <div>
 <img alt="Exception message" src="./images/exception.png">
 </div>
 
-and the code step where the error was raised:
-
-<div>
-<img alt="Exception in code step" width="450" src="./images/exception-in-code-cell.png">
-</div>
 
 ## Using secrets in code
 

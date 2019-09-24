@@ -16,7 +16,7 @@ You can send a request to your endpoint using any valid HTTP method: `GET`, `POS
 
 We default to generating HTTPS URLs in the UI for security, but will accept HTTP requests against the same endpoint URL.
 
-Moreover, you can send data to any path on this host, with any query string parameters. We'll display the path in the [Inspector](/notebook/inspector/), and you can access the full URL in [`$event`](/notebook/dollar-event/) if you'd like to write code that interprets requests with different URLs differently.
+You can send data to any path on this host, with any query string parameters.
 
 You can find all of the HTTP request metadata associated with your event in the `event` object. Some common properties, like method, headers, URL and body, are included as top-level keys.
 
