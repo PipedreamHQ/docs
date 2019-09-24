@@ -12,15 +12,15 @@ A workflow is a sequence of linear steps that operates on an event.
 
 - Pipedream executes your workflow on every event (e.g., [HTTP requests](/notebook/sources/#webhook-sources) or a [schedule](/cron/))
 
-- Add steps to run Node.js [code](/notebook/code/) and [pre-built actions](/notebook/actions/).
+- Add steps to run Node.js [code](/notebook/code/) (using virtually any [`npm`](/notebook/code/#using-npm-packages) package) and [pre-built actions](/notebook/actions/).
 
 - Steps are executed in the order they appear in your workflow.
 
 - Select events to inspect export values, logs and errors for each step.
 
-- Iterate quickly with npm support, automatic versioning and instant deploys.
+- Iterate quickly with automatic versioning and instant deploys.
 
-- Build in your browser, run on our servers - just sign in to get started.
+- Build in your browser, run on our servers - just [sign in](/sign-up/) to get started.
 
 Workflow code is [public](/public-workflows/) so the community can discover and fork it. Your workflow execution and event data is **private**.
 
