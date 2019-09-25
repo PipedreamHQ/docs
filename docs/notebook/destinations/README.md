@@ -22,6 +22,17 @@ The docs below discuss features common to all Destinations. See the [docs for a 
 
 ## Adding a Destination
 
+### Adding a Destination using Actions
+
+The simplest way to send data to a Destination is using one of our pre-built [Actions](/notebook/actions/). Just add the relevant Action, enter the required values, and send data to your workflow!
+
+For example, you can use the [Webhook Action](/notebook/destinations/http/) to send an HTTP request from a workflow. First, add a new Action to your workflow by clicking on the + button between any two steps.
+
+Then, choose the **Webhook** action and add the **URL** and **Payload**.
+
+This action defaults to sending an HTTP `POST` request with the desired payload to the specified URL. If you'd like to change the HTTP method, add Basic auth, query string parameters or headers, you can click the sections below the Payload field.
+
+
 ### Using `$send`
 
 You can send data to Destinations in [Node.js code steps](/notebook/code/), too, using `$send` functions.

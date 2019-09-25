@@ -2,6 +2,11 @@
 
 Workflows execute on every trigger event (e.g., HTTP requests or a schedule).
 
+For example, Webhook triggers expose a URL where you can send any HTTP request. We'll run your workflow on each request. The Cron Scheduler triggers your workflow on a schedule.
+
+Today, we support Webhook and [Cron Scheduler](/cron/) sources, and plan to support others — SQL, scheduled code cells, and more — in the future. If there's a source you'd like to see, [let us know](/support/).
+
+
 [[toc]]
 
 ## Webhook
@@ -16,7 +21,9 @@ You can send a request to your endpoint using any valid HTTP method: `GET`, `POS
 
 We default to generating HTTPS URLs in the UI for security, but will accept HTTP requests against the same endpoint URL.
 
-You can send data to any path on this host, with any query string parameters.
+You can send data to any path on this host, with any query string parameters. You can access the full URL in `event` if you'd like to write code that interprets requests with different URLs differently.
+
+Common properties, like method, headers, URL and body, are exported to `event`. The entire event is exported as `steps.trigger.raw_event`.
 
 You can find all of the HTTP request metadata associated with your event in the `event` object. Some common properties, like method, headers, URL and body, are included as top-level keys.
 
@@ -26,7 +33,13 @@ The primary limit we impose is on the size of the request body: we'll issue a `4
 
 ### How Pipedream handles JSON payloads
 
-When you send JSON in the HTTP payload, or when JSON data is sent in the payload from a webhook provider, **Pipedream converts that JSON to its equivalent JavaScript object**. The trigger data can be referenced using the `steps` object.
+JSON is the main data exchange format on the web today. Pipedream optimizes for the case where you've sent JSON as the source event to a workflow.
+
+When you send JSON in the HTTP payload, or when JSON data is sent in the payload from a webhook provider, **Pipedream converts that JSON to its equivalent JavaScript object**. The trigger data can be referenced using either `event` or the `steps` object.
+
+You can confirm this JSON -> JavaScript object conversion occurred by examining the `event.inferred_body_type` property. If this is JSON, we correctly recognized the payload as such, and converted `event.body` to an object accordingly.
+
+In the [Inspector](/notebook/inspector/), we present `event.body` cleanly, indenting nested properties, to make the payload easy to read. Since `event.body` is a JavaScript object, it's easy to reference and manipulate properties of the payload using dot-notation.
 
 ### Cross-Origin HTTP Requests
 
@@ -41,7 +54,12 @@ Thus, your endpoint will accept [cross-origin HTTP requests](https://developer.m
 
 ### HTTP Responses
 
-By default, when you send a [valid HTTP request](#valid-requests) to your endpoint URL, you should expect to receive a `200 OK` status code.
+By default, when you send a [valid HTTP request](#valid-requests) to your endpoint URL, you should expect to receive a `200 OK` status code with the following payload:
+
+```
+<p><b>Success!</b></p>
+<p>To customize this response, check out our docs <a href="https://docs.pipedream.com/notebook/sources/#http-responses">here</a></p>
+```
 
 This is a convenient default for workflows. When you're processing HTTP requests, you often don't need to issue any special response to the client. We issue this default response so you don't have to write any code to do it yourself.
 

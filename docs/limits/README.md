@@ -39,6 +39,8 @@ Every event you send to a workflow triggers the execution of that workflow. **Wo
 
 If your code exceeds this limit, we'll throw a `TIMEOUT` error and stop your workflow. Any partial logs and observability associated with code cells that ran successfully before the timeout will be attached to the event in the UI, so you can examine the state of your workflow and troubleshoot where it may have failed.
 
+Events that trigger a `TIMEOUT` error will appear in red in the [Inspector](/notebook/inspector/). You'll see the timeout error, also in red, in the cell at which the code timed out.
+
 ### Memory
 
 **You should expect to have access to at least `192 MB` of memory for your code and libraries** during workflow execution.

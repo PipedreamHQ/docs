@@ -6,6 +6,10 @@ Webhook Destinations allow you to send data to another HTTP endpoint URL outside
 
 ## Adding a Webhook Destination
 
+### Adding a Webhook Action
+
+First, add a new Action to your workflow by clicking on the + button between any two steps. Then, choose the **Webhook** action and add the **URL** and **Payload**. This action defaults to sending an HTTP `POST` request with the desired payload to the specified URL. If you'd like to change the HTTP method, add Basic auth, query string parameters or headers, you can click the sections below the Payload field.
+
 ### Using `$send.http()`
 
 You can send data to a Webhook Destination in [Node.js code steps](/notebook/code/), too, using the `$send.http()` function. **This allows you to send data to destinations programmatically, if you need more control than Actions afford**.
@@ -66,7 +70,7 @@ Generally, this means it should only take a few seconds for us to send the event
 
 ## HTTP Request and Response
 
-You can see both the data that was sent in the HTTP request, and the HTTP response that was issued, below the Code or Action cell in which the Destination was used.
+You can see both the data that was sent in the HTTP request, and the HTTP response that was issued, below the Code or Action cell in which the Destination was used. If the Action or Code step you're using issues multiple HTTP requests, we'll show the request and response data for each.
 
 ## Retries
 

@@ -36,7 +36,7 @@ Every workflow begin with a single [**trigger**](/notebook/sources/). Triggers a
 
 [**Code**](/notebook/code/) and [**actions**](/notebook/destinations/) steps cannot precede triggers, since they'll have no data to operate on.
 
-Once you save a workflow, it gets deployed to our servers. Each event triggers the workflow code, whether you have the workflow open in your browser, or not.
+Once you save a workflow, we deploy it to our servers. Each event triggers the workflow code, whether you have the workflow open in your browser, or not.
 
 ## Saving and Running your Workflow
 
@@ -72,7 +72,9 @@ Clicking the toggle deactivates your workflow:
 <img alt="Inactive workflow" width="220" src="./images/inactive.png">
 </div>
 
-**Deactivating a workflow has a different impact for different [sources](/notebook/sources/)**. For instance, deactivating a workflow with a [Webhook trigger](/notebook/sources/#webhook-sources) disables the associated endpoint from receiving HTTP requests (those endpoints will respond with a 404 HTTP status code). Disabling a workflow with a Cron Scheduler trigger will disable the cron job.
+**Deactivating a workflow has a different impact for different [triggers](/notebook/sources/)**. For instance, deactivating a workflow with a [Webhook trigger](/notebook/sources/#webhook-sources) disables the associated endpoint from receiving HTTP requests (those endpoints will respond with a 404 HTTP status code). Disabling a workflow with a Cron Scheduler trigger will disable the cron job.
+
+By default, inactive workflows are displayed on the list of workflows on the homepage. Active workflows appear with a green vertical bar to their left, inactive workflows with a grey bar. You can remove inactive workflows from the homepage by toggling the **Show inactive** checkbox at the top of that page.
 
 ## Archiving Workflows
 

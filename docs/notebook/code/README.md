@@ -16,6 +16,8 @@ It's important to understand the core difference between Node.js and the JavaScr
 
 **Anything you can do with Node.js, you can do in a workflow**. This includes using most of [npm's 400,000 packages](#using-npm-packages).
 
+JavaScript is the first supported language on Pipedream as it is one of the [most used](https://insights.stackoverflow.com/survey/2019#technology-_-programming-scripting-and-markup-languages) [languages](https://github.blog/2018-11-15-state-of-the-octoverse-top-programming-languages/). If you work on websites and know JavaScript well, Pipedream makes you a full stack engineer.
+
 If you'd like to see another, specific language supported, please [let us know on Slack](https://pipedream.com/community).
 
 If you've never used JavaScript, see the [resources below](#new-to-javascript).
@@ -43,7 +45,7 @@ Code steps support syntax highlighting and automatic indentation. We love readab
 
 ## Logs
 
-You can call `console.log()` or `console.error()` to add logs to the execution of a code step. These logs will appear just below the associated step. `console.log()` messages appear in black, `console.error()` in red:
+You can call `console.log()` or `console.error()` to add logs to the execution of a code step. These logs will appear just below the associated step. `console.log()` messages appear in black, `console.error()` in red.
 
 ## Syntax errors
 
