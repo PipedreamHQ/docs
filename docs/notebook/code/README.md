@@ -55,7 +55,7 @@ We try to catch any syntax errors when you're writing code, highlighting the lin
 While you can save a workflow with syntax errors, it's unlikely to run correctly on new events. Make sure to fix syntax errors before running your workflow.
 :::
 
-## Using `npm` packages
+## Using npm packages
 
 [npm](https://www.npmjs.com/) hosts JavaScript packages: bits of code someone else has written and packaged for others to use. npm has over 400,000 packages and counting. You can use most of those on Pipedream.
 
@@ -125,7 +125,6 @@ You'll see the message associated with the error in the Inspector and the code s
 <div>
 <img alt="Exception message" src="./images/exception.png">
 </div>
-
 
 ## Using secrets in code
 
