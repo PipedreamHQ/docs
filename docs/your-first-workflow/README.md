@@ -8,9 +8,12 @@ Once you're done with the tutorial, start building workflows to solve your own p
 
 As you build, review the rest of the docs to understand how you can use the platform for more advanced use cases:
 
-- [Sources](/notebook/sources/)
-- [Inspector](/notebook/inspector/)
-- [Code](/notebook/code/)
+- [Steps](/notebook/)
+  - [Triggers](/notebook/sources/)
+  - [Code](/notebook/code/)
+  - [Actions](/notebook/actions/)
+  - [Passing data between steps](/notebook/sources/)
+- [Events](/notebook/events/)
 - [Destinations](/notebook/destinations/)
 - [SQL](/notebook/sql/)
 

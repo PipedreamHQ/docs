@@ -1,4 +1,4 @@
-# Forking a workflow
+# Fork
 
 On Pipedream, a "fork" refers to a copy of an existing workflow. When you find a public workflow that you want to use yourself, you fork it to make a copy of the workflow that lives in your account.
 

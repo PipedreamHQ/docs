@@ -4,7 +4,7 @@ Workflows execute on every trigger event (e.g., HTTP requests or a schedule).
 
 For example, Webhook triggers expose a URL where you can send any HTTP request. We'll run your workflow on each request. The Cron Scheduler triggers your workflow on a schedule.
 
-Today, we support Webhook and [Cron Scheduler](/cron/) sources, and plan to support others — SQL, scheduled code cells, and more — in the future. If there's a source you'd like to see, [let us know](/support/).
+Today, we support Webhook and [Cron Scheduler](/cron/) triggers, and plan to support others — SQL, scheduled code cells, and more — in the future. If there's a source you'd like to see, [let us know](/support/).
 
 
 [[toc]]
@@ -23,7 +23,7 @@ We default to generating HTTPS URLs in the UI for security, but will accept HTTP
 
 You can send data to any path on this host, with any query string parameters. You can access the full URL in `event` if you'd like to write code that interprets requests with different URLs differently.
 
-Common properties, like method, headers, URL and body, are exported to `event`. The entire event is exported as `steps.trigger.raw_event`.
+Common properties, like method, headers, URL and body, are exported to `steps.trigger.event` (Pipedream also provides the `event` object as an alias to `steps.trigger.event`). The entire event is exported as `steps.trigger.raw_event`.
 
 You can find all of the HTTP request metadata associated with your event in the `event` object. Some common properties, like method, headers, URL and body, are included as top-level keys.
 
@@ -106,10 +106,12 @@ If you send too many requests to your Webhook source within a small period of ti
 
 If you control the application sending requests, you should implement [a backoff strategy](https://medium.com/clover-platform-blog/conquering-api-rate-limiting-dcac5552714d) to temporarily slow the rate of events.
 
-## Cron Scheduler Source
+## Cron Scheduler
 
 See [the cron docs](/cron/) for more information on how to use the **Cron Scheduler** trigger.
 
+
+<!--
 ## Stripe, Sendgrid, and other SaaS triggers
 
 You'll notice a range of other triggers available to choose from on new workflows:
@@ -119,6 +121,7 @@ You'll notice a range of other triggers available to choose from on new workflow
 </div>
 
 These triggers all utilize webhooks for delivering new events to workflows, and operate in like a Webhook trigger in every way. But they help you better identify the true source of the events sent to a workflow. For example, the icon tied to the source is displayed on your list of workflows on the homepage.
+-->
 
 If you don't see a source you'd like us to create, please [let us know](https://pipdream.com/community/).
 

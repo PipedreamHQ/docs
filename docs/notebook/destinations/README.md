@@ -1,4 +1,4 @@
-# Destinations
+# Overview
 
 **Destinations**, like [Actions](/notebook/actions/), abstract the delivery and connection logic required to send events to services like Amazon S3, or targets like HTTP and email.
 

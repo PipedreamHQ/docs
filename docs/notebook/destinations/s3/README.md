@@ -1,4 +1,4 @@
-# Amazon S3 Destinations
+# Amazon S3
 
 [Amazon S3](https://aws.amazon.com/s3/) — the Simple Storage Service — is a common place to dump data for long-term storage on AWS. Pipedream supports delivery to S3 as a first-class Destination.
 

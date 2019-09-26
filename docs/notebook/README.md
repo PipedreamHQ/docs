@@ -1,36 +1,20 @@
-# How Workflows Work
+# What are steps?
 
-Workflows are composed of steps, which you can add, edit and remove interactively, sending new data to your workflow with each change and viewing the associated observability for simple debugging. We'll talk about types of steps you can add and how you use them below.
+Steps are the building blocks you use to create workflows. You can easily combine multiple steps into a workflow to integrate your apps, data and APIs:
 
-[[toc]]
+- Steps include triggers, code and pre-built actions.
 
-## Editing Title and Description
+- Steps are executed linearly, in the order they appear in your workflow.
 
-When you create a workflow, you can edit the **Title** and **Description** near the top. We also present some helpful information — the workflow's author, the current version, and visibility state of the code and data, and when the workflow was last updated:
+- You can pass data between steps using `steps` objects.
 
-<div>
-<img alt="Pipeline title and description" src="./images/pipeline.png">
-</div>
+- You can observe the execution results for each step including export values, logs and errors.
 
-## Workflows are public, your data is private
-
-**All workflow steps are public. The data you send to a workflow, or logs you generate, are private**.
-
-Please see our [docs on public workflows](/public-workflows/) for more information.
-
-## Forking public workflows
-
-We hope that the workflows you write are helpful for many other people. If you've written a workflow to send all Stripe transaction data to a Redshift data warehouse, someone else will probably want to use your workflow to solve that same use case.
-
-If you've used [Github](https://github.com/), you can think of the workflow as a unique, public repository. It's code that anyone can view and fork for their own use.
-
-On Pipedream, anyone can find a public workflow, [fork it](/notebook/fork/), and run it, modifying any of the steps within the workflow to make it work for their use case.
-
-## Workflow steps
+## Types of Steps
 
 ### Trigger
 
-Every workflow begin with a single [**trigger**](/notebook/sources/). Triggers are the interface we give you to send data to a workflow. For example, you can create a [trigger](/notebook/sources/#webhook-sources) to accept data from webhooks. We give you a unique URL where you can send webhook request. Each event triggers the workflow to run.
+Every workflow begin with a single [**trigger**](/notebook/sources/) step. Trigger steps initiate the execution of a workflow; i.e., workflows execute on each trigger event. For example, you can create a [webhook trigger](/notebook/sources/#webhook-sources) to accept data from webhooks. We give you a unique URL where you can send webhook requests, and your workflow is executed on each request.
 
 ### Code, Actions
 
@@ -38,64 +22,99 @@ Every workflow begin with a single [**trigger**](/notebook/sources/). Triggers a
 
 Once you save a workflow, we deploy it to our servers. Each event triggers the workflow code, whether you have the workflow open in your browser, or not.
 
-## Saving and Running your Workflow
+## Step Exports
 
-When you edit the code in the workflow and save those changes, we deploy a new version:
+Use step exports to pass data between steps in a workflow. Any step can use data that was returned or exported by previous steps. For example, a workflow trigger step exports data about the trigger event that you can reference and use in your workflow.
+
+- Steps can export immutable, JSON-serializable values using `return` or `this.foo = 'bar'`.
+
+- Step exports are mapped to the `steps` object at `steps.unique_step_name`.
+
+- Exports can be inspected for each event (e.g., add `return 'foo'` to a Node.js step and run your workflow).
+
+<!--
+
+### Referencing step exports in code steps and action forms
+
+**`steps` is a [JavaScript object](https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Objects/Basics#Object_basics)**. This is just a collection of key-value pairs surrounded by curly braces — {} — like so:
+
+```
+{
+    age: 50,
+    name: {
+        first: "Luke",
+        last: "Skywalker",
+    }
+}
+```
+
+Every key — for example `age` — has an associated value (here, the number 50). In JavaScript, the value of a key can be an object itself, like `name` above.
+
+Within a code cell, you can reference the data in `$event` like you would any other JavaScript object, using [dot-notation](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Working_with_Objects#Objects_and_properties).
+
+```javascript
+// Prints "Luke"
+console.log($event.name.first);
+// Prints "Skywalker"
+console.log($event.name.last);
+```
+
+### Shape / Contents
+
+The initial contents of `$event` differ depending on the source you've chosen for your workflow.
+
+Clicking on an event in the Inspector reveals the contents of `$event` for that workflow execution under the [source](/notebook/sources/) to the right:
 
 <div>
-<img alt="Workflow version" src="./images/pipeline-version.png">
+<img alt="Dollar event under source" src="./images/complex-dollar-event.png">
 </div>
 
-All events sent to the trigger will run against the most recent version of the workflow.
 
-Code and action steps of Pipedream workflows are executed in the order they appear. These steps can be interleaved — we impose no order besides the "trigger must come first" rule noted above.
 
-## Sharing Workflows
+### Copying the dot-notation path to a specific value
 
-Since [workflows are public](/public-workflows/), you can simply copy the pipedream.com URL to your pipeline and share it with anyone:
+When you send an event with a complex shape to a workflow, it can be difficult to construct the correct dot-notation to access a specific value from `$event`. For example, in this example below:
 
 <div>
-<img alt="Workflow URL" src="./images/workflow-url.png">
+<img alt="Complex dollar event" src="./images/complex-dollar-event.png">
 </div>
 
-## Deactivating Workflows
+if I want to get the name of the homeworld of the person, I've got to scan down many levels of nested objects to construct `$event.body.person.homeworld.name`.
 
-Workflows can be deactivated by switching the toggle in the top-left corner of any workflow. By defaut, this toggle is green, which means your workflow is active:
+**Instead, I can find the property I'm interested in, hold the `Cmd` or `Windows` key, and click. This will copy the dot-notation path to that property to my clipboard.**
 
 <div>
-<img alt="Active workflow" width="200" src="./images/active.png">
+<img alt="Cmd click to get dot-notation" src="./images/cmd-click-to-get-path.png">
 </div>
 
-Clicking the toggle deactivates your workflow:
+### Modifying `$event`
+
+Any changes you make to `$event` persist across code steps. Typically, we scope variables to the step they were created in, so you wouldn't have access to a variable outside of that step. **Any data you need to use across steps should be stored in properties of `$event`**.
+
+You can add, delete, or update the value of any key in `$event`:
+
+```javascript
+// Add a new key-value pair
+$event.currentTimestamp = +new Date();
+// Delete a key-value pair
+delete $event.url;
+// Update a value of an existing key
+$event.body.person.job = "Retired Jedi";
+```
+
+If you modify `$event`, we'll also display the changes you made clearly below the step, under the **Diff** header:
 
 <div>
-<img alt="Inactive workflow" width="220" src="./images/inactive.png">
+<img alt="Dollar event diff" width="450" src="./images/diff.png">
 </div>
 
-**Deactivating a workflow has a different impact for different [triggers](/notebook/sources/)**. For instance, deactivating a workflow with a [Webhook trigger](/notebook/sources/#webhook-sources) disables the associated endpoint from receiving HTTP requests (those endpoints will respond with a 404 HTTP status code). Disabling a workflow with a Cron Scheduler trigger will disable the cron job.
+### Restrictions
 
-By default, inactive workflows are displayed on the list of workflows on the homepage. Active workflows appear with a green vertical bar to their left, inactive workflows with a grey bar. You can remove inactive workflows from the homepage by toggling the **Show inactive** checkbox at the top of that page.
+You cannot completely re-assign the value of the `$event` variable. That is, you cannot do this:
 
-## Archiving Workflows
-
-Since running workflows is [free](/pricing/), we encourage you to create as many as you want to test new ideas and understand how the product works. After you create a workflow, you may no longer need it. **We support archiving workflows to remove them from your list of workflows on your homepage**.
-
-You can archive any workflow by clicking on the ellipsis in the top-right corner of your workflow and selecting **Archive this workflow**:
-
-<div>
-<img alt="Archive workflow" width="300" src="./images/archive-workflow.png">
-</div>
-
-Archived workflows do not appear in the list of workflows on your homepage by default.
-
-## More resources
-
-Read more about each of the components of a Pipedream workflow below:
-
-- [Sources](/notebook/sources/)
-- [The Inspector](/notebook/inspector/)
-- [Code](/notebook/code/)
-- [Destinations](/notebook/destinations/)
-- [SQL](/notebook/sql/)
+```javascript
+$event = { prop: "value" };
+```
+-->
 
 <Footer />

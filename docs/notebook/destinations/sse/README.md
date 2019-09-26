@@ -1,4 +1,4 @@
-# Server-Sent Events (SSE) Destination
+# Server-Sent Events (SSE)
 
 Pipedream supports [Server-sent events](https://developer.mozilla.org/en-US/docs/Web/API/Server-sent_events) (SSE) as a destination, enabling you to send events from a workflow directly to a client subscribed to the event stream.
 

@@ -27,23 +27,51 @@ module.exports = {
       }
     ],
     sidebar: [
+      "/",
       "/support/",
+      "/sign-up/",
       {
-        title: "Intro to Pipedream",
+        title: "Getting Started",
         collapsable: false,
-        children: ["/what-is-pipedream/", "/sign-up/", "/your-first-workflow/"]
+        children: [
+          "/what-is-pipedream/",
+          "/your-first-workflow/",
+        ]
       },
       {
-        title: "Workflows",
+        title: "Workflow Steps",
         collapsable: false,
         children: [
           "/notebook/",
-          "/notebook/fork/",
           "/notebook/sources/",
-          "/notebook/inspector/",
-          "/notebook/steps/",
           "/notebook/code/",
           "/notebook/actions/",
+        ]
+      },
+      {
+        title: "Workflow Events",
+        collapsable: false,
+        children: [
+          "/notebook/events/",
+          "/notebook/inspector/",
+          "/notebook/replay/",
+          "/notebook/test/",
+        ]
+      },
+      {
+        title: "Managing Workflows",
+        collapsable: false,
+        children: [
+          "/notebook/fork/",
+          "/public-workflows/",
+          "/environment-variables/",
+          "/notebook/managing/",
+        ]
+      },
+      {
+        title: "Destinations",
+        collapsable: false,
+        children: [
           "/notebook/destinations/",
           "/notebook/destinations/http/",
           "/notebook/destinations/s3/",
@@ -54,8 +82,6 @@ module.exports = {
         ]
       },
       "/cron/",
-      "/public-workflows/",
-      "/environment-variables/",
       "/pricing/",
       "/limits/",
       "/security/"

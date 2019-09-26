@@ -1,4 +1,4 @@
-# Inspector
+# Inspect Events
 
 The Inspector lists the events you send to a [trigger](/notebook/sources/). Once you choose a trigger and send events to it, you'll see those events in the Inspector, to the left of your workflow.
 
@@ -7,44 +7,6 @@ Clicking on an event from the list shows the event data in the Inspector, as wel
 Let's review each of the Inspector's components and fields below.
 
 [[toc]]
-
-## Test Events
-
-We provide the ability for you to send a test event through your workflow to test it before running it on real data.
-
-We provide a default test event you can send to a workflow that helps you explore the features of the product. Click the **Send Test Event** button at the top of the Inspector to send this event to your workflow:
-
-<div>
-<img alt="Send test event" width="300" src="./images/send-test-event-button.png">
-</div>
-
-**The contents of this test event varies depending on the source**.
-
-When you're first learning how Pipedream works, you can trigger a workflow using this test event to learn how [code](/notebook/code/), [actions](/notebook/actions), [destinations](/notebook/destinations/), and more.
-
-Typically, though, you're processing events of a different shape in real workflows. **So we give you a way to edit the test event tied to a workflow**.
-
-First, click the **Edit Test Event** button:
-
-<div>
-<img alt="Edit test event" width="200" src="./images/edit-test-event.png">
-</div>
-
-This will open a text editor next to the Inspector that lets you edit the test event for this workflow. You can add any valid JSON here and **Save** it. The next time you click the **Send Test Event** button, your new test event will be sent through your workflow.
-
-Clicking the **Default** button in the **Edit Test Event** editor will revert your test event back to the original default. You'll have to **Save** this change, as well.
-
-## Replay Event
-
-Any events you've previously sent to a workflow, you can replay through your workflow, sending the same event again. Once you select an event in the Inspector, you'll see an icon at the far right of the row:
-
-<div>
-<img alt="Edit test event" width="350" src="./images/replay.png">
-</div>
-
-Clicking on that icon replays the event.
-
-The step exports will be the same for the replayed event (note: the contents of `steps.trigger.context`, will contain a different event `id` and `ts`, to represent the fact that this is a different execution of the same event).
 
 ## Live / Pause
 

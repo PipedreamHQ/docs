@@ -1,4 +1,4 @@
-# Email Destination
+# Email
 
 The Email Destination allows you send an email to _yourself_ — the email address tied to the account you signed up with — at any step of a workflow.
 
