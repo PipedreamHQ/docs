@@ -12,9 +12,9 @@ First, add a new Action to your workflow by clicking on the + button between any
 
 ### Using `$send.http()`
 
-You can send data to a Webhook Destination in [Node.js code steps](/notebook/code/), too, using the `$send.http()` function. **This allows you to send data to destinations programmatically, if you need more control than Actions afford**.
+You can send data to a Webhook Destination in [Node.js code steps](/workflows/steps/code/), too, using the `$send.http()` function. **This allows you to send data to destinations programmatically, if you need more control than Actions afford**.
 
-Let's use `$send.http()` to send an HTTP POST request like we did in the Action example above. [Add a new Action](/notebook/actions/#adding-a-new-action), then search for "**Code**":
+Let's use `$send.http()` to send an HTTP POST request like we did in the Action example above. [Add a new Action](/workflows/steps/actions/#adding-a-new-action), then search for "**Code**":
 
 <div>
 <img alt="Code action" width="300" src="./images/new-code-step.png">
@@ -66,7 +66,7 @@ you won't have to `await` the execution of the HTTP requests in your workflow. W
 
 Webhook Destination delivery is handled asynchronously, separate from the execution of a workflow. However, we deliver the specified payload to Webhook destinations for every event sent to your workflow.
 
-Generally, this means it should only take a few seconds for us to send the event to the destination you specify. In some cases, delivery will take longer. You can always review how many destinations we've delivered a given event to by examining the [**Dest** column in the Inspector](/notebook/inspector/#dest-destinations).
+Generally, this means it should only take a few seconds for us to send the event to the destination you specify. In some cases, delivery will take longer. You can always review how many destinations we've delivered a given event to by examining the [**Dest** column in the Inspector](/workflows/events/inspect/#dest-destinations).
 
 ## HTTP Request and Response
 

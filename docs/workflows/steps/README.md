@@ -128,7 +128,7 @@ console.log($event.name.last);
 
 The initial contents of `$event` differ depending on the source you've chosen for your workflow.
 
-Clicking on an event in the Inspector reveals the contents of `$event` for that workflow execution under the [source](/notebook/sources/) to the right:
+Clicking on an event in the Inspector reveals the contents of `$event` for that workflow execution under the [source](/workflows/steps/triggers/) to the right:
 
 <div>
 <img alt="Dollar event under source" src="./images/complex-dollar-event.png">

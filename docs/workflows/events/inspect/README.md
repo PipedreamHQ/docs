@@ -1,6 +1,6 @@
 # Inspect Events
 
-The Inspector lists the events you send to a [trigger](/notebook/sources/). Once you choose a trigger and send events to it, you'll see those events in the Inspector, to the left of your workflow.
+The Inspector lists the events you send to a [trigger](/workflows/steps/triggers/). Once you choose a trigger and send events to it, you'll see those events in the Inspector, to the left of your workflow.
 
 Clicking on an event from the list shows the event data in the Inspector, as well as the logs and observability associated with the execution for that event.
 
@@ -60,11 +60,11 @@ Specifically,
 
 **Duration = Time Your Code Ran + Pipedream Execution Time**
 
-Destination delivery is handled asynchonously, after your code is run. The **Duration** here is tied to the runtime of your code. Separately, you can see the [destination runtime](/notebook/destinations/#asynchronous-delivery) in the destination cells themselves.
+Destination delivery is handled asynchonously, after your code is run. The **Duration** here is tied to the runtime of your code. Separately, you can see the [destination runtime](/destinations/#asynchronous-delivery) in the destination cells themselves.
 
 ## Messages
 
-Any `console.log()` statements or other output of code steps is attached to the associated code cells. But [`$end()`](/notebook/code/#end) or [exceptions](/notebook/code/#exceptions) end a workflow's execution, so their details are worth displaying prominently:
+Any `console.log()` statements or other output of code steps is attached to the associated code cells. But [`$end()`](/workflows/steps/code/#end) or [exceptions](/workflows/steps/code/#exceptions) end a workflow's execution, so their details are worth displaying prominently:
 
 <div>
 <img alt="End message" src="./images/dollar-end.png">
