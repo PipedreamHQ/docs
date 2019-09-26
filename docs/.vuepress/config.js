@@ -34,7 +34,7 @@ module.exports = {
         title: "Getting Started",
         collapsable: false,
         children: [
-          "/what-are-workflows/",
+          "/workflows/",
           "/your-first-workflow/",
         ]
       },
@@ -42,28 +42,28 @@ module.exports = {
         title: "Workflow Steps",
         collapsable: false,
         children: [
-          "/notebook/",
-          "/notebook/sources/",
-          "/notebook/code/",
-          "/notebook/actions/",
+          "/workflows/steps/",
+          "/workflows/steps/triggers/",
+          "/workflows/steps/code/",
+          "/workflows/steps/actions/",
         ]
       },
       {
         title: "Workflow Events",
         collapsable: false,
         children: [
-          "/notebook/events/",
-          "/notebook/inspector/",
-          "/notebook/replay/",
-          "/notebook/test/",
+          "/workflows/events/",
+          "/workflows/events/inspect/",
+          "/workflows/events/replay/",
+          "/workflows/events/test/",
         ]
       },
       {
         title: "Managing Workflows",
         collapsable: false,
         children: [
-          "/notebook/fork/",
-          "/notebook/managing/",
+          "/workflow/fork/",
+          "/workflow/managing/",
           "/public-workflows/",
           "/environment-variables/",
         ]
@@ -72,16 +72,15 @@ module.exports = {
         title: "Destinations",
         collapsable: false,
         children: [
-          "/notebook/destinations/",
-          "/notebook/destinations/http/",
-          "/notebook/destinations/s3/",
-          "/notebook/destinations/email/",
-          "/notebook/destinations/snowflake/",
-          "/notebook/sql/",
-          "/notebook/destinations/sse/"
+          "/destinations/",
+          "/destinations/http/",
+          "/destinations/s3/",
+          "/destinations/email/",
+          "/destinations/snowflake/",
+          "/destinations/sql/",
+          "/destinations/sse/"
         ]
       },
-      "/cron/",
       "/pricing/",
       "/limits/",
       "/security/"

@@ -6,11 +6,11 @@ prev: false
 
 Workflows make it easy to integrate your apps, data, and APIs — all with no servers or infrastructure to manage!
 
-- Workflows are composed of code that is organized and executed as a sequence of linear [**steps**](/notebook/).
+- Workflows are composed of code that is organized and executed as a sequence of linear [**steps**](/workflows/steps).
 
-- Trigger your workflow on any event (e.g., [HTTP requests](/notebook/sources/#webhook-sources) or a [schedule](/cron/)).
+- Trigger your workflow on any event (e.g., [HTTP requests](/workflows/triggers/#webhook-sources) or a [schedule](/cron/)).
 
-- Add steps to run Node.js [code](/notebook/code/) (using virtually any [`npm`](/notebook/code/#using-npm-packages) package) and [pre-built actions](/notebook/actions/).
+- Add steps to run Node.js [code](/workflows/code/) (using virtually any [`npm`](/workflows/code/#using-npm-packages) package) and [pre-built actions](/workflows/actions/).
 
 - Steps are executed in the order they appear in your workflow.
 
