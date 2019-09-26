@@ -18,7 +18,7 @@ Every workflow begin with a single [**trigger**](/notebook/sources/) step. Trigg
 
 ### Code, Actions
 
-[**Code**](/notebook/code/) and [**actions**](/notebook/destinations/) steps cannot precede triggers, since they'll have no data to operate on.
+[**Code**](/notebook/code/) and [**Actions**](/notebook/destinations/) steps cannot precede triggers, since they'll have no data to operate on.
 
 Once you save a workflow, we deploy it to our servers. Each event triggers the workflow code, whether you have the workflow open in your browser, or not.
 
