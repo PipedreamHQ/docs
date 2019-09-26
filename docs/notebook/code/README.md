@@ -77,7 +77,7 @@ Any variables you create within a step are scoped to that step. That is, they ca
 
 Within a step, the [normal rules of JavaScript variable scope](https://developer.mozilla.org/en-US/docs/Glossary/Scope) apply.
 
-**Any data you need to use across steps, or send to destinations, we recommend you use [step exports](/notebook/steps/).**
+**Any data you need to use across steps, or send to destinations, we recommend you use [step exports](/notebook/).**
 
 ## `$end`
 

@@ -27,7 +27,7 @@ When you send an event to your workflow, we take the source data — for example
 
 When you click on a given event in the Inspector, we show you the contents the associated `event` variable:
 
-You can reference `event` in any [code](/notebook/code/) step, or reference it in [actions](/notebook/actions/). See those docs or the general [docs on passing data between steps](/notebook/steps/) for more information.
+You can reference `event` in any [code](/notebook/code/) step, or reference it in [actions](/notebook/actions/). See those docs or the general [docs on passing data between steps](/notebook/) for more information.
 
 ## Event observability
 
