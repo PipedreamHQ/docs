@@ -24,7 +24,7 @@ If you've never used JavaScript, see the [resources below](#new-to-javascript).
 
 ## Adding a code step
 
-[Add a new Action](/notebook/actions/#adding-a-new-action), search for "**code**", and select the **Run Node.js Code** action:
+[Add a new Action](/workflows/steps/actions/#adding-a-new-action), search for "**code**", and select the **Run Node.js Code** action:
 
 <div>
 <img alt="Code action" width="300" src="./images/new-code-step.png">
@@ -77,7 +77,7 @@ Any variables you create within a step are scoped to that step. That is, they ca
 
 Within a step, the [normal rules of JavaScript variable scope](https://developer.mozilla.org/en-US/docs/Glossary/Scope) apply.
 
-**Any data you need to use across steps, or send to destinations, we recommend you use [step exports](/notebook/).**
+**Any data you need to use across steps, or send to destinations, we recommend you use [step exports](/workflows/steps/).**
 
 ## `$end`
 

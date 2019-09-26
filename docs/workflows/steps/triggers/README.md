@@ -4,7 +4,7 @@ Workflows execute on every trigger event (e.g., HTTP requests or a schedule).
 
 For example, Webhook triggers expose a URL where you can send any HTTP request. We'll run your workflow on each request. The Cron Scheduler triggers your workflow on a schedule.
 
-Today, we support Webhook and [Cron Scheduler](/cron/) triggers, and plan to support others — SQL, scheduled code cells, and more — in the future. If there's a source you'd like to see, [let us know](/support/).
+Today, we support Webhook and [Cron Scheduler](/workflows/steps/triggers/#cron-scheduler) triggers, and plan to support others — SQL, scheduled code cells, and more — in the future. If there's a source you'd like to see, [let us know](/support/).
 
 
 [[toc]]
@@ -39,7 +39,7 @@ When you send JSON in the HTTP payload, or when JSON data is sent in the payload
 
 You can confirm this JSON -> JavaScript object conversion occurred by examining the `event.inferred_body_type` property. If this is JSON, we correctly recognized the payload as such, and converted `event.body` to an object accordingly.
 
-In the [Inspector](/notebook/inspector/), we present `event.body` cleanly, indenting nested properties, to make the payload easy to read. Since `event.body` is a JavaScript object, it's easy to reference and manipulate properties of the payload using dot-notation.
+In the [Inspector](/workflows/events/inspect/), we present `event.body` cleanly, indenting nested properties, to make the payload easy to read. Since `event.body` is a JavaScript object, it's easy to reference and manipulate properties of the payload using dot-notation.
 
 ### Cross-Origin HTTP Requests
 
@@ -58,7 +58,7 @@ By default, when you send a [valid HTTP request](#valid-requests) to your endpoi
 
 ```
 <p><b>Success!</b></p>
-<p>To customize this response, check out our docs <a href="https://docs.pipedream.com/notebook/sources/#http-responses">here</a></p>
+<p>To customize this response, check out our docs <a href="https://docs.pipedream.com/workflows/steps/triggers/#http-responses">here</a></p>
 ```
 
 This is a convenient default for workflows. When you're processing HTTP requests, you often don't need to issue any special response to the client. We issue this default response so you don't have to write any code to do it yourself.
@@ -98,7 +98,7 @@ In this case, the request will still appear in the inspector, with information o
 
 Your API key is the host part of the endpoint, e.g. the `eniqtww30717` in `eniqtww30717.m.pipedream.net`. If you attempt to send a request to an endpoint that does not exist, we'll return a `404 Not Found` error.
 
-We'll also issue a 404 response on workflows with a webhook source that have been [deactivated](/notebook/#deactivating-workflows).
+We'll also issue a 404 response on workflows with a webhook source that have been [deactivated](/workflows/managing/#deactivating-workflows).
 
 #### Too Many Requests
 
@@ -140,21 +140,21 @@ If you're running a cron job once a day, you probably don't want to wait until t
 
 ### Future executions of your cron job
 
-You'll see the time your job is scheduled to run next under the **Next Job** section of the [Inspector](/notebook/inspector).
+You'll see the time your job is scheduled to run next under the **Next Job** section of the [Inspector](/workflows/event/inspect/).
 
 ### Job History
 
-You'll see the history of job executions under the **Job History** section of the [Inspector](/notebook/inspector).
+You'll see the history of job executions under the **Job History** section of the [Inspector](/workflows/event/inspect/).
 
 Clicking on a specific job shows the execution details for that job — all the logs and observability associated with that run of the workflow.
 
 ### Trigger a notification to an external service (email, Slack, etc.)
 
-You can send yourself a notification — for example, an email or a Slack message — at any point in a workflow by using the relevant [Action](/notebook/actions/) or [Destination](/notebook/destinations/).
+You can send yourself a notification — for example, an email or a Slack message — at any point in a workflow by using the relevant [Action](/workflows/steps/actions/) or [Destination](/destinations/).
 
-If you'd like to email yourself when a job finishes successfully, you can use the [Email Destination](/notebook/destinations/email/). You can send yourself a Slack message using the Slack Action, or trigger an [HTTP request](/notebook/destinations/http/) to an external service.
+If you'd like to email yourself when a job finishes successfully, you can use the [Email Destination](/destinations/email/). You can send yourself a Slack message using the Slack Action, or trigger an [HTTP request](/destinations/http/) to an external service.
 
-You can also [write code](/notebook/code/) to trigger any complex notification logic you'd like.
+You can also [write code](/workflows/steps/code/) to trigger any complex notification logic you'd like.
 
 ### Rate Limit
 
@@ -164,11 +164,11 @@ When you're testing cron jobs, you may encounter **Rate Limit Exceeded** errors.
 
 When you run a cron job, you may need to troubleshoot errors or other execution issues. Pipedream offers built-in, step-level logs that show you detailed execution information that should aid troubleshooting.
 
-Any time a cron job runs, you'll see a new execution appear in the [Inspector](/notebook/inspector/). This shows you when the cron job ran, how long it took to run, and any errors that might have occurred. **Click on any of these lines in the Inspector to view the details for a given run**.
+Any time a cron job runs, you'll see a new execution appear in the [Inspector](/workflows/events/inspect/). This shows you when the cron job ran, how long it took to run, and any errors that might have occurred. **Click on any of these lines in the Inspector to view the details for a given run**.
 
-Code steps show [Logs](/notebook/code/#logs) below the step itself. Any time you run `console.log()` or other functions that print output, you should see the logs appear directly below the step where the code ran.
+Code steps show [Logs](/workflows/steps/code/#logs) below the step itself. Any time you run `console.log()` or other functions that print output, you should see the logs appear directly below the step where the code ran.
 
-[Actions](/notebook/actions/) and [Destinations](/notebook/destinations/) also show execution details relevant to the specific Action or Destination. For example, when you use the [HTTP Destination](/notebook/destinations/http/) to make an HTTP request, you'll see the HTTP request and response details tied to that Destination step:
+[Actions](/workflows/steps/actions/) and [Destinations](/destinations/) also show execution details relevant to the specific Action or Destination. For example, when you use the [HTTP Destination](/destinations/http/) to make an HTTP request, you'll see the HTTP request and response details tied to that Destination step:
 
 ### Limitations
 

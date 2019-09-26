@@ -14,11 +14,11 @@ Steps are the building blocks you use to create workflows. You can easily combin
 
 ### Trigger
 
-Every workflow begin with a single [**trigger**](/notebook/sources/) step. Trigger steps initiate the execution of a workflow; i.e., workflows execute on each trigger event. For example, you can create a [webhook trigger](/notebook/sources/#webhook-sources) to accept data from webhooks. We give you a unique URL where you can send webhook requests, and your workflow is executed on each request.
+Every workflow begin with a single [**trigger**](/workflows/steps/triggers/) step. Trigger steps initiate the execution of a workflow; i.e., workflows execute on each trigger event. For example, you can create a [webhook trigger](/workflows/steps/triggers/#webhook-sources) to accept data from webhooks. We give you a unique URL where you can send webhook requests, and your workflow is executed on each request.
 
 ### Code, Actions
 
-[**Code**](/notebook/code/) and [**actions**](/notebook/destinations/) steps cannot precede triggers, since they'll have no data to operate on.
+[**Code**](/workflows/steps/code/) and [**actions**](/destinations/) steps cannot precede triggers, since they'll have no data to operate on.
 
 Once you save a workflow, we deploy it to our servers. Each event triggers the workflow code, whether you have the workflow open in your browser, or not.
 
@@ -63,7 +63,7 @@ console.log($event.name.last);
 
 The initial contents of `$event` differ depending on the source you've chosen for your workflow.
 
-Clicking on an event in the Inspector reveals the contents of `$event` for that workflow execution under the [source](/notebook/sources/) to the right:
+Clicking on an event in the Inspector reveals the contents of `$event` for that workflow execution under the [source](/workflows/steps/triggers/) to the right:
 
 <div>
 <img alt="Dollar event under source" src="./images/complex-dollar-event.png">

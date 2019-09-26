@@ -8,7 +8,7 @@ Workflows make it easy to integrate your apps, data, and APIs — all with no s
 
 - Workflows are composed of code that is organized and executed as a sequence of linear [**steps**](/workflows/steps).
 
-- Trigger your workflow on any event (e.g., [HTTP requests](/workflows/triggers/#webhook-sources) or a [schedule](/cron/)).
+- Trigger your workflow on any event (e.g., [HTTP requests](/workflows/triggers/#webhook-sources) or a [schedule](/workflows/steps/triggers/#cron-scheduler)).
 
 - Add steps to run Node.js [code](/workflows/code/) (using virtually any [`npm`](/workflows/code/#using-npm-packages) package) and [pre-built actions](/workflows/actions/).
 
@@ -27,13 +27,13 @@ In other tools, you typically have to setup infrastructure to process events —
 Pipedream is purpose-built for running workflows on event data, so we take care of the infrastructure and boilerplate configuration for you. **Pipedream lets you focus on _what_ you want done, and we take care of _how_ to do it for you.**
 
 #### Run any Node code
-Write Node.js [code](/notebook/code/) and require `npm` packages. event contains your trigger event data. Exported step data, along with standard output, appears under each code step for inline observability.
+Write Node.js [code](/workflows/steps/code/) and require `npm` packages. event contains your trigger event data. Exported step data, along with standard output, appears under each code step for inline observability.
 
 #### Iterate quickly with inline observability, automatic versioning and instant deploys
 See events and debug execution details in real time. Output, errors, timing, and return values appear below each step. Time travel to previous versions of code, at the time the event occurred.
 
 #### Connect to APIs without writing any code
-[Actions](/notebook/actions/) are pre-defined code steps built by the Pipedream community. Send a message to Slack or Discord, store data in S3 or Snowflake, and more, all without writing any code.
+[Actions](/workflows/steps/actions/) are pre-defined code steps built by the Pipedream community. Send a message to Slack or Discord, store data in S3 or Snowflake, and more, all without writing any code.
 
 #### Auth made easy
 Auth apps once, connect to those apps in any workflow. Pipedream supports OAuth and key-based auth, and handles the OAuth flow and token refresh for you. Just link accounts to steps and reference the relevant auth info in code.

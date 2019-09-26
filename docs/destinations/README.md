@@ -1,6 +1,6 @@
 # Overview
 
-**Destinations**, like [Actions](/notebook/actions/), abstract the delivery and connection logic required to send events to services like Amazon S3, or targets like HTTP and email.
+**Destinations**, like [Actions](/workflows/steps/actions/), abstract the delivery and connection logic required to send events to services like Amazon S3, or targets like HTTP and email.
 
 However, Destinations are different than Actions in two ways:
 
@@ -13,20 +13,20 @@ The docs below discuss features common to all Destinations. See the [docs for a 
 
 ## Available Destinations
 
-- [Webhook](/notebook/destinations/http/)
-- [Email](/notebook/destinations/email/)
-- [S3](/notebook/destinations/s3/)
-- [Pipedream Data Warehouse](/notebook/sql/)
-- [Snowflake](/notebook/destinations/snowflake/)
-- [SSE](/notebook/destinations/sse/)
+- [Webhook](/destinations/http/)
+- [Email](/destinations/email/)
+- [S3](/destinations/s3/)
+- [Pipedream Data Warehouse](/destinations/sql/)
+- [Snowflake](/destinations/snowflake/)
+- [SSE](/destinations/sse/)
 
 ## Adding a Destination
 
 ### Adding a Destination using Actions
 
-The simplest way to send data to a Destination is using one of our pre-built [Actions](/notebook/actions/). Just add the relevant Action, enter the required values, and send data to your workflow!
+The simplest way to send data to a Destination is using one of our pre-built [Actions](/workflows/steps/actions/). Just add the relevant Action, enter the required values, and send data to your workflow!
 
-For example, you can use the [Webhook Action](/notebook/destinations/http/) to send an HTTP request from a workflow. First, add a new Action to your workflow by clicking on the + button between any two steps.
+For example, you can use the [Webhook Action](/destinations/http/) to send an HTTP request from a workflow. First, add a new Action to your workflow by clicking on the + button between any two steps.
 
 Then, choose the **Webhook** action and add the **URL** and **Payload**.
 
@@ -35,11 +35,11 @@ This action defaults to sending an HTTP `POST` request with the desired payload 
 
 ### Using `$send`
 
-You can send data to Destinations in [Node.js code steps](/notebook/code/), too, using `$send` functions.
+You can send data to Destinations in [Node.js code steps](/workflows/steps/code/), too, using `$send` functions.
 
 `$send` is an object provided by Pipedream that exposes destination-specific functions like `$send.http()`, `$send.s3()`, and more. **This allows you to send data to destinations programmatically, if you need more control than Actions afford**.
 
-Let's use `$send.http()` to send an HTTP POST request like we did in the Action example above. [Add a new Action](/notebook/actions/#adding-a-new-action), then search for "**Code**":
+Let's use `$send.http()` to send an HTTP POST request like we did in the Action example above. [Add a new Action](/workflows/steps/actions/#adding-a-new-action), then search for "**Code**":
 
 <div>
 <img alt="Code action" width="300" src="./images/new-code-step.png">
@@ -57,7 +57,7 @@ $send.http({
 });
 ```
 
-See the docs for the [Webhook destination](/notebook/destinations/http/) to learn more about all the options you can pass to the `$send.http()` function.
+See the docs for the [Webhook destination](/destinations/http/) to learn more about all the options you can pass to the `$send.http()` function.
 
 Again, it's important to remember that **Destination delivery is asynchronous**. If you iterate over an array of values and send an HTTP request for each:
 

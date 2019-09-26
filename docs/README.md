@@ -5,7 +5,7 @@ next: false
 
 # What is Pipedream?
 
-Pipedream is an integration platform for developers to build and run [workflows](/notebook/) that integrate apps, data, and APIs — no servers or infrastructure to manage!
+Pipedream is an integration platform for developers to build and run [workflows](/workflows/) that integrate apps, data, and APIs — no servers or infrastructure to manage!
 
 - Develop any workflow, based on any trigger.
 - Workflows are code, which you can run for [free](/pricing/).
@@ -21,7 +21,7 @@ Pipedream is purpose-built for running workflows on event data, so we take care 
 
 ### Run any Node code
 
-Write Node.js [code](/notebook/code/) and require npm packages. `event` contains your trigger event data. Exported step data, along with standard output, appears under each code step for inline observability.
+Write Node.js [code](/workflows/steps/code/) and require npm packages. `event` contains your trigger event data. Exported step data, along with standard output, appears under each code step for inline observability.
 
 ### Iterate quickly with inline observability, automatic versioning and instant deploys
 
@@ -29,7 +29,7 @@ See events and debug execution details in real time. Output, errors, timing, and
 
 ### Connect to APIs without writing any code
 
-[Actions](/notebook/actions/) are pre-defined code steps built by the Pipedream community. Send a message to Slack or Discord, store data in S3 or Snowflake, and more, all without writing any code.
+[Actions](/workflows/steps/actions/) are pre-defined code steps built by the Pipedream community. Send a message to Slack or Discord, store data in S3 or Snowflake, and more, all without writing any code.
 
 ### Auth made easy
 

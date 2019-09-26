@@ -1,6 +1,6 @@
 # Pipedream SQL Service
 
-Pipedream operates a hosted data warehouse as a [Destination](/notebook/destinations/) you can send events to from a workflow. You can run SQL on any JSON data you send here.
+Pipedream operates a hosted data warehouse as a [Destination](/destinations/) you can send events to from a workflow. You can run SQL on any JSON data you send here.
 
 We call this the **SQL** Destination for short.
 
@@ -16,7 +16,7 @@ Below we'll discuss how the **SQL** Destination works in detail, as well as the 
 
 ### Adding a Pipedream SQL Action
 
-Adding a new SQL Destination to your workflow is easy. First, [add a new Action](/notebook/actions/#adding-a-new-action) to your workflow and choose the **Send Data To Pipedream SQL Service** Action.
+Adding a new SQL Destination to your workflow is easy. First, [add a new Action](/workflows/steps/actions/#adding-a-new-action) to your workflow and choose the **Send Data To Pipedream SQL Service** Action.
 
 Then, add the **Table** name and **Payload** you want to send to the SQL Destination. You can name the table whatever you want, within the [restrictions we impose on table names](#limitations-on-pipedream-sql-table-names).
 
@@ -24,11 +24,11 @@ Then, add the **Table** name and **Payload** you want to send to the SQL Destina
 
 That said, you can also send data to the _same_ SQL table from across multiple workflows if you'd like. If you've configured three different workflows to process data from different sources, but the schema of those data are all the same and you want to consolidate the data for analysis, **you can send data from all three workflows (or more) to the same SQL table**. Just add the same **Table** name in all three SQL Destinations, and the data will all end up in that table for querying.
 
-Finally, you'll need to add the **Payload** you want to send to the SQL Destination. The value you enter here can be any valid [JavaScript expression](/notebook/destinations/#payload-expressions) that evaluates to a JavaScript object, but typically you'll just want to add `event`, `event.body` or another step export using the `steps` object to the SQL service for querying.
+Finally, you'll need to add the **Payload** you want to send to the SQL Destination. The value you enter here can be any valid [JavaScript expression](/destinations/#payload-expressions) that evaluates to a JavaScript object, but typically you'll just want to add `event`, `event.body` or another step export using the `steps` object to the SQL service for querying.
 
 ### Using `$send.sql()`
 
-You can send data to a SQL Destination in [Node.js code steps](/notebook/code/), too, using the `$send.sql()` function. **This allows you to send data to the SQL Destination programmatically, if you need more control than Actions afford**.
+You can send data to a SQL Destination in [Node.js code steps](/workflows/steps/code/), too, using the `$send.sql()` function. **This allows you to send data to the SQL Destination programmatically, if you need more control than Actions afford**.
 
 `$send.sql()` takes the same parameters as the corresponding Action:
 
@@ -166,7 +166,7 @@ One point worth re-iterating: **all numbers are recorded as Presto `DOUBLE`s**. 
 If you're seeing fields with values of variable types in your events — e.g. a field that contains numbers and strings for different events — coming into your workflow, and that's not expected, you have a couple of options.
 
 1. [`CAST` the data](https://prestodb.github.io/docs/0.172/functions/conversion.html) to the desired type when making SQL queries, or
-2. If you always expect events to contain fields with a single value, you can include a code cell in your workflow to check the type of the values of field, using the [`$end()` Pipedream function](/notebook/code/#end) to end the workflow if a value doesn't match the expected type. Calling `$end()` in a code step before a given step cell will not send the data to that Destination.
+2. If you always expect events to contain fields with a single value, you can include a code cell in your workflow to check the type of the values of field, using the [`$end()` Pipedream function](/workflows/steps/code/#end) to end the workflow if a value doesn't match the expected type. Calling `$end()` in a code step before a given step cell will not send the data to that Destination.
 
 ## Data Retention
 

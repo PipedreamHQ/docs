@@ -1,8 +1,8 @@
 # Actions
 
-Actions are reusable [code](/notebook/code/) steps that integrate your apps, data and APIs. For example, you can send HTTP requests to an external service using the [HTTP action](/notebook/destinations/http/), Slack, [Amazon S3](/notebook/destinations/s3/), and more.
+Actions are reusable [code](/workflows/steps/code/) steps that integrate your apps, data and APIs. For example, you can send HTTP requests to an external service using the [HTTP action](/destinations/http/), Slack, [Amazon S3](/destinations/s3/), and more.
 
-Typically, integrating with these services requires a lot of code to manage connection logic, error handling, etc. Actions handle that for you. You only need to specify the parameters required for the Action — for example, for the [HTTP action](/notebook/destinations/http/), what data you want to send and the URL you want to send it to.
+Typically, integrating with these services requires a lot of code to manage connection logic, error handling, etc. Actions handle that for you. You only need to specify the parameters required for the Action — for example, for the [HTTP action](/destinations/http/), what data you want to send and the URL you want to send it to.
 
 ## Using Actions
 
@@ -16,7 +16,7 @@ Typically, integrating with these services requires a lot of code to manage conn
 
 ## Adding a new Action
 
-Let's use the [Webhook Action](/notebook/destinations/http/) to send an HTTP request from a workflow. First, **add a new Action to your workflow by clicking on the + button between any two steps**.
+Let's use the [Webhook Action](/destinations/http/) to send an HTTP request from a workflow. First, **add a new Action to your workflow by clicking on the + button between any two steps**.
 
 Choose the **Webhook** action and add the **URL** and **Payload**.
 

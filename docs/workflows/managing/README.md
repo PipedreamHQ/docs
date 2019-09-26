@@ -20,7 +20,7 @@ We hope that the workflows you write are helpful for many other people. If you'v
 
 If you've used [Github](https://github.com/), you can think of the workflow as a unique, public repository. It's code that anyone can view and fork for their own use.
 
-On Pipedream, anyone can find a public workflow, [fork it](/notebook/fork/), and run it, modifying any of the steps within the workflow to make it work for their use case.
+On Pipedream, anyone can find a public workflow, [fork it](/workflows/fork/), and run it, modifying any of the steps within the workflow to make it work for their use case.
 
 ## Saving and Running your Workflow
 
@@ -56,7 +56,7 @@ Clicking the toggle deactivates your workflow:
 <img alt="Inactive workflow" width="220" src="./images/inactive.png">
 </div>
 
-**Deactivating a workflow has a different impact for different [triggers](/notebook/sources/)**. For instance, deactivating a workflow with a [Webhook trigger](/notebook/sources/#webhook-sources) disables the associated endpoint from receiving HTTP requests (those endpoints will respond with a 404 HTTP status code). Disabling a workflow with a Cron Scheduler trigger will disable the cron job.
+**Deactivating a workflow has a different impact for different [triggers](/workflows/steps/triggers/)**. For instance, deactivating a workflow with a [Webhook trigger](/workflows/steps/triggers/#webhook-sources) disables the associated endpoint from receiving HTTP requests (those endpoints will respond with a 404 HTTP status code). Disabling a workflow with a Cron Scheduler trigger will disable the cron job.
 
 By default, inactive workflows are displayed on the list of workflows on the homepage. Active workflows appear with a green vertical bar to their left, inactive workflows with a grey bar. You can remove inactive workflows from the homepage by toggling the **Show inactive** checkbox at the top of that page.
 
@@ -76,10 +76,10 @@ Archived workflows do not appear in the list of workflows on your homepage by de
 
 Read more about each of the components of a Pipedream workflow below:
 
-- [Sources](/notebook/sources/)
-- [The Inspector](/notebook/inspector/)
-- [Code](/notebook/code/)
-- [Destinations](/notebook/destinations/)
-- [SQL](/notebook/sql/)
+- [Sources](/workflows/steps/triggers/)
+- [The Inspector](/workflows/events/inspect/)
+- [Code](/workflows/steps/code/)
+- [Destinations](/destinations/)
+- [SQL](/destinations/sql/)
 
 <Footer />

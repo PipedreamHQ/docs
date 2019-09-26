@@ -10,13 +10,13 @@
 
 ### Using the Send to Snowflake action
 
-First, [add a new Action](/notebook/actions/#adding-a-new-action), then select the **Send to Snowflake** Action:
+First, [add a new Action](/workflows/steps/actions/#adding-a-new-action), then select the **Send to Snowflake** Action:
 
 <div>
 <img alt="Snowflake action" width="300" src="./images/snowflake-action.png">
 </div>
 
-By default, this action requires three parameters: your Snowflake Account Name, your Snowflake Private Key, and the [JSON payload](/notebook/destinations/#payload-expressions) you'd like to send. **We recommend you store the values of your account name and private key as [Pipedream environment variables](/environment-variables)**, then reference the values of those environment variables in the action using `process.env`.
+By default, this action requires three parameters: your Snowflake Account Name, your Snowflake Private Key, and the [JSON payload](/destinations/#payload-expressions) you'd like to send. **We recommend you store the values of your account name and private key as [Pipedream environment variables](/environment-variables)**, then reference the values of those environment variables in the action using `process.env`.
 
 
 ### Using `$send.snowflake()`

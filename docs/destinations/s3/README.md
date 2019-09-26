@@ -8,11 +8,11 @@
 
 ### Adding an S3 Action
 
-First, [add a new Action](/notebook/actions/#adding-a-new-action), then select the **Amazon S3** Action. S3 Actions require you to specify the **Bucket** where you want to send data, the **Payload** you want to send, and an optional [**Prefix**](https://docs.aws.amazon.com/AmazonS3/latest/user-guide/using-folders.html). Before sending data, **you must allow Pipedream to upload objects to your bucket** — see the [S3 Bucket Policy](#s3-bucket-policy) below.
+First, [add a new Action](/workflows/steps/actions/#adding-a-new-action), then select the **Amazon S3** Action. S3 Actions require you to specify the **Bucket** where you want to send data, the **Payload** you want to send, and an optional [**Prefix**](https://docs.aws.amazon.com/AmazonS3/latest/user-guide/using-folders.html). Before sending data, **you must allow Pipedream to upload objects to your bucket** — see the [S3 Bucket Policy](#s3-bucket-policy) below.
 
 ### Using `$send.s3()`
 
-You can send data to an S3 Destination in [Node.js code steps](/notebook/code/), too, using the `$send.s3()` function. **This allows you to send data to S3 programmatically, if you need more control than Actions afford**.
+You can send data to an S3 Destination in [Node.js code steps](/workflows/steps/code/), too, using the `$send.s3()` function. **This allows you to send data to S3 programmatically, if you need more control than Actions afford**.
 
 `$send.s3()` takes the same parameters as the corresponding Action:
 
@@ -64,7 +64,7 @@ This bucket policy provides the minimum set of permissions necessary for Pipedre
 
 S3 Destination delivery is handled asynchronously, separate from the execution of a workflow. **Moreover, events sent to an S3 bucket are batched and delivered once a minute**. For example, if you sent 30 events to an S3 Destination within a particular minute, we would collect all 30 events, delimit them with newlines, and write them to a single S3 object.
 
-In some cases, delivery will take longer than a minute. You can always review how many Destinations we've delivered a given event to by examining the [**Dest** column in the Inspector](/notebook/inspector/#dest-destinations).
+In some cases, delivery will take longer than a minute. You can always review how many Destinations we've delivered a given event to by examining the [**Dest** column in the Inspector](/workflows/events/inspect/#dest-destinations).
 
 ## S3 object format
 

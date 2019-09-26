@@ -15,7 +15,7 @@ Currently, [Pipedream is free](/pricing/) for all users, subject to the technica
 
 ## Webhook Triggers
 
-The following limits apply to [Webhook triggers](/notebook/sources/#webhook-sources).
+The following limits apply to [Webhook triggers](/workflows/steps/triggers/#webhook-sources).
 
 ### HTTP Request Body Size
 
@@ -39,7 +39,7 @@ Every event you send to a workflow triggers the execution of that workflow. **Wo
 
 If your code exceeds this limit, we'll throw a `TIMEOUT` error and stop your workflow. Any partial logs and observability associated with code cells that ran successfully before the timeout will be attached to the event in the UI, so you can examine the state of your workflow and troubleshoot where it may have failed.
 
-Events that trigger a `TIMEOUT` error will appear in red in the [Inspector](/notebook/inspector/). You'll see the timeout error, also in red, in the cell at which the code timed out.
+Events that trigger a `TIMEOUT` error will appear in red in the [Inspector](/workflows/events/inspect/). You'll see the timeout error, also in red, in the cell at which the code timed out.
 
 ### Memory
 
