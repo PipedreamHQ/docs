@@ -63,9 +63,9 @@ module.exports = {
         collapsable: false,
         children: [
           "/notebook/fork/",
+          "/notebook/managing/",
           "/public-workflows/",
           "/environment-variables/",
-          "/notebook/managing/",
         ]
       },
       {

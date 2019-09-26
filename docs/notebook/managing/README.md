@@ -1,4 +1,4 @@
-# Manage
+# Edit and Manage
 
 ## Editing Title and Description
 
