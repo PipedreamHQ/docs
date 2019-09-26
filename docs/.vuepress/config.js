@@ -34,7 +34,7 @@ module.exports = {
         title: "Getting Started",
         collapsable: false,
         children: [
-          "/what-is-pipedream/",
+          "/what-are-workflows/",
           "/your-first-workflow/",
         ]
       },
