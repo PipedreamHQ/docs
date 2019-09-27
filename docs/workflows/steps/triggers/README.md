@@ -6,7 +6,6 @@ For example, Webhook triggers expose a URL where you can send any HTTP request. 
 
 Today, we support Webhook and [Cron Scheduler](/workflows/steps/triggers/#cron-scheduler) triggers, and plan to support others — SQL, scheduled code cells, and more — in the future. If there's a source you'd like to see, [let us know](/support/).
 
-
 [[toc]]
 
 ## Webhook
@@ -140,7 +139,7 @@ If you're running a cron job once a day, you probably don't want to wait until t
 
 ### Future executions of your cron job
 
-You'll see the time your job is scheduled to run next under the **Next Job** section of the [Inspector](/workflows/event/inspect/).
+You'll see the time your job is scheduled to run next under the **Next Job** section of the [Inspector](/workflows/events/inspect/).
 
 ### Job History
 

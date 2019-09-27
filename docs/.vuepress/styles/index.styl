@@ -1,4 +1,54 @@
-@require '~vuepress-plugin-tabs/dist/themes/default.styl'
-
 body
 	font-family Helvetica, Roboto, "Helvetica Neue", Arial, sans-serif
+
+$hoverColor = #34d28b
+
+html,
+body,
+.navbar,
+.sidebar,
+.navbar .links,
+.theme-container .navbar,
+.theme-container .sidebar
+	background-color $bgColor
+
+body .content .default
+	color $textColor
+
+.theme-container .navbar,
+.navbar .links
+	background-color $headerColor
+
+.nav-item
+	color: $bgColor
+
+	@media (max-width: 719px)
+		color $headerColor
+
+.nav-item a:hover
+	color: $hoverColor
+
+	@media (max-width: 719px)
+		color $hoverColor
+
+.theme-container .navbar img
+	height 22px
+	width 144px
+	padding-top: 0.5em
+
+div .page
+	padding-left: 3rem
+
+	@media (max-width: 959px)
+		padding-left: 8.2rem
+
+	@media (max-width: 419px)
+		padding-left: 1.5rem
+
+div .sidebar-button svg
+	color: $bgColor
+
+.navbar .site-name
+	color $bgColor
+	margin-left: -25px
+	margin-top: 1px
