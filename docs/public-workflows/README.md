@@ -11,9 +11,9 @@ As soon as you create and save a workflow, that code is publicly viewable on the
 
 Because your code is public, **it's critical you do not save sensitive data — for example, API keys — in workflow steps**. You should save those values in [environment variables](/environment-variables/), and reference the value of that variable in your workflow, instead.
 
-The source or action steps are also public, **but the specific properties or [parameters](/notebook/destinations/#destination-parameters) of those steps are kept private**. For example:
+The trigger or action steps are also public, **but the specific properties or [parameters](/destinations/#destination-parameters) of those steps are kept private**. For example:
 
-- If you're using a Webhook source and sending data to S3 and SQL destinations, the fact that you're using those steps will be public. But we won't reveal the specific endpoint URL associated with your Webhook source.
+- If you're using a Webhook trigger and sending data to S3 and SQL destinations, the fact that you're using those steps will be public. But we won't reveal the specific endpoint URL associated with your Webhook trigger.
 - We also won't reveal the name of the S3 bucket to which you're sending data.
 
 You can always see the visibility status of a workflow and the associated data at the top of your workflow:

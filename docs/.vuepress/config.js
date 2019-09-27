@@ -4,7 +4,7 @@ const webpack = require("webpack");
 module.exports = {
   title: "Docs",
   head: [["link", { rel: "icon", href: "/favicon.ico" }]],
-  description: "Pipedream Documentation - Making any engineer a data engineer",
+  description: "Pipedream Documentation - Integrate your apps, data and APIs",
   base: "/",
   themeConfig: {
     algolia: {
@@ -27,36 +27,60 @@ module.exports = {
       }
     ],
     sidebar: [
+      "/",
       "/support/",
+      "/sign-up/",
       {
-        title: "Intro to Pipedream",
-        collapsable: false,
-        children: ["/what-is-pipedream/", "/sign-up/", "/your-first-workflow/"]
-      },
-      {
-        title: "Workflows",
+        title: "Getting Started",
         collapsable: false,
         children: [
-          "/notebook/",
-          "/notebook/fork/",
-          "/notebook/sources/",
-          "/notebook/inspector/",
-          "/notebook/dollar-event/",
-          "/notebook/dollar-context/",
-          "/notebook/code/",
-          "/notebook/actions/",
-          "/notebook/destinations/",
-          "/notebook/destinations/http/",
-          "/notebook/destinations/s3/",
-          "/notebook/destinations/email/",
-          "/notebook/destinations/snowflake/",
-          "/notebook/sql/",
-          "/notebook/destinations/sse/"
+          "/workflows/",
+          "/your-first-workflow/",
         ]
       },
-      "/cron/",
-      "/public-workflows/",
-      "/environment-variables/",
+      {
+        title: "Workflow Steps",
+        collapsable: false,
+        children: [
+          "/workflows/steps/",
+          "/workflows/steps/triggers/",
+          "/workflows/steps/code/",
+          "/workflows/steps/actions/",
+        ]
+      },
+      {
+        title: "Workflow Events",
+        collapsable: false,
+        children: [
+          "/workflows/events/",
+          "/workflows/events/inspect/",
+          "/workflows/events/replay/",
+          "/workflows/events/test/",
+        ]
+      },
+      {
+        title: "Managing Workflows",
+        collapsable: false,
+        children: [
+          "/workflow/fork/",
+          "/workflow/managing/",
+          "/public-workflows/",
+          "/environment-variables/",
+        ]
+      },
+      {
+        title: "Destinations",
+        collapsable: false,
+        children: [
+          "/destinations/",
+          "/destinations/http/",
+          "/destinations/s3/",
+          "/destinations/email/",
+          "/destinations/snowflake/",
+          "/destinations/sql/",
+          "/destinations/sse/"
+        ]
+      },
       "/pricing/",
       "/limits/",
       "/security/"
