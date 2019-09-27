@@ -2,7 +2,7 @@
   "devDependencies": {
     "node-sass": "^4.12.0",
     "sass-loader": "^7.1.0",
-    "vuepress": "^0.14.11",
+    "vuepress": "^1.1.0",
     "webpack": "^4.30.0"
   },
   "scripts": {
@@ -11,8 +11,6 @@
   },
   "dependencies": {
     "vue-gtm": "^2.0.0",
-    "vue-tabs-component": "^1.5.0",
-    "vuepress-algolia": "^1.0.4",
-    "vuepress-plugin-tabs": "^0.2.2"
+    "vuepress-algolia": "^1.0.4"
   }
 }

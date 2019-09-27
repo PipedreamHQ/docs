@@ -33,10 +33,7 @@ module.exports = {
       {
         title: "Getting Started",
         collapsable: false,
-        children: [
-          "/workflows/",
-          "/your-first-workflow/",
-        ]
+        children: ["/workflows/", "/your-first-workflow/"]
       },
       {
         title: "Workflow Steps",
@@ -45,7 +42,7 @@ module.exports = {
           "/workflows/steps/",
           "/workflows/steps/triggers/",
           "/workflows/steps/code/",
-          "/workflows/steps/actions/",
+          "/workflows/steps/actions/"
         ]
       },
       {
@@ -55,7 +52,7 @@ module.exports = {
           "/workflows/events/",
           "/workflows/events/inspect/",
           "/workflows/events/replay/",
-          "/workflows/events/test/",
+          "/workflows/events/test/"
         ]
       },
       {
@@ -65,7 +62,7 @@ module.exports = {
           "/workflow/fork/",
           "/workflow/managing/",
           "/public-workflows/",
-          "/environment-variables/",
+          "/environment-variables/"
         ]
       },
       {
@@ -89,6 +86,5 @@ module.exports = {
     PAYLOAD_SIZE_LIMIT: "100kb",
     INSPECTOR_EVENT_LIMIT: "100",
     NODE_VERSION: "10"
-  },
-  plugins: ["tabs"]
+  }
 };

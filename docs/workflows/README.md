@@ -8,9 +8,9 @@ Workflows make it easy to integrate your apps, data, and APIs — all with no s
 
 - Workflows are composed of code that is organized and executed as a sequence of linear [**steps**](/workflows/steps).
 
-- Trigger your workflow on any event (e.g., [HTTP requests](/workflows/triggers/#webhook-sources) or a [schedule](/workflows/steps/triggers/#cron-scheduler)).
+- Trigger your workflow on any event (e.g., [HTTP requests](/workflows/steps/triggers/#webhook) or a [schedule](/workflows/steps/triggers/#cron-scheduler)).
 
-- Add steps to run Node.js [code](/workflows/code/) (using virtually any [`npm`](/workflows/code/#using-npm-packages) package) and [pre-built actions](/workflows/actions/).
+- Add steps to run Node.js [code](/workflows/steps/code/) (using virtually any [`npm`](/workflows/steps/code/#using-npm-packages) package) and [pre-built actions](/workflows/steps/actions/).
 
 - Steps are executed in the order they appear in your workflow.
 
@@ -54,7 +54,6 @@ Here are some templates to get you started:
 - [Process an HTTP request, return a response to the client](https://pipedream.com/@pravin/return-a-response-from-your-workflow-p_zACJqp/readme)
 - [Fan out requests to multiple webhooks](https://pipedream.com/@pravin/fan-out-requests-to-multiple-webhooks-p_4wOCrW/edit?collapse=collapse)
 -->
-
 
 ### Get started
 
