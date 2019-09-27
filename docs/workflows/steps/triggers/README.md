@@ -143,7 +143,7 @@ You'll see the time your job is scheduled to run next under the **Next Job** sec
 
 ### Job History
 
-You'll see the history of job executions under the **Job History** section of the [Inspector](/workflows/event/inspect/).
+You'll see the history of job executions under the **Job History** section of the [Inspector](/workflows/events/inspect/).
 
 Clicking on a specific job shows the execution details for that job — all the logs and observability associated with that run of the workflow.
 
