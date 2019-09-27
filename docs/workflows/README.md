@@ -55,10 +55,6 @@ Here are some templates to get you started:
 - [Fan out requests to multiple webhooks](https://pipedream.com/@pravin/fan-out-requests-to-multiple-webhooks-p_4wOCrW/edit?collapse=collapse)
 -->
 
-# <<<<<<< HEAD
-
-> > > > > > > origin/master
-
 ### Get started
 
 It takes less than 5 minutes to write your first workflow. [Sign in](/sign-up/) to get started.
