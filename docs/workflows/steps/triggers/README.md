@@ -139,11 +139,20 @@ If you're running a cron job once a day, you probably don't want to wait until t
 
 ### Future executions of your cron job
 
+<<<<<<< HEAD
 You'll see the time your job is scheduled to run next under the **Next Job** section of the [Inspector](/workflows/events/inspect/).
 
 ### Job History
 
-You'll see the history of job executions under the **Job History** section of the [Inspector](/workflows/events/inspect/).
+# You'll see the history of job executions under the **Job History** section of the [Inspector](/workflows/events/inspect/).
+
+You'll see the time your job is scheduled to run next under the **Next Job** section of the [Inspector](/workflows/event/inspect/).
+
+### Job History
+
+You'll see the history of job executions under the **Job History** section of the [Inspector](/workflows/event/inspect/).
+
+> > > > > > > origin/master
 
 Clicking on a specific job shows the execution details for that job — all the logs and observability associated with that run of the workflow.
 
