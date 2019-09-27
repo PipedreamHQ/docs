@@ -2,6 +2,11 @@ body
 	font-family Helvetica, Roboto, "Helvetica Neue", Arial, sans-serif
 
 $hoverColor = #34d28b
+$sidebarWidth = 17rem
+$borderColor = #fff
+$bgColor = #fff
+$headerColor = #343c56
+$textColor = rgba(0,0,0,.84)
 
 html,
 body,
@@ -15,12 +20,8 @@ body,
 body .content .default
 	color $textColor
 
-.theme-container .navbar,
-.navbar .links
-	background-color $headerColor
-
 .nav-item
-	color: $bgColor
+	color: $headerColor
 
 	@media (max-width: 719px)
 		color $headerColor

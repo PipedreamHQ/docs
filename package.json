@@ -10,7 +10,6 @@
     "docs:build": "vuepress build docs"
   },
   "dependencies": {
-    "vue-gtm": "^2.0.0",
-    "vuepress-algolia": "^1.0.4"
+    "vue-gtm": "^2.0.0"
   }
 }
