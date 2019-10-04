@@ -10,6 +10,7 @@
     "docs:build": "vuepress build docs"
   },
   "dependencies": {
+    "inter-ui": "^3.10.0",
     "vue-gtm": "^2.0.0"
   }
 }
