@@ -65,9 +65,11 @@ const _ = require("lodash");
 
 When we run your workflow code, we download the associated npm package for you before running your code steps.
 
-If you've used Node before, you'll notice there's no `package.json` file to upload or edit. We want to keep working with packages simple, so just `require()` the module like you would in your code, after package installation, and get to work!
+If you've used Node before, you'll notice there's no `package.json` file to upload or edit. We want to make package management simple, so just `require()` the module like you would in your code, after package installation, and get to work.
 
 The core limitation of packages is one we described above: some packages require access to a web browser to run, and don't work with Node. Often this limitation is documented on the package `README`, but often it's not. If you're not sure and need to use it, we recommend just trying to `require()` it.
+
+Moreover, packages that require access to large binaries — for example, how [Puppeteer](https://pptr.dev) requires Chromium — may not work on Pipedream. If you're seeing any issues with a specific package, please [let us know](/support/).
 
 ## Variable scope
 
@@ -75,7 +77,64 @@ Any variables you create within a step are scoped to that step. That is, they ca
 
 Within a step, the [normal rules of JavaScript variable scope](https://developer.mozilla.org/en-US/docs/Glossary/Scope) apply.
 
-**Any data you need to use across steps, or send to destinations, we recommend you use [step exports](/workflows/steps/).**
+**When you need to share data across steps, use [step exports](/workflows/steps/).**
+
+## Managing state
+
+Sometimes you need to save state in one invocation of a workflow, and read it the next time your workflow runs. For example, you might need to keep track of the last ID of the item you processed, or the last timestamp you ran a job, so you can pull new data the next time.
+
+On Pipedream, you can save and read state in two ways:
+
+- On a **workflow-level**, using `$checkpoint`
+- On a **step-level**, using `this.checkpoint`
+
+If you need to manage state _across_ workflows, we recommend you use a database or key-value store like [KVdb](https://kvdb.io).
+
+### Workflow-level state: `$checkpoint`
+
+The `$checkpoint` variable allows you to store and access any data within a specific workflow. You can store any [JSON-serializable](https://stackoverflow.com/a/3316779/10795955) data in `$checkpoint`, like so:
+
+```javascript
+$checkpoint = {
+  lastExecutionTime: "2019-10-06T20:07:39.293Z",
+  lastObjectProcessed: {
+    id: 123
+  }
+};
+```
+
+Then, you can read data previously saved in `$checkpoint`:
+
+```javascript
+if ($checkpoint) {
+  console.log($checkpoint);
+}
+```
+
+`$checkpoint` is a global variable, accessible in any code or action step.
+
+`$checkpoint` is scoped to a workflow. Any data you save in `$checkpoint` is specific to that workflow. Saving data to `$checkpoint` in one workflow will not affect the data saved in `$checkpoint` in another.
+
+### Step-level state: `this.checkpoint`
+
+Often, a specific step needs to maintain state that isn't relevant for the rest of the workflow. If you're writing a code step that pulls tweets from Twitter, and want to keep track of the last tweet ID you processed, you can store that state within a step, instead of using the global `$checkpoint` variable. This can make state easier to manage, and introduce fewer bugs.
+
+Within a step, you can store any [JSON-serializable](https://stackoverflow.com/a/3316779/10795955) data in `this.checkpoint`
+
+```javascript
+this.checkpoint = {
+  lastExecutionTime: "2019-10-06T20:07:39.293Z",
+  lastObjectProcessed: {
+    id: 123
+  }
+};
+```
+
+`this.checkpoint` also provides built-in observability: saving data to properties of `this` using [step exports](/workflows/steps/#step-exports) shows the saved data below the step:
+
+<div>
+<img width="450" alt="this.checkpoint built-in observability" src="./images/this-checkpoint-observability.png">
+</div>
 
 ## `$end`
 
