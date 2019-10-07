@@ -4,7 +4,7 @@
 
 For example, HTTP triggers expose a URL where you can send any HTTP requests. We'll run your workflow on each request. The Cron Scheduler trigger runs your workflow on a schedule.
 
-Today, we support HTTP, [Cron Scheduler](/#cron-scheduler), email, and SDK triggers. We plan to support others in the future: SQL, AMQP, and more. If there's a trigger you'd like supported, please [let us know](/support/).
+Today, we support HTTP, [Cron Scheduler](/#cron-scheduler), and email triggers. We plan to support others in the future: SQL, AMQP, and more. If there's a trigger you'd like supported, please [let us know](/support/).
 
 [[toc]]
 
@@ -182,8 +182,6 @@ Cron jobs can run for at most 30 seconds. If your workflow takes longer than 30 
 There are other limits that apply to all workflows on Pipedream — see our [Limits docs](/limits/#workflows) for more information.
 
 ## Email
-
-## SDK
 
 ## Don't see a trigger you need?
 

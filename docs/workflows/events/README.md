@@ -8,8 +8,6 @@ Events trigger workflow executions. The event that triggers your workflow depend
 
 - [Email triggers](/workflows/steps/triggers/#email) execute your workflow on inbound emails.
 
-- [SDk triggers](/workflows/steps/triggers/#sdk) execute your workflow on requests made from the Pipedream SDK.
-
 <!--
  `$event` contains data from the HTTP request and Pipedream-provided metadata. For example, `$event.body` contains the HTTP payload; `$event.headers` contains the HTTP request headers.
 
