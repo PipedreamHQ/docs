@@ -18,7 +18,7 @@ Beyond web browsers, any program that's able to create an [`EventSource` interfa
 
 ## Sending data to an SSE Destination
 
-You can send data to a Webhook Destination in [Node.js code steps](/workflows/steps/code/), too, using the `$send.sse()` function.
+You can send data to an SSE Destination in [Node.js code steps](/workflows/steps/code/) using the `$send.sse()` function.
 
 [Add a new Action](/workflows/steps/actions/#adding-a-new-action), then search for "**Code**":
 

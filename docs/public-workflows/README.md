@@ -13,7 +13,7 @@ Because your code is public, **it's critical you do not save sensitive data — 
 
 The trigger or action steps are also public, **but the specific properties or [parameters](/destinations/#destination-parameters) of those steps are kept private**. For example:
 
-- If you're using an HTTP trigger and sending data to S3 and SQL destinations, the fact that you're using those steps will be public. But we won't reveal the specific endpoint URL associated with your Webhook trigger.
+- If you're using an HTTP trigger and sending data to S3 and SQL destinations, the fact that you're using those steps will be public. But we won't reveal the specific endpoint URL associated with your HTTP trigger.
 - We also won't reveal the name of the S3 bucket to which you're sending data, or the specific data you're sending.
 
 You can always see the visibility status of a workflow and the associated data at the top of your workflow:

@@ -8,7 +8,7 @@ Workflows make it easy to integrate your apps, data, and APIs — all with no s
 
 - Workflows are composed of code that is organized and executed as a sequence of linear [**steps**](/workflows/steps).
 
-- Trigger your workflow on any event (e.g., [HTTP requests](/workflows/steps/triggers/#webhook) or a [schedule](/workflows/steps/triggers/#cron-scheduler)).
+- Trigger your workflow on any event (e.g., [HTTP requests](/workflows/steps/triggers/#http) or a [schedule](/workflows/steps/triggers/#cron-scheduler)).
 
 - Add steps to run Node.js [code](/workflows/steps/code/) (using virtually any [`npm`](/workflows/steps/code/#using-npm-packages) package) and [pre-built actions](/workflows/steps/actions/).
 

@@ -1,18 +1,18 @@
 # Triggers
 
-Workflows execute on every trigger event (e.g., HTTP requests or a schedule).
+**Triggers** define the type of event that runs your workflow. Workflows execute on every trigger event.
 
-For example, Webhook triggers expose a URL where you can send any HTTP request. We'll run your workflow on each request. The Cron Scheduler triggers your workflow on a schedule.
+For example, HTTP triggers expose a URL where you can send any HTTP requests. We'll run your workflow on each request. The Cron Scheduler trigger runs your workflow on a schedule.
 
-Today, we support Webhook and [Cron Scheduler](/workflows/steps/triggers/#cron-scheduler) triggers, and plan to support others — SQL, scheduled code cells, and more — in the future. If there's a source you'd like to see, [let us know](/support/).
+Today, we support HTTP, [Cron Scheduler](/#cron-scheduler), email, and SDK triggers. We plan to support others in the future: SQL, AMQP, and more. If there's a trigger you'd like supported, please [let us know](/support/).
 
 [[toc]]
 
-## Webhook
+## HTTP
 
-When you select the **Webhook** trigger, we create a URL endpoint specific to your workflow.
+When you select the **HTTP** trigger, we create a URL endpoint specific to your workflow.
 
-While we call the trigger "Webhook", it's technically a general HTTP trigger. You can send any HTTP requests to this endpoint, from anywhere on the web. You can configure the endpoint as the destination URL for a webhook or send HTTP traffic from your application - we'll accept any [valid HTTP request](#valid-requests).
+You can send any HTTP requests to this endpoint, from anywhere on the web. You can configure the endpoint as the destination URL for a webhook or send HTTP traffic from your application - we'll accept any [valid HTTP request](#valid-requests).
 
 ### Valid Requests
 
@@ -97,13 +97,17 @@ In this case, the request will still appear in the inspector, with information o
 
 Your API key is the host part of the endpoint, e.g. the `eniqtww30717` in `eniqtww30717.m.pipedream.net`. If you attempt to send a request to an endpoint that does not exist, we'll return a `404 Not Found` error.
 
-We'll also issue a 404 response on workflows with a webhook source that have been [deactivated](/workflows/managing/#deactivating-workflows).
+We'll also issue a 404 response on workflows with an HTTP trigger that have been [deactivated](/workflows/managing/#deactivating-workflows).
 
 #### Too Many Requests
 
-If you send too many requests to your Webhook source within a small period of time, we may issue a `429 Too Many Requests` response. [Review our limits](/limits/) to understand the conditions where you might be throttled.
+If you send too many requests to your HTTP source within a small period of time, we may issue a `429 Too Many Requests` response. [Review our limits](/limits/) to understand the conditions where you might be throttled.
 
 If you control the application sending requests, you should implement [a backoff strategy](https://medium.com/clover-platform-blog/conquering-api-rate-limiting-dcac5552714d) to temporarily slow the rate of events.
+
+## Webhook
+
+A **Webhook** trigger is an alias for the [HTTP](#http) trigger. They are equivalent in every way. You can trigger workflows on HTTP requests using either the HTTP or Webhook trigger.
 
 ## Cron Scheduler
 
@@ -175,22 +179,14 @@ Cron jobs can be run at most once a minute. Any cron expression that specifies a
 
 Cron jobs can run for at most 30 seconds. If your workflow takes longer than 30 seconds to execute, you'll see a `TIMEOUT` error for that run, and will be able to review all logs up until the timeout occurred.
 
-When you're testing
-
 There are other limits that apply to all workflows on Pipedream — see our [Limits docs](/limits/#workflows) for more information.
 
-<!--
-## Stripe, Sendgrid, and other SaaS triggers
+## Email
 
-You'll notice a range of other triggers available to choose from on new workflows:
+## SDK
 
-<div>
-<img alt="List of SaaS sources" width="300" src="./images/list-of-sources.png">
-</div>
+## Don't see a trigger you need?
 
-These triggers all utilize webhooks for delivering new events to workflows, and operate in like a Webhook trigger in every way. But they help you better identify the true source of the events sent to a workflow. For example, the icon tied to the source is displayed on your list of workflows on the homepage.
--->
-
-If you don't see a source you'd like us to create, please [let us know](https://pipdream.com/community/).
+If you don't see a trigger you'd like us to support, please [let us know](https://pipdream.com/community/).
 
 <Footer />

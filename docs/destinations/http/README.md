@@ -1,18 +1,22 @@
 # HTTP
 
-Webhook Destinations allow you to send data to another HTTP endpoint URL outside of Pipedream. This can be an endpoint you own and operate, or a URL tied to a service you use (for example, a [Slack Incoming Webhook](https://api.slack.com/incoming-webhooks)).
+HTTP Destinations allow you to send data to another HTTP endpoint URL outside of Pipedream. This can be an endpoint you own and operate, or a URL tied to a service you use (for example, a [Slack Incoming Webhook](https://api.slack.com/incoming-webhooks)).
 
 [[toc]]
 
-## Adding a Webhook Destination
+## Adding an HTTP Destination
 
-### Adding a Webhook Action
+### Using the Send HTTP Request action
 
-First, add a new Action to your workflow by clicking on the + button between any two steps. Then, choose the **Webhook** action and add the **URL** and **Payload**. This action defaults to sending an HTTP `POST` request with the desired payload to the specified URL. If you'd like to change the HTTP method, add Basic auth, query string parameters or headers, you can click the sections below the Payload field.
+First, add a new Action to your workflow by clicking on the + button between any two steps.
+
+Choose the **Send HTTP Request** action and add the **URL** and **Payload**.
+
+This action defaults to sending an HTTP `POST` request with the desired payload to the specified URL. If you'd like to change the HTTP method, add Basic auth, query string parameters or headers, you can click the sections below the Payload field.
 
 ### Using `$send.http()`
 
-You can send data to a Webhook Destination in [Node.js code steps](/workflows/steps/code/), too, using the `$send.http()` function. **This allows you to send data to destinations programmatically, if you need more control than Actions afford**.
+You can send data to an HTTP Destination in [Node.js code steps](/workflows/steps/code/), too, using the `$send.http()` function. **This allows you to send data to destinations programmatically, if you need more control than Actions afford**.
 
 Let's use `$send.http()` to send an HTTP POST request like we did in the Action example above. [Add a new Action](/workflows/steps/actions/#adding-a-new-action), then search for "**Code**":
 
@@ -62,9 +66,9 @@ names.forEach(name => {
 
 you won't have to `await` the execution of the HTTP requests in your workflow. We'll collect every `$send.http()` call and defer those HTTP requests, sending them after your workflow finishes.
 
-## Webhook Destination Delivery
+## HTTP Destination Delivery
 
-Webhook Destination delivery is handled asynchronously, separate from the execution of a workflow. However, we deliver the specified payload to Webhook destinations for every event sent to your workflow.
+HTTP Destination delivery is handled asynchronously, separate from the execution of a workflow. However, we deliver the specified payload to HTTP destinations for every event sent to your workflow.
 
 Generally, this means it should only take a few seconds for us to send the event to the destination you specify. In some cases, delivery will take longer. You can always review how many destinations we've delivered a given event to by examining the [**Dest** column in the Inspector](/workflows/events/inspect/#dest-destinations).
 

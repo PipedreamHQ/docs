@@ -13,9 +13,9 @@ Currently, [Pipedream is free](/pricing/) for all users, subject to the technica
 
 **Currently, you can create an unlimited number of workflows**, as long as each operates under the limits below.
 
-## Webhook Triggers
+## HTTP Triggers
 
-The following limits apply to [Webhook triggers](/workflows/steps/triggers/#webhook-sources).
+The following limits apply to [HTTP triggers](/workflows/steps/triggers/#http).
 
 ### HTTP Request Body Size
 
@@ -27,7 +27,7 @@ Your endpoint will issue a `413 Payload Too Large` status code when the body of 
 
 Generally the rate of HTTP requests sent to an endpoint is quantified by QPS, or _queries per second_. A query in this context refers to an HTTP request.
 
-**You can send an average of 10 requests per second to your webhook trigger**. Any requests that exceed that threshold may trigger rate limiting. If you're rate limited, we'll return a `429 Too Many Requests` response. If you control the application sending requests, you should retry the request with [exponential backoff](https://cloud.google.com/storage/docs/exponential-backoff) or a similar technique.
+**You can send an average of 10 requests per second to your HTTP trigger**. Any requests that exceed that threshold may trigger rate limiting. If you're rate limited, we'll return a `429 Too Many Requests` response. If you control the application sending requests, you should retry the request with [exponential backoff](https://cloud.google.com/storage/docs/exponential-backoff) or a similar technique.
 
 Generally, we'll also accept short bursts of traffic, as long as you remain around an average of 10 QPS (e.g. sending a batch of 50 requests every 30 seconds should not trigger rate limiting).
 

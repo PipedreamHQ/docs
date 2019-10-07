@@ -39,7 +39,24 @@ this.test = "Some test data";
 return "Test data";
 ```
 
-Code steps support syntax highlighting and automatic indentation. We love readable code!
+Code steps support syntax highlighting and automatic indentation.
+
+## `async` function declaration
+
+You'll notice an [`async` function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/async_function) declaration that appears when you add a new code step:
+
+```javascript
+async (event, steps) => {
+  // this node.js code will execute when your workflow is triggered
+};
+```
+
+This communicates a couple of key concepts:
+
+- Any async code within a code step [**must** be run synchronously](#running-asynchronous-code), using the `await` keyword or with a Promise chain, using `.then()`, `.catch()`, and related methods.
+- Pipedream passes the variables `event` and `steps` to every code step. `event` is a read-only object that contains the data that triggered your event, for example the HTTP request sent to your workflow's endpoint. `steps` is also an object, and contains the [data exported from previous steps](/workflows/steps/#step-exports) in your workflow.
+
+## Symbols available in every code step
 
 ## Logs
 

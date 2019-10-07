@@ -13,7 +13,7 @@ The docs below discuss features common to all Destinations. See the [docs for a 
 
 ## Available Destinations
 
-- [Webhook](/destinations/http/)
+- [HTTP](/destinations/http/)
 - [Email](/destinations/email/)
 - [S3](/destinations/s3/)
 - [Pipedream Data Warehouse](/destinations/sql/)
@@ -26,12 +26,11 @@ The docs below discuss features common to all Destinations. See the [docs for a 
 
 The simplest way to send data to a Destination is using one of our pre-built [Actions](/workflows/steps/actions/). Just add the relevant Action, enter the required values, and send data to your workflow!
 
-For example, you can use the [Webhook Action](/destinations/http/) to send an HTTP request from a workflow. First, add a new Action to your workflow by clicking on the + button between any two steps.
+For example, you can use the [Send HTTP Request Action](/destinations/http/) to send an HTTP request from a workflow. First, add a new Action to your workflow by clicking on the + button between any two steps.
 
-Then, choose the **Webhook** action and add the **URL** and **Payload**.
+Then, choose the **Send HTTP Request** action and add the **URL** and **Payload**.
 
 This action defaults to sending an HTTP `POST` request with the desired payload to the specified URL. If you'd like to change the HTTP method, add Basic auth, query string parameters or headers, you can click the sections below the Payload field.
-
 
 ### Using `$send`
 
@@ -57,13 +56,13 @@ $send.http({
 });
 ```
 
-See the docs for the [Webhook destination](/destinations/http/) to learn more about all the options you can pass to the `$send.http()` function.
+See the docs for the [HTTP destination](/destinations/http/) to learn more about all the options you can pass to the `$send.http()` function.
 
 Again, it's important to remember that **Destination delivery is asynchronous**. If you iterate over an array of values and send an HTTP request for each:
 
 ```javascript
 const names = ["Luke", "Han", "Leia", "Obi Wan"];
-names.forEach(name => {
+for (const name of names) {
   $send.http({
     method: "POST",
     url: "[YOUR URL HERE]",
@@ -71,7 +70,7 @@ names.forEach(name => {
       name
     }
   });
-});
+}
 ```
 
 you won't have to `await` the execution of the HTTP requests in your workflow. We'll collect every `$send.http()` call and defer those HTTP requests, sending them after your workflow finishes.
@@ -82,6 +81,6 @@ For every event sent to a workflow, for each Destination you've added, we send t
 
 Events are delivered to Destinations _asynchronously_ — that is, separate from the execution of your workflow. **This means you're not waiting for network or connection I/O in the middle of your function, which can be costly**.
 
-Some Destination payloads, like HTTP, are delivered within seconds. For other Destinations, like S3 and SQL, we collect individual events into a batch and send the batch to the Destination. See the [docs for a given Destination](#available-destinations) for the relevant batch delivery frequency.
+Some Destination payloads, like HTTP, are delivered within seconds. For other Destinations, like S3 and SQL, we collect individual events into a batch and send the batch to the Destination. See the [docs for a specific Destination](#available-destinations) for the relevant batch delivery frequency.
 
 <Footer />

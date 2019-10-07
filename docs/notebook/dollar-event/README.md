@@ -4,7 +4,7 @@ When you select an event from the [Inspector](/workflows/events/inspect/), you c
 
 `$event` ("dollar event") is a JavaScript object that contains the event that triggered your workflow, formatted here for easy inspection.
 
-For [Webhook sources](/workflows/steps/triggers/#webhook-sources), `$event` contains data from the HTTP request and Pipedream-provided metadata. For example, `$event.body` contains the HTTP payload; `$event.headers` contains the HTTP request headers.
+For [HTTP sources](/workflows/steps/triggers/#http), `$event` contains data from the HTTP request and Pipedream-provided metadata. For example, `$event.body` contains the HTTP payload; `$event.headers` contains the HTTP request headers.
 
 For [Cron triggers](/workflows/steps/triggers/#cron-scheduler), `$event` contains the schedule of your cron job and the time the current job was triggered.
 
