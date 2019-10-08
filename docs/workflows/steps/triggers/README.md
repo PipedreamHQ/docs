@@ -4,7 +4,7 @@
 
 For example, HTTP triggers expose a URL where you can send any HTTP requests. We'll run your workflow on each request. The Cron Scheduler trigger runs your workflow on a schedule.
 
-Today, we support HTTP, [Cron Scheduler](/#cron-scheduler), and email triggers. We plan to support others in the future: SQL, AMQP, and more. If there's a trigger you'd like supported, please [let us know](/support/).
+Today, we support [HTTP](#http), [Cron Scheduler](#cron-scheduler), and [email](#email) triggers. In the future we plan to support SQL, AMQP, and more. If there's a trigger you'd like supported, please [let us know](/support/).
 
 [[toc]]
 
@@ -14,17 +14,17 @@ When you select the **HTTP** trigger, we create a URL endpoint specific to your 
 
 You can send any HTTP requests to this endpoint, from anywhere on the web. You can configure the endpoint as the destination URL for a webhook or send HTTP traffic from your application - we'll accept any [valid HTTP request](#valid-requests).
 
+### Accessing HTTP request data
+
+You can access properties of the HTTP request, like the method, payload, headers, and more, in [the `event` object](/workflows/events/#event-format), accessible in any [code](/workflows/steps/code/) or [action](/workflows/steps/actions/) step.
+
 ### Valid Requests
 
 You can send a request to your endpoint using any valid HTTP method: `GET`, `POST`, `HEAD`, and more.
 
-We default to generating HTTPS URLs in the UI for security, but will accept HTTP requests against the same endpoint URL.
+We default to generating HTTPS URLs in the UI, but will accept HTTP requests against the same endpoint URL.
 
-You can send data to any path on this host, with any query string parameters. You can access the full URL in `event` if you'd like to write code that interprets requests with different URLs differently.
-
-Common properties, like method, headers, URL and body, are exported to `steps.trigger.event` (Pipedream also provides the `event` object as an alias to `steps.trigger.event`). The entire event is exported as `steps.trigger.raw_event`.
-
-You can find all of the HTTP request metadata associated with your event in the `event` object. Some common properties, like method, headers, URL and body, are included as top-level keys.
+You can send data to any path on this host, with any query string parameters. You can access the full URL in the `event` object if you'd like to write code that interprets requests with different URLs differently.
 
 You can send data of any [Media Type](https://www.iana.org/assignments/media-types/media-types.xhtml) in the body of your request.
 
@@ -102,6 +102,8 @@ We'll also issue a 404 response on workflows with an HTTP trigger that have been
 #### Too Many Requests
 
 If you send too many requests to your HTTP source within a small period of time, we may issue a `429 Too Many Requests` response. [Review our limits](/limits/) to understand the conditions where you might be throttled.
+
+You can also [reach out](/support/) to inquire about raising this rate limit.
 
 If you control the application sending requests, you should implement [a backoff strategy](https://medium.com/clover-platform-blog/conquering-api-rate-limiting-dcac5552714d) to temporarily slow the rate of events.
 
@@ -182,6 +184,10 @@ Cron jobs can run for at most 30 seconds. If your workflow takes longer than 30 
 There are other limits that apply to all workflows on Pipedream — see our [Limits docs](/limits/#workflows) for more information.
 
 ## Email
+
+When you select the **Email** trigger, we create an email address specific to your workflow. Any email sent to this address triggers your workflow.
+
+[Read more about the shape of the trigger event](/workflows/events/#email).
 
 ## Don't see a trigger you need?
 
