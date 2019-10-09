@@ -147,8 +147,6 @@ this.$checkpoint = {
 };
 ```
 
-`this.$checkpoint` also provides built-in observability: saving data to properties of `this` using [step exports](/workflows/steps/#step-exports) shows the saved data below the step.
-
 ## `$end`
 
 Sometimes you want to end your workflow early. For example:
