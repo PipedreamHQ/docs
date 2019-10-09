@@ -103,7 +103,7 @@ Sometimes you need to save state in one invocation of a workflow, and read it th
 On Pipedream, you can save and read state in two ways:
 
 - On a **workflow-level**, using `$checkpoint`
-- On a **step-level**, using `this.checkpoint`
+- On a **step-level**, using `this.$checkpoint`
 
 If you need to manage state _across_ workflows, we recommend you use a database or key-value store like [KVdb](https://kvdb.io).
 
@@ -132,14 +132,14 @@ if ($checkpoint) {
 
 `$checkpoint` is scoped to a workflow. Any data you save in `$checkpoint` is specific to that workflow. Saving data to `$checkpoint` in one workflow will not affect the data saved in `$checkpoint` in another.
 
-### Step-level state: `this.checkpoint`
+### Step-level state: `this.$checkpoint`
 
 Often, a specific step needs to maintain state that isn't relevant for the rest of the workflow. If you're writing a code step that pulls tweets from Twitter, and want to keep track of the last tweet ID you processed, you can store that state within a step, instead of using the global `$checkpoint` variable. This can make state easier to manage, and introduce fewer bugs.
 
-Within a step, you can store any [JSON-serializable](https://stackoverflow.com/a/3316779/10795955) data in `this.checkpoint`
+Within a step, you can store any [JSON-serializable](https://stackoverflow.com/a/3316779/10795955) data in `this.$checkpoint`
 
 ```javascript
-this.checkpoint = {
+this.$checkpoint = {
   lastExecutionTime: "2019-10-06T20:07:39.293Z",
   lastObjectProcessed: {
     id: 123
@@ -147,11 +147,7 @@ this.checkpoint = {
 };
 ```
 
-`this.checkpoint` also provides built-in observability: saving data to properties of `this` using [step exports](/workflows/steps/#step-exports) shows the saved data below the step:
-
-<div>
-<img width="450" alt="this.checkpoint built-in observability" src="./images/this-checkpoint-observability.png">
-</div>
+`this.$checkpoint` also provides built-in observability: saving data to properties of `this` using [step exports](/workflows/steps/#step-exports) shows the saved data below the step.
 
 ## `$end`
 
