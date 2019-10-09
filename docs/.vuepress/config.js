@@ -55,6 +55,7 @@ module.exports = {
           "/workflows/events/test/"
         ]
       },
+      "/connected-accounts/",
       {
         title: "Managing Workflows",
         collapsable: false,
