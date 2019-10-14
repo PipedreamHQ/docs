@@ -7,6 +7,8 @@ next: false
 
 Currently, [Pipedream is free](/pricing/) for all users, subject to the technical limits noted below.
 
+**These limits are subject to change at any time**.
+
 [[toc]]
 
 ## Number of Workflows
