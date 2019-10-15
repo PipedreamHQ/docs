@@ -55,7 +55,11 @@ module.exports = {
           "/workflows/events/test/"
         ]
       },
-      "/connected-accounts/",
+      {
+        title: "Connecting to Apps",
+        collapsable: false,
+        children: ["/connected-accounts/", "/workflows/steps/code/auth/"]
+      },
       {
         title: "Managing Workflows",
         collapsable: false,

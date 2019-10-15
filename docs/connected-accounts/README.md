@@ -8,21 +8,69 @@ For example, you can connect your Slack account to a code step, then send a mess
 <img alt="Slack code step using access token" width="500" src="./images/slack-token.png">
 </div>
 
-We'll review how all of this works below.
+Let's review how all of this works below.
 
 [[toc]]
 
 ## Supported Apps
 
-Pipedream supports tens of apps and will be adding hundreds more over the coming months. The easiest way to see if we support a specific account is to try [connecting that account](#connecting-your-accounts).
+Pipedream supports tens of apps and will be adding hundreds more over the coming months. To see if we support a specific app, try [connecting your account](#connecting-accounts).
 
-If we don't support a service you need to connect to, please [reach out](/support/) and let us know.
+If we don't support a service you need, please [reach out](/support/) and let us know.
 
-## Connecting your accounts
+## Connecting accounts
 
-### From your Apps screen
+### From an action
 
-### From a code step or action
+Any pre-built actions that connect to a specific service will ask that you connect your account for that service below the action:
+
+<div>
+<img alt="Connect Slack account" width="350" src="./images/slack-connect-account.png">
+</div>
+
+Clicking **Connect Account** will either initiate the OAuth flow for the target service, prompting you to authorize Pipedream to access your account, or present a modal for API key integrations that asks for the necessary keys.
+
+If you've already connected an account for this app, you can also connect that without going through a new auth flow:
+
+<div>
+<img alt="Connect existing account" width="500" src="./images/connect-existing-account.png">
+</div>
+
+### From a code step
+
+You can connect accounts to code steps, too. First, click the **+** button to the left of any step:
+
+<div>
+<img alt="Add new account to code step" width="350" src="./images/add-new-app.png">
+</div>
+
+and search for your app in the list that appears:
+
+<div>
+<img alt="Search for app" width="350" src="./images/search-for-slack.png">
+</div>
+
+If you can't find the app you're looking for, we should be able to add it for you. Please [reach out](/support/) and let us know.
+
+Selecting an app will present the same **Connect Account** button you'll see for actions. Clicking **Connect Account** will either initiate the OAuth flow for the target service, prompting you to authorize Pipedream to access your account, or present a modal for API key integrations that asks for the necessary keys.
+
+If you've already connected an account for this app, you can also connect that without going through a new auth flow:
+
+<div>
+<img alt="Connect existing account" width="500" src="./images/connect-existing-account.png">
+</div>
+
+## Managing Connected Account from Apps
+
+Visit [https://pipedream.com/apps](https://pipedream.com/apps) to see the list of accounts you've previously connected.
+
+You can add or remove accounts from here, and see data associated with those connections: the scopes you've granted Pipedream access to, the number of workflows where you're using the account, and more.
+
+<div>
+<img alt="Manage connected account" src="./images/manage-connected-account.png">
+</div>
+
+You can also add nicknames to accounts here, overriding the default name attached to it.
 
 ## Types of Integrations
 
