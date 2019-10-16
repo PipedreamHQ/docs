@@ -56,8 +56,6 @@ This communicates a couple of key concepts:
 - Any async code within a code step [**must** be run synchronously](#running-asynchronous-code), using the `await` keyword or with a Promise chain, using `.then()`, `.catch()`, and related methods.
 - Pipedream passes the variables `event` and `steps` to every code step. `event` is a read-only object that contains the data that triggered your event, for example the HTTP request sent to your workflow's endpoint. `steps` is also an object, and contains the [data exported from previous steps](/workflows/steps/#step-exports) in your workflow.
 
-## Symbols available in every code step
-
 ## Logs
 
 You can call `console.log()` or `console.error()` to add logs to the execution of a code step. These logs will appear just below the associated step. `console.log()` messages appear in black, `console.error()` in red.
