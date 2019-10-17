@@ -191,6 +191,6 @@ When you select the **Email** trigger, we create an email address specific to yo
 
 ## Don't see a trigger you need?
 
-If you don't see a trigger you'd like us to support, please [let us know](https://pipdream.com/community/).
+If you don't see a trigger you'd like us to support, please [let us know](https://pipedream.com/community/).
 
 <Footer />
