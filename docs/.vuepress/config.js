@@ -61,6 +61,7 @@ module.exports = {
         children: [
           "/workflows/fork/",
           "/workflows/managing/",
+          "/workflows/settings/",
           "/public-workflows/",
           "/environment-variables/"
         ]
