@@ -81,6 +81,7 @@ module.exports = {
       },
       "/pricing/",
       "/limits/",
+      "/new-feature-or-bug/",
       "/security/"
     ],
     PIPEDREAM_BASE_URL: "https://pipedream.com",
