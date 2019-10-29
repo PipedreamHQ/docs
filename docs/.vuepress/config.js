@@ -56,6 +56,11 @@ module.exports = {
         ]
       },
       {
+        title: "Connecting to Apps",
+        collapsable: false,
+        children: ["/connected-accounts/", "/workflows/steps/code/auth/"]
+      },
+      {
         title: "Managing Workflows",
         collapsable: false,
         children: [
