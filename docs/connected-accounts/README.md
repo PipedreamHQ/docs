@@ -16,7 +16,7 @@ Let's review how all of this works below.
 
 Pipedream supports many apps today and will be adding hundreds more over the coming months. To see if we support a specific app, try [connecting your account](#connecting-accounts).
 
-If we don't support a service you need, please [reach out](/support/) and let us know.
+If we don't support a service you need, please [open a request on Github](/new-feature-or-bug) or [reach out](/support/) and let us know.
 
 ## Connecting accounts
 
@@ -50,7 +50,7 @@ and search for your app in the list that appears:
 <img alt="Search for app" width="350" src="./images/search-for-slack.png">
 </div>
 
-If you can't find the app you're looking for, we can add it for you. Please [reach out](/support/) and let us know.
+If you can't find the app you're looking for, we can [add it for you](#requesting-a-new-app-or-service).
 
 Selecting an app will present the same **Connect Account** button you'll see for actions. Clicking **Connect Account** will either initiate the OAuth flow for the target service, prompting you to authorize Pipedream to access your account, or present a modal for API key integrations that asks for the necessary keys.
 
@@ -78,7 +78,7 @@ You can also add nicknames to accounts here, making it easier to select the righ
 
 For services that support OAuth, Pipedream operates an OAuth application that mediates access to the service so you don't have to maintain your own app, store refresh and access tokens, and more.
 
-When you connect an account, you'll see a new window open where you authorize the Pipedream application to access data in your account. Pipedream stores the OAuth refresh token tied to your authorization grant, automatically generating access tokens you can use to authorized requests to the service's API.
+When you connect an account, you'll see a new window open where you authorize the Pipedream application to access data in your account. Pipedream stores the OAuth refresh token tied to your authorization grant, automatically generating access tokens you can use to authorized requests to the service's API. You can access these tokens [in code steps](/workflows/steps/code/auth/).
 
 ### Key-based
 
@@ -92,10 +92,10 @@ For example, if you add a new connected account for **Sendgrid**, you'll be aske
 <img alt="Sendgrid API key form" width="500" src="./images/api-key.png">
 </div>
 
-When you connect this Sendgrid account to a step, your API key will be available for use in the variable `auths.sendgrid.api_key_id`.
+When you connect this Sendgrid account to a step, your API key will be available for use in the variable `auths.sendgrid.api_key_id`. See the docs on [auth in code steps](/workflows/steps/code/auth/) for more information.
 
 ## Requesting a new app or service
 
-If we don't support a service you need to connect to, please [reach out](/support/) and let us know.
+If we don't support a service you need to connect to, please [open a request on Github](/new-feature-or-bug) or [reach out](/support/) and let us know.
 
 <Footer />
