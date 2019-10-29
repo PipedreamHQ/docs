@@ -66,6 +66,7 @@ module.exports = {
         children: [
           "/workflows/fork/",
           "/workflows/managing/",
+          "/workflows/settings/",
           "/public-workflows/",
           "/environment-variables/"
         ]
@@ -85,6 +86,7 @@ module.exports = {
       },
       "/pricing/",
       "/limits/",
+      "/new-feature-or-bug/",
       "/security/"
     ],
     PIPEDREAM_BASE_URL: "https://pipedream.com",

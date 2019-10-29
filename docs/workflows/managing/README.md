@@ -1,5 +1,7 @@
 # Edit and Manage
 
+[[toc]]
+
 ## Editing Title and Description
 
 When you create a workflow, you can edit the **Title** and **Description** near the top. We also present some helpful information — the workflow's author, the current version, and visibility state of the code and data, and when the workflow was last updated:
@@ -41,6 +43,8 @@ Since [workflows are public](/public-workflows/), you can simply copy the pipedr
 <div>
 <img alt="Workflow URL" src="./images/workflow-url.png">
 </div>
+
+You can also add collaborators to your workflow under your workflow's [Settings](/workflows/settings/). Collaborators can edit the code and see its events and execution details.
 
 ## Deactivating Workflows
 
