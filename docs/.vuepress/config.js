@@ -84,6 +84,11 @@ module.exports = {
           "/destinations/sse/"
         ]
       },
+      {
+        title: "Integrations",
+        collapsable: false,
+        children: ["/apps/discord/"]
+      },
       "/pricing/",
       "/limits/",
       "/new-feature-or-bug/",
