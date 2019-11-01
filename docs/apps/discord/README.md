@@ -1,7 +1,7 @@
 # Discord
 
 <div>
-<img style="display: inline-block;" src="https://is2-ssl.mzstatic.com/image/thumb/Purple113/v4/64/57/f5/6457f513-5c19-eebb-325d-649e7216a596/AppIcon-0-1x_U007emarketing-0-0-GLES2_U002c0-512MB-sRGB-0-0-0-85-220-0-0-0-7.png/246x0w.jpg" alt="Discord" width="96px">
+<img style="display: inline-block;" src="./images/discord_plus_pipedream.png" alt="Discord" width="200px">
 </div>
 
 Pipedream supports two [Discord](https://discordapp.com) integrations:
