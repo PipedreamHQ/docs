@@ -93,7 +93,7 @@ return {
 };
 ```
 
-When you use `return`, the exported data will appear at `steps.[STEP NAME].return_value`. For example, if you ran the code above in a step named `nodejs`, you'd reference the returned data using `steps.nodejs.return_value`.
+When you use `return`, the exported data will appear at `steps.[STEP NAME].$return_value`. For example, if you ran the code above in a step named `nodejs`, you'd reference the returned data using `steps.nodejs.$return_value`.
 
 Like with named exports, the returned data will appear below the step.
 
