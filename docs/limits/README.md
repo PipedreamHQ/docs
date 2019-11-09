@@ -35,13 +35,27 @@ Generally, we'll also accept short bursts of traffic, as long as you remain arou
 
 ## Workflows
 
-### Time
+### Time per execution
 
-Every event you send to a workflow triggers the execution of that workflow. **Workflow code is limited to 10 seconds per execution for HTTP triggers, and 30 seconds for cron triggers**.
+Every event you send to a workflow triggers the execution of that workflow. **Workflow code is limited to 30 seconds per execution**.
 
 If your code exceeds this limit, we'll throw a `TIMEOUT` error and stop your workflow. Any partial logs and observability associated with code cells that ran successfully before the timeout will be attached to the event in the UI, so you can examine the state of your workflow and troubleshoot where it may have failed.
 
 Events that trigger a `TIMEOUT` error will appear in red in the [Inspector](/workflows/events/inspect/). You'll see the timeout error, also in red, in the cell at which the code timed out.
+
+If this limit isn't sufficient for your use case, please [reach out to our team](/support/).
+
+### Execution time per day
+
+**You have a total execution quota of 30 minutes (180,000 milliseconds) per day across all workflows in your account.**
+
+Your quota is reset, daily, at 00:00 (midnight) UTC.
+
+Pipedream records a minimum of `100ms` per execution. For example, if your workflow runs for `50ms`, you'll incur `100ms` of time towards your daily quota.
+
+You'll receive an email when you exhaust 80% and 100% of your daily quota. Again, this quota will be reset every day at 00:00 UTC.
+
+If this quota isn't sufficient for you use case, [reach out to our team](/support/) so we can learn more.
 
 ### Memory
 
