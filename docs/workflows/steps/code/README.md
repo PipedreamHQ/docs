@@ -41,6 +41,12 @@ return "Test data";
 
 Code steps support syntax highlighting and automatic indentation.
 
+## Passing parameters to code steps
+
+You can make code steps reusable by allowing them to accept parameters. Instead of harcoding the values of variables within the code itself, you can pass them to the code step as arguments or parameters, instead.
+
+[Read more about using step parameters here](/workflows/steps/#passing-data-to-steps-step-parameters).
+
 ## `async` function declaration
 
 You'll notice an [`async` function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/async_function) declaration that appears when you add a new code step:
@@ -55,6 +61,18 @@ This communicates a couple of key concepts:
 
 - Any async code within a code step [**must** be run synchronously](#running-asynchronous-code), using the `await` keyword or with a Promise chain, using `.then()`, `.catch()`, and related methods.
 - Pipedream passes the variables `event` and `steps` to every code step. `event` is a read-only object that contains the data that triggered your event, for example the HTTP request sent to your workflow's endpoint. `steps` is also an object, and contains the [data exported from previous steps](/workflows/steps/#step-exports) in your workflow.
+
+If you're using [step parameters](/workflows/steps/#passing-data-to-steps-step-parameters) or [connect an account to a step](/connected-accounts/#from-a-code-step), you may notice two new parameters passed to the function signature, `params` and `auths`:
+
+```javascript
+async (event, steps, params, auths) => {
+  // this node.js code will execute when your workflow is triggered
+};
+```
+
+When you use [step parameters](/workflows/steps/#passing-data-to-steps-step-parameters), Pipedream passes the `params` object (named pairs of param key and its associated value) to the function.
+
+When you [connect an account to a step](/connected-accounts/#from-a-code-step), Pipedream passes the [`auths` object](/workflows/steps/code/auth/#the-auths-object) to the function.
 
 ## Logs
 

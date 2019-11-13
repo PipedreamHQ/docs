@@ -40,6 +40,75 @@ You can rename a step by clicking on its name and typing a new one in its place:
 
 After changing a step name, you'll need to update any references to the old step. In this example, you'd now reference this step as `steps.my_awesome_code_step`.
 
+## Passing data to steps (step parameters)
+
+[Steps are just functions](workflows/steps/code/#async-function-declaration). As functions, they can accept parameters and return data. We'll review how to pass params to steps here, and show you how to return data [below](#step-exports).
+
+Instead of harcoding values directly in the code, these values can be parameterized, and passed to the step as a variable.
+
+Parameters promote reusability. They make it easier for others to use the workflow, since it's clear what values they need to pass to the step to get it working.
+
+In a new [Node.js code step](/workflows/steps/code/), try adding the following line of code:
+
+```js
+console.log(params.foo);
+```
+
+As soon as you do, you'll see a form appear below your code that asks you to enter a value for the field **Foo**:
+
+<div>
+<img width="600" alt="Params form for foo param" src="./images/params-foo.png">
+</div>
+
+When you reference a property of the `params` object in your code, Pipedream automatically creates an associated form field where you're asked to enter its value.
+
+You'll see this field appear no matter how the property is referenced in code. For example, you can [destructure properties](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Destructuring_assignment#Object_destructuring) of `params` and we'll correctly display the associated field below:
+
+<div>
+<img width="500" alt="Params form for name param" src="./images/params-name.png">
+</div>
+
+Like with [actions](/workflows/steps/actions/), you can reference properties of [the `event` object](/workflows/events/), any data [exported from steps](#step-exports), or any raw strings in these fields.
+
+You can use the **edit params schema** button near the top-right of the form to:
+
+- Change the type of a param (defaults to **string**)
+- Change its label
+- Add placeholder text and instructions
+- Validate its values, for example adding a regular expression against which values are tested
+
+<div>
+<img width="200" alt="edit params schema" src="./images/edit-params-schema.png">
+</div>
+
+### The values of step params are private by default
+
+[Workflow code is public](/public-workflows/), so it's critical you don't include secrets or other user-specific data in your code.
+
+By default, **the values of step parameters are private**, so if you use a param in your code and pass in its value using the associated form field, other viewers of your workflow won't see your user-specific value.
+
+To be clear, you **should not** do this:
+
+```javascript
+const username = "luke";
+```
+
+Instead, you **should** replace the value of variables with param references:
+
+```javascript
+const { username } = params;
+```
+
+and add the value of the parameter in its form field, instead.
+
+You can change the privacy of step parameters by clicking on the eye icon to the right of any param field. By default, they're private:
+
+<div>
+<img width="500" alt="param visibility toggle" src="./images/param-visibility.png">
+</div>
+
+But **any step parameter can be made public** if you're not passing user-specific data, need to present a default value, or want to display example values like we do in [this tutorial workflow](https://pipedream.com/@dylburger/hello-world-workflow-p_jmCL3N/edit).
+
 ## Step Exports
 
 By default, variables declared in a step are scoped to that step.
@@ -58,7 +127,7 @@ Your trigger step automatically exports the event that triggered your workflow i
 console.log(steps.trigger.event);
 ```
 
-When you export your own data from steps, you'll access it at the variable `steps.[STEP NAME].[EXPORT NAME]`. For example, a code step might export data at `steps.nodejs.myData`.
+When you export your own data from steps, you'll access it at the variable `steps.[STEP NAME].[EXPORT NAME]`. For example, a code step might export data at `steps.nodejs.myData`. You can reference this variable in any code step or [step parameter](#passing-data-to-steps-step-parameters).
 
 You can export data from steps in one of two ways: using named exports or `return`. The examples below are also included in [this workflow](https://pipedream.com/@dylburger/step-exports-example-p_xMC86w/edit), so you can fork and run it to see how this works.
 
@@ -96,90 +165,5 @@ return {
 When you use `return`, the exported data will appear at `steps.[STEP NAME].$return_value`. For example, if you ran the code above in a step named `nodejs`, you'd reference the returned data using `steps.nodejs.$return_value`.
 
 Like with named exports, the returned data will appear below the step.
-
-<!--
-
-### Referencing step exports in code steps and action forms
-
-**`steps` is a [JavaScript object](https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Objects/Basics#Object_basics)**. This is just a collection of key-value pairs surrounded by curly braces — {} — like so:
-
-```
-{
-    age: 50,
-    name: {
-        first: "Luke",
-        last: "Skywalker",
-    }
-}
-```
-
-Every key — for example `age` — has an associated value (here, the number 50). In JavaScript, the value of a key can be an object itself, like `name` above.
-
-Within a code cell, you can reference the data in `$event` like you would any other JavaScript object, using [dot-notation](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Working_with_Objects#Objects_and_properties).
-
-```javascript
-// Prints "Luke"
-console.log($event.name.first);
-// Prints "Skywalker"
-console.log($event.name.last);
-```
-
-### Shape / Contents
-
-The initial contents of `$event` differ depending on the source you've chosen for your workflow.
-
-Clicking on an event in the Inspector reveals the contents of `$event` for that workflow execution under the [source](/workflows/steps/triggers/) to the right:
-
-<div>
-<img alt="Dollar event under source" src="./images/complex-dollar-event.png">
-</div>
-
-
-
-### Copying the dot-notation path to a specific value
-
-When you send an event with a complex shape to a workflow, it can be difficult to construct the correct dot-notation to access a specific value from `$event`. For example, in this example below:
-
-<div>
-<img alt="Complex dollar event" src="./images/complex-dollar-event.png">
-</div>
-
-if I want to get the name of the homeworld of the person, I've got to scan down many levels of nested objects to construct `$event.body.person.homeworld.name`.
-
-**Instead, I can find the property I'm interested in, hold the `Cmd` or `Windows` key, and click. This will copy the dot-notation path to that property to my clipboard.**
-
-<div>
-<img alt="Cmd click to get dot-notation" src="./images/cmd-click-to-get-path.png">
-</div>
-
-### Modifying `$event`
-
-Any changes you make to `$event` persist across code steps. Typically, we scope variables to the step they were created in, so you wouldn't have access to a variable outside of that step. **Any data you need to use across steps should be stored in properties of `$event`**.
-
-You can add, delete, or update the value of any key in `$event`:
-
-```javascript
-// Add a new key-value pair
-$event.currentTimestamp = +new Date();
-// Delete a key-value pair
-delete $event.url;
-// Update a value of an existing key
-$event.body.person.job = "Retired Jedi";
-```
-
-If you modify `$event`, we'll also display the changes you made clearly below the step, under the **Diff** header:
-
-<div>
-<img alt="Dollar event diff" width="450" src="./images/diff.png">
-</div>
-
-### Restrictions
-
-You cannot completely re-assign the value of the `$event` variable. That is, you cannot do this:
-
-```javascript
-$event = { prop: "value" };
-```
--->
 
 <Footer />
