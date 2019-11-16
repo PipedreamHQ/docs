@@ -33,6 +33,10 @@ Generally the rate of HTTP requests sent to an endpoint is quantified by QPS, or
 
 Generally, we'll also accept short bursts of traffic, as long as you remain around an average of 10 QPS (e.g. sending a batch of 50 requests every 30 seconds should not trigger rate limiting).
 
+## Email Triggers
+
+Currently, the same limits that apply to HTTP triggers also apply to [email triggers](/workflows/steps/triggers/#email). See the [HTTP limits above](#http-triggers) for more information.
+
 ## Workflows
 
 ### Time per execution

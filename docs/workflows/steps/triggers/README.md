@@ -187,7 +187,11 @@ There are other limits that apply to all workflows on Pipedream — see our [Li
 
 When you select the **Email** trigger, we create an email address specific to your workflow. Any email sent to this address triggers your workflow.
 
-[Read more about the shape of the trigger event](/workflows/events/#email).
+[Read more about the shape of the email trigger event](/workflows/events/#email).
+
+### Limitations
+
+See the [Email Trigger section of our Limits doc](/limits/#email-triggers) to learn more about the limits of the email trigger.
 
 ## Don't see a trigger you need?
 
