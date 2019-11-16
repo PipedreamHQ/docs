@@ -61,6 +61,11 @@ module.exports = {
         children: ["/connected-accounts/", "/workflows/steps/code/auth/"]
       },
       {
+        title: "Error Handling",
+        collapsable: false,
+        children: ["/workflows/error-handling/global-error-workflow/"]
+      },
+      {
         title: "Managing Workflows",
         collapsable: false,
         children: [
