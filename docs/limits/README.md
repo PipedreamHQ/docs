@@ -35,7 +35,9 @@ Generally, we'll also accept short bursts of traffic, as long as you remain arou
 
 ## Email Triggers
 
-Currently, the same limits that apply to HTTP triggers also apply to [email triggers](/workflows/steps/triggers/#email). See the [HTTP limits above](#http-triggers) for more information.
+Currently, the same limits that apply to HTTP triggers also apply to [email triggers](/workflows/steps/triggers/#email). We limit the total size of the email body, headers, and attachments, and the rate at which emails can be sent.
+
+See the [HTTP limits above](#http-triggers) for the specific limits.
 
 ## Workflows
 
