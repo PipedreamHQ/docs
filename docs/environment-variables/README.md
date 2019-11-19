@@ -71,6 +71,6 @@ The names of environment variables must start with a letter. Following character
 
 Pipedream reserves environment variables that start with `PIPEDREAM_` for internal use. You cannot create an environment variable that begins with that prefix.
 
-The total size of both the names and values of your environment variables cannot exceed `4KB` in length (that is, roughly 4096 characters).
+The total size of both the names and values of your environment variables cannot exceed `64KB` in length.
 
 <Footer />
