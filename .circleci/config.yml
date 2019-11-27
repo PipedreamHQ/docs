@@ -48,5 +48,5 @@ workflows:
           context: pipedream-docs-dev
           filters:
             branches:
-              ignore:
-                - master
+              only:
+                - stage
