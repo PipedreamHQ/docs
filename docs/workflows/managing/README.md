@@ -76,6 +76,15 @@ You can archive any workflow by clicking on the ellipsis in the top-right corner
 
 Archived workflows do not appear in the list of workflows on your homepage by default.
 
+## Keyboard Shortcuts
+
+We provide a few keyboard shortcuts to simplify workflow development:
+
+| Operation |     Shortcut(s)     |
+| --------- | :-----------------: |
+| Save      | ⌘ + S or `Ctrl` + S |
+| Deploy    | ⌘ + D or `Ctrl` + D |
+
 ## More resources
 
 Read more about each of the components of a Pipedream workflow below:
