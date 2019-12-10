@@ -8,47 +8,56 @@
 
 **Before you send data to Snowflake, you'll need to complete the [prerequisite steps below](#prerequisites)**.
 
-### Using the Send to Snowflake action
+### Using the pre-built action
 
-First, [add a new Action](/workflows/steps/actions/#adding-a-new-action), then select the **Send to Snowflake** Action:
+First, add a new step, choose the **Snowflake** app, and select the **Send JSON to Snowflake** action:
 
 <div>
-<img alt="Snowflake action" width="300" src="./images/snowflake-action.png">
+<img alt="Snowflake action" width="400" src="./images/snowflake-action.png">
 </div>
 
-By default, this action requires three parameters: your Snowflake Account Name, your Snowflake Private Key, and the [JSON payload](/destinations/#payload-expressions) you'd like to send. **We recommend you store the values of your account name and private key as [Pipedream environment variables](/environment-variables)**, then reference the values of those environment variables in the action using `process.env`.
+Press **Connect Account** to connect your Snowflake account, and enter the data you'd like to send to Snowflake in the **Payload** field.
 
+For example, to stream HTTP requests into Snowflake from an [HTTP trigger](/workflows/steps/triggers/#http), enter [`event.body`](/workflows/events/#event-format), the variable that includes the HTTP payload.
 
 ### Using `$send.snowflake()`
 
-You can use the `$send.snowflake()` method within any Node.js code cell to send JSON to Snowflake. For example, we save the necessary Snowflake values in [Pipedream environment variables](/environment-variables) and send test JSON like so:
+You can use the `$send.snowflake()` method within any Node.js code cell to send JSON to Snowflake.
+
+First, add a new step, choose the **Snowflake** app, and select **Run Node.js code with Snowflake**:
+
+<div>
+<img alt="Run Node.js code with Snowflake" width="450" src="./images/run-node-js-code.png">
+</div>
+
+This code step includes example `$send.snowflake()` code, and automatically includes Snowflake as a [connected account](/connected-accounts/). Click the **Connect Account** button to connect your Snowflake account, then modify the `payload` property to send whatever data to Snowflake you'd like.
 
 ```javascript
 const {
-  SNOWFLAKE_USERNAME,
-  SNOWFLAKE_ACCOUNT_NAME,
-  SNOWFLAKE_DATABASE,
-  SNOWFLAKE_SCHEMA,
-  SNOWFLAKE_ROLE,
-  SNOWFLAKE_STAGE,
-  SNOWFLAKE_PIPE,
-  SNOWFLAKE_PRIVATE_KEY
-} = process.env;
+  user,
+  private_key,
+  database,
+  schema,
+  stage_name,
+  pipe_name,
+  account,
+  host
+} = auths.snowflake;
 
 $send.snowflake({
-  user: SNOWFLAKE_USERNAME,
-  private_key: SNOWFLAKE_PRIVATE_KEY,
-  database: SNOWFLAKE_DATABASE,
-  schema: SNOWFLAKE_SCHEMA,
-  stage_name: SNOWFLAKE_STAGE,
-  pipe_name: SNOWFLAKE_PIPE,
-  account: SNOWFLAKE_ACCOUNT_NAME,
-  host: `${SNOWFLAKE_ACCOUNT_NAME}.snowflakecomputing.com`,
+  user,
+  private_key,
+  database,
+  schema,
+  stage_name,
+  pipe_name,
+  account,
+  host: `${account}.snowflakecomputing.com`,
   payload: { test: "This is from Pipedream" }
 });
 ```
 
-Take a look at [this example workflow](https://pipedream.com/@dylburger/stream-json-to-snowflake-p_D1C3pP) for an end-to-end example.
+Take a look at [this example workflow](https://pipedream.com/@dylburger/send-data-to-snowflake-p_pWC6GL/edit), which you can copy into your own account, for an end-to-end example.
 
 All the data sent to Snowflake using this method will be batched by Pipedream and delivered to Snowflake once a minute.
 
@@ -134,16 +143,15 @@ GRANT ROLE PIPEDREAM to user PIPEDREAM;
 ALTER USER PIPEDREAM SET RSA_PUBLIC_KEY='<your public key here>'
 ```
 
-### Step 3 — Create environment variables for Snowflake resources, auth
+### Step 3 — Connect your Snowflake account
 
-Now that we've created the resources necessary to stream data to Snowflake, we'll need to reference some of these values from Pipedream. **We recommend you add these values as [environment variables](/environment-variables/)**.
+Now that we've created the resources necessary to stream data to Snowflake, you'll need to [connect your account to Pipedream](https://docs.pipedream.com/connected-accounts/). Connecting your account lets you store your Snowflake account credentials securely, in a single place, referencing them anywhere you need to use it in a Pipedream code step or action.
 
-Our [example Snowflake workflow](https://pipedream.com/@dylburger/stream-json-to-snowflake-p_wOCyPM/readme) uses the names of the username, database, stage, etc. from above, e.g. the `PIPEDREAM` username. **If you used these default values when creating Snowflake resources, you only need to create the following environment variables**:
+Visit your list of [Apps](https://pipedream.com/apps), connect a new app, and choose **Snowflake**. You'll be asked to add your user, account name, private key, and most of the resources you created in Step 2 above.
 
-- `SNOWFLAKE_ACCOUNT_NAME` — your [Snowflake account name](https://docs.snowflake.net/manuals/user-guide/connecting.html#your-snowflake-account-name)
-- `SNOWFLAKE_PRIVATE_KEY` — the contents of the private key file you generated in step 1, **removing the `-----BEGIN RSA PRIVATE KEY-----` header and `-----END RSA PRIVATE KEY-----` trailer above and below the key**.
+For the **account** field, enter your [Snowflake account name](https://docs.snowflake.net/manuals/user-guide/connecting.html#your-snowflake-account-name).
 
-If you used existing Snowflake resources (e.g. you already had a target database), or otherwise modified the names from the SQL statements above, you'll need to reference those in the **Send to Snowflake** action from the workflow. See the [**Getting Started** section of the workflow's README](https://pipedream.com/@dylburger/stream-json-to-snowflake-p_wOCyPM/readme) for specific instructions.
+When you enter your **private_key** — the contents of the private key file you generated in step 1 — **remove the `-----BEGIN RSA PRIVATE KEY-----` header and `-----END RSA PRIVATE KEY-----` trailer above and below the key**, then copy the resulting value.
 
 ## How our Snowflake integration works
 
