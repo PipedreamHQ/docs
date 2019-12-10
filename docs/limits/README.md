@@ -53,7 +53,7 @@ If this limit isn't sufficient for your use case, please [reach out to our team]
 
 ### Execution time per day
 
-**You have a total execution quota of 30 minutes (180,000 milliseconds) per day across all workflows in your account.**
+**You have a total execution quota of 30 minutes (1,800,000 milliseconds) per day across all workflows in your account.**
 
 Your quota is reset, daily, at 00:00 (midnight) UTC.
 
