@@ -205,4 +205,12 @@ If there were no errors ingesting the files, the `ERROR_COUNT` will be 0 and eac
 
 Pipedream is [free](/pricing/) to use for delivering data to Snowflake, but you'll incur costs in Snowflake for the data you store there, and for the [Snowpipe streaming service](https://docs.snowflake.net/manuals/user-guide/data-load-snowpipe-billing.html) we use to send data to your Snowflake account.
 
+## Limiting Snowflake connections by IP
+
+Snowflake allows you to [restrict account access by IP address](https://docs.snowflake.net/manuals/user-guide/network-policies.html). If you'd like to apply that filter, any Snowflake connections using `$send.snowflake()` should come from one of the following IP addresses:
+
+<<< @/docs/snippets/public-node-ips
+
+This list may change over time. If you've previously whitelisted these IP addresses and are having trouble writing data to Snowflake, please check to ensure this list matches your firewall rules.
+
 <Footer />

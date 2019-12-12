@@ -84,4 +84,12 @@ test/2019/05/25/16/2019-05-25-16-14-58-8f25b54462bf6eeac3ee8bde512b6c59654c45435
 
 As noted above, a given object contains all payloads delivered to an S3 Destination within a specific minute. Multiple events within a given object are newline-delimited.
 
+## Limiting S3 Uploads by IP
+
+S3 provides a mechanism to [limit operations only from specific IP addresses](https://docs.aws.amazon.com/AmazonS3/latest/dev/example-bucket-policies.html#example-bucket-policies-use-case-3). If you'd like to apply that filter, uploads using `$send.s3()` should come from one of the following IP addresses:
+
+<<< @/docs/snippets/public-node-ips
+
+This list may change over time. If you've previously whitelisted these IP addresses and are having trouble uploading S3 objects, please check to ensure this list matches your firewall rules.
+
 <Footer />
