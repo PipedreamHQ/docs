@@ -4,17 +4,11 @@
 
 [[toc]]
 
-## Adding an S3 Destination
+## Using `$send.s3()`
 
-### Adding an S3 Action
+You can send data to an S3 Destination in [Node.js code steps](/workflows/steps/code/) using `$send.s3()`.
 
-First, [add a new Action](/workflows/steps/actions/#adding-a-new-action), then select the **Amazon S3** Action. S3 Actions require you to specify the **Bucket** where you want to send data, the **Payload** you want to send, and an optional [**Prefix**](https://docs.aws.amazon.com/AmazonS3/latest/user-guide/using-folders.html). Before sending data, **you must allow Pipedream to upload objects to your bucket** — see the [S3 Bucket Policy](#s3-bucket-policy) below.
-
-### Using `$send.s3()`
-
-You can send data to an S3 Destination in [Node.js code steps](/workflows/steps/code/), too, using the `$send.s3()` function. **This allows you to send data to S3 programmatically, if you need more control than Actions afford**.
-
-`$send.s3()` takes the same parameters as the corresponding Action:
+`$send.s3()` takes the following parameters:
 
 ```javascript
 $send.s3({
@@ -24,11 +18,11 @@ $send.s3({
 });
 ```
 
-Like with any `$send` function, you can use `$send.s3()` conditionally, within a loop, or anywhere you'd use a function normally in Node.js.
+Like with any `$send` function, you can use `$send.s3()` conditionally, within a loop, or anywhere you'd use a function normally.
 
 ## S3 Bucket Policy
 
-In order for us to deliver objects to your S3 bucket, you need to modify the [bucket policy](https://docs.aws.amazon.com/AmazonS3/latest/user-guide/add-bucket-policy.html) for your target bucket to allow Pipedream to upload objects.
+In order for us to deliver objects to your S3 bucket, you need to modify its [bucket policy](https://docs.aws.amazon.com/AmazonS3/latest/user-guide/add-bucket-policy.html) to allow Pipedream to upload objects.
 
 **Replace `[your bucket name]` with the name of your bucket** near the bottom of the policy.
 
@@ -58,7 +52,7 @@ In order for us to deliver objects to your S3 bucket, you need to modify the [bu
 }
 ```
 
-This bucket policy provides the minimum set of permissions necessary for Pipedream to deliver objects to your S3 bucket. We use the [Multipart Upload API](https://docs.aws.amazon.com/AmazonS3/latest/dev/uploadobjusingmpu.html) to upload objects to S3, and need the [relevant permissions](https://docs.aws.amazon.com/AmazonS3/latest/dev/mpuAndPermissions.html).
+This bucket policy provides the minimum set of permissions necessary for Pipedream to deliver objects to your bucket. We use the [Multipart Upload API](https://docs.aws.amazon.com/AmazonS3/latest/dev/uploadobjusingmpu.html) to upload objects, and require the [relevant permissions](https://docs.aws.amazon.com/AmazonS3/latest/dev/mpuAndPermissions.html).
 
 ## S3 Destination delivery
 
@@ -68,7 +62,7 @@ In some cases, delivery will take longer than a minute. You can always review ho
 
 ## S3 object format
 
-We upload objects to S3 using the following format:
+We upload objects using the following format:
 
 ```
 [PREFIX]/YYYY/MM/DD/HH/YYYY-MM-DD-HH-MM-SS-IDENTIFIER.gz

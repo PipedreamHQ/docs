@@ -4,27 +4,9 @@ HTTP Destinations allow you to send data to another HTTP endpoint URL outside of
 
 [[toc]]
 
-## Adding an HTTP Destination
+## Using `$send.http()`
 
-### Using the Send HTTP Request action
-
-First, add a new Action to your workflow by clicking on the + button between any two steps.
-
-Choose the **Send HTTP Request** action and add the **URL** and **Payload**.
-
-This action defaults to sending an HTTP `POST` request with the desired payload to the specified URL. If you'd like to change the HTTP method, add Basic auth, query string parameters or headers, you can click the sections below the Payload field.
-
-### Using `$send.http()`
-
-You can send data to an HTTP Destination in [Node.js code steps](/workflows/steps/code/), too, using the `$send.http()` function. **This allows you to send data to destinations programmatically, if you need more control than Actions afford**.
-
-Let's use `$send.http()` to send an HTTP POST request like we did in the Action example above. [Add a new Action](/workflows/steps/actions/#adding-a-new-action), then search for "**Code**":
-
-<div>
-<img alt="Code action" width="300" src="./images/new-code-step.png">
-</div>
-
-[Create an endpoint URL on RequestBin](https://requestbin.com), adding the code below to your code step, with the URL you created:
+You can send HTTP requests in [Node.js code steps](/workflows/steps/code/) using `$send.http()`.
 
 ```javascript
 $send.http({
@@ -49,7 +31,9 @@ $send.http({
 });
 ```
 
-Again, it's important to remember that **Destination delivery is asynchronous**. If you iterate over an array of values and send an HTTP request for each:
+**Destination delivery is asynchronous**. HTTP requests are sent after your workflow finishes. This means you cannot write code that operates on the HTTP response. These HTTP requests also don't count against your workflow quota.
+
+If you iterate over an array of values and send an HTTP request for each:
 
 ```javascript
 const names = ["Luke", "Han", "Leia", "Obi Wan"];
@@ -66,19 +50,21 @@ names.forEach(name => {
 
 you won't have to `await` the execution of the HTTP requests in your workflow. We'll collect every `$send.http()` call and defer those HTTP requests, sending them after your workflow finishes.
 
-## HTTP Destination Delivery
+## HTTP Destination delivery
 
 HTTP Destination delivery is handled asynchronously, separate from the execution of a workflow. However, we deliver the specified payload to HTTP destinations for every event sent to your workflow.
 
-Generally, this means it should only take a few seconds for us to send the event to the destination you specify. In some cases, delivery will take longer. You can always review how many destinations we've delivered a given event to by examining the [**Dest** column in the Inspector](/workflows/events/inspect/#dest-destinations).
+Generally, this means it should only take a few seconds for us to send the event to the destination you specify. In some cases, delivery will take longer.
 
-## HTTP Request and Response
+The time it takes to make HTTP requests sent with `$send.http()` does not count against your workflow quota.
 
-You can see both the data that was sent in the HTTP request, and the HTTP response that was issued, below the Code or Action cell in which the Destination was used. If the Action or Code step you're using issues multiple HTTP requests, we'll show the request and response data for each.
+## HTTP request and response logs
+
+Below your code step, you'll see both the data that was sent in the HTTP request, and the HTTP response that was issued. If you issue multiple HTTP requests, we'll show the request and response data for each.
 
 ## Retries
 
-Currently, Pipedream will not retry any failed request. If your HTTP destination endpoint is down, or returns an error response, we'll display that response in the observability associated with the Destination in the relevant Code or Action cell.
+Currently, Pipedream will not retry any failed request. If your HTTP destination endpoint is down, or returns an error response, we'll display that response in the observability associated with the Destination in the relevant step.
 
 ## IP addresses for Pipedream HTTP requests
 
