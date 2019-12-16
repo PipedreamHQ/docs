@@ -60,7 +60,7 @@ By default, when you send a [valid HTTP request](#valid-requests) to your endpoi
 <p>To customize this response, check out our docs <a href="https://docs.pipedream.com/workflows/steps/triggers/#http-responses">here</a></p>
 ```
 
-This is a convenient default for workflows. When you're processing HTTP requests, you often don't need to issue any special response to the client. We issue this default response so you don't have to write any code to do it yourself.
+When you're processing HTTP requests, you often don't need to issue any special response to the client. We issue this default response so you don't have to write any code to do it yourself.
 
 If you do need to issue a custom HTTP response from a workflow, **you can use the `$respond()` function in a Code or Action step**.
 
@@ -74,14 +74,35 @@ $respond({
 });
 ```
 
-**Additionally, for Pipedream to issue this response, one of the following must be sent in the HTTP request**:
+You can **Copy** [this example workflow](https://pipedream.com/@dylburger/issue-an-http-response-from-a-workflow-p_ljCRdv/edit) and make an HTTP request to its endpoint URL to experiment with this.
 
-- A `pipedream_response=1` query string parameter, e.g. a request must be made to `https://myendpoint.m.pipedream.net/?pipedream_response=1`, _or_
-- An `x-pipedream-response` HTTP header with any value
+#### Errors with HTTP Responses
 
-**If the HTTP request does not contain at least one of these signals, the `$respond()` code in your workflow will not run**.
+If you use `$respond()` in a workflow, **you must always make sure `$respond()` is called in your code**. If you make an HTTP request to a workflow, and run code where `$respond()` is _not_ called, your endpoint URL will issue a `400 Bad Request` error with the following body:
 
-[This workflow](https://pipedream.com/@pravin/return-a-response-from-your-workflow-p_zACJqp/readme) contains example code and a `README` articulating how to use `$respond()`, as well.
+```
+No $respond called in workflow
+```
+
+This might happen if:
+
+- You call `$respond()` conditionally, where it does not run under certain conditions.
+- Your workflow throws an Error before you run `$respond()`.
+
+If you can't handle the `400` error in the application calling your workflow, you can implement `try` / `finally` logic to ensure `$respond()` always gets called with some default message. For example:
+
+```javascript
+try {
+  // Your code here that might throw an exception or not run
+} finally {
+  $respond({
+    status: 200,
+    body: {
+      msg: "Default response"
+    }
+  });
+}
+```
 
 ### Errors
 
