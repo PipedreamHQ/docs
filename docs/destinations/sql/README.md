@@ -16,15 +16,25 @@ Below we'll discuss how the **SQL** Destination works in detail, as well as the 
 
 ### Adding a Pipedream SQL Action
 
-Adding a new SQL Destination to your workflow is easy. First, [add a new Action](/workflows/steps/actions/#adding-a-new-action) to your workflow and choose the **Send Data To Pipedream SQL Service** Action.
+Adding a new SQL Destination to your workflow is easy. First, add a new step to your workflow and choose the **SQL by Pipedream** action.
 
-Then, add the **Table** name and **Payload** you want to send to the SQL Destination. You can name the table whatever you want, within the [restrictions we impose on table names](#limitations-on-pipedream-sql-table-names).
+<div>
+<img alt="SQL by Pipedream action" src="./images/sql-by-pipedream.png">
+</div>
+
+Then, add the **Table Name** and **Payload** you want to send to the SQL Destination. You can name the table whatever you want, within the [restrictions we impose on table names](#limitations-on-pipedream-sql-table-names).
 
 **Typically, you'll want this table name to be unique across all other SQL Destinations you've previously added**. For example, if you've added a SQL Destination to a Twitter workflow where the table name is `tweets`, you'll want to add a different, descriptive table name to your new Destination so that the data flows to separate tables.
 
 That said, you can also send data to the _same_ SQL table from across multiple workflows if you'd like. If you've configured three different workflows to process data from different sources, but the schema of those data are all the same and you want to consolidate the data for analysis, **you can send data from all three workflows (or more) to the same SQL table**. Just add the same **Table** name in all three SQL Destinations, and the data will all end up in that table for querying.
 
-Finally, you'll need to add the **Payload** you want to send to the SQL Destination. The value you enter here can be any valid [JavaScript expression](/destinations/#payload-expressions) that evaluates to a JavaScript object, but typically you'll just want to add `event`, `event.body` or another step export using the `steps` object to the SQL service for querying.
+Finally, you'll need to add the **Payload** you want to send to the SQL Destination. The value you enter here can be any variable that references a JavaScript object. Typically, you'll want to reference `event`, `event.body` or a [step export](/workflows/steps/#step-exports) like `steps.nodejs.myData`.
+
+Below, you'll see an example of us sending `event.body` — a JavaScript object representing the payload of the event sent to our workflow — to a table in the SQL service.
+
+<div>
+<img alt="Sending data to SQL table using the action" src="./images/send-data-to-sql-table.png">
+</div>
 
 ### Using `$send.sql()`
 
