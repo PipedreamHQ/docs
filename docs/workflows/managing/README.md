@@ -16,13 +16,13 @@ When you create a workflow, you can edit the **Title** and **Description** near 
 
 Please see our [docs on public workflows](/public-workflows/) for more information.
 
-## Forking public workflows
+## Copying public workflows
 
 We hope that the workflows you write are helpful for many other people. If you've written a workflow to send all Stripe transaction data to a Redshift data warehouse, someone else will probably want to use your workflow to solve that same use case.
 
-If you've used [Github](https://github.com/), you can think of the workflow as a unique, public repository. It's code that anyone can view and fork for their own use.
+If you've used [Github](https://github.com/), you can think of the workflow as a unique, public repository. It's code that anyone can view and copy for their own use.
 
-On Pipedream, anyone can find a public workflow, [fork it](/workflows/fork/), and run it, modifying any of the steps within the workflow to make it work for their use case.
+On Pipedream, anyone can find a public workflow, [copy it](/workflows/copy/), and run it, modifying any of the steps within the workflow to make it work for their use case.
 
 ## Saving and Running your Workflow
 

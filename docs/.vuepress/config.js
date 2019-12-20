@@ -78,7 +78,7 @@ module.exports = {
         title: "Managing Workflows",
         collapsable: false,
         children: [
-          "/workflows/fork/",
+          "/workflows/copy/",
           "/workflows/managing/",
           "/workflows/settings/",
           "/public-workflows/",

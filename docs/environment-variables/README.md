@@ -57,11 +57,11 @@ Referencing an environment variable that doesn't exist returns the value `undefi
 Logging the value of any environment variables — for example, using `console.log` — will include that value in the logs associated with the cell. Please keep this in mind and take care not to print the values of sensitive secrets.
 :::
 
-## Forking workflows that use environment variables
+## Copying workflows that use environment variables
 
-Your environment variables are made available to any running workflow. **If you fork a public workflow that uses an environment variable, make sure you review the code to see what environment variables it's using**.
+Your environment variables are made available to any running workflow. **If you copy a public workflow that uses an environment variable, make sure you review the code to see what environment variables it's using**.
 
-Reviewing the code ensures you have the necessary variables defined for the workflow to run correctly, and makes sure the original workflow author isn't reading variables that you don't need for the workflow to function. You can always modify the code for the workflow after forking to remove these variables, or change their names.
+Reviewing the code ensures you have the necessary variables defined for the workflow to run correctly, and makes sure the original workflow author isn't reading variables that you don't need for the workflow to function. You can always modify the code for the workflow after copying to remove these variables, or change their names.
 
 ## Limits
 

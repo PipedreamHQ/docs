@@ -55,6 +55,8 @@ If this limit isn't sufficient for your use case, please [reach out to our team]
 
 **You have a total execution quota of 30 minutes (1,800,000 milliseconds) per day across all workflows in your account.**
 
+You can view your current quota usage in your [Settings](https://pipedream.com/settings/billing).
+
 Your quota is reset, daily, at 00:00 (midnight) UTC.
 
 Pipedream records a minimum of `100ms` per execution. For example, if your workflow runs for `50ms`, you'll incur `100ms` of time towards your daily quota.

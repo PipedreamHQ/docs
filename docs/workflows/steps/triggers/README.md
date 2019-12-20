@@ -76,6 +76,10 @@ $respond({
 
 You can **Copy** [this example workflow](https://pipedream.com/@dylburger/issue-an-http-response-from-a-workflow-p_ljCRdv/edit) and make an HTTP request to its endpoint URL to experiment with this.
 
+#### Timing of `$respond()` execution
+
+You may notice some response latency calling workflows that use `$respond()` from your HTTP client. `$respond()` is called at the end of your workflow, after all other code is done executing, so it may take some time to issue the response back.
+
 #### Errors with HTTP Responses
 
 If you use `$respond()` in a workflow, **you must always make sure `$respond()` is called in your code**. If you make an HTTP request to a workflow, and run code where `$respond()` is _not_ called, your endpoint URL will issue a `400 Bad Request` error with the following body:

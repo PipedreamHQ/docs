@@ -16,7 +16,7 @@ Workflows make it easy to integrate your apps, data, and APIs — all with no s
 
 - Export values for each step and access them via the `steps` object.
 
-Workflow code is [public](/public-workflows/) so the community can discover and fork it. Your workflow execution and event data is **private**.
+Workflow code is [public](/public-workflows/) so the community can discover and [copy it](/workflows/copy/). Your workflow execution and event data is **private**.
 
 <!--
 ### Why build your workflows on Pipedream?
