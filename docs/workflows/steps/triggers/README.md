@@ -53,6 +53,8 @@ Thus, your endpoint will accept [cross-origin HTTP requests](https://developer.m
 
 ### HTTP Responses
 
+#### Default HTTP response
+
 By default, when you send a [valid HTTP request](#valid-requests) to your endpoint URL, you should expect to receive a `200 OK` status code with the following payload:
 
 ```
@@ -62,7 +64,9 @@ By default, when you send a [valid HTTP request](#valid-requests) to your endpoi
 
 When you're processing HTTP requests, you often don't need to issue any special response to the client. We issue this default response so you don't have to write any code to do it yourself.
 
-If you do need to issue a custom HTTP response from a workflow, **you can use the `$respond()` function in a Code or Action step**.
+#### Customizing the HTTP response
+
+If you need to issue a custom HTTP response from a workflow, **you can use the `$respond()` function in a Code or Action step**.
 
 `$respond()` takes a single argument: an object with properties that specify the body, headers, and HTTP status code you'd like to respond with:
 
@@ -74,11 +78,44 @@ $respond({
 });
 ```
 
+The value of the `body` property can be either a string, object, or [Buffer](https://nodejs.org/api/buffer.html#buffer_buffer) (binary data). Attempting to return any other data may yield an error.
+
 You can **Copy** [this example workflow](https://pipedream.com/@dylburger/issue-an-http-response-from-a-workflow-p_ljCRdv/edit) and make an HTTP request to its endpoint URL to experiment with this.
 
 #### Timing of `$respond()` execution
 
-You may notice some response latency calling workflows that use `$respond()` from your HTTP client. `$respond()` is called at the end of your workflow, after all other code is done executing, so it may take some time to issue the response back.
+You may notice some response latency calling workflows that use `$respond()` from your HTTP client. By default, `$respond()` is called at the end of your workflow, after all other code is done executing, so it may take some time to issue the response back.
+
+If you need to issue an HTTP response in the middle of a workflow, see the section on [returning a response immediately](#returning-a-response-immediately).
+
+#### Returning a response immediately
+
+You can issue an HTTP response within a worklow, and continue the rest of the workflow execution, by setting the `immediate` property to `true`:
+
+```javascript
+$respond({
+  immediate: true,
+  status: 200,
+  headers: { "my-custom-header": "value" },
+  body: { message: "My custom response" }
+});
+```
+
+Passing `immediate: true` tells `$respond()` to issue a response back to the client at this point in the workflow. After the HTTP response has been issued, the remaining code in your workflow runs.
+
+This can be helpful, for example, when you're building a Slack bot. When you send a message to a bot, Slack requires a `200 OK` response be issued immediately, to confirm receipt:
+
+```javascript
+$respond({
+  immediate: true,
+  status: 200,
+  body: ""
+});
+```
+
+Once you issue the response, you'll probably want to process the message from the user and respond back with another message or data requested by the user.
+
+[Here's an example workflow](https://pipedream.com/@dylburger/issue-http-response-immediately-continue-running-workflow-p_pWCWGJ) that shows how to use `immediate: true` and run code after the HTTP response is issued.
 
 #### Errors with HTTP Responses
 
@@ -92,8 +129,9 @@ This might happen if:
 
 - You call `$respond()` conditionally, where it does not run under certain conditions.
 - Your workflow throws an Error before you run `$respond()`.
+- You return data in the `body` property that isn't a string, object, or Buffer.
 
-If you can't handle the `400` error in the application calling your workflow, you can implement `try` / `finally` logic to ensure `$respond()` always gets called with some default message. For example:
+If you can't handle the `400 Bad Request` error in the application calling your workflow, you can implement `try` / `finally` logic to ensure `$respond()` always gets called with some default message. For example:
 
 ```javascript
 try {
