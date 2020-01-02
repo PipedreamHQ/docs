@@ -106,7 +106,7 @@ Passing `immediate: true` tells `$respond()` to issue a response back to the cli
 This can be helpful, for example, when you're building a Slack bot. When you send a message to a bot, Slack requires a `200 OK` response be issued immediately, to confirm receipt:
 
 ```javascript
-$respond({
+await $respond({
   immediate: true,
   status: 200,
   body: ""
