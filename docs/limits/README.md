@@ -43,13 +43,18 @@ See the [HTTP limits above](#http-triggers) for the specific limits.
 
 ### Time per execution
 
-Every event you send to a workflow triggers the execution of that workflow. **Workflow code is limited to 30 seconds per execution**.
+Every event sent to a workflow triggers a new execution of that workflow. Workflows have a default execution limit that varies with the trigger type:
 
-If your code exceeds this limit, we'll throw a `TIMEOUT` error and stop your workflow. Any partial logs and observability associated with code cells that ran successfully before the timeout will be attached to the event in the UI, so you can examine the state of your workflow and troubleshoot where it may have failed.
+- HTTP and Email-triggered workflows default to **30 seconds** per execution.
+- Cron-triggered workflows default to **60 seconds** per execution.
+
+If your code exceeds your workflow-level limit, we'll throw a `TIMEOUT` error and stop your workflow. Any partial logs and observability associated with code cells that ran successfully before the timeout will be attached to the event in the UI, so you can examine the state of your workflow and troubleshoot where it may have failed.
+
+**You can change this default timeout in your [workflow's settings](/workflows/settings/), up to 300 seconds (5 minutes), or down to 1 second**.
 
 Events that trigger a `TIMEOUT` error will appear in red in the [Inspector](/workflows/events/inspect/). You'll see the timeout error, also in red, in the cell at which the code timed out.
 
-If this limit isn't sufficient for your use case, please [reach out to our team](/support/).
+If you need to run a workflow that exceeds 5 minutes, please [reach out to our team](/support/).
 
 ### Execution time per day
 
