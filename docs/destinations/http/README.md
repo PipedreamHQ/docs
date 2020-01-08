@@ -62,6 +62,12 @@ The time it takes to make HTTP requests sent with `$send.http()` does not count 
 
 Below your code step, you'll see both the data that was sent in the HTTP request, and the HTTP response that was issued. If you issue multiple HTTP requests, we'll show the request and response data for each.
 
+## Timeout
+
+The timeout on HTTP request sent with `$send.http()` is currently **5 seconds**. This time includes DNS resolution, connecting to the host, writing the request body, server processing, and reading the response body.
+
+Any requests that exceed 5 seconds will yield a `timeout` error.
+
 ## Retries
 
 Currently, Pipedream will not retry any failed request. If your HTTP destination endpoint is down, or returns an error response, we'll display that response in the observability associated with the Destination in the relevant step.
