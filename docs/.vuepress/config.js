@@ -51,6 +51,7 @@ module.exports = {
           "/workflows/steps/",
           "/workflows/steps/triggers/",
           "/workflows/steps/code/",
+          "/workflows/steps/code/nodejs/http-requests/",
           "/workflows/steps/actions/"
         ]
       },

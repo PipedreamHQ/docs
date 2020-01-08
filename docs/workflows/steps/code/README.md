@@ -112,6 +112,15 @@ Within a step, the [normal rules of JavaScript variable scope](https://developer
 
 **When you need to share data across steps, use [step exports](/workflows/steps/).**
 
+## Making HTTP requests from your workflow
+
+There are two ways to make HTTP requests on Pipedream:
+
+- Use any HTTP client that works with Node.js. [See this example guide for how to use `axios` to make HTTP requests](/workflows/steps/code/nodejs/http-requests/).
+- [Use `$send.http()`](/destinations/http/#using-send-http), a Pipedream-provided method for making asynchronous HTTP requests.
+
+In general, if you just need to make an HTTP request but don't care about the response, [use `$send.http()`](/destinations/http/#using-send-http). If you need to operate on the data in the HTTP response in the rest of your workflow, [use `axios`](/workflows/steps/code/nodejs/http-requests/).
+
 ## Managing state
 
 Sometimes you need to save state in one invocation of a workflow, and read it the next time your workflow runs. For example, you might need to keep track of the last ID of the item you processed, or the last timestamp you ran a job, so you can pull new data the next time.

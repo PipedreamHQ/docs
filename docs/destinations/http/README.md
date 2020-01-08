@@ -31,7 +31,7 @@ $send.http({
 });
 ```
 
-**Destination delivery is asynchronous**. HTTP requests are sent after your workflow finishes. This means you cannot write code that operates on the HTTP response. These HTTP requests also don't count against your workflow quota.
+**Destination delivery is asynchronous**: the HTTP requests are sent after your workflow finishes. This means **you cannot write code that operates on the HTTP response**. The benefit of using `$send.http()`, though, is that these HTTP requests also don't count against your workflow quota.
 
 If you iterate over an array of values and send an HTTP request for each:
 
@@ -61,6 +61,12 @@ The time it takes to make HTTP requests sent with `$send.http()` does not count 
 ## HTTP request and response logs
 
 Below your code step, you'll see both the data that was sent in the HTTP request, and the HTTP response that was issued. If you issue multiple HTTP requests, we'll show the request and response data for each.
+
+## What if I need to access the HTTP response in my workflow?
+
+Since HTTP requests sent with `$send.http()` are sent asynchronously, after your workflow runs, **you cannot access the HTTP response in your workflow**.
+
+If you need to access the HTTP response data in your workflow, [use `axios`](/workflows/steps/code/nodejs/http-requests/) or another HTTP client.
 
 ## Timeout
 
