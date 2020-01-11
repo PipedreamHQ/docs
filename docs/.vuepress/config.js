@@ -68,7 +68,11 @@ module.exports = {
       {
         title: "Connecting to Apps",
         collapsable: false,
-        children: ["/connected-accounts/", "/workflows/steps/code/auth/"]
+        children: [
+          "/apps/all-apps/",
+          "/connected-accounts/",
+          "/workflows/steps/code/auth/"
+        ]
       },
       {
         title: "Error Handling",
@@ -102,7 +106,7 @@ module.exports = {
       {
         title: "Integrations",
         collapsable: false,
-        children: ["/apps/discord/"]
+        children: ["/apps/all-apps/", "/apps/discord/"]
       },
       "/pricing/",
       "/limits/",
