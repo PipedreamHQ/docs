@@ -8,7 +8,11 @@ Any events you've previously sent to a workflow, you can replay through your wor
 
 Clicking on that icon replays the event.
 
+## Keyboard Shortcut
+
 You can replay the **last event** sent to your workflow using the keyboard shortcut `⌘` + Shift + E or `Ctrl` + Shift + E.
+
+## Step Exports for replayed events
 
 The step exports will be the same for the replayed event (note: the contents of `steps.trigger.context`, will contain a different event `id` and `ts`, to represent the fact that this is a different execution of the same event).
 
