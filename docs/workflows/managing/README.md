@@ -10,11 +10,17 @@ When you create a workflow, you can edit the **Title** and **Description** near 
 <img alt="Pipeline title and description" src="./images/pipeline.png">
 </div>
 
-## Workflows are public, your data is private
+## Workflows are public by default, your data is private
 
-**All workflow steps are public. The data you send to a workflow, or logs you generate, are private**.
+**All workflow steps are public by default. The data you send to a workflow, or logs you generate, are private**.
 
-Please see our [docs on public workflows](/public-workflows/) for more information.
+You can change the visibility of workflow code using the dropdown menu to the right of the **code** label at the top of your workflow:
+
+<div>
+<img alt="Workflow visibility toggle" src="./images/workflow-visibility.png">
+</div>
+
+Please see our [docs on workflow visibility](/public-workflows/) for more information.
 
 ## Copying public workflows
 
