@@ -44,7 +44,7 @@ Code and action steps of Pipedream workflows are executed in the order they appe
 
 ## Sharing Workflows
 
-Since [workflows are public](/public-workflows/), you can simply copy the pipedream.com URL to your pipeline and share it with anyone:
+Since [workflows are public by default](/public-workflows/), you can simply copy the pipedream.com URL to your pipeline and share it with anyone:
 
 <div>
 <img alt="Workflow URL" src="./images/workflow-url.png">

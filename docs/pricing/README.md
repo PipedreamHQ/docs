@@ -9,7 +9,7 @@ We believe anyone should be able to run simple, low-volume workflows at no cost,
 
 **Pipedream is free**, subject to the following constraints:
 
-- Your data is private, always, but workflows you author are made public as soon as you save them.
+- Your data is private, always, but your workflows are public by default (you can [make any workflow private](/workflows/managing/#workflows-are-public-by-default-your-data-is-private)). [Read more here](/public-workflows/).
 - Your workflows run within our [limits](/limits/).
 - You follow our [Acceptable Use](https://pipedream.com/terms/#b-acceptable-use) policy. In short this means: don't use Pipedream to break the law; don't abuse the platform; and don't use the platform to harm others.
 
