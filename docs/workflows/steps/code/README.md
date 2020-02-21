@@ -264,6 +264,12 @@ We use the [Monaco Editor](https://microsoft.github.io/monaco-editor/), which po
 
 We also let you customize the editor. For example, you can enable Vim mode, and change the default tab size for indented code. Visit your [**Settings**](https://pipedream.com/settings) to modify these settings.
 
+## Keyboard Shortcuts
+
+We use the [Monaco Editor](https://microsoft.github.io/monaco-editor/), which powers VS Code. As a result, many of the VS Code [keyboard shortcuts](https://code.visualstudio.com/docs/getstarted/keybindings) should work in the context of the editor.
+
+For example, you can use shortcuts to search for text, format code, and more.
+
 ## New to JavaScript?
 
 We understand many of you might be new to JavaScript, and provide resources for you to learn the language below.
