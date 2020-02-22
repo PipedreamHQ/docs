@@ -253,6 +253,7 @@ Today, we prevent the following SQL queries:
 - `CREATE DATABASE`
 - `CREATE TABLE`
 - `CREATE VIEW`
+- `DELETE FROM`
 - `DESCRIBE VIEW`
 - `DROP DATABASE`
 - `DROP TABLE`
