@@ -17,7 +17,7 @@ The [Zoom API docs on permissions](https://marketplace.zoom.us/docs/guides/autho
 1. First, sign up for Pipedream at [https://pipedream.com](https://pipedream.com).
 2. [Create a new workflow](https://pipedream.com/new).
 3. Select a [trigger](/workflows/steps/triggers/) for your workflow (for example, HTTP or Cron).
-4. [Add a new step](/workflows/steps/), search for "Zoom" or "Zoom Admin", depending on your use case
+4. [Add a new step](/workflows/steps/), search for "Zoom" or "Zoom Admin" ([see the differences above](#zoom-vs-zoom-admin-app))
 5. Once you've selected the app, you can choose to either "Run Node.js code" or select one of the pre-built actions for performing common API operations.
 6. Once you've added the step, press the **Connect Account** button near the bottom. If this is your first time authorizing Pipedream's access to your Zoom account, you'll be prompted to accept that access, and Pipedream will store the authorization grant to enable the workflow to access the Zoom API. If you've already linked a Zoom account via Pipedream, pressing **Connect Account** will list any existing accounts you've linked.
 
