@@ -95,6 +95,7 @@ module.exports = {
         collapsable: false,
         children: [
           "/event-sources/",
+          "/event-sources/http/",
           "/event-sources/public-streams/",
           "/event-sources/github/",
           "/event-sources/rss/"
