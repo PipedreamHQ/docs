@@ -96,10 +96,18 @@ module.exports = {
         children: [
           "/event-sources/",
           "/event-sources/http/",
-          "/event-sources/public-streams/",
-          "/event-sources/github/",
-          "/event-sources/rss/"
+          "/event-sources/public-streams/"
         ]
+      },
+      {
+        title: "CLI",
+        collapsable: false,
+        children: ["/cli/install/", "/cli/login/", "/cli/reference/"]
+      },
+      {
+        title: "API",
+        collapsable: false,
+        children: ["/api/reference/"]
       },
       {
         title: "Destinations",

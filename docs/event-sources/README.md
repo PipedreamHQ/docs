@@ -21,8 +21,10 @@ HTTP sources are essentially [request bins](https://requestbin.com) that can be 
 HTTP sources provide a good example of how you can turn an event stream into an API:
 
 - HTTP requests are the **event stream**, generated from your application, client browsers, webhooks, etc.
-- You can retrieve HTTP requests via Pipedream's events API, or stream them directly to other apps using the SSE interface.
+- You can retrieve HTTP requests via Pipedream's **events API**, or stream them directly to other apps using the SSE interface.
 
 ## Create your first event source
 
 [**To get started, let's create an HTTP source**](/event-sources/http/).
+
+<Footer />
