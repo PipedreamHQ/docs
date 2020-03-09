@@ -6,9 +6,11 @@ Sources collect data from services like Github, Stripe, the bitcoin blockchain, 
 
 Event sources run on Pipedream's infrastructure, but you can retrieve emitted events in your own apps using the Pipedream CLI, HTTP API, or SSE stream tied to your source.
 
+[[toc]]
+
 ## Example: HTTP source
 
-The simplest event source is an [HTTP source](https://github.com/PipedreamHQ/pipedream/tree/master/http).
+The simplest event source is an HTTP source.
 
 When you create an HTTP source,
 
@@ -23,8 +25,12 @@ HTTP sources provide a good example of how you can turn an event stream into an 
 - HTTP requests are the **event stream**, generated from your application, client browsers, webhooks, etc.
 - You can retrieve HTTP requests via Pipedream's **events API**, or stream them directly to other apps using the SSE interface.
 
-## Create your first event source
+## Create your first HTTP source
 
-[**To get started, let's create an HTTP source**](/event-sources/http/).
+[**To get started, see the Github quickstart**](https://github.com/PipedreamHQ/pipedream/tree/master/apps/http#quickstart).
+
+## Limits
+
+Event sources are subject to the [same limits as Pipedream workflows](/limits).
 
 <Footer />

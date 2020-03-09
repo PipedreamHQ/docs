@@ -93,11 +93,7 @@ module.exports = {
       {
         title: "Event Sources",
         collapsable: false,
-        children: [
-          "/event-sources/",
-          "/event-sources/http/",
-          "/event-sources/public-streams/"
-        ]
+        children: ["/event-sources/"]
       },
       {
         title: "CLI",
@@ -107,7 +103,7 @@ module.exports = {
       {
         title: "API",
         collapsable: false,
-        children: ["/api/reference/"]
+        children: ["/api/reference/", "/api/auth/"]
       },
       {
         title: "Destinations",

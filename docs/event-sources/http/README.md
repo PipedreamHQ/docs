@@ -106,10 +106,10 @@ We saw above that the `pd deploy` command will begin listening for new events as
 pd events -n 1 http
 ```
 
-or, like above, you can list new events as they arrive by running:
+or, like above, you can listen for new events as they arrive:
 
 ```text
-pd events -f http  # -f or --follow
+pd events -f http
 ```
 
 `http` is the default name associated with the [source you deployed above](https://github.com/PipedreamHQ/pipedream/blob/master/apps/http/http.js). `pd events` can accept the name of the ID of the source, which you can see by running `pd list sources`.
