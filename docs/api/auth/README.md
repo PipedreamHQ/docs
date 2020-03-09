@@ -25,7 +25,7 @@ curl 'https://api.pipedream.com/v1/users/me' \
 
 ## Using the Pipedream CLI
 
-If you're using [the CLI](/cli/reference/) to interact with Pipedream, you can [link the CLI to your Pipedream account](/cli/login/). This will automatically pass your API key with every API request.
+You can [link the CLI to your Pipedream account](/cli/login/), which will automatically pass your API key in the `Authorization` header with every API request.
 
 ## Revoking your API key
 

@@ -59,4 +59,10 @@ You can set a profile on any `pd` command by setting the `-p` or `--profile` fla
 pd list sources --profile <profile>
 ```
 
+## Analytics
+
+Pipedream tracks CLI usage data to report errors and usage stats. We use this data exclusively for the purpose of internal analytics (see [our privacy policy](https://pipedream.com/privacy) for more information).
+
+If you'd like to opt-out of analytics in the CLI, set the `PD_CLI_DO_NOT_TRACK` environment variable to `true` or `1`.
+
 <Footer />
