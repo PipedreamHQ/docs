@@ -3,24 +3,26 @@
 ::: warning PREVIEW RELEASE
 This is an early version of the CLI, and we'd love your feedback on what we can improve. Please reach out on [Slack](https://pipedream.com/community) or raise an issue on our [Github roadmap](https://github.com/PipedreamHQ/roadmap) with any questions or suggestions.
 
-Since this is a preview release, the commands you see below, and the [Pipedream API](/api/reference), are subject to change based on feedback.
+Since this is a preview release, the commands you see below, and the [REST API](/api/reference), are subject to change based on feedback.
 :::
 
 [[toc]]
 
 ## Installing the CLI
 
-Pipedream publishes a build of the CLI for macOS and Linux (for `386`, `amd64` and `arm64` architectures). To install the CLI, run:
+To install the CLI, run:
 
 ```text
 curl https://cli.pipedream.com/install | sh
 ```
 
+Pipedream publishes a build of the CLI for macOS and Linux (for `386`, `amd64` and `arm64` architectures). If you need to use the CLI on another OS or architecture, [please reach out](/support/).
+
 ## Command Reference
 
 Run `pd` to see a list of all commands with basic usage info, or run `pd help <command>` to display help docs for a specific command.
 
-We've also documented each command, alphabetically, below, with usage examples for each.
+We've also documented each command below, with usage examples for each.
 
 ### General Notes
 

@@ -12,7 +12,7 @@ Typically, integrating with these services requires a lot of code to manage conn
 
 - Actions are executed in the order they appear in your workflow.
 
-- You can reference the [`event`](/workflows/events/), [`steps`](/workflows/steps/#step-exports), and [`process.env`](/environment-variables/#referencing-environment-variables-in-code) variables when passing data to an action.
+- You can reference the [`event`](/workflows/events/), [`steps`](/workflows/steps/#step-exports), and [`process.env`](/environment-variables/#referencing-environment-variables-in-code) variables when passing [params](/workflows/steps/#passing-data-to-steps-step-parameters) to an action.
 
 - Action return values and [exports](/workflows/steps/#step-exports) may be referenced in later steps via the `steps` object.
 
@@ -74,5 +74,11 @@ If you want to make a change, you can edit and save your action, and those chang
 - Any time a user searches for your action in a _new_ step, they'll see the most recent version of the action (`0.2`).
 
 You can change the version in any manner you'd like before publishing that new version. For example, you can increment the major version of the action if you're introducing a breaking change.
+
+### Limitations
+
+Action code cannot reference environment variables (for example, using `process.env`). Since actions can be used by anyone, it's not guaranteed that a user would have a specific variable set in their environment. Therefore, actions that use environment variables are unlikely to work for someone else.
+
+Instead, write your action to accept inputs via [step params](/workflows/steps/#passing-data-to-steps-step-parameters).
 
 <Footer />
