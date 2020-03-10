@@ -91,6 +91,25 @@ module.exports = {
         ]
       },
       {
+        title: "Event Sources",
+        collapsable: false,
+        children: [
+          "/event-sources/",
+          "/event-sources/consuming-events/",
+          "/event-sources/logs/"
+        ]
+      },
+      {
+        title: "CLI",
+        collapsable: false,
+        children: ["/cli/install/", "/cli/login/", "/cli/reference/"]
+      },
+      {
+        title: "REST API",
+        collapsable: false,
+        children: ["/api/reference/", "/api/auth/"]
+      },
+      {
         title: "Destinations",
         collapsable: false,
         children: [
