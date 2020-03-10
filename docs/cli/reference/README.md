@@ -1,9 +1,9 @@
 # CLI Reference
 
 ::: warning PREVIEW RELEASE
-This is an early version of the CLI, and we need to hear your feedback on what we can improve. Please reach out on [Slack](https://pipedream.com/community) or raise an issue on our [Github roadmap](https://github.com/PipedreamHQ/roadmap) with any questions or suggestions.
+This is an early version of the CLI, and we'd love your feedback on what we can improve. Please reach out on [Slack](https://pipedream.com/community) or raise an issue on our [Github roadmap](https://github.com/PipedreamHQ/roadmap) with any questions or suggestions.
 
-Since this is a beta release, the commands you see below, and the [Pipedream API](/api/reference), are subject to change based on feedback.
+Since this is a preview release, the commands you see below, and the [Pipedream API](/api/reference), are subject to change based on feedback.
 :::
 
 [[toc]]
@@ -16,13 +16,164 @@ Pipedream publishes a build of the CLI for macOS and Linux (for `386`, `amd64` a
 curl https://cli.pipedream.com/install | sh
 ```
 
-## CLI config file
+## Command Reference
 
-The `pd` config file contains your Pipedream API keys (tied to your default account, or other [profiles](#profiles)) and other configuration used by the CLI.
+Run `pd` to see a list of all commands with basic usage info, or run `pd help <command>` to display help docs for a specific command.
 
-If the `XDG_CONFIG_HOME` env var is set, the config file will be found in `$XDG_CONFIG_HOME/pipedream`.
+We've also documented each command, alphabetically, below, with usage examples for each.
 
-Otherwise, it will be found in `$HOME/.config/pipedream`.
+### General Notes
+
+Everywhere you can refer to a specific source as an argument, you can use the source's ID _or_ its name slug. For example, to retrieve details about a specific source using `pd describe`, you can use either of the following commands:
+
+```text
+λ ~/ pd describe dc_abc123
+
+  id: dc_abc123
+  name: http
+  endpoint: https://myendpoint.m.pipedream.net
+
+λ ~/ pd describe http
+Searching for sources matching http
+
+  id: dc_abc123
+  name: http
+  endpoint: https://myendpoint.m.pipedream.net
+```
+
+### `pd delete`
+
+Deletes an event source. Run:
+
+```text
+pd describe <source-id-or-name>
+```
+
+Run `pd list so` to display a list of your event sources.
+
+### `pd deploy`
+
+Deploy an event source from local or remote code.
+
+Running `pd deploy`, without any arguments, brings up an interactive menu asking you select a source. This list of sources is retrieved from the registry of public sources [published to Github](https://github.com/PipedreamHQ/pipedream/tree/master/apps).
+
+When you select a source, we'll deploy it and start listening for new events.
+
+You can also deploy a specific source via Github URL:
+
+```text
+pd deploy https://github.com/PipedreamHQ/pipedream/blob/master/apps/http/http.js
+```
+
+or author a component locally and deploy that local file:
+
+```text
+pd deploy http.js
+```
+
+[Read more about authoring your own event sources](https://github.com/PipedreamHQ/pipedream/tree/master/apps/http#example-http-sources).
+
+### `pd describe`
+
+Display the details for a source: its id, name, and other configuration details:
+
+```text
+pd describe <source-id-or-name>
+```
+
+### `pd events`
+
+Stream emitted events from event sources. Run
+
+```text
+pd events <source-id-or-name>
+```
+
+The CLI will connect to [the SSE stream tied to your source](/event-sources/consuming-events/) and display new events as they arrive.
+
+### `pd help`
+
+Displays help for any command. Run `pd help events`, `pd help describe`, etc.
+
+### `pd list`
+
+Lists Pipedream resources you own. Running `pd list` without any arguments prompts you to select the type of resource you'd like to list.
+
+You can also list specific resource types directly:
+
+```text
+pd list sources
+```
+
+```text
+pd list streams
+```
+
+`sources` and `streams` have shorter aliases, too:
+
+```text
+pd list so
+```
+
+```text
+pd list st
+```
+
+### `pd login`
+
+Log in to Pipedream CLI and persist API key locally. See [Logging into the CLI](/cli/login/) for more information.
+
+### `pd logout`
+
+Unsets the local API key tied to your account.
+
+Running `pd logout` without any arguments removes the default API key from your [config file](/cli/reference/#cli-config-file).
+
+You can remove the API key for a specific profile by running:
+
+```text
+pd logout -p <profile>
+```
+
+### `pd logs`
+
+Event sources produce logs that can be useful for troubleshooting issues with that source. `pd logs` displays logs for a source.
+
+Running `pd logs <source-id-or-name>` connects to the [SSE logs stream tied to your source](/event-sources/logs/), displaying new logs as the source produces them.
+
+Any errors thrown by the source will also appear here.
+
+### `pd signup`
+
+Sign up for Pipedream via the CLI and persist your API key locally. See the docs on [Signing up for Pipedream via the CLI](/cli/login/#signing-up-for-pipedream-via-the-cli) for more information.
+
+### `pd update`
+
+Updates the code, props, or metadata for an event source.
+
+If you deployed a source from Github, for example, someone might publish an update to that source, and you may want to run the updated code.
+
+```text
+pd update <source-id-or-name> --code https://github.com/PipedreamHQ/pipedream/blob/master/apps/http/http.js
+```
+
+You can change the name of a source:
+
+```text
+pd update <source-id-or-name> --name new-awesome-name
+```
+
+You can deactivate a source if you want to stop it from running:
+
+```text
+pd update <source-id-or-name> --deactivate
+```
+
+or activate a source you previously deactivated:
+
+```text
+pd update <source-id-or-name> --activate
+```
 
 ## Profiles
 
@@ -59,10 +210,30 @@ You can set a profile on any `pd` command by setting the `-p` or `--profile` fla
 pd list sources --profile <profile>
 ```
 
+## Version
+
+To get the current version of the `pd` CLI, run
+
+```text
+pd --version
+```
+
+## Auto-upgrade
+
+The CLI is configured to check for new versions automatically. This ensures you're always running the most up-to-date version.
+
+## CLI config file
+
+The `pd` config file contains your Pipedream API keys (tied to your default account, or other [profiles](#profiles)) and other configuration used by the CLI.
+
+If the `XDG_CONFIG_HOME` env var is set, the config file will be found in `$XDG_CONFIG_HOME/pipedream`.
+
+Otherwise, it will be found in `$HOME/.config/pipedream`.
+
 ## Analytics
 
 Pipedream tracks CLI usage data to report errors and usage stats. We use this data exclusively for the purpose of internal analytics (see [our privacy policy](https://pipedream.com/privacy) for more information).
 
-If you'd like to opt-out of analytics in the CLI, set the `PD_CLI_DO_NOT_TRACK` environment variable to `true` or `1`.
+If you'd like to opt-out of CLI analytics, set the `PD_CLI_DO_NOT_TRACK` environment variable to `true` or `1`.
 
 <Footer />

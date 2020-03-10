@@ -8,6 +8,14 @@ Event sources run on Pipedream's infrastructure, but you can retrieve emitted ev
 
 [[toc]]
 
+## Preview release
+
+::: warning
+Pipedream Event Sources are in preview, and we'd love your feedback on how you'd like to use them, and what we can improve. Please reach out on [Slack](https://pipedream.com/community) or raise an issue on our [Github roadmap](https://github.com/PipedreamHQ/roadmap) with any questions or suggestions.
+
+Since this is a preview release, the documentation below, the [Pipedream API](/api/reference), and the [CLI](/cli/reference/) are subject to change based on feedback.
+:::
+
 ## Example: HTTP source
 
 The simplest event source is an HTTP source.

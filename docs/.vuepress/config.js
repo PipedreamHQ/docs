@@ -93,7 +93,11 @@ module.exports = {
       {
         title: "Event Sources",
         collapsable: false,
-        children: ["/event-sources/"]
+        children: [
+          "/event-sources/",
+          "/event-sources/consuming-events/",
+          "/event-sources/logs/"
+        ]
       },
       {
         title: "CLI",
