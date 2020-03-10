@@ -3,10 +3,11 @@
 [[toc]]
 
 ## Overview
-Pipedream currently offers REST and server-sent event (SSE) APIs. 
+
+Pipedream currently offers REST and [Server-sent Events (SSE)](/event-sources/consuming-events/#what-is-sse) APIs.
 
 - Use REST APIs to create and manage sources and source events
-- Use the SSE API to subscribe to real-time event streams for sources
+- Use the [SSE API](/event-sources/consuming-events/) to subscribe to real-time event streams for sources
 
 Workflow development and management is not currently supported via API.
 
@@ -18,7 +19,7 @@ Sources and related APIs are current currently available for developers to previ
 
 The base URL for all requests is:
 
-```
+```text
 https://api.pipedream.com
 ```
 
@@ -40,6 +41,7 @@ curl 'https://api.pipedream.com/v1/users/me' \
 Learn more about [API authentication](/api/auth)
 
 ## Errors
+
 Pipedream uses conventional HTTP response codes to indicate the success or failure of an API request. Codes in the **2xx** range indicate success. Codes in the **4xx** range indicate an error that failed (e.g., a required parameter was omitted). Codes in the **5xx** range indicate an error with Pipedream’s server.
 
 <!--
@@ -89,11 +91,11 @@ GET /users/me/sources/
 POST /sources/
 ```
 
-| Field | Type | Required | Description | Default Value |
-| ----- | ---- | -------- | ----------- | ------------- |
-| component_url | string | optional | URL to the component. This may be a Github URL (e.g., `https://github.com/PipedreamHQ/pipedream/blob/master/apps/http/http.js`). Either `component_url` or `component_code` is required. | |
-| component_code | string | optional | Inline component code. Either `component_url` or `component_code` is required. | |
-| name | string | optional |  | |
+| Field          | Type   | Required | Description                                                                                                                                                                              | Default Value |
+| -------------- | ------ | -------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------- |
+| component_url  | string | optional | URL to the component. This may be a Github URL (e.g., `https://github.com/PipedreamHQ/pipedream/blob/master/apps/http/http.js`). Either `component_url` or `component_code` is required. |               |
+| component_code | string | optional | Inline component code. Either `component_url` or `component_code` is required.                                                                                                           |               |
+| name           | string | optional |                                                                                                                                                                                          |               |
 
 #### Update a source
 
@@ -101,11 +103,11 @@ POST /sources/
 PUT /sources/{id}
 ```
 
-| Field | Type | Required | Description | Default Value |
-| ----- | ---- | -------- | ----------- | ------------- |
-| component_url | string | optional | URL to the component. This may be a Github URL (e.g., `https://github.com/PipedreamHQ/pipedream/blob/master/apps/http/http.js`). Either `component_url` or `component_code` is required. | |
-| component_code | string | optional | Inline component code. Either `component_url` or `component_code` is required. | |
-| name | string | optional |  | |
+| Field          | Type   | Required | Description                                                                                                                                                                              | Default Value |
+| -------------- | ------ | -------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------- |
+| component_url  | string | optional | URL to the component. This may be a Github URL (e.g., `https://github.com/PipedreamHQ/pipedream/blob/master/apps/http/http.js`). Either `component_url` or `component_code` is required. |               |
+| component_code | string | optional | Inline component code. Either `component_url` or `component_code` is required.                                                                                                           |               |
+| name           | string | optional |                                                                                                                                                                                          |               |
 
 #### Delete a source
 
@@ -126,6 +128,5 @@ GET /sources/{id}/events
 ```
 DELETE /sources/{id}/events
 ```
-
 
 <Footer />
