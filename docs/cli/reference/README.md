@@ -85,13 +85,31 @@ pd describe <source-id-or-name>
 
 ### `pd events`
 
-Stream emitted events from event sources. Run
+Returns historical events sent to a source, and streams emitted events directly to the CLI.
 
 ```text
 pd events <source-id-or-name>
 ```
 
-The CLI will connect to [the SSE stream tied to your source](/event-sources/consuming-events/) and display new events as they arrive.
+By default, `pd events` prints (up to) the last 10 events sent to your source.
+
+```text
+pd events -n 100 <source-id-or-name>
+```
+
+`pd events -n N` retrieves the last `N` events sent to your source. We store the last 100 events sent to a source, so you can retrieve a max of 100 events using this command.
+
+```text
+pd events -f <source-id-or-name>
+```
+
+`pd events -f` connects to the [SSE stream tied to your source](/event-sources/consuming-events/) and displays events as the source produces them.
+
+```text
+pd events -n N -f <source-id-or-name>
+```
+
+You can combine the `-n` and `-f` options to list historical events _and_ follow the source for new events.
 
 ### `pd help`
 
