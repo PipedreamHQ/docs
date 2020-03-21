@@ -95,7 +95,6 @@ module.exports = {
         collapsable: false,
         children: [
           "/event-sources/",
-          "/event-sources/consuming-events/",
           "/event-sources/logs/"
         ]
       },
