@@ -105,9 +105,9 @@ module.exports = {
         children: ["/cli/install/", "/cli/login/", "/cli/reference/"]
       },
       {
-        title: "REST API",
+        title: "API",
         collapsable: false,
-        children: ["/api/reference/", "/api/auth/"]
+        children: ["/api/overview/", "/api/auth/", "/api/rest/", "/api/sse/"]
       },
       {
         title: "Destinations",

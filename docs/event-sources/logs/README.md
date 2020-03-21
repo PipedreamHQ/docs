@@ -2,9 +2,9 @@
 
 Sources can produce log using `console` statements, and can throw errors. These logs show up in the sources UI for each source, under **LOGS**.
 
-[Like events](/event-sources/consuming-events/), logs can also be consumed programmatically:
+[Like events](/event-sources/), logs can also be consumed programmatically:
 
-- Connecting to the [SSE stream](#sse) directly
+- Connecting to the [SSE stream](/api/sse/) directly
 - Using the [`pd logs`](#pd-logs) CLI command
 
 ## SSE
@@ -17,7 +17,7 @@ Unlike WebSockets, SSE enables one-way communication from server to clients (Web
 
 ### Connecting to the SSE stream directly
 
-[Just like for events](/event-sources/consuming-events/#connecting-to-the-sse-stream-directly), logs are published to a source-specific SSE stream.
+[Just like for events](/event-sources/), logs are published to a source-specific SSE stream.
 
 To connect to this stream, you'll need to:
 
