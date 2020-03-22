@@ -1,15 +1,10 @@
-# API Reference
+# REST API
 
 [[toc]]
 
 ## Overview
 
-Pipedream currently offers REST and [Server-sent Events (SSE)](/event-sources/consuming-events/#what-is-sse) APIs.
-
-- Use REST APIs to create and manage sources and source events
-- Use the [SSE API](/event-sources/consuming-events/) to subscribe to real-time event streams for sources
-
-Workflow development and management is not currently supported via API.
+Use REST APIs to create and manage sources and source events. Workflow development and management is not currently supported via API.
 
 ::: warning
 Sources and related APIs are current currently available for developers to preview. During the preview period features and APIs may change without advance notice. Please reach out on [Slack](https://pipedream.com/community) or raise an issue on our [Github roadmap](https://github.com/PipedreamHQ/roadmap) with any questions or suggestions.
@@ -20,7 +15,7 @@ Sources and related APIs are current currently available for developers to previ
 The base URL for all requests is:
 
 ```text
-https://api.pipedream.com
+https://api.pipedream.com/v1
 ```
 
 ## Authentication

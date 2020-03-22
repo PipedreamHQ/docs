@@ -1,24 +1,18 @@
-# Consuming events from sources
+# Server-Sent Events (SSE)
 
-You can view the events for a source in the sources UI, under the **EVENTS** section of that source.
+[[toc]]
 
-You can also consume events programmatically from a source in one of three ways:
-
-- In real-time, using the [SSE stream](#sse) linked to your source
-- In real-time, via the CLI's [`pd events` command](/event-sources/consuming-events/#subscribe-to-new-events-using-the-pipedream-cli)
-- In batch, using the [REST API](#rest-api)
-
-## SSE
+## Overview
 
 As soon as you deploy an event source, Pipedream creates a private [SSE stream](#what-is-sse) linked to that source. Each event emitted by the source is published to this SSE stream, so your app can subscribe to the stream to process new events.
 
-### What is SSE?
+## What is SSE?
 
 [Server-sent Events](https://developer.mozilla.org/en-US/docs/Web/API/Server-sent_events) (SSE) defines a spec for how servers can send events directly to clients that subscribe to those events, similar to [WebSockets](https://developer.mozilla.org/en-US/docs/Web/API/WebSockets_API) and related server-to-client push technologies.
 
 Unlike WebSockets, SSE enables one-way communication from server to clients (WebSockets enable bidirectional communication between server and client, allowing you to pass messages back and forth). If you only need a client to subscribe to events from a server, and don't require bidirectional communication, SSE is simple way to make that happen.
 
-### Connecting to the SSE stream directly
+## Connecting to the SSE stream directly
 
 To process events from your source's SSE stream, you'll need to:
 
@@ -29,7 +23,7 @@ To process events from your source's SSE stream, you'll need to:
 
 [Most programming languages provide SSE clients](https://en.wikipedia.org/wiki/Server-sent_events#Libraries) that facilitate interaction with SSE streams. For example, the Node.js example repo uses the [`eventsource` npm package](https://www.npmjs.com/package/eventsource), which implements the [`EventSource` API](https://html.spec.whatwg.org/multipage/server-sent-events.html#server-sent-events).
 
-### Subscribe to new events using the Pipedream CLI
+## Subscribe to new events using the Pipedream CLI
 
 The [`pd events` command](/cli/reference/#pd-events) connects to the SSE stream for a source and prints new events as they're emitted:
 
@@ -39,18 +33,12 @@ pd events -f <source-id-or-name>
 
 This is the easiest way to interact with streams, especially if you only need to manually inspect events, or just want to save them to a file on disk.
 
-### `:sse-handshake` messages
+## `:sse-handshake` messages
 
 Every 15 seconds, we'll send a message with the `:sse-handshake` comment to keep open SSE connections alive. These comments should be automatically ignored when you're listening for messages using the [`EventSource` API](https://html.spec.whatwg.org/multipage/server-sent-events.html#server-sent-events).
 
 We send these because [the SSE spec](https://www.w3.org/TR/2009/WD-eventsource-20090421/#notes) notes that
 
 > Legacy proxy servers are known to, in certain cases, drop HTTP connections after a short timeout. To protect against such proxy servers, authors can include a comment line (one starting with a ':' character) every 15 seconds or so.
-
-## REST API
-
-You can retrieve events via the [REST API](/api/reference/), too. The API stores the last 100 events sent to a source.
-
-See the [API docs](/api/reference/) for more information and code samples.
 
 <Footer />

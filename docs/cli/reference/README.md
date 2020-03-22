@@ -3,7 +3,7 @@
 ::: warning PREVIEW RELEASE
 This is an early version of the CLI, and we'd love your feedback on what we can improve. Please reach out on [Slack](https://pipedream.com/community) or raise an issue on our [Github roadmap](https://github.com/PipedreamHQ/roadmap) with any questions or suggestions.
 
-Since this is a preview release, the commands you see below, and the [REST API](/api/reference), are subject to change based on feedback.
+Since this is a preview release, the commands you see below, and the [REST API](/api/rest/), are subject to change based on feedback.
 :::
 
 [[toc]]
@@ -103,7 +103,7 @@ pd events -n 100 <source-id-or-name>
 pd events -f <source-id-or-name>
 ```
 
-`pd events -f` connects to the [SSE stream tied to your source](/event-sources/consuming-events/) and displays events as the source produces them.
+`pd events -f` connects to the [SSE stream tied to your source](/api/sse/) and displays events as the source produces them.
 
 ```text
 pd events -n N -f <source-id-or-name>
