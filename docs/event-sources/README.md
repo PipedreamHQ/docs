@@ -2,7 +2,7 @@
 
 **Event sources turn any API into an event stream. They can also turn any event stream into an API**.
 
-Event sources run on Pipedream's infrastructure and collect data from services like Github, Stripe, the bitcoin blockchain, RSS feeds, and more. They emit new events produced by the service, which you can inspect in the UI or consume using real-time or batch APIs.
+Event sources run on Pipedream's infrastructure and collect data from services like Github, Stripe, the bitcoin blockchain, RSS feeds, and more. They emit new events produced by the service, which you can inspect in the UI or consume using [batch](/api/rest/) or [real-time](/api/sse/) APIs.
 
 ::: warning
 Pipedream Event Sources are in preview, and we'd love your feedback on how you'd like to use them, and what we can improve. Please reach out on [Slack](https://pipedream.com/community) or raise an issue on our [Github roadmap](https://github.com/PipedreamHQ/roadmap) with any questions or suggestions.
