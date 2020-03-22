@@ -15,7 +15,7 @@ Sources and related APIs are current currently available for developers to previ
 The base URL for all requests is:
 
 ```text
-https://api.pipedream.com
+https://api.pipedream.com/v1
 ```
 
 ## Authentication
