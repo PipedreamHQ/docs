@@ -38,7 +38,7 @@ HTTP sources are a good example of how you can turn an event stream into an API:
 
 ## Create your first HTTP source
 
-[**See the Github quickstart to get started**](https://github.com/PipedreamHQ/pipedream/tree/master/apps/http#quickstart).
+[**See the Github quickstart to get started**](https://github.com/PipedreamHQ/pipedream/tree/master/components/http#quickstart).
 
 ## Limits
 

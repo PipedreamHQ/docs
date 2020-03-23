@@ -57,14 +57,14 @@ Run `pd list so` to display a list of your event sources.
 
 Deploy an event source from local or remote code.
 
-Running `pd deploy`, without any arguments, brings up an interactive menu asking you select a source. This list of sources is retrieved from the registry of public sources [published to Github](https://github.com/PipedreamHQ/pipedream/tree/master/apps).
+Running `pd deploy`, without any arguments, brings up an interactive menu asking you select a source. This list of sources is retrieved from the registry of public sources [published to Github](https://github.com/PipedreamHQ/pipedream/tree/master/components).
 
 When you select a source, we'll deploy it and start listening for new events.
 
 You can also deploy a specific source via Github URL:
 
 ```text
-pd deploy https://github.com/PipedreamHQ/pipedream/blob/master/apps/http/http.js
+pd deploy https://github.com/PipedreamHQ/pipedream/blob/master/components/http/http.js
 ```
 
 or author a component locally and deploy that local file:
@@ -73,7 +73,7 @@ or author a component locally and deploy that local file:
 pd deploy http.js
 ```
 
-[Read more about authoring your own event sources](https://github.com/PipedreamHQ/pipedream/tree/master/apps/http#example-http-sources).
+[Read more about authoring your own event sources](https://github.com/PipedreamHQ/pipedream/tree/master/components/http#example-http-sources).
 
 ### `pd describe`
 
@@ -174,7 +174,7 @@ Updates the code, props, or metadata for an event source.
 If you deployed a source from Github, for example, someone might publish an update to that source, and you may want to run the updated code.
 
 ```text
-pd update <source-id-or-name> --code https://github.com/PipedreamHQ/pipedream/blob/master/apps/http/http.js
+pd update <source-id-or-name> --code https://github.com/PipedreamHQ/pipedream/blob/master/components/http/http.js
 ```
 
 You can change the name of a source:
