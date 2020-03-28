@@ -66,7 +66,7 @@ Logging the value of any environment variables — for example, using `console.l
 Like in code steps, you can also reference the value of environment variables using `process.env.<VARIABLE NAME>`. When you start typing `process.env`, you'll see an auto-completed list of available environment variables. Select the correct one to save its value in the params form:
 
 <div>
-<img alt="Select an environment variable" src="./images/env-vars.gif">
+<img alt="Select an environment variable" src="https://res.cloudinary.com/pipedreamin/image/upload/v1585434743/docs/env-vars_cn6pwm.gif">
 </div>
 
 You can also see the list of available variables — environment variables, [data from previous steps](/workflows/steps/#step-exports), etc. — by clicking on the hamburger menu on the right of the input field:
