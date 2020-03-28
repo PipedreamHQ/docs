@@ -29,3 +29,7 @@ As a collaborator, you can see workflows that have been shared with you in the *
 <div>
 <img alt="Workflows Shared with me" width="200" src="./images/shared-with-me.png">
 </div>
+
+## Current checkpoint values
+
+If you're using [`$checkpoint`](/workflows/steps/code/#workflow-level-state-checkpoint) or [`this.$checkpoint`](/workflows/steps/code/#step-level-state-this-checkpoint) to manage state in your workflow, you can view their values here. You can also modify the values or clear the whole contents of a given checkpoint.
