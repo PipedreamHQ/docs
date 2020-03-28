@@ -59,6 +59,22 @@ Referencing an environment variable that doesn't exist returns the value `undefi
 Logging the value of any environment variables — for example, using `console.log` — will include that value in the logs associated with the cell. Please keep this in mind and take care not to print the values of sensitive secrets.
 :::
 
+## Referencing environment variables in actions
+
+[Actions](/workflows/steps/actions/) are pre-built code steps that provide a form for passing [params](/workflows/steps/actions/) as input.
+
+Like in code steps, you can also reference the value of environment variables using `process.env.<VARIABLE NAME>`. When you start typing `process.env`, you'll see an auto-completed list of available environment variables. Select the correct one to save its value in the params form:
+
+<div>
+<img alt="Select an environment variable" src="./images/env-vars.gif">
+</div>
+
+You can also see the list of available variables — environment variables, [data from previous steps](/workflows/steps/#step-exports), etc. — by clicking on the hamburger menu on the right of the input field:
+
+<div>
+<img width="200px" alt="Params form hamburger menu" src="./images/params-hamburger-menu.png">
+</div>
+
 ## Copying workflows that use environment variables
 
 Your environment variables are made available to any running workflow. **If you copy a public workflow that uses an environment variable, make sure you review the code to see what environment variables it's using**.

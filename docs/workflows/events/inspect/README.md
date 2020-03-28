@@ -1,6 +1,6 @@
 # Inspect Events
 
-The Inspector lists the events you send to a [trigger](/workflows/steps/triggers/). Once you choose a trigger and send events to it, you'll see those events in the Inspector, to the left of your workflow.
+[The Inspector](#the-inspector) lists the events you send to a [trigger](/workflows/steps/triggers/). Once you choose a trigger and send events to it, you'll see those events in the Inspector, to the left of your workflow.
 
 Clicking on an event from the list shows the event data in the Inspector, as well as the logs and observability associated with the execution for that event.
 
@@ -8,9 +8,17 @@ Let's review each of the Inspector's components and fields below.
 
 [[toc]]
 
+## The Inspector
+
+The Inspector is the section of your workflow that lists your events, allows you to [send or modify test events](/workflows/events/test/#send-test-events), and more:
+
+<div>
+<img width="400px" alt="The Inspector" src="./images/the-inspector.png">
+</div>
+
 ## Live / Pause
 
-The **Live** and **Pause** labels near the top of the Inspector are clickable. Toggling your inspector to **Live** lists events as they are sent to your source. Events should appear in real-time; you shouldn't have to refresh the page to see them. This is the default mode.
+The **Live** and **Pause** labels near the top of [the Inspector](#the-inspector) are clickable. Toggling your inspector to **Live** lists events as they are sent to your source. Events should appear in real-time; you shouldn't have to refresh the page to see them. This is the default mode.
 
 Clicking **Pause** pauses the stream of events in the UI. **Events sent to a source still invoke your workflow, but they do not show up in the Inspector** while you're in a paused state.
 
@@ -38,7 +46,7 @@ Here are a few things to note about searches:
 
 ## Columns in the event list
 
-We display the most useful properties of source data as columns in the Inspector:
+We display the most useful properties of source data as columns in [the Inspector](#the-inspector):
 
 ### Date / Time
 
