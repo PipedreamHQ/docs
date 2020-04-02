@@ -68,4 +68,8 @@ This code operates as a template you can extend, and comes pre-configured with t
 
 See the Connected Accounts docs for [connecting an account to a code step](/connected-accounts/#from-a-code-step).
 
+## Custom auth tokens
+
+For situations where you have a secret that you're using to connect to a 3rd party service that isn't supported by Pipedream, you can store those secrets in [Environment Variables](/environment-variables/).
+
 <Footer />
