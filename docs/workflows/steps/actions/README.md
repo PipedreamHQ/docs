@@ -36,7 +36,11 @@ This action defaults to sending an HTTP `POST` request. If you'd like to change 
 
 ## Creating your own actions
 
-You can now author and publish your own actions at [https://pipedream.com/actions](https://pipedream.com/actions), accessible from the **Actions** link in the header.
+You can author and publish your own actions at [https://pipedream.com/actions](https://pipedream.com/actions), accessible from the **Actions** link in the header.
+
+This video describes how to create an action end-to-end, including how to pass [params](/workflows/steps/#passing-data-to-steps-step-parameters) to that action, how to associate actions with apps, and more:
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/bTchIr3HYQg" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
 For example, let's say I wanted to publish my own **Send a Slack Message** action, using Slack's `@slack/web-api` npm package instead of the HTTP API.
 
