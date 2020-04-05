@@ -50,7 +50,9 @@ We display the most useful properties of source data as columns in [the Inspecto
 
 ### Date / Time
 
-We show the date and time the event was received by the source in the left-most column of the inspector. We also group events by day, and refer to the dates by relative time, for example:
+You can see the date and time each event was received, in your system's **local time**.
+
+Pipedream group events in the Inspector by day, and refers to the dates by relative time, for example:
 
 <div>
 <img alt="Relative date grouping for events" width="117" src="./images/event-date-grouping.png">
