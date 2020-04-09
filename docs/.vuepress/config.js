@@ -9,22 +9,22 @@ module.exports = {
   themeConfig: {
     algolia: {
       apiKey: "1e23962724b59d018bdedc0f5a214ce5",
-      indexName: "pipedream"
+      indexName: "pipedream",
     },
     logo: "/pipedream.svg",
     nav: [
       {
         text: "Slack",
-        link: "https://pipedream.com/community"
+        link: "https://pipedream.com/community",
       },
       {
         text: "Support",
-        link: "/support/"
+        link: "/support/",
       },
       {
         text: "pipedream.com",
-        link: "https://pipedream.com/"
-      }
+        link: "https://pipedream.com/",
+      },
     ],
     repo: "PipedreamHQ/docs",
 
@@ -42,7 +42,7 @@ module.exports = {
       {
         title: "Getting Started",
         collapsable: false,
-        children: ["/workflows/", "/your-first-workflow/"]
+        children: ["/workflows/", "/your-first-workflow/"],
       },
       {
         title: "Workflow Steps",
@@ -51,9 +51,10 @@ module.exports = {
           "/workflows/steps/",
           "/workflows/steps/triggers/",
           "/workflows/steps/code/",
+          "/workflows/steps/code/state/",
           "/workflows/steps/code/nodejs/http-requests/",
-          "/workflows/steps/actions/"
-        ]
+          "/workflows/steps/actions/",
+        ],
       },
       {
         title: "Workflow Events",
@@ -62,8 +63,8 @@ module.exports = {
           "/workflows/events/",
           "/workflows/events/inspect/",
           "/workflows/events/replay/",
-          "/workflows/events/test/"
-        ]
+          "/workflows/events/test/",
+        ],
       },
       {
         title: "Connecting to Apps",
@@ -71,13 +72,13 @@ module.exports = {
         children: [
           "/apps/all-apps/",
           "/connected-accounts/",
-          "/workflows/steps/code/auth/"
-        ]
+          "/workflows/steps/code/auth/",
+        ],
       },
       {
         title: "Error Handling",
         collapsable: false,
-        children: ["/workflows/error-handling/global-error-workflow/"]
+        children: ["/workflows/error-handling/global-error-workflow/"],
       },
       {
         title: "Managing Workflows",
@@ -87,26 +88,23 @@ module.exports = {
           "/workflows/managing/",
           "/workflows/settings/",
           "/public-workflows/",
-          "/environment-variables/"
-        ]
+          "/environment-variables/",
+        ],
       },
       {
         title: "Event Sources",
         collapsable: false,
-        children: [
-          "/event-sources/",
-          "/event-sources/logs/"
-        ]
+        children: ["/event-sources/", "/event-sources/logs/"],
       },
       {
         title: "CLI",
         collapsable: false,
-        children: ["/cli/install/", "/cli/login/", "/cli/reference/"]
+        children: ["/cli/install/", "/cli/login/", "/cli/reference/"],
       },
       {
         title: "APIs",
         collapsable: false,
-        children: ["/api/overview/", "/api/auth/", "/api/rest/", "/api/sse/"]
+        children: ["/api/overview/", "/api/auth/", "/api/rest/", "/api/sse/"],
       },
       {
         title: "Destinations",
@@ -118,22 +116,22 @@ module.exports = {
           "/destinations/email/",
           "/destinations/snowflake/",
           "/destinations/sql/",
-          "/destinations/sse/"
-        ]
+          "/destinations/sse/",
+        ],
       },
       {
         title: "Integrations",
         collapsable: false,
-        children: ["/apps/all-apps/", "/apps/discord/", "/apps/zoom/"]
+        children: ["/apps/all-apps/", "/apps/discord/", "/apps/zoom/"],
       },
       "/pricing/",
       "/limits/",
       "/new-feature-or-bug/",
-      "/security/"
+      "/security/",
     ],
     PIPEDREAM_BASE_URL: "https://pipedream.com",
     PAYLOAD_SIZE_LIMIT: "100kb",
     INSPECTOR_EVENT_LIMIT: "100",
-    NODE_VERSION: "10"
-  }
+    NODE_VERSION: "10",
+  },
 };

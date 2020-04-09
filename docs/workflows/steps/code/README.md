@@ -123,54 +123,7 @@ In general, if you just need to make an HTTP request but don't care about the re
 
 ## Managing state
 
-Sometimes you need to save state in one invocation of a workflow, and read it the next time your workflow runs. For example, you might need to keep track of the last ID of the item you processed, or the last timestamp you ran a job, so you can pull new data the next time.
-
-On Pipedream, you can save and read state in two ways:
-
-- On a **workflow-level**, using `$checkpoint`
-- On a **step-level**, using `this.$checkpoint`
-
-If you need to manage state _across_ workflows, we recommend you use a database or key-value store like [KVdb](https://kvdb.io).
-
-### Workflow-level state: `$checkpoint`
-
-The `$checkpoint` variable allows you to store and access any data within a specific workflow. You can store any [JSON-serializable](https://stackoverflow.com/a/3316779/10795955) data in `$checkpoint`, like so:
-
-```javascript
-$checkpoint = {
-  lastExecutionTime: "2019-10-06T20:07:39.293Z",
-  lastObjectProcessed: {
-    id: 123
-  }
-};
-```
-
-Then, you can read data previously saved in `$checkpoint`:
-
-```javascript
-if ($checkpoint) {
-  console.log($checkpoint);
-}
-```
-
-`$checkpoint` is a global variable, accessible in any code or action step.
-
-`$checkpoint` is scoped to a workflow. Any data you save in `$checkpoint` is specific to that workflow. Saving data to `$checkpoint` in one workflow will not affect the data saved in `$checkpoint` in another.
-
-### Step-level state: `this.$checkpoint`
-
-Often, a specific step needs to maintain state that isn't relevant for the rest of the workflow. If you're writing a code step that pulls tweets from Twitter, and want to keep track of the last tweet ID you processed, you can store that state within a step, instead of using the global `$checkpoint` variable. This can make state easier to manage, and introduce fewer bugs.
-
-Within a step, you can store any [JSON-serializable](https://stackoverflow.com/a/3316779/10795955) data in `this.$checkpoint`
-
-```javascript
-this.$checkpoint = {
-  lastExecutionTime: "2019-10-06T20:07:39.293Z",
-  lastObjectProcessed: {
-    id: 123
-  }
-};
-```
+See the docs on [workflow state](/workflows/steps/code/state/).
 
 ## `$end`
 

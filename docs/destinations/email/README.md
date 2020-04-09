@@ -23,12 +23,17 @@ $send.email({
   subject: "Your subject",
   text: "Plain text email body",
   html: "HTML email body"
+  include_collaborators: false,
 });
 ```
 
 The `html` property is optional. If you include both the `text` and `html` properties, email clients that support HTML will prefer that over the plaintext version.
 
 Like with any `$send` function, you can use `$send.email()` conditionally, within a loop, or anywhere you'd use a function normally in Node.js.
+
+## Emailing workflow collaborators
+
+The `include_collaborators` flag defaults to `false`. When set to `true`, `$send.email()` will email any [collaborators](/workflows/settings/#collaborators) you've added to your workflow.
 
 ## Delivery details
 
