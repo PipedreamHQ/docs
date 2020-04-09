@@ -30,6 +30,12 @@ You don't need to store data in an object — numbers, strings, and other JavaS
 $checkpoint = 1;
 ```
 
+This will store the number `1`, as a value of type `Number`. To store IDs as a strings, set the value to a string:
+
+```javascript
+$checkpoint = "1";
+```
+
 You can read data previously saved in `$checkpoint` like so:
 
 ```javascript
@@ -40,7 +46,7 @@ if ($checkpoint) {
 
 ### Example workflow
 
-`$checkpoint` is frequently used to dedupe incoming data. For example, you might receive events via webhooks, and encounter duplicate HTTP requests (tied to the same user taking the same action in the source system). You need a way to make sure you don't process the same request twice.
+`$checkpoint` is frequently used to dedupe incoming data. For example, you might receive events via webhooks and encounter duplicate HTTP requests (tied to the same user taking the same action in the source system). You need a way to make sure you don't process the same request twice.
 
 [This workflow](https://pipedream.com/@dylburger/dedupe-based-on-incoming-key-exit-early-if-we-ve-seen-this-key-before-p_brCyAy/edit) shows you how this works. It keeps track of `emails` seen so far, retrieved from `event.body.email` in the incoming HTTP request (here, the email address is a unique identifer we're using to dedupe requests, but you can use any identifier). If we've seen a particular email address before, we exit early:
 
