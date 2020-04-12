@@ -35,9 +35,9 @@ Generally, we'll also accept short bursts of traffic, as long as you remain arou
 
 ## Email Triggers
 
-Currently, the same limits that apply to HTTP triggers also apply to [email triggers](/workflows/steps/triggers/#email). We limit the total size of the email body, headers, and attachments, and the rate at which emails can be sent.
+Currently, most of the [limits that apply to HTTP triggers](#http-triggers) also apply to [email triggers](/workflows/steps/triggers/#email).
 
-See the [HTTP limits above](#http-triggers) for the specific limits.
+The only limit that differs between email and HTTP triggers is the payload size: the body of HTTP requests is limited to `{{$site.themeConfig.PAYLOAD_SIZE_LIMIT}}`, where **the total size of an email sent to a workflow - its body, headers, and attachments - is limited to `{{$site.themeConfig.EMAIL_PAYLOAD_SIZE_LIMIT}}`**.
 
 ## Workflows
 
