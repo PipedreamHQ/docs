@@ -45,7 +45,7 @@ You can send data to a SQL Destination in [Node.js code steps](/workflows/steps/
 ```javascript
 $send.sql({
   table: "your-table-name",
-  payload: event
+  payload: event,
 });
 ```
 
@@ -186,7 +186,7 @@ For example, an event sent around 12:00pm on a given day will be completely dele
 
 Therefore, if your workflow is constantly sending events to a SQL Destination, you'll always have a rolling 30-day period of data to analyze.
 
-## Running SQL queries
+## Running SQL queries from the UI
 
 ### The SQL tab
 
@@ -264,6 +264,55 @@ Today, we prevent the following SQL queries:
 - `SHOW VIEWS`
 
 If you issue one of these queries, you'll see a message noting that the query is not allowed.
+
+## Running SQL queries via API
+
+Pipedream exposes an API for running SQL queries at **{{$site.themeConfig.SQL_API_BASE_URL}}**. You can authorize requests to this API using your [Pipedream API key](/api/auth/#pipedream-api-key).
+
+This endpoint expects an HTTP `POST` request with the SQL query in the `query` field of the HTTP payload:
+
+```javascript
+const response = await axios({
+  url: `https://rt.pipedream.com/sql`,
+  method: 'POST',
+  headers: {
+    Authorization: `Bearer PIPEDREAM_API_KEY`,
+  },
+  data: {
+    query: "SELECT COUNT(*) FROM your_table",
+  }
+}
+```
+
+Some HTTP clients like `axios` automatically set a `Content-Type` header of `application/json` when you pass a JavaScript object in the `data` field, but you'll also need to ensure you set that header manually if necessary. For example, you'd make the same query above using `cURL` like so:
+
+```bash
+curl -H 'Authorization: Bearer PIPEDREAM_API_KEY' \
+  -H 'Content-Type: application/json' \
+  -d '{"query": "SELECT COUNT(*) FROM your_table"}' \
+  https://rt.pipedream.com/sql
+```
+
+The SQL API returns a JSON string that contains metadata on column names, and an array of arrays containing your results and their data types.
+
+The [same limits](#query-limits) governining SQL queries made in the UI apply to queries made using the API.
+
+## Running SQL queries from a workflow
+
+You can also run queries against the SQL service within a workflow. You can use this to run aggregate queries for basic scheduled reports, kick off SQL queries from Slack bots, and more.
+
+In a workflow, there are two actions you can use to run SQL queries, both found under the **Pipedream** app:
+
+- **Query SQL** : returns a formatted set of results you can pass to other steps
+- **Get CSV for a SQL query execution** : given the execution ID of a SQL query (returned from the **Query SQL** action), return a formatted CSV. This action can be helpful for formatting the results of a query to send to other systems.
+
+<div>
+<img alt="SQL actions" src="./images/sql-actions.png" width="400px">
+</div>
+
+[This workflow](https://pipedream.com/@dylburger/send-results-of-pipedream-sql-query-to-google-sheets-p_YyCD6r/edit) shows an example of how to send the results of a query to Google Sheets, for example.
+
+The [same limits](#query-limits) governining SQL queries made in the UI apply to workflows. Additionally, to support longer queries, you may need to extend the [default execution timeout](/workflows/settings/#execution-timeout-limit) in your workflow's settings.
 
 ## Query Limits
 

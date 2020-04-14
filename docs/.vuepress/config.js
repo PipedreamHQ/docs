@@ -130,6 +130,7 @@ module.exports = {
       "/security/",
     ],
     PIPEDREAM_BASE_URL: "https://pipedream.com",
+    SQL_API_BASE_URL: "https://rt.pipedream.com/sql",
     PAYLOAD_SIZE_LIMIT: "512KB",
     EMAIL_PAYLOAD_SIZE_LIMIT: "256KB",
     INSPECTOR_EVENT_LIMIT: "100",
