@@ -250,7 +250,7 @@ There are other limits that apply to all workflows on Pipedream — see our [Li
 
 When you select the **Email** trigger, we create an email address specific to your workflow. Any email sent to this address triggers your workflow.
 
-As soon as you send an email to the workflow-specific address, Pipedream parses its body, headers, and attachments into a JavaScript object it exposes in the `steps.trigger.event` variable that you can access within your workflow. This transformation can take a few seconds to perform. Once done, the email will be immediately trigger your workflow.
+As soon as you send an email to the workflow-specific address, Pipedream parses its body, headers, and attachments into a JavaScript object it exposes in the `steps.trigger.event` variable that you can access within your workflow. This transformation can take a few seconds to perform. Once done, the transformed payload will immediately trigger your workflow.
 
 [Read more about the shape of the email trigger event](/workflows/events/#email).
 
