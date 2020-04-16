@@ -36,9 +36,19 @@ HTTP sources are essentially [request bins](https://requestbin.com) that can be 
 
 HTTP sources are a good example of how you can turn an event stream into an API: the HTTP requests are the **event stream**, generated from your application, client browsers, webhooks, etc. Then, you can retrieve HTTP requests via Pipedream's [**REST API**](/api/rest/), or stream them directly to other apps using the [SSE interface](/api/sse/).
 
-## Create your first HTTP source
+[**See the Github quickstart for more information on HTTP event sources**](https://github.com/PipedreamHQ/pipedream/tree/master/components/http#quickstart).
 
-[**See the Github quickstart to get started**](https://github.com/PipedreamHQ/pipedream/tree/master/components/http#quickstart).
+## Example: Cron jobs
+
+You can also use event sources to run any Node code on a schedule, allowing you to poll a service or API for data and emit that data as an event. The emitted events can trigger Pipedream workflows, and can be retrieved using Pipedream's [**REST API**](/api/rest/) or [SSE interface](/api/sse/).
+
+[**See the Github quickstart for more information and documentation**](https://github.com/PipedreamHQ/pipedream/tree/master/interfaces/timer).
+
+## Example: RSS
+
+You can run an event source that polls an RSS for new items and emits them in real time as formatted JSON.
+
+[**Learn more here**](https://rss.pipedream.com/).
 
 ## Limits
 

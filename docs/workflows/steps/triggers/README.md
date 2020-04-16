@@ -74,7 +74,7 @@ If you need to issue a custom HTTP response from a workflow, **you can use the `
 $respond({
   status: 200,
   headers: { "my-custom-header": "value" },
-  body: { message: "My custom response" } // This can be any string, object, or Buffer
+  body: { message: "My custom response" }, // This can be any string, object, or Buffer
 });
 ```
 
@@ -97,7 +97,7 @@ $respond({
   immediate: true,
   status: 200,
   headers: { "my-custom-header": "value" },
-  body: { message: "My custom response" }
+  body: { message: "My custom response" },
 });
 ```
 
@@ -109,7 +109,7 @@ This can be helpful, for example, when you're building a Slack bot. When you sen
 await $respond({
   immediate: true,
   status: 200,
-  body: ""
+  body: "",
 });
 ```
 
@@ -140,8 +140,8 @@ try {
   $respond({
     status: 200,
     body: {
-      msg: "Default response"
-    }
+      msg: "Default response",
+    },
   });
 }
 ```
@@ -249,6 +249,8 @@ There are other limits that apply to all workflows on Pipedream — see our [Li
 ## Email
 
 When you select the **Email** trigger, we create an email address specific to your workflow. Any email sent to this address triggers your workflow.
+
+As soon as you send an email to the workflow-specific address, Pipedream parses its body, headers, and attachments into a JavaScript object it exposes in the `steps.trigger.event` variable that you can access within your workflow. This transformation can take a few seconds to perform. Once done, the email will be immediately trigger your workflow.
 
 [Read more about the shape of the email trigger event](/workflows/events/#email).
 
