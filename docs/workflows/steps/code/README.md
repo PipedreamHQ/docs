@@ -121,6 +121,10 @@ There are two ways to make HTTP requests on Pipedream:
 
 In general, if you just need to make an HTTP request but don't care about the response, [use `$send.http()`](/destinations/http/#using-send-http). If you need to operate on the data in the HTTP response in the rest of your workflow, [use `axios`](/workflows/steps/code/nodejs/http-requests/).
 
+## Returning HTTP responses
+
+You can return HTTP responses from [HTTP-triggered workflows](/workflows/steps/triggers/#http) using the [`$respond()` function](/workflows/steps/triggers/#customizing-the-http-response).
+
 ## Managing state
 
 See the docs on [workflow state](/workflows/steps/code/state/).
