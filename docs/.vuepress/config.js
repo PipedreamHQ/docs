@@ -122,7 +122,12 @@ module.exports = {
       {
         title: "Integrations",
         collapsable: false,
-        children: ["/apps/all-apps/", "/apps/discord/", "/apps/zoom/"],
+        children: [
+          "/apps/all-apps/",
+          "/apps/discord/",
+          "/apps/intercom/",
+          "/apps/zoom/",
+        ],
       },
       "/pricing/",
       "/limits/",
