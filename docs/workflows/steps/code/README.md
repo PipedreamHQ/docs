@@ -205,7 +205,7 @@ Not this:
 runAsyncCode();
 ```
 
-If don't `await` async code, or you use callbacks, we'll move on to the next code step or finish the workflow completely before you're able to process the results, and your code will likely fail.
+If you don't `await` async code, or you use callbacks, we'll move on to the next code step or finish the workflow completely before you're able to process the results, and your code will likely fail.
 
 We do our best to track open asynchronous operations, and will try to let you know when you forgot to add an `await` in the logs associated with your code step.
 
