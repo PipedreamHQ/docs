@@ -114,8 +114,16 @@ DELETE /sources/{id}
 
 #### Get Source Events
 
+Retrieve the last 100 events emitted by a source:
+
 ```
-GET /sources/{id}/events
+GET /sources/{id}/event_summaries
+```
+
+Pass `?n=N` to retrieve the last **N** events:
+
+```
+GET /sources/{id}/event_summaries?n=10
 ```
 
 #### Delete source events
