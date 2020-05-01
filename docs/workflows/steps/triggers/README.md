@@ -4,9 +4,54 @@
 
 For example, HTTP triggers expose a URL where you can send any HTTP requests. We'll run your workflow on each request. The Cron Scheduler trigger runs your workflow on a schedule.
 
-Today, we support [HTTP](#http), [Cron Scheduler](#cron-scheduler), and [email](#email) triggers. In the future we plan to support SQL, AMQP, and more. If there's a trigger you'd like supported, please [let us know](/support/).
+Today, we support the following triggers:
+
+- [Triggers for Twitter, Google Calendar, and services](#app-based-triggers)
+- [HTTP](#http)
+- [Cron Scheduler](#cron-scheduler)
+- [Email](#email)
+- [SDK](#sdk)
+
+In the future we plan to support triggers for SQL, AMQP, and more. If there's a trigger you'd like supported, please [let us know](/support/).
 
 [[toc]]
+
+## App-based Triggers
+
+You can trigger a workflow on events from apps like Twitter, Google Calendar, and more using [event sources](/event-sources).
+
+When you create a workflow, choose the opton to **Create Event Source** in the trigger step. Select your app, and you'll see a list of available sources. For Google Calendar, for example, you can run your workflow every time a new event is **added** to your calendar, each time an event **starts**, **ends**, and more:
+
+<div>
+<img alt="Google Calendar sources" width="300" src="./images/google-calendar-triggers.png">
+</div>
+
+Once you select your source, you'll be asked to connect any necessary accounts (for example, Google Calendar sources require you authorize Pipedream access to your Google account), and enter the values for any configuration settings tied to the source.
+
+Some sources are configured to retrieve an initial set of events when they're created. Others require you to generate events in the app to trigger your workflow. If your source generates an initial set of events, you'll see them appear in the test event menu in the trigger step. Then you can select a specific test event and manually trigger your workflow with that event data.
+
+Moreover, since event sources can produce a large stream of events, the workflow is configured to **pause** the stream of events from source to workflow when you first create your workflow. This way, you can author your workflow without it being triggered automatically by your source, sending test events manually during development, instead. **Once you're done, you can toggle the source on in the top-right of the trigger step**.
+
+### What's the difference between an event source and a trigger?
+
+You'll notice the docs use the terms **event source** and **trigger** interchangeably above. It's useful to clarify the distinction in the context of workflows.
+
+[**Event sources**](/event-sources) run code that collects events from some app or service and emits events as the source produces them. An event source can be used to **trigger** any number of workflows.
+
+For example, you might create a single source to listen for new Twitter mentions for a keyword, then trigger multiple workflows each time a new tweet is found: one to [send new tweets to Slack](https://pipedream.com/@pravin/twitter-mentions-slack-p_dDCA5e/edit), another to [save those tweets to an Amazon S3 bucket](https://pipedream.com/@dylan/twitter-to-s3-p_KwCZGA/readme), etc.
+
+**This model allows you to separate the data produced by a service (the event source) from the logic to process those events in different contexts (the workflow)**.
+
+Moreover, you can access events emitted by sources using Pipedream's [SSE](api/sse/) and [REST APIs](/api/rest/#operations). This allows you to access these events in your own app, outside Pipedream's platform.
+
+### Shape of the `event` object
+
+In all workflows, you have access to [event data](/workflows/events/#event-format) using one of two variables:
+
+- `steps.trigger.event`
+- `event` (shorthand reference)
+
+The shape of the event is specific to the source. For example, RSS sources produce events with a `url` and `title` property representing the data provided by new items from a feed. Google Calendar sources produce events with a meeting title, start date, etc.
 
 ## HTTP
 

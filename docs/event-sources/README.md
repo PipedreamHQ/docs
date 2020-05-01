@@ -12,15 +12,39 @@ Since this is a preview release, the documentation below, the [REST API](/api/re
 
 [[toc]]
 
+## Creating event sources
+
+You can create event sources from the Pipedream UI or CLI.
+
+### Creating a source from the UI
+
+Visit [https://pipedream.com/sources](https://pipedream.com/sources) and click **CREATE SOURCE** to create a new event source. You'll see a list of sources tied to apps (like Twitter and Github) and generic interfaces (like HTTP). Select your source, and you'll be asked to connect any necessary accounts (for example, the Twitter source requires you authorize Pipedream access to your Twitter account), and enter the values for any configuration settings tied to the source.
+
+Once you've created a source, you can use it to trigger [Pipedream workflows](/workflows/) or [consume its events](#consuming-events-from-sources) using Pipedream's APIs.
+
+### Creating a source from the CLI
+
+[Download the CLI](/cli/install/) and run:
+
+```bash
+pd deploy
+```
+
+This will bring up an interactive menu prompting you to select a source. Once selected, you'll be asked to connect any necessary accounts (for example, the Twitter source requires you authorize Pipedream access to your Twitter account), and enter the values for any configuration settings tied to the source.
+
+Once you've created a source, you can use it to trigger [Pipedream workflows](/workflows/) or [consume its events](#consuming-events-from-sources) using Pipedream's APIs.
+
 ## Consuming events from sources
 
 You can view the events for a source in the sources UI, under the **EVENTS** section of that source.
 
-You can also consume events programmatically from a source in one of three ways:
+You can also trigger a [Pipedream workflow](/workflows/) every time your source emits a new event. This lets you run workflows for every new tweet, every new item in an RSS feed, and more.
 
-- In batch, using the [REST API](#rest-api)
+Finally, you can consume events programmatically, outside the Pipedreram platform, in a few different ways:
+
 - In real-time, using the [SSE stream](/api/sse/) linked to your source
 - In real-time, via the CLI's [`pd events` command](/api/sse/#subscribe-to-new-events-using-the-pipedream-cli)
+- In batch, using the [REST API](#rest-api)
 
 ## Example: HTTP source
 

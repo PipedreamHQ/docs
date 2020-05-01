@@ -70,9 +70,20 @@ You'll receive an email when you exhaust 80% and 100% of your daily quota. Again
 
 If this quota isn't sufficient for you use case, [reach out to our team](/support/) so we can learn more.
 
+### Event / Execution History
+
+The [Inspector](/workflows/events/inspect/#the-inspector) shows the execution history for a given workflow. There are two limits that impact this history:
+
+- You can view the last {{$site.themeConfig.INSPECTOR_EVENT_LIMIT}} events sent to your workflow. Sending events over this limit removes the oldest event in the history from Pipedream's system.
+- The execution details for a specific run also expires after {{$site.themeConfig.INSPECTOR_EVENT_EXPIRY_DAYS}} days. So if a workflow was triggered once a day, you’d only see a rolling history of {{$site.themeConfig.INSPECTOR_EVENT_EXPIRY_DAYS}} executions.
+
+If you'd like to store execution or error history for a longer period, consider sending execution data to a table in the [SQL Service](/destinations/sql/), an [Amazon S3 bucket](/destinations/s3/), or another external data store.
+
 ### Memory
 
 **You should expect to have access to at least `192 MB` of memory for your code and libraries** during workflow execution.
+
+If this quota isn't sufficient for you use case, [reach out to our team](/support/) so we can learn more.
 
 ### Disk
 

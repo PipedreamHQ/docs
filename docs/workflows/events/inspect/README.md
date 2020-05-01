@@ -100,4 +100,8 @@ Events sent to the newest version of your workflow appear in black in the Inspec
 
 When you select events from older versions of your workflow, note that we display the workflow and all associated observability at that point in time. So if an older version of your workflow had a code step, or an action, that you've subsequently removed, it will still appear with older events sent to that version.
 
+## Limits
+
+Pipedream retains a limited history of events for a given workflow. See the [limits docs](/limits/#event-execution-history) for more information.
+
 <Footer />

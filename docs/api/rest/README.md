@@ -120,10 +120,16 @@ Retrieve the last 100 events emitted by a source:
 GET /sources/{id}/event_summaries
 ```
 
-Pass `?n=N` to retrieve the last **N** events:
+The event data for events larger than `1KB` may get truncated in the response. If you're processing larger events, and need to see the full event data, pass `?expand=event`:
 
 ```
-GET /sources/{id}/event_summaries?n=10
+GET /sources/{id}/event_summaries?expand=event
+```
+
+Pass `?limit=N` to retrieve the last **N** events:
+
+```
+GET /sources/{id}/event_summaries?limit=10
 ```
 
 #### Delete source events
