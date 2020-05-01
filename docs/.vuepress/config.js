@@ -124,6 +124,7 @@ module.exports = {
         collapsable: false,
         children: [
           "/apps/all-apps/",
+          "/apps/twitter/",
           "/apps/discord/",
           "/apps/intercom/",
           "/apps/zoom/",
