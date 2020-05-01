@@ -303,6 +303,12 @@ As soon as you send an email to the workflow-specific address, Pipedream parses 
 
 See the [Email Trigger section of our Limits doc](/limits/#email-triggers) to learn more about the limits of the email trigger.
 
+## SDK
+
+You can trigger workflows using the Pipedream JavaScript and Ruby SDKs, as well.
+
+Select the SDK trigger to generate workflow-specific code samples for sending events to your workflow using each of the SDKs.
+
 ## Don't see a trigger you need?
 
 If you don't see a trigger you'd like us to support, please [let us know](https://pipedream.com/community/).
