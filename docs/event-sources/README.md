@@ -2,7 +2,11 @@
 
 **Event sources turn any API into an event stream. They can also turn any event stream into an API**.
 
-Event sources run on Pipedream's infrastructure and collect data from services like Github, Stripe, the bitcoin blockchain, RSS feeds, and more. They emit new events produced by the service, which you can inspect in the UI or consume using [batch](/api/rest/) or [real-time](/api/sse/) APIs.
+Event sources run on Pipedream's infrastructure and collect data from services like Github, Stripe, the bitcoin blockchain, RSS feeds, and more. They emit new events produced by the service, which can trigger [Pipedream workflows](/workflows/), or which you can consume using Pipedream's [REST API](/api/rest/) or a [private, real-time SSE stream](/api/sse/).
+
+You can see a list of all event sources by visiting [https://pipedream.com/sources](https://pipedream.com/sources) and clicking **Create Source**.
+
+The code for sources is kept in the [`PipedreamHQ/pipedream` repo](https://github.com/PipedreamHQ/pipedream). If you think a source can be improved, or you find a bug, please raise an issue or PR in that repo.
 
 ::: warning
 Pipedream Event Sources are in preview, and we'd love your feedback on how you'd like to use them, and what we can improve. Please reach out on [Slack](https://pipedream.com/community) or raise an issue on our [Github roadmap](https://github.com/PipedreamHQ/roadmap) with any questions or suggestions.
@@ -18,7 +22,7 @@ You can create event sources from the Pipedream UI or CLI.
 
 ### Creating a source from the UI
 
-Visit [https://pipedream.com/sources](https://pipedream.com/sources) and click **CREATE SOURCE** to create a new event source. You'll see a list of sources tied to apps (like Twitter and Github) and generic interfaces (like HTTP). Select your source, and you'll be asked to connect any necessary accounts (for example, the Twitter source requires you authorize Pipedream access to your Twitter account), and enter the values for any configuration settings tied to the source.
+Visit [https://pipedream.com/sources](https://pipedream.com/sources) and click **Create Source** to create a new event source. You'll see a list of sources tied to apps (like Twitter and Github) and generic interfaces (like HTTP). Select your source, and you'll be asked to connect any necessary accounts (for example, the Twitter source requires you authorize Pipedream access to your Twitter account), and enter the values for any configuration settings tied to the source.
 
 Once you've created a source, you can use it to trigger [Pipedream workflows](/workflows/) or [consume its events](#consuming-events-from-sources) using Pipedream's APIs.
 

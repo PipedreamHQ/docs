@@ -314,6 +314,14 @@ In a workflow, there are two actions you can use to run SQL queries, both found 
 
 The [same limits](#query-limits) governining SQL queries made in the UI apply to workflows. Additionally, to support longer queries, you may need to extend the [default execution timeout](/workflows/settings/#execution-timeout-limit) in your workflow's settings.
 
+## Triggering workflows on scheduled SQL queries
+
+Just like you can trigger workflows on [HTTP requests](/workflows/steps/triggers/#http) or [cron jobs](/workflows/steps/triggers/#cron-scheduler), you can trigger a workflow from the results of a scheduled SQL query using the [Scheduled SQL Source](https://github.com/PipedreamHQ/pipedream/blob/master/components/pipedream/sql/README.md).
+
+For example, you can schedule a query to run once a day, emitting the results to one or more workflows to send the results to Slack, S3, and more.
+
+[Read the docs on this source here](https://github.com/PipedreamHQ/pipedream/blob/master/components/pipedream/sql/README.md).
+
 ## Query Limits
 
 - Queries are currently limited to a runtime of 60 seconds.
