@@ -215,6 +215,20 @@ You can also [reach out](/support/) to inquire about raising this rate limit.
 
 If you control the application sending requests, you should implement [a backoff strategy](https://medium.com/clover-platform-blog/conquering-api-rate-limiting-dcac5552714d) to temporarily slow the rate of events.
 
+### Validating requests
+
+Since you have access to the entire request object, and can issue any HTTP response from a workflow, you can implement custom logic to validate requests using any [Node code](/workflows/steps/code/).
+
+For example, you can [require requests pass a specific secret in a header](https://pipedream.com/@dylburger/end-a-workflow-early-on-invalid-secret-p_YyCmmK/edit). Just copy the workflow and add your secret as the value of the the **Secret** param. Add the rest of your code in steps below this initial one. Requests must contain the secret:
+
+```bash
+curl -H 'X-Pipedream-Secret: abc123' https://myendpoint.m.pipedream.net
+```
+
+Otherwise, the workflow will end early.
+
+Since you can [run any Node code](/workflows/steps/code/) in a workflow, you can implement more complex validation. For example, you could require JWT tokens and validate those tokens using the [`jsonwebtoken` package](https://www.npmjs.com/package/jsonwebtoken) at the start of your workflow.
+
 ## Webhook
 
 A **Webhook** trigger is an alias for the [HTTP](#http) trigger. They are equivalent in every way. You can trigger workflows on HTTP requests using either the HTTP or Webhook trigger.
