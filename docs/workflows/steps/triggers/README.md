@@ -225,7 +225,7 @@ For example, you can [require requests pass a specific secret in a header](https
 curl -H 'X-Pipedream-Secret: abc123' https://myendpoint.m.pipedream.net
 ```
 
-Otherwise, the workflow will end early.
+Otherwise, the workflow will [end early](/workflows/steps/code/#end).
 
 Since you can [run any Node code](/workflows/steps/code/) in a workflow, you can implement more complex validation. For example, you could require JWT tokens and validate those tokens using the [`jsonwebtoken` package](https://www.npmjs.com/package/jsonwebtoken) at the start of your workflow.
 

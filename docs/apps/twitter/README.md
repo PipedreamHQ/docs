@@ -39,6 +39,16 @@ If you write custom code that attempts to post a tweet with an `@` mention, you'
 
 This limitation only applies to Pipedream's **Twitter** app. You can use the [**Twitter Developer App** integration](#twitter-developer-app-integration) to interact with the Twitter API using credentials for a Twitter bot you've created in your own developer account, and use `@` mentions. When you use this integration, [Twitter's Automation Rules](https://help.twitter.com/en/rules-and-policies/twitter-automation) still govern your bot's use of the Twitter API.
 
+### Pipedream, Inc label on tweets
+
+When you use the Pipedream Twitter app to send tweets, you'll notice a **Pipedream, Inc** label on these tweets:
+
+<div>
+<img alt="Twitter Pipedream label" width="500px" src="./images/twitter-pipedream-label.png">
+</div>
+
+Twitter displays the name of the source app that produced the tweet, and cannot be removed when using the Pipedream app. You can use the [**Twitter Developer App** integration](#twitter-developer-app-integration) to post tweets using your own app.
+
 ### Twitter Developer App integration
 
 If you operate your own Twitter bot, and you want to interact with the Twitter API using that bot's credentials, you can use the **Twitter Developer App** integration.
