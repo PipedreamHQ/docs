@@ -89,6 +89,10 @@ If this quota isn't sufficient for you use case, [reach out to our team](/suppor
 
 Your code, or a third party library, may need access to disk during the execution of your workflow. **Your workflow has access to `512 MB` of disk in the `/tmp` directory**.
 
+### Logs, Step Exports, and other observability
+
+The total size of `console.log()` statements, [step exports](/workflows/steps/#step-exports), and the original event data sent to the workflow cannot exceed a combined size of `8MB`. If you produce logs or step exports larger than this - for example, passing around large API responses, CSVs, or other data - you may encounter a `FUNCTION_ERROR` in your workflow.
+
 ## Acceptable Use
 
 We ask that you abide by our [Acceptable Use](https://pipedream.com/terms/#b-acceptable-use) policy. In short this means: don't use Pipedream to break the law; don't abuse the platform; and don't use the platform to harm others.
