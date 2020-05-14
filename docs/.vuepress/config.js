@@ -104,7 +104,13 @@ module.exports = {
       {
         title: "APIs",
         collapsable: false,
-        children: ["/api/overview/", "/api/auth/", "/api/rest/", "/api/sse/"],
+        children: [
+          "/api/overview/",
+          "/api/auth/",
+          "/api/rest/",
+          "/api/rest/rss/",
+          "/api/sse/",
+        ],
       },
       {
         title: "Destinations",
@@ -138,6 +144,7 @@ module.exports = {
       "/security/",
     ],
     PIPEDREAM_BASE_URL: "https://pipedream.com",
+    API_BASE_URL: "https://api.pipedream.com/v1",
     SQL_API_BASE_URL: "https://rt.pipedream.com/sql",
     PAYLOAD_SIZE_LIMIT: "512KB",
     EMAIL_PAYLOAD_SIZE_LIMIT: "256KB",
