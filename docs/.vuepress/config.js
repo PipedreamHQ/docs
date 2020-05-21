@@ -53,6 +53,7 @@ module.exports = {
           "/workflows/steps/code/",
           "/workflows/steps/code/state/",
           "/workflows/steps/code/nodejs/http-requests/",
+          "/workflows/steps/code/nodejs/working-with-files/",
           "/workflows/steps/actions/",
         ],
       },
