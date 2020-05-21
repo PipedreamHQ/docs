@@ -1,6 +1,6 @@
 # Email
 
-The Email Destination allows you send an email to _yourself_ — the email address tied to the account you signed up with — at any step of a workflow.
+The Email Destination allows you send an email to _yourself_ — the email address tied to the account you signed up with — at any step of a workflow. You can also email [any collaborators on your workflow](#emailing-workflow-collaborators).
 
 You can use this to email yourself when you receive a specific event, for example when a user signs up on your app. You can send yourself an email when a cron job finishes running, or when a job fails. Anywhere you need an email notification, you can use the Email Destination!
 
@@ -10,7 +10,7 @@ You can use this to email yourself when you receive a specific event, for exampl
 
 ### Adding an Email Action
 
-First, [add a new Action](/workflows/steps/actions/#adding-a-new-action), then select the **Send me an email** Action. You can modify the **Subject** and the message (either **Plain Text** or **HTML**) however you want.
+First, [add a new Action](/workflows/steps/actions/#adding-a-new-action), then select the **Send Yourself an Email** Action. You can modify the **Subject** and the message (either **Plain Text** or **HTML**) however you want.
 
 ### Using `$send.email()`
 

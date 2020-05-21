@@ -16,11 +16,7 @@ Below we'll discuss how the **SQL** Destination works in detail, as well as the 
 
 ### Adding a Pipedream SQL Action
 
-Adding a new SQL Destination to your workflow is easy. First, add a new step to your workflow and choose the **SQL by Pipedream** action.
-
-<div>
-<img alt="SQL by Pipedream action" src="./images/sql-by-pipedream.png">
-</div>
+Adding a new SQL Destination to your workflow is easy. First, add a new step to your workflow and choose the **Send JSON to Pipedream SQL Service** action.
 
 Then, add the **Table Name** and **Payload** you want to send to the SQL Destination. You can name the table whatever you want, within the [restrictions we impose on table names](#limitations-on-pipedream-sql-table-names).
 
