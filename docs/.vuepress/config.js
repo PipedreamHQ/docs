@@ -136,6 +136,7 @@ module.exports = {
           "/apps/servicenow/",
           "/apps/slack/",
           "/apps/twitter/",
+          "/apps/zoho-books/",
           "/apps/zoom/",
         ],
       },
