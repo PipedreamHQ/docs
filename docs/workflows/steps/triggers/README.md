@@ -122,7 +122,7 @@ For example, you can upload an image to a workflow using `cURL`:
 curl -F 'image=@my_image.png' https://myendpoint.m.pipedream.net
 ```
 
-The `-F` tells cURL we're sending form data, with a single "part": a field named `image`, with the content of the image as the value (the `@` allows `cURL` to reference a file).
+The `-F` tells `cURL` we're sending form data, with a single "part": a field named `image`, with the content of the image as the value (the `@` allows `cURL` to reference a local file).
 
 When you send this image to a workflow, Pipedream [parses the form data](#how-pipedream-handles-multipart-form-data) and converts it to a JavaScript object, `event.body`. Select the event from the [inspector](/workflows/events/inspect/#the-inspector), and you'll see the `image` property under `event.body`:
 
@@ -136,7 +136,7 @@ Within the `image` property of `event.body`, you'll see the value of this URL in
 
 #### Example: Download this file to the `/tmp` directory
 
-[This workflow](https://pipedream.com/@dylburger/example-download-an-image-to-tmp-p_KwC2Ad/edit) downloads an image passed as an `image` field in the form request to the [`/tmp` directory](workflows/steps/code/nodejs/working-with-files/#the-tmp-directory).
+[This workflow](https://pipedream.com/@dylburger/example-download-an-image-to-tmp-p_KwC2Ad/edit) downloads an image passed in the `image` field in the form request, saving it to the [`/tmp` directory](workflows/steps/code/nodejs/working-with-files/#the-tmp-directory).
 
 ```javascript
 const stream = require("stream");
