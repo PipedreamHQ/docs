@@ -25,7 +25,7 @@ This code sample uses [step exports](/workflows/steps/#step-exports) to return a
 ```javascript
 const fs = require("fs");
 
-this.tmpFiles = fs.readdirSync(TMP_DIR);
+this.tmpFiles = fs.readdirSync("/tmp");
 ```
 
 ## Reading a file from `/tmp`

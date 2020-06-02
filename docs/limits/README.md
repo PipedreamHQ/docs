@@ -25,6 +25,8 @@ The following limits apply to [HTTP triggers](/workflows/steps/triggers/#http).
 
 Your endpoint will issue a `413 Payload Too Large` status code when the body of your request exceeds `{{$site.themeConfig.PAYLOAD_SIZE_LIMIT}}`.
 
+This limit **does not** apply to files uploaded as part of a `multipart/form-data` request - **you can upload files of any size in a form request and access them within your workflow**. See the docs on [Large File Support](/workflows/steps/triggers/#large-file-support) for more information.
+
 ### QPS (Queries Per Second)
 
 Generally the rate of HTTP requests sent to an endpoint is quantified by QPS, or _queries per second_. A query in this context refers to an HTTP request.

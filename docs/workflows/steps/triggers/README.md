@@ -81,9 +81,85 @@ JSON is the main data exchange format on the web today. Pipedream optimizes for 
 
 When you send JSON in the HTTP payload, or when JSON data is sent in the payload from a webhook provider, **Pipedream converts that JSON to its equivalent JavaScript object**. The trigger data can be referenced using either `event` or the `steps` object.
 
-You can confirm this JSON -> JavaScript object conversion occurred by examining the `event.inferred_body_type` property. If this is JSON, we correctly recognized the payload as such, and converted `event.body` to an object accordingly.
+You can confirm this JSON to JavaScript object conversion occurred by examining the `event.inferred_body_type` property. If this is JSON, we correctly recognized the payload as such, and converted `event.body` to an object accordingly.
 
 In the [Inspector](/workflows/events/inspect/), we present `event.body` cleanly, indenting nested properties, to make the payload easy to read. Since `event.body` is a JavaScript object, it's easy to reference and manipulate properties of the payload using dot-notation.
+
+### How Pipedream handles `multipart/form-data`
+
+When you send [form data](https://ec.haxx.se/http/http-multipart) to Pipedream using a `Content-Type` of `multipart/form-data`, Pipedream parses the payload and converts it to a JavaScript object with a property per form field. For example, if you send a request with two fields:
+
+```bash
+curl -F 'name=Leia' -F 'title=General' https://myendpoint.m.pipedream.net
+```
+
+Pipedream will convert that to a JavaScript object, `event.body`, with the following shape:
+
+```javascript
+{
+  name: "Leia",
+  title: "General",
+}
+```
+
+In this case, the `inferred_body_type` property of the `event` object will be set to `MULTIPART_FORM` to signal that we inferred form data and applied the conversion.
+
+#### Limits
+
+You can send any content, up to the [HTTP payload size limit](/limits/#http-request-body-size), as a part of the form request. The content of uploaded images or other binary files does not contribute to this limit — the contents of the file will be uploaded at a Pipedream URL you have access to within your source or workflow. See the section on [Large File Support](#large-file-support) for more detail.
+
+### Large File Support
+
+You can upload any file to a [workflow](/workflows/) or an [event source](/event-sources/) by making a `multipart/form-data` HTTP request with the file as one of the form parts. **Pipedream saves that file to a Pipedream-owned [Amazon S3 bucket](https://aws.amazon.com/s3/), generating a [signed URL](https://docs.aws.amazon.com/AmazonS3/latest/dev/ShareObjectPreSignedURL.html) that allows you to access to that file for up to 1 hour**. After 1 hour, the signed URL will be invalidated, and the file will be deleted.
+
+This URL is provided in the event data that triggers your workflow / source, so you can download the file using that URL within your workflow, or pass the URL on to another third-party system for it to process.
+
+#### Example: upload a file using `cURL`
+
+For example, you can upload an image to a workflow using `cURL`:
+
+```bash
+curl -F 'image=@my_image.png' https://myendpoint.m.pipedream.net
+```
+
+The `-F` tells cURL we're sending form data, with a single "part": a field named `image`, with the content of the image as the value (the `@` allows `cURL` to reference a file).
+
+When you send this image to a workflow, Pipedream [parses the form data](#how-pipedream-handles-multipart-form-data) and converts it to a JavaScript object, `event.body`. Select the event from the [inspector](/workflows/events/inspect/#the-inspector), and you'll see the `image` property under `event.body`:
+
+<div>
+<img alt="Image form data" src="./images/image_form_data.png">
+</div>
+
+When you upload a file as a part of the form request, Pipedream saves it to a Pipedream-owned [Amazon S3 bucket](https://aws.amazon.com/s3/), generating a [signed URL](https://docs.aws.amazon.com/AmazonS3/latest/dev/ShareObjectPreSignedURL.html) that allows you to access to that file for up to 1 hour. After 1 hour, the signed URL will be invalidated, and the file will be deleted.
+
+Within the `image` property of `event.body`, you'll see the value of this URL in the `url` property, along with the `filename` and `mimetype` of the file. Within your workflow, you can download the file, or pass the URL to a third party system to handle, and more.
+
+#### Example: Download this file to the `/tmp` directory
+
+[This workflow](https://pipedream.com/@dylburger/example-download-an-image-to-tmp-p_KwC2Ad/edit) downloads an image passed as an `image` field in the form request to the [`/tmp` directory](workflows/steps/code/nodejs/working-with-files/#the-tmp-directory).
+
+```javascript
+const stream = require("stream");
+const { promisify } = require("util");
+const fs = require("fs");
+const got = require("got");
+
+const pipeline = promisify(stream.pipeline);
+await pipeline(
+  got.stream(steps.trigger.event.body.image.url),
+  fs.createWriteStream(`/tmp/${steps.trigger.event.body.image.filename}`)
+);
+```
+
+#### Example: Upload image to your own Amazon S3 bucket
+
+[This workflow](https://pipedream.com/@dylburger/example-save-uploaded-file-to-amazon-s3-p_o7Cm9z/edit) streams the uploaded file to an Amazon S3 bucket you specify, allowing you to save the file to long-term storage.
+
+#### Limits
+
+Since large files are uploaded using a `Content-Type` of `multipart/form-data`, the limits that apply to [form data](#how-pipedream-handles-multipart-form-data) also apply here.
+
+The content of the file itself does not contribute to the HTTP payload limit imposed for forms. **You can upload files up to 5TB in size**. However, files that large may trigger [other Pipedream limits](/limits/). Please [reach out](/support/) with any specific questions or issues.
 
 ### Cross-Origin HTTP Requests
 
@@ -119,11 +195,16 @@ If you need to issue a custom HTTP response from a workflow, **you can use the `
 $respond({
   status: 200,
   headers: { "my-custom-header": "value" },
-  body: { message: "My custom response" }, // This can be any string, object, or Buffer
+  body: { message: "My custom response" }, // This can be any string, object, Buffer, or Readable stream
 });
 ```
 
-The value of the `body` property can be either a string, object, or [Buffer](https://nodejs.org/api/buffer.html#buffer_buffer) (binary data). Attempting to return any other data may yield an error.
+The value of the `body` property can be either a string, object, a [Buffer](https://nodejs.org/api/buffer.html#buffer_buffer) (binary data), or a [Readable stream](https://nodejs.org/api/stream.html#stream_readable_streams). Attempting to return any other data may yield an error.
+
+In the case where you return a Readable stream:
+
+- You must `await` the `$respond` function (`await $respond({ ... }`)
+- The stream must close and be finished reading within your [workflow execution timeout](/limits/#time-per-execution).
 
 You can **Copy** [this example workflow](https://pipedream.com/@dylburger/issue-an-http-response-from-a-workflow-p_ljCRdv/edit) and make an HTTP request to its endpoint URL to experiment with this.
 
