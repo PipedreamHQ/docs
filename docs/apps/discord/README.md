@@ -85,7 +85,7 @@ and [connect your account](/connected-accounts/#connecting-accounts). You'll be 
 
 ### Requesting more Discord Bot Actions
 
-To request a new Discord Bot action, please file an issue on our [Github roadmap](https://github.com/PipedreamHQ/roadmap#adding-a-new-issue).
+To request a new Discord Bot action, please file an issue on our [Github repo](https://github.com/PipedreamHQ/pipedream).
 
 ### Limitations of the Bot integration on Pipedream
 
