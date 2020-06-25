@@ -110,7 +110,7 @@ You can send any content, up to the [HTTP payload size limit](/limits/#http-requ
 
 ### Large File Support
 
-You can upload any file to a [workflow](/workflows/) or an [event source](/event-sources/) by making a `multipart/form-data` HTTP request with the file as one of the form parts. **Pipedream saves that file to a Pipedream-owned [Amazon S3 bucket](https://aws.amazon.com/s3/), generating a [signed URL](https://docs.aws.amazon.com/AmazonS3/latest/dev/ShareObjectPreSignedURL.html) that allows you to access to that file for up to 1 hour**. After 1 hour, the signed URL will be invalidated, and the file will be deleted.
+You can upload any file to a [workflow](/workflows/) or an [event source](/event-sources/) by making a `multipart/form-data` HTTP request with the file as one of the form parts. **Pipedream saves that file to a Pipedream-owned [Amazon S3 bucket](https://aws.amazon.com/s3/), generating a [signed URL](https://docs.aws.amazon.com/AmazonS3/latest/dev/ShareObjectPreSignedURL.html) that allows you to access to that file for up to 30 minutes**. After 30 minutes, the signed URL will be invalidated, and the file will be deleted.
 
 This URL is provided in the event data that triggers your workflow / source, so you can download the file using that URL within your workflow, or pass the URL on to another third-party system for it to process.
 
@@ -130,7 +130,7 @@ When you send this image to a workflow, Pipedream [parses the form data](#how-pi
 <img alt="Image form data" src="./images/image_form_data.png">
 </div>
 
-When you upload a file as a part of the form request, Pipedream saves it to a Pipedream-owned [Amazon S3 bucket](https://aws.amazon.com/s3/), generating a [signed URL](https://docs.aws.amazon.com/AmazonS3/latest/dev/ShareObjectPreSignedURL.html) that allows you to access to that file for up to 1 hour. After 1 hour, the signed URL will be invalidated, and the file will be deleted.
+When you upload a file as a part of the form request, Pipedream saves it to a Pipedream-owned [Amazon S3 bucket](https://aws.amazon.com/s3/), generating a [signed URL](https://docs.aws.amazon.com/AmazonS3/latest/dev/ShareObjectPreSignedURL.html) that allows you to access to that file for up to 30 minutes. After 30 minutes, the signed URL will be invalidated, and the file will be deleted.
 
 Within the `image` property of `event.body`, you'll see the value of this URL in the `url` property, along with the `filename` and `mimetype` of the file. Within your workflow, you can download the file, or pass the URL to a third party system to handle, and more.
 
