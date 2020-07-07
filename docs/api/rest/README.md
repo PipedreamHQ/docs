@@ -469,7 +469,7 @@ PUT /sources/{id}
 
 `component_id` **string** (_optional_)
 
-The ID of a component previously created in your account. [See the component endpoints](/api/rest/#components) for informtion on how to retrieve this ID.
+The ID of a component previously created in your account. [See the component endpoints](/api/rest/#components) for information on how to retrieve this ID.
 
 ---
 
@@ -513,6 +513,51 @@ Default: `true`.
 
 ```text
 DELETE /sources/{id}
+```
+
+#### Listen for events from another source
+
+---
+
+You can configure a source, or a workflow, to receive events from any number of other sources. For example, if you want a single workflow to run on 10 different RSS sources, you can configure the workflow to _listen_ for events from those 10 sources.
+
+**Currently, this feature is enabled only on the API. The Pipedream UI will not display the sources configured as listeners using this API**.
+
+---
+
+**Endpoint**
+
+```text
+PUT /sources/{receiving_source_id}/listen/{emitting_component_id}
+```
+
+**Parameters**
+
+---
+
+Receiving Component / Workflow ID **string**
+
+The ID of the component or workflow you'd like to receive events.
+
+[See the component endpoints](/api/rest/#components) for information on how to retrieve the ID of existing components. You can retrieve the ID of your workflow in your workflow's URL - it's the string `p_2gCPml` in `https://pipedream.com/@dylan/example-rss-sql-workflow-p_2gCPml/edit`.
+
+---
+
+Emitting Component ID **string** (_optional_)
+
+The ID of the component emitting events. Events from this component trigger the receiving component / workflow.
+
+[See the component endpoints](/api/rest/#components) for information on how to retrieve the ID of existing components. You can retrieve the ID of your workflow in your workflow's URL - it's the string `p_2gCPml` in `https://pipedream.com/@dylan/example-rss-sql-workflow-p_2gCPml/edit`.
+
+**Example Request**
+
+You can configure workflow `p_abc123` to listen to events from the source `dc_def456` using the following command:
+
+```bash
+curl https://api.pipedream.com/v1/sources/p_abc123/listen/dc_def456 \
+  -X PUT \
+  -H "Authorization: Bearer <api_key>" \
+  -H "Content-Type: application/json"
 ```
 
 ### Events
