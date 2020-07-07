@@ -515,6 +515,8 @@ Default: `true`.
 DELETE /sources/{id}
 ```
 
+### Subscriptions
+
 #### Listen for events from another source
 
 ---
@@ -528,14 +530,14 @@ You can configure a source, or a workflow, to receive events from any number of 
 **Endpoint**
 
 ```text
-PUT /sources/{receiving_source_id}/listen/{emitting_component_id}
+POST /subscriptions?emitter_id={emitting_component_id}&listener_id={receiving_source_id}
 ```
 
 **Parameters**
 
 ---
 
-Receiving Component / Workflow ID **string**
+`listener_id` **string**
 
 The ID of the component or workflow you'd like to receive events.
 
@@ -543,7 +545,7 @@ The ID of the component or workflow you'd like to receive events.
 
 ---
 
-Emitting Component ID **string** (_optional_)
+`emitter_id` **string** (_optional_)
 
 The ID of the component emitting events. Events from this component trigger the receiving component / workflow.
 
@@ -554,8 +556,8 @@ The ID of the component emitting events. Events from this component trigger the 
 You can configure workflow `p_abc123` to listen to events from the source `dc_def456` using the following command:
 
 ```bash
-curl https://api.pipedream.com/v1/sources/p_abc123/listen/dc_def456 \
-  -X PUT \
+curl "https://api.pipedream.com/v1/subscriptions?emitter_id=dc_def456&listener_id=p_abc123" \
+  -X POST \
   -H "Authorization: Bearer <api_key>" \
   -H "Content-Type: application/json"
 ```
