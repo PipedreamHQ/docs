@@ -144,6 +144,7 @@ module.exports = {
       "/limits/",
       "/new-feature-or-bug/",
       "/security/",
+      "/status/",
     ],
     PIPEDREAM_BASE_URL: "https://pipedream.com",
     API_BASE_URL: "https://api.pipedream.com/v1",
