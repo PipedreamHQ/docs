@@ -46,7 +46,7 @@ The [Zoom API docs on permissions](https://marketplace.zoom.us/docs/guides/autho
 This will open up a new window prompting you to authorize Pipedream's access to your Zoom account. Once you authorize access, you should see your Zoom account listed among your apps.
 
 5. [Create a new workflow](https://pipedream.com/new), [add a new step](/workflows/steps/), search for "Zoom" or "Zoom Admin". Once you've selected either app, you can choose to either "Run Node.js code" or select one of the pre-built actions for performing common API operations.
-6. At this stage, you'll be asked to link the Zoom account to this step, authorizing the request to the Zoom API with your credentials:
+6. At this stage, you'll be asked to link the Zoom account you connected above, authorizing the request to the Zoom API with your credentials:
 
 <img src="./images/connect-zoom-account.png" alt="Connect Zoom Account" width="500px;" />
 
@@ -85,7 +85,7 @@ You can find the source code for each of these event sources in the [PipedreamHQ
 - [Zoom event sources](https://github.com/PipedreamHQ/pipedream/tree/master/components/zoom)
 - [Zoom Admin event sources](https://github.com/PipedreamHQ/pipedream/tree/master/components/zoom-admin)
 
-If you can't find the source you're looking for, you can use the [Zoom Custom EventsYou can [request another source here](https://github.com/PipedreamHQ/pipedream/issues/new?assignees=&labels=enhancement&template=new-source.md&title=%5BTRIGGER%5D), or develop your own Zoom source and open up a pull request in the [PipedreamHQ/pipedream](https://github.com/PipedreamHQ/pipedream) Github repo to add that source to the Pipedream platform for anyone to use.
+If you can't find the source you're looking for, you can use the [Zoom Custom Events source](#zoom-custom-events-source) to listen for any events from Zoom. You can also [request another source here](https://github.com/PipedreamHQ/pipedream/issues/new?assignees=&labels=enhancement&template=new-source.md&title=%5BTRIGGER%5D), or develop your own Zoom source and open up a pull request in the [PipedreamHQ/pipedream](https://github.com/PipedreamHQ/pipedream) Github repo to add that source to the Pipedream platform for anyone to use.
 
 ### Zoom Custom Events source
 
@@ -179,6 +179,12 @@ Below, you'll find a full list of the events that you can listen for, with links
 |        [`webinar.registration_denied`](https://marketplace.zoom.us/docs/api-reference/webhook-reference/webinar-events/webinar-registration-denied)        |              Webinar registration denied              |  ✓   |     ✓      |
 |         [`webinar.participant_joined`](https://marketplace.zoom.us/docs/api-reference/webhook-reference/webinar-events/webinar-participant-joined)         |            Host or attendee joined webinar            |  ✓   |     ✓      |
 |               [`webinar.participant_left`](https://marketplace.zoom.us/docs/api-reference/webhook-reference/webinar-events/participant-left)               |             Host or attendee left webinar             |  ✓   |     ✓      |
+
+## Example workflows
+
+You can copy any of the workflows below by clicking **Copy** in the top-right corner of the workflow. This will create a copy of the workflow in your account, where you can connect your Zoom account.
+
+- [Save Zoom recordings to Amazon S3, then delete Zoom recording](https://pipedream.com/@dylburger/save-zoom-recordings-to-amazon-s3-p_PACKJG/readme)
 
 ## Removing Pipedream's access to your Zoom account
 
