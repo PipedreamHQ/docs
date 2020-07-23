@@ -184,7 +184,8 @@ Below, you'll find a full list of the events that you can listen for, with links
 
 You can copy any of the workflows below by clicking **Copy** in the top-right corner of the workflow. This will create a copy of the workflow in your account, where you can connect your Zoom account.
 
-- [Save Zoom recordings to Amazon S3, then delete Zoom recording](https://pipedream.com/@dylburger/save-zoom-recordings-to-amazon-s3-p_PACKJG/readme)
+- [Save Zoom recordings to Amazon S3, email host, then delete Zoom recording](https://pipedream.com/@zoom-demo/save-zoom-recordings-to-amazon-s3-email-host-then-delete-zoom-recording-p_gYCjqj/edit)
+- [Send meeting metrics to host via email](https://pipedream.com/@zoom-demo/send-meeting-metrics-to-host-via-email-p_n1CMZN/edit)
 
 ## Removing Pipedream's access to your Zoom account
 
