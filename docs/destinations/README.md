@@ -17,7 +17,6 @@ The docs below discuss features common to all Destinations. See the [docs for a 
 - [Email](/destinations/email/)
 - [S3](/destinations/s3/)
 - [Pipedream Data Warehouse](/destinations/sql/)
-- [Snowflake](/destinations/snowflake/)
 - [SSE](/destinations/sse/)
 
 ## Adding a Destination
@@ -51,8 +50,8 @@ $send.http({
   method: "POST",
   url: "[YOUR URL HERE]",
   data: {
-    name: "Luke Skywalker"
-  }
+    name: "Luke Skywalker",
+  },
 });
 ```
 
@@ -67,8 +66,8 @@ for (const name of names) {
     method: "POST",
     url: "[YOUR URL HERE]",
     data: {
-      name
-    }
+      name,
+    },
   });
 }
 ```

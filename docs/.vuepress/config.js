@@ -121,7 +121,6 @@ module.exports = {
           "/destinations/http/",
           "/destinations/s3/",
           "/destinations/email/",
-          "/destinations/snowflake/",
           "/destinations/sql/",
           "/destinations/sse/",
         ],
