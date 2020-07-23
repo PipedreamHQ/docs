@@ -187,6 +187,20 @@ You can copy any of the workflows below by clicking **Copy** in the top-right co
 - [Save Zoom recordings to Amazon S3, email host, then delete Zoom recording](https://pipedream.com/@zoom-demo/save-zoom-recordings-to-amazon-s3-email-host-then-delete-zoom-recording-p_gYCjqj/edit)
 - [Send meeting metrics to host via email](https://pipedream.com/@zoom-demo/send-meeting-metrics-to-host-via-email-p_n1CMZN/edit)
 
+## Common Issues
+
+If you encounter any issues connecting to Zoom with Pipedream, please [reach out to our Support team](/support).
+
+### My Zoom event source isn't receiving events
+
+It's likely that you need to re-authorize Pipedream's access to your Zoom account to start receiving events. Here's how to do that:
+
+1. Visit [https://pipedream.com/sources](https://pipedream.com/sources)
+2. Select your event source, and click on the **Configuration** tab.
+3. Press **unlink** next to your connected Zoom account, then press the **Connect Zoom** button.
+4. When your list of connected Zoom accounts appears, click **New**. **This will prompt you to authorize Pipedream's access to your Zoom account _again_, creating a new auth grant.**
+5. This should renew the link between your Zoom account and Pipedream. Try triggering your Zoom event again.
+
 ## Removing Pipedream's access to your Zoom account
 
 You can revoke Pipedream's access to your Zoom account by visiting your [list of installed apps in Zoom](https://marketplace.zoom.us/user/installed).
