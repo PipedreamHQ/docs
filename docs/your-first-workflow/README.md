@@ -2,7 +2,11 @@
 
 Building your first workflow is the best way to understand how Pipedream works. Best of all, [running workflows is free](/pricing/)!
 
-Visit [our tutorial workflow](https://pipedream.com/@tod/use-http-requests-to-trigger-a-workflow-p_6lCy5y/readme), press the big green **Copy** button to [create a copy](/workflows/copy/) of the workflow in your account, and walk through the overview. It'll only take 3 minutes.
+We recommend starting with this [5 minute tutorial](https://pipedream.com/new?appcue=5ec1fd72-798f-4f32-b225-35b94315bf11) to learn how to:
+
+- Trigger a workflow on HTTP requests 
+- Retrieve data from an API using Node.js and npm 
+- Deploy and test your changes. 
 
 Once you're done with the tutorial, start building workflows to solve your own problems. Get creative and share them with others!
 
