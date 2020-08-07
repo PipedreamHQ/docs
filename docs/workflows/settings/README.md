@@ -18,18 +18,6 @@ Workflows have a default [execution limit](/limits/#time-per-execution), which d
 
 If your workflow times out, and needs to run for longer than the [default limit](/limits/#time-per-execution), you can change that limit here.
 
-## Collaborators
-
-You can add collaborators to your workflow under the **Collaborators** section.
-
-Pipedream sends an email to that user asking them to accept the collaboration request. Once they do, they'll be able to edit the workflow and view its events and execution details.
-
-As a collaborator, you can see workflows that have been shared with you in the **Shared with Me** section of your [list of workflows](https://pipedream.com/workflows):
-
-<div>
-<img alt="Workflows Shared with me" width="200" src="./images/shared-with-me.png">
-</div>
-
 ## Current checkpoint values
 
 If you're using [`$checkpoint`](/workflows/steps/code/#workflow-level-state-checkpoint) or [`this.$checkpoint`](/workflows/steps/code/#step-level-state-this-checkpoint) to manage state in your workflow, you can view their values here. You can also modify the values or clear the whole contents of a given checkpoint.

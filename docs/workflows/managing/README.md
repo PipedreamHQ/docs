@@ -44,13 +44,16 @@ Code and action steps of Pipedream workflows are executed in the order they appe
 
 ## Sharing Workflows
 
-Since [workflows are public by default](/public-workflows/), you can simply copy the pipedream.com URL to your pipeline and share it with anyone:
+To share your workflow with others, click the **Share** button in the top-right of your workflow:
 
 <div>
-<img alt="Workflow URL" src="./images/workflow-url.png">
+<img alt="Share button" src="./images/share-button.png" width="200px">
 </div>
 
-You can also add collaborators to your workflow under your workflow's [Settings](/workflows/settings/). Collaborators can edit the code and see its events and execution details.
+There are two types of ways to share your workflow:
+
+- You can share your workflow code with others so they can copy it and use it with their own connected accounts. [Workflow code is public by default](/public-workflows/), and you can find your workflow's shareable URL here.
+- You can also add collaborators to your workflow. Collaborators can edit the code and see its events and execution details. Add collaborators by Pipedream username or email address. Pipedream sends an email to that user asking them to accept the collaboration request. Once they do, they'll be able to edit the workflow and view its events and execution details.
 
 ## Deactivating Workflows
 
