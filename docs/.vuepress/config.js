@@ -55,6 +55,7 @@ module.exports = {
           "/workflows/steps/code/nodejs/http-requests/",
           "/workflows/steps/code/nodejs/working-with-files/",
           "/workflows/steps/actions/",
+          "/workflows/steps/params/",
         ],
       },
       {
