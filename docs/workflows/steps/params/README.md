@@ -89,6 +89,16 @@ console.log(params.url)
 
 Note: in some cases you may need to save your workflow for the form to generate.
 
+You'll see this field appear no matter how the property is referenced in code. For example, you can [destructure properties](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Destructuring_assignment#Object_destructuring) of params and we'll correctly display the associated field. E.g., the following code will generate the same params form and behavior as the example above:
+
+```javascript
+const { url } = params
+console.log(url)
+```
+
+> Reminder: Workflow code is [public](/public-workflows/) by default, so use params or environment variables for sensitive data. Alternatively, you can make your workflow code private.
+
+
 ### Configuring the params form
 
 To configure the params form, click **edit params schema**.
