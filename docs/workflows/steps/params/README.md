@@ -2,7 +2,7 @@
 
 Params are form inputs that can be added to code steps in a workflow to abstract data from the code and improve reusability. Most actions use params to capture user input (e.g., to allow users to customize the URL, method and payload for the Send HTTP Request action). Params support the entry of simple values (e.g., `hello world` or `123`) or expressions that reference objects in scope (e.g., `event`, `steps`, `process.env`).
 
-![image-20200809211005240](./images/image-20200809211005240.png)
+<iframe width="560" height="350" src="https://www.youtube.com/embed/6eq813uEExc" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
   * [Entering Expressions](#entering-expressions)
     + [Use the object explorer](#use-the-object-explorer)
@@ -15,6 +15,7 @@ Params are form inputs that can be added to code steps in a workflow to abstract
   * [Configuring Custom Params](#configuring-custom-params)
     + [Adding params to a code step](#adding-params-to-a-code-step)
     + [Configuring the params form](#configuring-the-params-form)
+
 
 ## Entering Expressions
 
@@ -42,7 +43,6 @@ You can also run Node.js code in <code v-pre>{{...}}</code>. For example, if `ev
 To paste a reference from a step export, find the reference you want to use, click **Copy Path** and then paste it into the input.
 
 ![img](./images/params-paste-7031315.gif)
-
 
 ## Params Types
 
